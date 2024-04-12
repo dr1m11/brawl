@@ -93,6 +93,15 @@ import InfoComponent from "@/components/InfoComponent/InfoComponent";
 //
 // export default BannerCarousel
 
+function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+    if (m && n) {
+        nums1 = nums1.splice(m - 1)
+        nums1 = [...nums1, ...nums2].sort((a, b) => a >= b ? a : b)
+    }
+    else if (n)
+        nums1 = [...nums2]
+}
+
 
 export const BannerCarousel = () => {
     return (

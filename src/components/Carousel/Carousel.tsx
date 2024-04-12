@@ -47,7 +47,7 @@ function Carousel() {
         prevArrow: <SamplePrevArrow />
     };
     return (
-        <div className="slider-container w-[1435px] gap-x-2 mx-auto">
+        <div className="slider-container w-[1010px] gap-x-2 mx-auto">
             <Slider {...settings} >
                 <div
                     className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>

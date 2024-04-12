@@ -11,11 +11,14 @@ interface ICaseProps {
     title: string
     desc: string
     price: number
+    width?: number
+    height?: number
+    imgStyles?: string
 }
-const Case = ({image, desc, price, title}: ICaseProps) => {
+const Case = ({image, desc, price, title, width, height, imgStyles}: ICaseProps) => {
     return (
         <div className={styles.root}>
-            <Image src={image} alt={"Case"} width={203} height={203} />
+            <Image src={image} alt={"Case"} width={width ? width : 203 } height={height ? height : 203} className={imgStyles && imgStyles}/>
             <h3 className={'opacity-90 text-title-case-color -mt-4 mb-2'}>{title}</h3>
             <p className={clsx(manrope.className, 'text-white text-xs opacity-75 mb-1')}>{desc}</p>
             <CaseButton>{price} RUB</CaseButton>
