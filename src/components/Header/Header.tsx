@@ -1,0 +1,47 @@
+import styles from './Header.module.css'
+import holodilnik from '../../../public/Header/holodilnik.svg'
+import baran from '../../../public/Header/baran.svg'
+import ebobot from '../../../public/Header/ebobot.svg'
+import Image from "next/image";
+import {Manrope} from "next/font/google";
+import clsx from "clsx";
+import GreenButton from "@/components/GreenButton/GreenButton";
+import Online from '@/../public/Header/Online.svg'
+
+const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
+
+const Header = () => {
+    return (
+        <header className={clsx(styles.header, manrope.className)}>
+            <div className={styles.header__left}>
+                <h4>выбирай и побеждай</h4>
+            </div>
+            <div className={styles.header__center}>
+                <div className={styles.header__center__content}>
+                    <h3>КЕЙСЫ</h3>
+                    <Image src={holodilnik} alt={'Case'} width={138} height={120} className={'-rotate-3 -mt-3 opacity-75'}/>
+                </div>
+                <div className={styles.header__center__content}>
+                    <h3>БАРАБАН</h3>
+                    <Image src={baran} alt={'Wheel'} width={138} height={120} className={'-rotate-3 -mt-3 opacity-75'}/>
+                </div>
+                <div className={styles.header__center__content}>
+                    <h3>КРАШ</h3>
+                    <Image src={ebobot} alt={'Crash'} width={177} height={133} className={'-rotate-3 -mt-7 opacity-75'}/>
+                </div>
+            </div>
+            <div className={styles.header__right}>
+                <div className={styles.header__right__content}>
+                    <div className={'flex'}>
+                        <Image src={Online} alt={"Online"} width={17.5} height={20} />
+                        <h6 className={styles.header__right__count}>104</h6>
+                    </div>
+                    <span className={styles.header__right__heading}>в онлайне</span>
+                </div>
+                <GreenButton>ВОЙТИ</GreenButton>
+            </div>
+        </header>
+    );
+};
+
+export default Header;

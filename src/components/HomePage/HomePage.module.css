@@ -1,0 +1,7 @@
+.content {
+    @apply max-w-[1600px] mx-auto w-full
+}
+
+.main__img {
+    @apply absolute w-full opacity-20 -z-10
+}

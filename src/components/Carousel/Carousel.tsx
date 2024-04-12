@@ -1,0 +1,97 @@
+'use client'
+import Slider, {CustomArrowProps} from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import clsx from "clsx";
+import Image from "next/image";
+import Case from '@/../public/Case/Case1.svg'
+import Arrow from '@/../public/Home/Arrow.svg'
+import {Manrope} from "next/font/google";
+
+
+function SampleNextArrow(props: CustomArrowProps) {
+    const { onClick } = props;
+    return (
+        <div>
+            <div onClick={onClick}
+                 className={'absolute rounded-r-2xl z-10 bg-amber-50 -right-[25px] top-0 w-[25px] h-[100px] flex items-center justify-center cursor-pointer'}
+                 style={{background: 'linear-gradient(180.00deg, rgb(74, 79, 146),rgb(70, 76, 149) 100%)'}}>
+                <Image src={Arrow} alt={'Arrow'} width={8} height={13} className={'rotate-180'}/>
+            </div>
+        </div>
+    );
+}
+
+function SamplePrevArrow(props: CustomArrowProps) {
+    const {onClick} = props;
+    return (
+        <div>
+            <div onClick={onClick}
+                 className={'absolute rounded-l-2xl z-10 bg-amber-50 -left-[25px] w-[25px] h-[100px] flex items-center justify-center cursor-pointer'}
+                 style={{background: 'linear-gradient(180.00deg, rgb(74, 79, 146),rgb(70, 76, 149) 100%)'}}>
+                <Image src={Arrow} alt={'Arrow'} width={8} height={13} />
+            </div>
+        </div>
+    );
+}
+
+const manrope = Manrope({weight: ['500'], subsets: ["latin"]})
+
+function Carousel() {
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />
+    };
+    return (
+        <div className="slider-container w-[1435px] gap-x-2 mx-auto">
+            <Slider {...settings} >
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+                <div
+                    className={' overflow-hidden text-center min-w-[169px] min-h-[100px] border-x-[1px] mt-[] border-header bg-brawl-purple-header-opacity'}>
+                    <Image src={Case} alt={'Case'} width={100} height={100} className={'mx-auto -mt-2'}/>
+                    <h4 className={clsx(manrope.className, 'text-white text-[11px] -mt-[15px]')}>Timosopiaa</h4>
+                </div>
+            </Slider>
+        </div>
+    );
+}
+
+export default Carousel;

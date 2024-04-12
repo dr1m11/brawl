@@ -1,0 +1,19 @@
+.root {
+    width: 100px;
+    height: 32px;
+    min-height: 32px;
+    border-radius: 12px;
+    opacity: 0.6;
+    background: linear-gradient(rgb(73, 81, 172), rgb(84, 20, 126));
+    @apply flex items-center
+}
+
+.button {
+    width: 96px;
+    height: 28px;
+    border-radius: 12px;
+    opacity: 1;
+    background: linear-gradient(90.00deg, rgb(132, 140, 236),rgb(126, 20, 176) 100%);
+    z-index: 4543;
+    @apply mx-auto flex items-center justify-center
+}

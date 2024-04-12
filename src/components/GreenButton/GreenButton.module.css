@@ -1,0 +1,5 @@
+.button {
+    border-radius: 16px;
+    background: linear-gradient(180.00deg, rgb(27, 191, 103) 75%,rgba(46, 255, 142, 0.9) 96.429%);
+    @apply w-[166px] h-[42px] text-white opacity-75
+}
