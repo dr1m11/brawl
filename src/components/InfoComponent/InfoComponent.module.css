@@ -1,0 +1,8 @@
+.root {
+    background: linear-gradient(90.00deg, rgba(62, 62, 159, 0.5),rgba(69, 46, 145, 0.5) 100%);
+    @apply flex h-[42px] items-center rounded-2xl px-4 justify-between
+}
+
+.count {
+    @apply font-light ml-2
+}
