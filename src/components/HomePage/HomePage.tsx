@@ -11,6 +11,10 @@ import Custom1 from '@/../public/Case/Custom1.svg'
 import Custom2 from '@/../public/Case/Custom2.svg'
 import Custom3 from '@/../public/Case/Custom3.svg'
 import Custom4 from '@/../public/Case/Custom4.svg'
+import InfoComponent from "@/components/InfoComponent/InfoComponent";
+import {Manrope} from "next/font/google";
+
+const manrope = Manrope({weight: ['400', '500'], subsets: ['latin']})
 
 const HomePage = () => {
     return (
@@ -31,6 +35,20 @@ const HomePage = () => {
                         <Case title={"КекПукПек"} image={Custom2} price={56} width={192} height={193} desc={"хер пойми что важно"} imgStyles={'-mt-4 mb-6'}/>
                         <Case title={"КекПукПек"} image={Custom3} price={56} width={192} height={193} desc={"хер пойми что важно"} imgStyles={'-mt-4 mb-6'}/>
                         <Case title={"КекПукПек"} image={Custom4} price={56} width={192} height={193} desc={"хер пойми что важно"} imgStyles={'-mt-4 mb-6'}/>
+                    </div>
+                    <div className={'flex items-center h-[68px] rounded-3xl p-4 bg-brawl-purple-header mb-16 justify-between'}>
+                        <form className={'max-w-[206px] h-full w-full border-header border-[1px] flex items-center rounded-2xl py-[13px] px-[16px]'}>
+                            <input placeholder={'Поиск'} className={'text-[11px] bg-brawl-purple-header outline-0 text-white'}/>
+                        </form>
+                        <div className={'bg-option-bg h-full rounded-3xl flex items-center justify-between max-w-[257px] w-full px-[16px]'}>
+                            <span className={clsx(manrope.className, 'opacity-75 text-white text-[11px]')}>0-50Р</span>
+                            <span className={clsx(manrope.className, 'opacity-75 text-white text-[11px]')}>50-100Р</span>
+                            <span className={clsx(manrope.className, 'opacity-75 text-white text-[11px]')}>100-200Р</span>
+                            <span className={clsx(manrope.className, 'opacity-75 text-white text-[11px]')}>500+ Р</span>
+                        </div>
+                        <InfoComponent firstWord={'Самые дорогие'} stylesFirstWord={'text-[13px] text-white'}/>
+                        <InfoComponent firstWord={'Самые дорогие'} stylesFirstWord={'text-[13px] text-white'}/>
+                        <InfoComponent firstWord={'Самые дорогие'} stylesFirstWord={'text-[13px] text-white'}/>
                     </div>
                     <div className={'grid grid-cols-4 gap-y-10 max-w-[1100px] mx-auto'}>
                         <Case title={"КекПукПек"} image={CaseImg} price={56} desc={"хер пойми что важно"}/>

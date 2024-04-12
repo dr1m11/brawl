@@ -16,7 +16,8 @@ const config: Config = {
         "brawl-purple-main": "rgb(46, 31, 92)",
         "brawl-purple-header": "rgb(54, 36, 107)",
         "brawl-purple-header-opacity": "rgba(54, 36, 107, 0.7)",
-        "green-button-inactive": "linear-gradient(180.00deg, rgb(27, 191, 103) 75%,rgba(46, 255, 142, 0.9) 96.429%)"
+        "green-button-inactive": "linear-gradient(180.00deg, rgb(27, 191, 103) 75%,rgba(46, 255, 142, 0.9) 96.429%)",
+        "option-bg": "rgba(72, 49, 142, 0.2)"
       },
       textColor: {
         "main": "rgba(132, 140, 236, 0.75)",
