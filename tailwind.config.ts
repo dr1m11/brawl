@@ -17,18 +17,24 @@ const config: Config = {
         "brawl-purple-header": "rgb(54, 36, 107)",
         "brawl-purple-header-opacity": "rgba(54, 36, 107, 0.7)",
         "green-button-inactive": "linear-gradient(180.00deg, rgb(27, 191, 103) 75%,rgba(46, 255, 142, 0.9) 96.429%)",
-        "option-bg": "rgba(72, 49, 142, 0.2)"
+        "option-bg": "rgba(72, 49, 142, 0.2)",
+        '6445118': 'rgb(64, 45, 118)',
+        '6944145': 'rgb(69, 44, 145)',
+        '373070': 'rgb(37, 30, 70)'
       },
       textColor: {
         "main": "rgba(132, 140, 236, 0.75)",
-        "title-case-color": "rgba(240, 244, 254, 0.9)"
+        "title-case-color": "rgba(240, 244, 254, 0.9)",
+        '242': 'rgba(242, 242, 242, 0.75)'
       },
       borderColor: {
-        "header": "rgb(77, 67, 146)"
+        "header": "rgb(77, 67, 146)",
+        '6445118': 'rgb(64, 45, 118)',
+        '7767146': 'rgba(77, 67, 146, 0.4)'
       },
       zIndex: {
         "1000": "1000"
-      }
+      },
     },
   },
   plugins: [],

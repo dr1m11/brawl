@@ -6,6 +6,13 @@
     @apply absolute w-full opacity-20 -z-10
 }
 
+.bottom__img {
+    @apply absolute w-full -z-10 bottom-0
+}
+.main {
+    @apply relative
+}
+
 .casese__heading {
     background: linear-gradient(to right, rgba(27, 191, 103, 0.9),rgba(227, 167, 255, 0.9));
     -webkit-background-clip: text;

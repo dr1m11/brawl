@@ -1,0 +1,35 @@
+.main {
+    @apply w-full h-screen pb-40 relative
+}
+
+.content {
+    @apply max-w-[1115px] mx-auto flex justify-center w-full mt-20
+}
+
+.crash {
+    @apply max-w-[700px] w-full
+}
+
+.title {
+    @apply bg-6944145 ml-8 -mb-4 rounded-2xl text-white font-bold text-3xl leading-[57px] max-w-[255px] flex items-center justify-center
+}
+
+.title__span {
+    @apply font-light text-sm ml-4 text-242
+}
+
+.game__wrapper {
+    @apply w-full bg-6944145 rounded-2xl p-5
+}
+
+.game__bg {
+    @apply absolute w-full h-full px-1
+}
+
+.game {
+    @apply bg-373070 relative h-[500px]
+}
+
+.row {
+    @apply h-[50px] border-b border-dashed border-7767146
+}

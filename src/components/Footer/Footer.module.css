@@ -1,0 +1,44 @@
+.footer__center {
+    @apply flex border-[12px] border-6445118 rounded-[32px] text-main
+}
+
+.footer__center__content {
+    @apply h-[91px] container w-1/3 text-center pt-4 first-of-type:rounded-l-2xl last-of-type:rounded-r-2xl bg-brawl-purple-header border-x border-header overflow-hidden
+}
+
+.footer__text {
+    background: linear-gradient(90.00deg, rgba(27, 191, 103, 0.9),rgba(227, 167, 255, 0.9));
+    -webkit-background-clip:
+            text;
+    -webkit-text-fill-color:
+            transparent;
+    background-clip:
+            text;
+    text-fill-color:
+            transparent;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 28px;
+    width: fit-content;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+
+.circle {
+    position: absolute;
+    width: 355px;
+    height: 382px;
+    background: rgb(126, 20, 176);
+    bottom: -246px;
+    filter: blur(200px);
+}
+
+.elipse {
+    position: absolute;
+    width: 390px;
+    height: 320px;
+    left: 279px;
+    bottom: -173px;
+    filter: blur(200px);
+    background: rgb(83, 110, 250);
+}
