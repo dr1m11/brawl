@@ -23,13 +23,29 @@
 }
 
 .game__bg {
-    @apply absolute w-full h-full px-1
+    @apply absolute w-full h-full px-4 top-0
 }
 
 .game {
-    @apply bg-373070 relative h-[500px]
+    @apply bg-373070 relative overflow-hidden h-[300px] rounded-2xl border-b-7767146
 }
 
 .row {
     @apply h-[50px] border-b border-dashed border-7767146
+}
+
+.game__info {
+    @apply bg-373070 p-[25px] w-fit z-20 absolute text-main-op40
+}
+
+.info__small {
+    @apply text-[11px]
+}
+
+.info__main {
+    @apply text-[22px] font-bold
+}
+
+.info__main span {
+    @apply text-[19px]
 }

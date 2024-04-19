@@ -7,6 +7,7 @@ import {Manrope} from "next/font/google";
 import clsx from "clsx";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import Online from '@/../public/Header/Online.svg'
+import Link from "next/link";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -17,18 +18,18 @@ const Header = () => {
                 <h4>выбирай и побеждай</h4>
             </div>
             <div className={styles.header__center}>
-                <div className={styles.header__center__content}>
+                <Link href={'/'} className={styles.header__center__content}>
                     <h3>КЕЙСЫ</h3>
                     <Image src={holodilnik} alt={'Case'} width={138} height={120} className={'-rotate-3 -mt-3 opacity-75'}/>
-                </div>
-                <div className={styles.header__center__content}>
+                </Link>
+                <Link href={'/'} className={styles.header__center__content}>
                     <h3>БАРАБАН</h3>
                     <Image src={baran} alt={'Wheel'} width={138} height={120} className={'-rotate-3 -mt-3 opacity-75'}/>
-                </div>
-                <div className={styles.header__center__content}>
+                </Link>
+                <Link href={'/crash'} className={styles.header__center__content}>
                     <h3>КРАШ</h3>
                     <Image src={ebobot} alt={'Crash'} width={177} height={133} className={'-rotate-3 -mt-7 opacity-75'}/>
-                </div>
+                </Link>
             </div>
             <div className={styles.header__right}>
                 <div className={styles.header__right__content}>

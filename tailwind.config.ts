@@ -24,6 +24,7 @@ const config: Config = {
       },
       textColor: {
         "main": "rgba(132, 140, 236, 0.75)",
+        "main-op40": "rgba(132, 140, 236, 0.40)",
         "title-case-color": "rgba(240, 244, 254, 0.9)",
         '242': 'rgba(242, 242, 242, 0.75)'
       },
