@@ -51,7 +51,7 @@ const HomePage = () => {
                         <InfoComponent firstWord={'Самые дорогие'} stylesFirstWord={'text-[13px] text-white'}/>
                         <InfoComponent firstWord={'Самые дорогие'} stylesFirstWord={'text-[13px] text-white'}/>
                     </div>
-                    <div className={'grid grid-cols-4 gap-y-10 max-w-[1100px] mx-auto pb-[500px]'}>
+                    <div className={'grid grid-cols-4 gap-y-10 max-w-[1100px] mx-auto pb-[100px]'}>
                         <Case title={"КекПукПек"} image={CaseImg} price={56} desc={"хер пойми что важно"}/>
                         <Case title={"КекПукПек"} image={CaseImg} price={56} desc={"хер пойми что важно"}/>
                         <Case title={"КекПукПек"} image={CaseImg} price={56} desc={"хер пойми что важно"}/>

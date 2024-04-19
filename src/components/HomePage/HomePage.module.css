@@ -7,7 +7,7 @@
 }
 
 .bottom__img {
-    @apply absolute w-full -z-10 bottom-0
+    @apply absolute w-full -z-10 -bottom-72
 }
 .main {
     @apply relative
