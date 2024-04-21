@@ -39,13 +39,18 @@
 }
 
 .info__small {
-    @apply text-[11px]
+    @apply text-[8px] leading-[11px]
 }
 
 .info__main {
-    @apply text-[22px] font-bold
+    @apply text-[22px] font-bold tracking-wider
 }
 
 .info__main span {
     @apply text-[19px]
+}
+
+.bets {
+    transition: all 50ms ease;
+    @apply bottom-0 absolute
 }

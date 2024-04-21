@@ -8,6 +8,7 @@ import clsx from "clsx";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import Online from '@/../public/Header/Online.svg'
 import Link from "next/link";
+import Logo from '@/../public/Footer/Logo.svg'
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -15,20 +16,31 @@ const Header = () => {
     return (
         <header className={clsx(styles.header, manrope.className)}>
             <div className={styles.header__left}>
+                <div className={styles.header__logo}>
+                    <Image src={Logo} alt={'Logo'} width={95} height={68} />
+                </div>
                 <h4>выбирай и побеждай</h4>
             </div>
             <div className={styles.header__center}>
                 <Link href={'/'} className={styles.header__center__content}>
+                    <div className={styles.header__ellipse}/>
+                    <div className={styles.header__ellipse__hover}/>
                     <h3>КЕЙСЫ</h3>
-                    <Image src={holodilnik} alt={'Case'} width={138} height={120} className={'-rotate-3 -mt-3 opacity-75'}/>
+                    <Image src={holodilnik} alt={'Case'} width={138} height={120}
+                           className={'-rotate-3 -mt-5 opacity-75'}/>
                 </Link>
                 <Link href={'/'} className={styles.header__center__content}>
+                    <div className={styles.header__ellipse}/>
+                    <div className={styles.header__ellipse__hover}/>
                     <h3>БАРАБАН</h3>
-                    <Image src={baran} alt={'Wheel'} width={138} height={120} className={'-rotate-3 -mt-3 opacity-75'}/>
+                    <Image src={baran} alt={'Wheel'} width={138} height={120} className={'-rotate-3 -mt-5 opacity-75'}/>
                 </Link>
                 <Link href={'/crash'} className={styles.header__center__content}>
+                    <div className={styles.header__ellipse}/>
+                    <div className={styles.header__ellipse__hover}/>
                     <h3>КРАШ</h3>
-                    <Image src={ebobot} alt={'Crash'} width={177} height={133} className={'-rotate-3 -mt-7 opacity-75'}/>
+                    <Image src={ebobot} alt={'Crash'} width={177} height={133}
+                           className={'-rotate-3 -mt-8 opacity-75'}/>
                 </Link>
             </div>
             <div className={styles.header__right}>

@@ -9,7 +9,9 @@ const daysOne = Days_One({subsets: ["latin"], weight: ["400"]});
 const GreenButton = ({children}: {children: ReactNode}) => {
     return (
         <button className={clsx(styles.button, daysOne)}>
-            {children}
+            <div className={styles.div}>
+                {children}
+            </div>
         </button>
     );
 };
