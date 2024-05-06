@@ -1,0 +1,11 @@
+.cases__count {
+    @apply bg-6747127 w-fit gap-x-0.5 flex justify-between px-2 rounded-xl h-full items-center
+}
+
+.cases__counter {
+    @apply w-[42px] h-[42px] text-white bg-494088 rounded-xl transition-all
+}
+
+.active {
+    @apply bg-9580160
+}

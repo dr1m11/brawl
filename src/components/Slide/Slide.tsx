@@ -13,7 +13,7 @@ const Slide = () => {
             <Image src={Banner} alt={"Banner"} width={1057} height={479}
                    className={'absolute -bottom-0 -z-1000'}/>
             <Image src={Charecter} alt={"Charecters"} width={910} height={534}
-                   className={'z-1000 mx-auto'}/>
+                   className={'z-1000 mx-auto'} priority={true} loading={'eager'}/>
             <div
                 className={'absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[rgba(17,17,17,1)] to-[rgba(8,8,8,0)] pb-10 flex items-end px-10 rounded-b-2xl'}>
                 <div className={'flex items-center justify-between w-full text-[16px]'}>

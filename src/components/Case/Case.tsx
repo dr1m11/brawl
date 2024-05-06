@@ -3,6 +3,7 @@ import Image from "next/image";
 import CaseButton from "@/components/CaseButton/CaseButton";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
+import Link from "next/link";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
@@ -14,14 +15,15 @@ interface ICaseProps {
     width?: number
     height?: number
     imgStyles?: string
+    id: number
 }
-const Case = ({image, desc, price, title, width, height, imgStyles}: ICaseProps) => {
+const Case = ({image, desc, price, title, width, height, imgStyles, id}: ICaseProps) => {
     return (
         <div className={styles.root}>
             <Image src={image} alt={"Case"} width={width ? width : 203 } height={height ? height : 203} className={imgStyles && imgStyles}/>
             <h3 className={'opacity-90 text-title-case-color -mt-4 mb-2'}>{title}</h3>
             <p className={clsx(manrope.className, 'text-white text-xs opacity-75 mb-1')}>{desc}</p>
-            <CaseButton>{price} RUB</CaseButton>
+            <Link href={`/${id}`}><CaseButton>{price} RUB</CaseButton></Link>
         </div>
     );
 };

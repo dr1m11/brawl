@@ -1,0 +1,48 @@
+.root {
+    @apply
+    w-full
+    max-w-[202px]
+    h-[158px]
+    bg-5436107NO-OP
+    rounded-2xl
+    relative
+    -z-10
+    overflow-hidden
+    p-5
+}
+
+.gun {
+    @apply
+    mx-auto
+}
+
+.shadow {
+    @apply
+    absolute
+    left-0
+    right-0
+    bottom-0
+    top-0
+    w-[98px]
+    h-[98px]
+    bg-5665162
+    rounded-[100%]
+    m-auto
+    -z-10
+    blur-lg
+}
+
+.title {
+    @apply
+    text-white
+    text-[11px]
+    font-semibold
+    tracking-wider
+}
+
+.desc {
+    @apply
+    text-[11px]
+    text-main
+    font-normal
+}

@@ -1,0 +1,32 @@
+.root {
+    @apply
+    bg-6747127
+    w-[176px]
+    h-full
+    flex items-center
+    px-3
+    rounded-xl
+    justify-between
+}
+
+.uncheck {
+    @apply
+    w-[32px]
+    h-[32px]
+    rounded-xl
+    bg-332762
+    cursor-pointer
+    flex
+    items-center
+    justify-center
+}
+
+.check {
+    @apply
+    w-[18px]
+    h-[18px]
+    rounded
+    bg-yellow-500
+    opacity-0
+    transition-all
+}

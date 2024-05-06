@@ -1,0 +1,16 @@
+.root {
+    /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
+    @apply
+    w-[246px]
+    h-full
+    border-[10px]
+    rounded-xl
+    border-2551840
+    bg-gradient-to-r
+    from-24416163
+    to-2551840
+    font-bold
+    text-white
+    tracking-wider
+    text-[18px]
+}

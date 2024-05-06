@@ -25,22 +25,22 @@ const Header = () => {
                 <Link href={'/'} className={styles.header__center__content}>
                     <div className={styles.header__ellipse}/>
                     <div className={styles.header__ellipse__hover}/>
-                    <h3>КЕЙСЫ</h3>
+                    <h3 className={styles.header__center__titles}>КЕЙСЫ</h3>
                     <Image src={holodilnik} alt={'Case'} width={138} height={120}
-                           className={'-rotate-3 -mt-5 opacity-75'}/>
+                           className={clsx(styles.header__center__img, 'top-20')}/>
                 </Link>
                 <Link href={'/'} className={styles.header__center__content}>
                     <div className={styles.header__ellipse}/>
                     <div className={styles.header__ellipse__hover}/>
-                    <h3>БАРАБАН</h3>
-                    <Image src={baran} alt={'Wheel'} width={138} height={120} className={'-rotate-3 -mt-5 opacity-75'}/>
+                    <h3 className={styles.header__center__titles}>БАРАБАН</h3>
+                    <Image src={baran} alt={'Wheel'} width={138} height={120} className={clsx(styles.header__center__img, 'top-24')}/>
                 </Link>
                 <Link href={'/crash'} className={styles.header__center__content}>
                     <div className={styles.header__ellipse}/>
                     <div className={styles.header__ellipse__hover}/>
-                    <h3>КРАШ</h3>
+                    <h3 className={styles.header__center__titles}>КРАШ</h3>
                     <Image src={ebobot} alt={'Crash'} width={177} height={133}
-                           className={'-rotate-3 -mt-8 opacity-75'}/>
+                           className={clsx(styles.header__center__img, 'top-14 min-w-[100px]')}/>
                 </Link>
             </div>
             <div className={styles.header__right}>

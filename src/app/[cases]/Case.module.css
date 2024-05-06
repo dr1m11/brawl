@@ -1,0 +1,42 @@
+.root {
+    @apply relative w-full h-full mt-3 mb-20
+}
+
+.background {
+    @apply absolute w-full h-full bg-217 blur-xl -z-50
+}
+
+.wrapper {
+    @apply w-full h-full max-w-[1060px] mx-auto
+}
+
+.back__btn {
+    @apply mt-20 rounded-xl bg-gradient-to-r from-8420126 to-7381172 max-w-[150px] w-full font-semibold text-[13px] text-white leading-8 cursor-pointer
+}
+
+.in__case {
+    @apply
+    mt-16
+}
+
+.title {
+    @apply
+    bg-gradient-to-r
+    from-2501760
+    to-227167255
+    text-transparent
+    bg-clip-text
+    w-fit
+    mx-auto
+    text-[26px]
+    font-medium
+}
+
+.content {
+    @apply
+    mt-10
+    gap-y-5
+    flex
+    flex-wrap
+    justify-between
+}

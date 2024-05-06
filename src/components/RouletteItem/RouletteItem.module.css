@@ -1,0 +1,45 @@
+.root {
+    @apply
+    bg-5436107
+    w-[169px]
+    h-[169px]
+    border-x
+    border-x-7767146
+}
+
+.wrapper {
+    @apply
+    h-full
+    flex
+    flex-col
+    items-center
+    justify-center
+    relative
+}
+
+.blur {
+    @apply
+    absolute
+    w-[69px]
+    h-[69px]
+    rounded-[50%]
+    bg-2463838
+    blur-xl
+    opacity-50
+}
+
+.gun {
+    @apply
+    z-50
+}
+
+.label {
+    @apply
+    z-50
+    text-white
+    text-[11px]
+    opacity-75
+    tracking-wide
+    -mb-3
+    mt-4
+}

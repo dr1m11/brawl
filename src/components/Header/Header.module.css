@@ -34,8 +34,12 @@
     @apply block
 }
 
-.header__center__content h3 {
-    @apply w-fit opacity-95 text-center mx-auto transition
+.header__center__titles {
+    @apply absolute right-0 left-0 bottom-0 top-3 z-10 m-auto transition
+}
+
+.header__center__img {
+    @apply absolute opacity-75 left-0 bottom-0 right-0 m-auto
 }
 
 .header__ellipse {

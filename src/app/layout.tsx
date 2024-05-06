@@ -1,12 +1,12 @@
 import type {Metadata} from "next";
-import {Days_One} from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import clsx from "clsx";
 import Footer from "@/components/Footer/Footer";
 
 
-const daysOne = Days_One({subsets: ["latin"], weight: ["400"]});
+const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
 export const metadata: Metadata = {
     title: "Cases",
