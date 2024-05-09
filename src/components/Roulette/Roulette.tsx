@@ -9,9 +9,15 @@ import CaseRadio from "@/components/CaseRadio/CaseRadio";
 import {useState} from "react";
 import RouletteItem from "@/components/RouletteItem/RouletteItem";
 import triangle from '@/../public/CasePage/Triangle.svg'
+import Repeat from '@/../public/CasePage/Repeat.svg'
+import {Manrope} from "next/font/google";
+import clsx from "clsx";
+
+const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['500']})
 
 const Roulette = () => {
     const [isOpened, setIsOpened] = useState(false)
+    const [isFinished, setIsFinished] = useState(false)
     const [fast, setFast] = useState(false)
 
     function randomInteger(min, max) {
@@ -29,7 +35,7 @@ const Roulette = () => {
                         <Image src={triangle} alt={'Triangle'} width={33} height={43}/>
                         <div className={styles.roulette__wrapper}>
                             <div/>
-                            <div className={styles.spin} style={{transform: isOpened ? `translateX(${randomInteger(-7750, -7600)}px)` : null, transitionDuration: fast ? '2.5s' : null }}>
+                            <div className={styles.spin} style={{transform: isOpened ? isFinished ? `translateX(-7670px)` : `translateX(${randomInteger(-7750, -7600)}px)` : null, transitionDuration: fast ? '2.5s' : isFinished && '.6s' }} onTransitionEnd={() => setIsFinished(true)}>
                                 <RouletteItem/>
                                 <RouletteItem/>
                                 <RouletteItem/>
@@ -78,7 +84,7 @@ const Roulette = () => {
                                 <RouletteItem/>
                                 <RouletteItem/>
                                 <RouletteItem/>
-                                <RouletteItem key={'1'}/>
+                                <RouletteItem title={'Артем хуесос'}/>
                                 <RouletteItem/>
                                 <RouletteItem/>
                                 <RouletteItem/>
@@ -86,6 +92,17 @@ const Roulette = () => {
                             </div>
                         </div>
                         <Image src={triangle} alt={'Triangle'} width={33} height={43} style={{transform: 'rotateZ(180deg)'}}/>
+                        {
+                            isFinished &&
+                            <div className={clsx(manrope.className, styles.after__spin)}>
+                                <button className={'w-[195px] h-full flex justify-center gap-x-2 items-center bg-gradient-to-r from-6747127 to-5436107 rounded-xl text-[13px] text-main'} onClick={() => {
+                                    setFast(false)
+                                    setIsFinished(false)
+                                    setIsOpened(false)
+                                }}><Image src={Repeat} alt={'Repeat'} width={20} height={19}/>Попробовать еще раз</button>
+                                <button className={'w-[195px] h-full bg-gradient-to-r from-6747127 to-5436107 rounded-xl text-[13px] text-main'}>Продать за 600 RUB</button>
+                            </div>
+                        }
                     </div>
                     :
                     <div className={styles.roulette__closed}>

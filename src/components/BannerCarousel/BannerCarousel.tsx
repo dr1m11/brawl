@@ -2,7 +2,7 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/bundle';
-import {EffectCoverflow, Navigation} from "swiper/modules";
+import {Autoplay, EffectCoverflow, Navigation} from "swiper/modules";
 import Slide from "@/components/Slide/Slide";
 import SwiperNextButton from "@/components/BannerCarousel/SwiperNextButton";
 
@@ -21,10 +21,13 @@ export const BannerCarousel = () => {
                 modifier: 3,
                 slideShadows: false
             }}
-            modules={[EffectCoverflow, Navigation]}
+            modules={[EffectCoverflow, Navigation, Autoplay]}
             loop
             spaceBetween={-350}
-            autoplay
+            autoplay={{
+                delay: 5000,
+
+            }}
         >
             <SwiperNextButton left/>
             <SwiperSlide>

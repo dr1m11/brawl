@@ -31,7 +31,7 @@
 }
 
 .case__price {
-    @apply text-center
+    @apply text-center text-white mb-2 ml-14
 }
 
 .case__bottom__wrapper {
@@ -61,4 +61,16 @@
     transition-duration: 7s;
     @apply
     flex
+}
+
+.after__spin {
+    @apply
+    flex
+    max-w-[450px]
+    w-full
+    h-[42px]
+    justify-between
+    items-center
+    absolute
+    -bottom-4
 }
