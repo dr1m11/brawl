@@ -16,9 +16,9 @@ const Header = () => {
     return (
         <header className={clsx(styles.header, manrope.className)}>
             <div className={styles.header__left}>
-                <div className={styles.header__logo}>
+                <Link href={'/'} className={styles.header__logo}>
                     <Image src={Logo} alt={'Logo'} width={95} height={68} />
-                </div>
+                </Link>
                 <h4>выбирай и побеждай</h4>
             </div>
             <div className={styles.header__center}>
@@ -51,8 +51,11 @@ const Header = () => {
                     </div>
                     <span className={styles.header__right__heading}>в онлайне</span>
                 </div>
-                <GreenButton>ВОЙТИ</GreenButton>
+                <GreenButton link={'profile'}>ВОЙТИ</GreenButton>
             </div>
+            {/*<div className={styles.login}>*/}
+            {/*    sdfsdf*/}
+            {/*</div>*/}
         </header>
     );
 };

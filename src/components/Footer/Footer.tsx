@@ -15,8 +15,8 @@ import Link from "next/link";
 const Footer = () => {
     return (
         <footer className={'min-h-[246px] w-full'}>
-            <div className={'bg-brawl-purple-header w-full h-[246px] mt-20 absolute'}/>
-            <div className={'flex relative mx-auto max-w-[1440px]'}>
+            <div className={'bg-brawl-purple-header w-full h-[246px] mt-20 absolute z-10'}/>
+            <div className={'flex relative mx-auto max-w-[1440px] z-10'}>
                 <div className={'w-full min-h-[246px]'}/>
                 <div className={'w-full flex flex-col justify-between z-10'}>
                     <div className={'max-w-[530px] flex flex-col items-center'}>

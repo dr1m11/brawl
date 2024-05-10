@@ -9,11 +9,11 @@ const Slide = () => {
 
     return (
         <div className={'relative max-w-[1057px] mx-auto'}>
-            {!isActive && <div className={'w-full h-[90%] bottom-0 rounded-xl absolute bg-black opacity-30 z-1000 transition-all'}/>}
+            {!isActive && <div className={'w-full h-[90%] bottom-0 rounded-xl absolute bg-black opacity-30 transition-all'}/>}
             <Image src={Banner} alt={"Banner"} width={1057} height={479}
-                   className={'absolute -bottom-0 -z-1000'}/>
+                   className={'absolute -bottom-0 -z-10'}/>
             <Image src={Charecter} alt={"Charecters"} width={910} height={534}
-                   className={'z-1000 mx-auto'} priority={true} loading={'eager'}/>
+                   className={'mx-auto'} priority={true} loading={'eager'}/>
             <div
                 className={'absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[rgba(17,17,17,1)] to-[rgba(8,8,8,0)] pb-10 flex items-end px-10 rounded-b-2xl'}>
                 <div className={'flex items-center justify-between w-full text-[16px]'}>

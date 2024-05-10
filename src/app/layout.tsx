@@ -19,10 +19,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={''}>
-            <body className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative')}>
+        <html lang="en">
+            <body className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative z-1000')}>
                 <Header/>
-                <main>
+                <main className={'-z-1000'}>
                     {children}
                 </main>
                 <Footer />

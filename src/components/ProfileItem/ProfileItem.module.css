@@ -1,0 +1,82 @@
+.root {
+    @apply
+    max-w-[202px]
+    h-[202px]
+    w-full
+    p-[18px]
+    relative
+    bg-5436107NO-OP
+    rounded-xl
+    overflow-hidden
+}
+
+.title {
+    @apply
+    text-white
+    font-semibold
+    opacity-75
+    text-[11px]
+}
+
+.desc {
+    @apply
+    text-main
+    text-[11px]
+}
+
+.gun {
+    @apply
+    absolute
+    top-0
+    bottom-0
+    -left-4
+    right-0
+    m-auto
+    z-10
+}
+
+.shadow {
+    @apply
+    absolute
+    top-0
+    bottom-0
+    left-0
+    right-0
+    m-auto
+    w-[98px]
+    h-[98px]
+    rounded-[100%]
+    blur-lg
+    bg-5665162
+}
+
+.info {
+    @apply
+    absolute
+    bottom-2
+    flex
+    left-[18px]
+    right-[25px]
+    m-auto
+    justify-between
+    items-center
+}
+
+.sell {
+    @apply
+    w-[100px]
+    h-[32px]
+    bg-gradient-to-r
+    from-9444168
+    to-7973191
+    rounded-xl
+    text-white
+    opacity-75
+}
+
+.price {
+    @apply
+    text-main
+    text-[11px]
+    font-medium
+}

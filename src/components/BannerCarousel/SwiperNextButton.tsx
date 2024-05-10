@@ -4,7 +4,7 @@ import {useSwiper} from "swiper/react";
 const SwiperNextButton = ({left}: {left?: boolean}) => {
     const swiper = useSwiper()
     return (
-        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg" className={`cursor-pointer absolute z-1000 top-[50%] ${left ? 'rotate-180 left-32' : 'right-32'}`} onClick={() => left ? swiper.slidePrev() : swiper.slideNext()}>
+        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg" className={`cursor-pointer absolute z-10 top-[50%] ${left ? 'rotate-180 left-32' : 'right-32'}`} onClick={() => left ? swiper.slidePrev() : swiper.slideNext()}>
             <circle cx="20.5" cy="20.5" r="20.5" transform="matrix(-1 0 0 1 44 3)" fill="white"/>
             <g filter="url(#filter0_f_68_2334)">
                 <circle cx="20.5" cy="20.5" r="18" transform="matrix(-1 0 0 1 44 3)" stroke="#979797"

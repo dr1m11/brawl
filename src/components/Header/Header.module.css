@@ -1,5 +1,5 @@
 .header {
-    @apply bg-brawl-purple-header rounded-b-3xl mx-auto max-w-[1345px] max-h-[70px] h-full w-full flex pr-4 text-main container
+    @apply bg-brawl-purple-header rounded-b-3xl mx-auto max-w-[1345px] max-h-[70px] h-full w-full flex pr-4 text-main container z-50
 }
 
 .header__left, .header__center, .header__right {
@@ -7,7 +7,7 @@
 }
 
 .header__left {
-    @apply flex items-center justify-between pr-16
+    @apply flex items-center justify-between pr-16 z-10
 }
 
 .header__logo {
@@ -35,7 +35,7 @@
 }
 
 .header__center__titles {
-    @apply absolute right-0 left-0 bottom-0 top-3 z-10 m-auto transition
+    @apply absolute right-0 left-0 bottom-0 top-3 m-auto transition
 }
 
 .header__center__img {
@@ -66,3 +66,16 @@
 .header__right__heading {
     @apply text-[9px] justify-self-end
 }
+
+/*.login {*/
+/*    @apply*/
+/*    absolute*/
+/*    bg-black*/
+/*    w-full*/
+/*    left-0*/
+/*    bottom-0*/
+/*    right-0*/
+/*    top-0*/
+/*    z-10*/
+/*    opacity-75*/
+/*}*/
