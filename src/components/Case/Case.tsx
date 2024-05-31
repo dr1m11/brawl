@@ -20,7 +20,7 @@ interface ICaseProps {
 const Case = ({image, desc, price, title, width, height, imgStyles, id}: ICaseProps) => {
     return (
         <div className={styles.root}>
-            <Image src={image} alt={"Case"} width={width ? width : 203 } height={height ? height : 203} className={imgStyles && imgStyles}/>
+            <Image src={image} alt={"Case"} width={width ? width : 156 } height={height ? height : 156} className={imgStyles && imgStyles}/>
             <h3 className={'opacity-90 text-title-case-color -mt-4 mb-2'}>{title}</h3>
             <p className={clsx(manrope.className, 'text-white text-xs opacity-75 mb-1')}>{desc}</p>
             <Link href={`/${id}`}><CaseButton>{price} RUB</CaseButton></Link>

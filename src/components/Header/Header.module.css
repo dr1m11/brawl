@@ -3,11 +3,11 @@
 }
 
 .header__left, .header__center, .header__right {
-    @apply w-full
+    @apply w-full z-50
 }
 
 .header__left {
-    @apply flex items-center justify-between pr-16 z-10
+    @apply flex items-center justify-between pr-16 z-50
 }
 
 .header__logo {
@@ -67,15 +67,14 @@
     @apply text-[9px] justify-self-end
 }
 
-/*.login {*/
-/*    @apply*/
-/*    absolute*/
-/*    bg-black*/
-/*    w-full*/
-/*    left-0*/
-/*    bottom-0*/
-/*    right-0*/
-/*    top-0*/
-/*    z-10*/
-/*    opacity-75*/
-/*}*/
+.login {
+    backdrop-filter: blur(3px);
+    @apply
+    absolute
+    w-full
+    left-0
+    -bottom-[80px]
+    right-0
+    top-0
+    z-20
+}

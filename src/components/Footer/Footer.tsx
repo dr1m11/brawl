@@ -15,8 +15,8 @@ import Link from "next/link";
 const Footer = () => {
     return (
         <footer className={'min-h-[246px] w-full'}>
-            <div className={'bg-brawl-purple-header w-full h-[246px] mt-20 absolute z-10'}/>
-            <div className={'flex relative mx-auto max-w-[1440px] z-10'}>
+            <div className={'bg-brawl-purple-header w-screen h-[246px] mt-20 absolute -left-full -right-full m-auto'}/>
+            <div className={'flex relative mx-auto max-w-[1440px]'}>
                 <div className={'w-full min-h-[246px]'}/>
                 <div className={'w-full flex flex-col justify-between z-10'}>
                     <div className={'max-w-[530px] flex flex-col items-center'}>
@@ -49,9 +49,9 @@ const Footer = () => {
                     <Image src={SmallStar} alt={'Star'} width={65} height={65}
                            className={'absolute bottom-2 left-[365px]'}/>
                     <Image src={Diamond} alt={'Diamond'} width={34} height={39}
-                           className={'absolute left-[535px] -top-5 xl:block hidden'}/>
+                           className={'absolute left-[535px] -top-5'}/>
                     <Image src={Baba} alt={'Character'} width={371} height={331}
-                           className={'absolute left-48 -top-32 hidden lg:block'}/>
+                           className={'absolute left-48 -top-32'}/>
                     <div className={'overflow-y-hidden absolute w-full h-full'}>
                         <Image src={Valina} alt={'Character'} width={216} height={242}
                                className={'absolute left-40 -bottom-12'}/>

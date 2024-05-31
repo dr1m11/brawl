@@ -54,7 +54,9 @@ const Header = () => {
                 <GreenButton link={'profile'}>ВОЙТИ</GreenButton>
             </div>
             {/*<div className={styles.login}>*/}
-            {/*    sdfsdf*/}
+            {/*    <div className={styles.login__wrapper}>*/}
+            {/*        */}
+            {/*    </div>*/}
             {/*</div>*/}
         </header>
     );

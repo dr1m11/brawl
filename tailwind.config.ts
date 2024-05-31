@@ -78,6 +78,9 @@ const config: Config = {
         '7973191': 'rgb(79, 73, 191)'
       }
     },
+    screens: {
+      'tablet': '1080px'
+    }
   },
   plugins: [],
 };
