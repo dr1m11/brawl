@@ -8,7 +8,7 @@ import Link from "next/link";
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
 interface ICaseProps {
-    image: string
+    image: any
     title: string
     desc: string
     price: number

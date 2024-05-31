@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import clsx from "clsx";
 import Image from "next/image";
-import Case from '@/../public/Case/king.webp'
+import Case from '../../../public/Case/king.png'
 import Arrow from '@/../public/Home/Arrow.svg'
 import {Manrope} from "next/font/google";
 

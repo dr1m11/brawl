@@ -3,11 +3,11 @@ import Image from "next/image";
 import mainBg from '../../../public/Home/Main.svg'
 import footerBg from '../../../public/Home/Footer.svg'
 import Case from "@/components/Case/Case";
-import CaseImg from '@/../public/Home/Omega_box.webp'
+import CaseImg from '../../../public/Home/Omega_box.png'
 import Carousel from "@/components/Carousel/Carousel";
 import {BannerCarousel} from "@/components/BannerCarousel/BannerCarousel";
 import clsx from "clsx";
-import Custom1 from '@/../public/Home/Heroes_Box.webp'
+import Custom1 from '../../../public/Home/Heroes_Box.png'
 import Custom2 from '@/../public/Case/Custom2.svg'
 import Custom3 from '@/../public/Case/Custom3.svg'
 import Custom4 from '@/../public/Case/Custom4.svg'
