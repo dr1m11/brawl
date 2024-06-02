@@ -1,0 +1,11 @@
+.button {
+    border-radius: 16px;
+    background: linear-gradient(90.00deg, rgb(21, 148, 79),rgb(19, 103, 58) 100%);
+    @apply w-[166px] h-[42px] text-white relative
+}
+
+.div {
+    border-radius: 16px;
+    background: linear-gradient(90.00deg, rgb(21, 148, 79),rgb(19, 103, 58) 100%);
+    @apply absolute w-[158px] h-[34px] left-0 right-0 top-0 bottom-0 m-auto bg-43119251 pt-1
+}

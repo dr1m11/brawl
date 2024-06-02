@@ -9,6 +9,10 @@ import GreenButton from "@/components/GreenButton/GreenButton";
 import Online from '@/../public/Header/Online.svg'
 import Link from "next/link";
 import Logo from '@/../public/Footer/Logo.svg'
+import {useAppDispatch, useAppSelector, useAppStore} from "@/lib/hooks";
+import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
+import LoginButton from "@/components/LoginButton/LoginButton";
+import Login from "@/components/Login/Login";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -51,13 +55,9 @@ const Header = () => {
                     </div>
                     <span className={styles.header__right__heading}>в онлайне</span>
                 </div>
-                <GreenButton link={'profile'}>ВОЙТИ</GreenButton>
+                <LoginButton />
             </div>
-            {/*<div className={styles.login}>*/}
-            {/*    <div className={styles.login__wrapper}>*/}
-            {/*        */}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <Login />
         </header>
     );
 };

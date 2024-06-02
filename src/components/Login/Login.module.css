@@ -1,0 +1,36 @@
+.login {
+    backdrop-filter: blur(5px);
+    @apply
+    absolute
+    w-full
+    left-0
+    -bottom-[80px]
+    right-0
+    top-0
+    z-20
+}
+
+.shadow {
+    @apply
+    w-[500px]
+    h-[500px]
+    left-0
+    right-0
+    m-auto
+    absolute
+    bg-black
+    mt-32
+    -z-10
+    blur-3xl
+}
+
+.login__wrapper {
+    @apply
+    w-full
+    h-[323px]
+    max-w-[350px]
+    bg-brawl-purple-header
+    mx-auto
+    mt-40
+    rounded-xl
+}

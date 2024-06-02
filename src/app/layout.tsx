@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import clsx from "clsx";
 import Footer from "@/components/Footer/Footer";
-
+import StoreProvider from "@/app/StoreProvider";
 
 const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
@@ -19,14 +19,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative z-1000')}>
-                <Header/>
-                <main className={'-z-1000'}>
-                    {children}
-                </main>
-                <Footer />
+        <StoreProvider>
+            <html lang="en">
+            <body
+                className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative z-1000')}>
+            <Header/>
+            <main className={'-z-1000'}>
+                {children}
+            </main>
+            <Footer/>
             </body>
-        </html>
+            </html>
+        </StoreProvider>
     );
 }
