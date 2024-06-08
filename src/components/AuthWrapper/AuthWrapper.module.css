@@ -1,0 +1,80 @@
+.login {
+    backdrop-filter: blur(5px);
+    @apply
+    absolute
+    w-full
+    left-0
+    -bottom-[80px]
+    right-0
+    top-0
+    z-20
+}
+
+.shadow {
+    @apply
+    w-[500px]
+    h-[500px]
+    left-0
+    right-0
+    m-auto
+    absolute
+    bg-black
+    mt-32
+    -z-10
+    blur-3xl
+}
+
+.login__wrapper {
+    @apply
+    w-full
+    max-w-[350px]
+    bg-brawl-purple-header
+    mx-auto
+    mt-40
+    rounded-xl
+    relative
+}
+
+.images {
+    @apply
+    relative
+    w-full
+}
+
+.star {
+    @apply
+    absolute
+    left-0
+    right-6
+    m-auto
+    -top-10
+}
+
+.diamond {
+    @apply
+    absolute
+    left-20
+    right-0
+    m-auto
+    -top-8
+}
+
+.title {
+    background: linear-gradient(90.00deg, rgba(27, 191, 103, 0.9),rgba(227, 167, 255, 0.9));
+    -webkit-background-clip:
+            text;
+    -webkit-text-fill-color:
+            transparent;
+    background-clip:
+            text;
+    text-fill-color:
+            transparent;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 100%;
+    @apply
+    pt-12
+    w-48
+    mx-auto
+    text-center
+}

@@ -1,0 +1,12 @@
+.account__btn {
+    @apply
+    absolute
+    right-0
+    left-0
+    m-auto
+    bg-7381172-OP60
+    max-w-52
+    h-10
+    rounded-xl
+    -bottom-20
+}

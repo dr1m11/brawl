@@ -13,6 +13,7 @@ import {useAppDispatch, useAppSelector, useAppStore} from "@/lib/hooks";
 import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 import LoginButton from "@/components/LoginButton/LoginButton";
 import Login from "@/components/Login/Login";
+import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -57,7 +58,7 @@ const Header = () => {
                 </div>
                 <LoginButton />
             </div>
-            <Login />
+            <AuthWrapper />
         </header>
     );
 };

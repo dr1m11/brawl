@@ -8,3 +8,15 @@ export const LoginSchema = object({
         message: "Введите пароль"
     })
 })
+
+export const RegisterSchema = object({
+    username: z.string().min(6,{
+        message: 'Введите имя пользователя'
+    }),
+    email: z.string().email({
+        message: "Введите адрес электронной почты"
+    }),
+    password: z.string().min(6, {
+        message: "Введите пароль"
+    }),
+})
