@@ -10,16 +10,12 @@ import localFont from "next/font/local";
 import {useMutation} from "@tanstack/react-query";
 import authService, {IRegisterData} from '@/services/auth.service'
 import {API_URL} from "@/constants";
+import axios from "axios";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
 
 const Register = () => {
-
-    useEffect(() => {
-        fetch(`${API_URL}/item/get-all-items`).then(response => response.json()).then(res => console.log(res))
-    }, []);
-
 
     const { mutate: mutateRegister, isPending } = useMutation({
         mutationKey: ['register'],

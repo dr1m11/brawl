@@ -1,22 +1,37 @@
 'use client'
 import styles from './Login.module.css'
-import {Controller, useForm} from "react-hook-form";
+import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import * as z from "zod";
-import {LoginSchema} from "@/schemas";
+import {LoginSchema, RegisterSchema} from "@/schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import localFont from "next/font/local";
 import clsx from "clsx";
 import {useState, useTransition} from "react";
 import {login} from "@/actions/login";
+import {useMutation} from "@tanstack/react-query";
+import authService, {ILoginData, IRegisterData} from "@/services/auth.service";
+import {useRouter} from "next/navigation";
 
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 const Login = () => {
 
-    const [error, setError] = useState<string | undefined>('')
-    const [success, setSuccess] = useState<string | undefined>('')
-    const [isPending, startTransition] = useTransition()
+    const {push} = useRouter()
+    const { mutate: mutateLogin, isPending } = useMutation({
+        mutationKey: ['login'],
+        mutationFn: (data: ILoginData) => authService.login(data),
+        onSuccess(data) {
+            localStorage.setItem('token', data.accessToken)
+            push('/')
+        },
+        onError(error) {
+            console.log(error.message)
+        },
+    })
 
+    const onSubmit: SubmitHandler<ILoginData> = data => {
+        mutateLogin(data)
+    }
 
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
@@ -25,19 +40,6 @@ const Login = () => {
             password: ""
         }
     })
-
-    const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-        setError("")
-        setSuccess("")
-
-        startTransition(() => {
-            login(values).then(data => {
-                setError(data?.error)
-                setSuccess(data?.success)
-                console.log({success: data.success, error: data.error, ...values})
-            })
-        })
-    }
 
     return (
         <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
