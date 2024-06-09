@@ -21,8 +21,9 @@ const Login = () => {
         mutationKey: ['login'],
         mutationFn: (data: ILoginData) => authService.login(data),
         onSuccess(data) {
-            localStorage.setItem('token', data.accessToken)
-            push('/')
+            // localStorage.setItem('token', data.accessToken)
+            // push('/')
+            console.log(data)
         },
         onError(error) {
             console.log(error.message)
