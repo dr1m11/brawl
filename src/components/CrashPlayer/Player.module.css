@@ -1,0 +1,46 @@
+.root {
+    @apply
+    w-full
+    max-w-[314px]
+    h-full
+    max-h-[51px]
+    p-2.5
+    flex
+    justify-between
+    items-center
+    text-[13px]
+    bg-473889
+    rounded-lg
+}
+
+.nickname {
+    @apply
+    text-main
+    font-medium
+}
+
+.bet {
+    @apply
+    opacity-75
+    text-white
+}
+
+.multiplier {
+    @apply
+    w-full
+    h-full
+    max-h-[32px]
+    max-w-[40px]
+    bg-9580160-OP40
+    text-white
+    rounded-lg
+    flex
+    items-center
+    justify-center
+}
+
+.won {
+    @apply
+    text-2431440
+    font-medium
+}

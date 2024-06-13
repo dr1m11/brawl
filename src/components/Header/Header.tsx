@@ -34,7 +34,7 @@ const Header = () => {
                     <Image src={holodilnik} alt={'Case'} width={138} height={120}
                            className={clsx(styles.header__center__img, 'top-20')}/>
                 </Link>
-                <Link href={'/'} className={styles.header__center__content}>
+                <Link href={'/wheel'} className={styles.header__center__content}>
                     <div className={styles.header__ellipse}/>
                     <div className={styles.header__ellipse__hover}/>
                     <h3 className={styles.header__center__titles}>БАРАБАН</h3>

@@ -1,0 +1,32 @@
+.root {
+    transition: transform 7s ease-in-out;
+    transform-origin: 50% 400% 0;
+    @apply
+    text-white
+    w-full
+    max-w-[74px]
+    h-[86px]
+    flex
+    items-center
+    justify-center
+    absolute
+    top-[30px]
+    left-0
+    right-0
+    m-auto
+}
+
+.bg {
+    @apply
+    absolute
+    left-0
+    right-0
+    bottom-0
+    top-0
+    m-auto
+}
+
+.label {
+    @apply
+    z-10
+}

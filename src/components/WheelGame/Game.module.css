@@ -1,0 +1,31 @@
+.container {
+    @apply
+    relative
+    w-full
+    max-w-[762px]
+    h-full
+    max-h-[330px]
+    mx-auto
+    transition-all
+    overflow-y-hidden
+}
+
+.circle {
+    -webkit-box-shadow: inset 0px 0px 28px 33px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 0px 28px 33px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 0px 28px 33px rgba(0, 0, 0, 0.75);
+    @apply
+    absolute
+    w-full
+    max-w-[730px]
+    h-[762px]
+    bg-8052167
+    rounded-full
+    border-[80px]
+    -z-10
+    -left-2.5
+    right-0
+    m-auto
+    top-4
+    border-453091
+}

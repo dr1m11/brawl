@@ -1,0 +1,376 @@
+.root {
+    @apply
+    w-full
+    max-w-[1435px]
+    h-[1100px]
+    mx-auto
+    relative
+    flex
+    justify-center
+    items-center
+    mb-20
+}
+
+.bg {
+    @apply
+    absolute
+    -z-10
+    left-0
+    right-0
+    -top-16
+    opacity-50
+}
+
+.wrapper {
+    @apply
+    max-w-[1056px]
+    w-full
+    max-h-[1500px]
+    h-full
+    flex
+    flex-col
+    justify-between
+    items-center
+}
+
+.game {
+    @apply
+    max-w-[1056px]
+    w-full
+    h-full
+    max-h-[550px]
+    text-white
+    mt-6
+}
+
+.game__label {
+    @apply
+    w-full
+    flex
+    flex-col
+    items-center
+    justify-center
+}
+
+.heading {
+    @apply
+    text-[32px]
+}
+
+.heading__label {
+    @apply
+    text-242
+    opacity-75
+}
+
+.game__menu {
+    background: linear-gradient(90.00deg, rgb(74, 49, 150), rgb(68, 42, 143) 100%);
+    @apply
+    max-w-[1056px]
+    w-full
+    max-h-[97px]
+    h-full
+    p-5
+    rounded-3xl
+    relative
+    flex
+    justify-between
+}
+
+.menu__left {
+    @apply
+    w-full
+    h-full
+    max-w-[390px]
+    flex
+    justify-between
+}
+
+.range__container {
+    @apply
+    w-full
+    h-full
+    max-w-[227px]
+    bg-383838-OP20
+    p-2.5
+    rounded-xl
+    flex
+    justify-center
+}
+
+.range[type=range] {
+    -webkit-appearance: none; /* Убрать стандартный вид */
+    width: 100%;
+    background: transparent; /* Сделать фон прозрачным */
+}
+
+.range[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #f39c12, rgba(38, 38, 38, 0.2));
+    border-radius: 4px;
+    border: none;
+}
+
+.range[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #f39c12; /* Цвет круга */
+    border-radius: 50%;
+    border: none;
+    margin-top: -6px; /* Смещение для центрального выравнивания */
+}
+
+.range[type=range]:focus {
+    outline: none; /* Убрать обводку */
+}
+
+.range[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, #f39c12, #3e267e);
+    border-radius: 4px;
+    border: none;
+}
+
+.range[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f39c12; /* Цвет круга */
+    border-radius: 50%;
+    border: none;
+}
+
+.range[type=range]::-ms-track {
+    width: 100%;
+    height: 8px;
+    background: transparent; /* Сделать фон прозрачным */
+    border-color: transparent;
+    color: transparent;
+}
+
+.range[type=range]::-ms-fill-lower {
+    background: #f39c12;
+    border-radius: 50%;
+}
+
+.range[type=range]::-ms-fill-upper {
+    background: #3e267e;
+    border-radius: 50%;
+}
+
+.range[type=range]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f39c12; /* Цвет круга */
+    border-radius: 50%;
+    border: none;
+    margin-top: 2px;
+}
+
+.menu__center {
+    @apply
+    w-full
+    max-w-[221px]
+    h-full
+    relative
+}
+
+
+.bet__btn {
+    /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
+    @apply
+    w-full
+    h-full
+    border-[10px]
+    rounded-xl
+    border-2551840
+    bg-gradient-to-r
+    from-24416163
+    to-2551840
+    font-bold
+    text-white
+    tracking-wider
+    text-[18px]
+    flex
+    justify-around
+    items-center
+}
+
+.determiner {
+    @apply
+    absolute
+    left-0
+    right-0
+    m-auto
+    w-full
+    max-w-[173px]
+    h-[200px]
+    overflow-y-hidden
+    -top-[200px]
+}
+
+.arrow {
+    @apply
+    absolute
+    left-0
+    right-0
+    m-auto
+}
+
+.circle {
+    background: linear-gradient(150.18deg, rgb(131, 105, 209) 24.317%,rgb(107, 68, 226) 81.772%);
+    @apply
+    absolute
+    w-full
+    rounded-full
+    h-[173px]
+    -bottom-24
+    flex
+    items-center
+    flex-col
+    pt-5
+}
+
+.numbers {
+    @apply
+    text-[22px]
+    font-semibold
+}
+
+.numbers__label {
+    @apply
+    text-[13px]
+    -mt-1
+}
+
+.menu__right {
+    @apply
+    max-w-[380px]
+    w-full
+    h-full
+    flex
+    items-center
+    justify-between
+}
+
+.multiplier {
+    @apply
+    w-full
+    h-full
+    max-w-[74px]
+    flex
+    items-center
+    justify-center
+    border-2
+    border-white
+    rounded-2xl
+}
+
+.history {
+    @apply
+    w-full
+    max-w-[480px]
+    h-full
+    max-h-2
+    mx-auto
+    flex
+    justify-between
+    mb-10
+}
+
+.history__item {
+    @apply
+    w-full
+    max-w-[32px]
+    h-0
+    border
+    rounded
+    border-orange-500
+}
+
+.info {
+    @apply
+    w-full
+    h-full
+    max-w-[1056px]
+    max-h-[469px]
+    bg-222838-OP40
+    rounded-2xl
+    flex
+    justify-between
+    py-7
+    px-5
+}
+
+.column {
+    @apply
+    max-w-[197px]
+    w-full
+    h-full
+    space-y-3
+}
+
+.players {
+    @apply
+    space-y-1
+    overflow-y-auto
+    max-h-full
+}
+
+.players::-webkit-scrollbar {
+    @apply
+    w-[3px]
+}
+
+.players::-webkit-scrollbar-track {
+    @apply
+    bg-494088
+    rounded
+}
+
+.players::-webkit-scrollbar-thumb {
+    @apply
+    bg-9580160
+    rounded
+}
+
+.bet {
+    @apply
+    flex
+    items-center
+    justify-between
+    px-2.5
+    text-white
+    w-full
+    h-full
+    max-h-[37px]
+    rounded-lg
+}
+
+.red {
+    background: linear-gradient(90.00deg, rgb(209, 98, 91) 0.02%, rgb(211, 93, 89) 14.742%, rgb(222, 64, 76) 100%), rgb(249, 249, 249);
+}
+
+.green {
+    background: linear-gradient(90.00deg, rgb(40, 177, 100) 0.02%, rgb(78, 190, 57) 100%), rgb(249, 249, 249);
+}
+
+.yellow {
+    background: linear-gradient(90.00deg, rgb(225, 174, 45) 0.02%, rgb(252, 197, 56) 100%), rgb(249, 249, 249);
+}
+
+.grey {
+    background: linear-gradient(90.00deg, rgb(109, 118, 131) 0.02%, rgba(109, 118, 130, 0) 100%), rgb(249, 249, 249);
+}
+
+.purple {
+    background: linear-gradient(90.00deg, rgb(142, 79, 224) 0.02%, rgb(144, 66, 246) 100%), rgb(249, 249, 249);
+}
+
+.players__count {
+    @apply
+    flex
+    space-x-2
+}

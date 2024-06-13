@@ -1,0 +1,23 @@
+.current__bet {
+    @apply
+    h-full
+    w-full
+    max-w-[162px]
+    flex
+    items-center
+    justify-between
+    bg-383838-OP20
+    rounded-xl
+    font-semibold
+    p-4
+}
+
+.minus, .plus {
+    @apply
+    text-[25px]
+}
+
+.sum {
+    @apply
+    text-[18px]
+}
