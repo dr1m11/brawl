@@ -1,7 +1,7 @@
 .button {
     border-radius: 16px;
     background: linear-gradient(90.00deg, rgb(21, 148, 79),rgb(19, 103, 58) 100%);
-    @apply w-[166px] h-[42px] text-white relative
+    @apply w-full max-w-[166px] h-full max-h-[42px] text-white relative
 }
 
 .div {

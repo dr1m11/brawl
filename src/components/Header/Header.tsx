@@ -14,6 +14,8 @@ import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 import LoginButton from "@/components/LoginButton/LoginButton";
 import Login from "@/components/Login/Login";
 import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
+import ProfileButton from "@/components/ProfileButton/ProfileButton";
+import MainProfile from "@/components/MainProfile/MainProfile";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -56,7 +58,7 @@ const Header = () => {
                     </div>
                     <span className={styles.header__right__heading}>в онлайне</span>
                 </div>
-                <LoginButton />
+                <MainProfile />
             </div>
             <AuthWrapper />
         </header>

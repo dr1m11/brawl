@@ -6,24 +6,19 @@ import {LoginSchema, RegisterSchema} from "@/schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import localFont from "next/font/local";
 import clsx from "clsx";
-import {useState, useTransition} from "react";
-import {login} from "@/actions/login";
 import {useMutation} from "@tanstack/react-query";
-import authService, {ILoginData, IRegisterData} from "@/services/auth.service";
-import {useRouter} from "next/navigation";
+import authService, {ILoginData} from "@/services/auth.service";
 
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 const Login = () => {
 
-    const {push} = useRouter()
     const { mutate: mutateLogin, isPending } = useMutation({
         mutationKey: ['login'],
         mutationFn: (data: ILoginData) => authService.login(data),
         onSuccess(data) {
-            // localStorage.setItem('token', data.accessToken)
-            // push('/')
-            console.log(data)
+            localStorage.setItem('token', data.token)
+            location.reload()
         },
         onError(error) {
             console.log(error.message)

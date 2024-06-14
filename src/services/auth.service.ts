@@ -2,7 +2,7 @@ import {IUser} from "@/utils/types";
 import {API_URL} from "@/constants";
 
 interface ILoginResponse {
-    accessToken: string
+    token: string
 }
 
 interface IRegisterResponse {
