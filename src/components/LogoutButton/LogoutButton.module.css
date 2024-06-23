@@ -1,0 +1,16 @@
+.logout {
+    @apply
+    float-end
+    mb-3
+    flex
+    items-center
+    w-full
+    max-w-[108px]
+    h-[32px]
+    justify-center
+    gap-x-2
+    bg-6944145
+    rounded-xl
+    text-main
+    font-bold
+}

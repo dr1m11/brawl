@@ -1,0 +1,56 @@
+.header__left__content {
+    @apply
+    flex
+    ml-12
+    pl-20
+    max-w-[490px]
+    w-screen
+    h-[56px]
+    bg-373070-OP30
+    items-center
+    pr-4
+    justify-between
+    rounded-xl
+}
+
+.user__icon {
+    @apply
+    absolute
+    -top-3.5
+}
+
+.username {
+    @apply
+    text-white
+    text-[26px]
+    opacity-75
+}
+
+.header__left__buttons {
+    @apply
+    max-w-[130px]
+    w-screen
+    flex
+    justify-between
+    items-center
+}
+
+.wallet {
+    @apply
+    w-[35px]
+    h-[35px]
+    bg-white-OP20
+    flex
+    justify-center
+    items-center
+    rounded-lg
+}
+
+.balance {
+    @apply
+    w-[90px]
+    h-[35px]
+    bg-white-OP20
+    text-white
+    rounded-lg
+}

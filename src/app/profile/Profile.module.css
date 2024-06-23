@@ -57,23 +57,6 @@
     relative
 }
 
-.logout {
-    @apply
-    float-end
-    mb-3
-    flex
-    items-center
-    w-full
-    max-w-[108px]
-    h-[32px]
-    justify-center
-    gap-x-2
-    bg-6944145
-    rounded-xl
-    text-main
-    font-bold
-}
-
 .profile__header {
     @apply
     flex
@@ -87,63 +70,6 @@
     items-center
     relative
     pr-5
-}
-
-.user__icon {
-    @apply
-    absolute
-    -top-3.5
-}
-
-.header__left__content {
-    @apply
-    flex
-    ml-12
-    pl-20
-    max-w-[490px]
-    w-screen
-    h-[56px]
-    bg-373070-OP30
-    items-center
-    pr-4
-    justify-between
-    rounded-xl
-}
-
-.username {
-    @apply
-    text-white
-    text-[26px]
-    opacity-75
-}
-
-.header__left__buttons {
-    @apply
-    max-w-[130px]
-    w-screen
-    flex
-    justify-between
-    items-center
-}
-
-.wallet {
-    @apply
-    w-[35px]
-    h-[35px]
-    bg-white-OP20
-    flex
-    justify-center
-    items-center
-    rounded-lg
-}
-
-.balance {
-    @apply
-    w-[90px]
-    h-[35px]
-    bg-white-OP20
-    text-white
-    rounded-lg
 }
 
 .header__right {
@@ -223,12 +149,4 @@
     cursor-pointer
 }
 
-.items {
-    @apply
-    grid
-    grid-cols-5
-    mt-8
-    w-full
-    gap-y-4
-}
 

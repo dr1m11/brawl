@@ -1,8 +1,9 @@
 import {combineReducers, combineSlices, configureStore} from '@reduxjs/toolkit'
 import {defaultSlice} from "@/lib/defaultSlice/defaultSlice";
+import {caseSlice} from "@/lib/caseSlice/caseSlice";
 
 
-const rootReducer = combineSlices(defaultSlice)
+const rootReducer = combineSlices(defaultSlice, caseSlice)
 
 export const makeStore = () => {
     return configureStore({

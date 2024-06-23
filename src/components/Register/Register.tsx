@@ -1,5 +1,4 @@
 'use client'
-import {useEffect, useState, useTransition} from "react";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import * as z from "zod";
 import { RegisterSchema} from "@/schemas";
@@ -8,27 +7,28 @@ import styles from "./Register.module.css";
 import clsx from "clsx";
 import localFont from "next/font/local";
 import {useMutation} from "@tanstack/react-query";
-import authService, {IRegisterData} from '@/services/auth.service'
-import {API_URL} from "@/constants";
-import axios from "axios";
+import {ISignUpData} from "@/services/auth/auth.types";
+import {authService} from "@/services/auth/auth.service";
+import {useState} from "react";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
 
 const Register = () => {
+    const [success, setSuccess] = useState<boolean>(false)
 
     const { mutate: mutateRegister, isPending } = useMutation({
-        mutationKey: ['register'],
-        mutationFn: (data: IRegisterData) => authService.register(data),
-        onSuccess(data) {
-            console.log(data)
+        mutationKey: ['signUp'],
+        mutationFn: (data: ISignUpData) => authService.signUp(data),
+        onSuccess() {
+            setSuccess(true)
         },
         onError(error) {
             console.log(error.message)
         },
     })
 
-    const onSubmit: SubmitHandler<IRegisterData> = data => {
+    const onSubmit: SubmitHandler<ISignUpData> = data => {
         mutateRegister(data)
     }
 
@@ -54,9 +54,10 @@ const Register = () => {
                 <Controller render={({field}) => (
                     <input {...field} placeholder={"Пароль"} type={"password"} className={styles.input}/>
                 )} name={'password'} control={form.control} disabled={isPending}/>
+                {success && <div className={styles.success}>Аккаунт создан успешно!</div>}
             </div>
             <button type={"submit"} disabled={isPending}
-                    className={clsx(styles.login__btn, daysOne.className)}>ВОЙТИ
+                    className={clsx(styles.login__btn, daysOne.className)}>СОЗДАТЬ
             </button>
         </form>
     );

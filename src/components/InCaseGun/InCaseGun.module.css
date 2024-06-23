@@ -46,3 +46,13 @@
     text-main
     font-normal
 }
+
+@media screen and (max-width: 1060px){
+    .root {
+        @apply
+        max-w-[180px]
+        h-[140px]
+        pt-2
+        pb-1
+    }
+}

@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {IUser} from "@/utils/types";
 
 interface initialInterface {
     isAuthOpen: boolean
@@ -7,7 +8,7 @@ interface initialInterface {
 
 const initialState: initialInterface ={
     isAuthOpen: false,
-    isCaseOpen: false
+    isCaseOpen: false,
 }
 
 export const defaultSlice = createSlice({
@@ -16,11 +17,11 @@ export const defaultSlice = createSlice({
     reducers: {
         changeLogin: (state) => {
             state.isAuthOpen = !state.isAuthOpen
-        }
+        },
     },
     selectors: {
         selectLogin: (state) => state.isAuthOpen,
-        selectCase: (state) => state.isCaseOpen
+        selectCase: (state) => state.isCaseOpen,
     }
 })
 

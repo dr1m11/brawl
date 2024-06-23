@@ -118,7 +118,7 @@
 
 .graphic {
     background: linear-gradient(180.00deg, rgba(249, 160, 99, 0.3) 37.11%,rgba(249, 159, 98, 0) 100%);
-    transition: transform 30s ease;
+    /*transition: transform 30s ease;*/
     @apply
     /*w-[110%]*/
     h-[200px]
@@ -136,7 +136,20 @@
     -top-7
 }
 
+.timer {
+    @apply
+    w-full
+    h-full
+    flex
+    justify-center
+    items-center
+}
 
+.timer__label {
+    @apply
+    text-main
+    text-[40px]
+}
 
 
 

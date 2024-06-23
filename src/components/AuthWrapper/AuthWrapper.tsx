@@ -8,8 +8,8 @@ import clsx from "clsx";
 import {ReactNode, useState} from "react";
 import AccountBtn from "@/components/AccountBtn/AccountBtn";
 import Login from "@/components/Login/Login";
-import {useAppSelector} from "@/lib/hooks";
 import Register from "@/components/Register/Register";
+import {useAppSelector} from "@/lib/hooks";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
@@ -19,12 +19,13 @@ interface AuthWrapperProps {
 }
 
 const AuthWrapper = () => {
-    const isAuthOpen = useAppSelector((state) => state.default.isAuthOpen)
 
+    const isAuthOpen = useAppSelector(state => state.default.isAuthOpen)
+    console.log(isAuthOpen)
 
     const [type, setType] = useState<'login' | 'register'>('login')
     return (
-        isAuthOpen &&
+        isAuthOpen ?
         <div className={styles.login}>
             <div className={styles.shadow}/>
             <div className={styles.login__wrapper} style={{height: type === 'login' ? '323px' : '350px'}}>
@@ -42,6 +43,8 @@ const AuthWrapper = () => {
                 <AccountBtn type={type} setType={() => setType(type === "login" ? 'register' : 'login')}/>
             </div>
         </div>
+            :
+            <div></div>
     );
 };
 

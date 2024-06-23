@@ -93,7 +93,7 @@ const config: Config = {
       }
     },
     screens: {
-      'tablet': '1080px'
+      '1060': '1060px'
     }
   },
   plugins: [],

@@ -1,0 +1,7 @@
+.content {
+    @apply
+    mt-10
+    gap-y-5
+    grid
+    grid-cols-5
+}

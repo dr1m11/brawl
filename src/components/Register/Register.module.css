@@ -56,3 +56,16 @@
     m-auto
     -bottom-7
 }
+
+.success {
+    background: rgba(0, 168, 35, 0.42);
+    @apply
+    w-full
+    h-[30px]
+    text-white
+    font-thin
+    rounded-lg
+    flex
+    items-center
+    justify-center
+}

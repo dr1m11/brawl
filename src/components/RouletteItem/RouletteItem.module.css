@@ -43,3 +43,11 @@
     -mb-3
     mt-4
 }
+
+@media screen and (max-width: 1060px){
+    .root {
+        @apply
+        w-[140px]
+        h-[140px]
+    }
+}

@@ -10,7 +10,6 @@ const daysOne = Days_One({subsets: ["latin"], weight: ["400"]});
 
 
 const LoginButton = () => {
-    const isLoginOpen = useAppSelector((state) => state.default.isAuthOpen)
     const dispatch = useAppDispatch()
     return (
             <button className={clsx(styles.button, daysOne)} onClick={() => dispatch(changeLogin())}>

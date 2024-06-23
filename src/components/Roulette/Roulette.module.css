@@ -74,3 +74,10 @@
     absolute
     -bottom-4
 }
+
+@media screen and (max-width: 1060px){
+    .open__wrapper {
+        @apply
+        max-h-[240px]
+    }
+}

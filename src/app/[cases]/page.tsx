@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import Roulette from "@/components/Roulette/Roulette";
 import InCaseGun from "@/components/InCaseGun/InCaseGun";
+import ItemsList from "@/components/ItemsList/ItemsList";
 
 const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin']})
 
@@ -18,14 +19,7 @@ const CasePage = () => {
                 <Roulette />
                 <div className={styles.in__case}>
                     <h2 className={styles.title}>Содержимое кейса</h2>
-                    <div className={styles.content}>
-                        <InCaseGun />
-                        <InCaseGun />
-                        <InCaseGun />
-                        <InCaseGun />
-                        <InCaseGun />
-                        <InCaseGun />
-                    </div>
+                    <ItemsList />
                 </div>
             </div>
         </div>

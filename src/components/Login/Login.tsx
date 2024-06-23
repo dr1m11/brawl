@@ -7,7 +7,9 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import localFont from "next/font/local";
 import clsx from "clsx";
 import {useMutation} from "@tanstack/react-query";
-import authService, {ILoginData} from "@/services/auth.service";
+import {authService} from "@/services/auth/auth.service";
+import {ISignInData} from "@/services/auth/auth.types";
+import {getAccessToken, removeFromStorage, saveTokenStorage} from "@/services/auth/auth.helper";
 
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
@@ -15,9 +17,10 @@ const Login = () => {
 
     const { mutate: mutateLogin, isPending } = useMutation({
         mutationKey: ['login'],
-        mutationFn: (data: ILoginData) => authService.login(data),
-        onSuccess(data) {
-            localStorage.setItem('token', data.token)
+        mutationFn: (data: ISignInData) => authService.signIn(data),
+        onSuccess({data}) {
+            saveTokenStorage(data.token)
+            localStorage.setItem('userId', data.user.id)
             location.reload()
         },
         onError(error) {
@@ -25,7 +28,7 @@ const Login = () => {
         },
     })
 
-    const onSubmit: SubmitHandler<ILoginData> = data => {
+    const onSubmit: SubmitHandler<ISignInData> = data => {
         mutateLogin(data)
     }
 

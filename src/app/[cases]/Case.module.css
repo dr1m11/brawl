@@ -32,11 +32,14 @@
     font-medium
 }
 
-.content {
-    @apply
-    mt-10
-    gap-y-5
-    flex
-    flex-wrap
-    justify-between
+@media screen and (max-width: 1060px){
+    .wrapper {
+        @apply
+        max-w-[768px]
+    }
+
+    .content {
+        @apply
+        grid-cols-4
+    }
 }
