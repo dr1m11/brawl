@@ -15,7 +15,7 @@ const ProfileItems = () => {
 
     return (
         <div className={styles.items}>
-            {isSuccess &&
+            {isSuccess && !!data.items &&
                 data.items.map(({name, price, rarity}: IGun, index) => (
                     <ProfileItem key={index} title={name} rarity={rarity} price={price}/>
                 ))
