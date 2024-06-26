@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {ICase, IGun} from "@/services/case/case.types";
+import {IGun, IInCase} from "@/services/case/case.types";
 
 interface initialInterface {
     items: IGun[],
-    case: ICase
+    case: IInCase
 }
 
 const initialState: initialInterface ={
