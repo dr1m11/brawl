@@ -1,23 +1,16 @@
-.content {
-    @apply max-w-[1600px] mx-auto w-full
+.main {
+    @apply relative w-full h-full
 }
 
 .main__img {
     @apply absolute w-full opacity-20 -z-10
 }
 
+.content {
+    @apply max-w-[1600px] mx-auto w-full
+}
+
 .bottom__img {
     @apply absolute w-full -z-20 -bottom-72
 }
-.main {
-    @apply relative
-}
 
-.casese__heading {
-    background: linear-gradient(to right, rgba(27, 191, 103, 0.9),rgba(227, 167, 255, 0.9));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    width: fit-content;
-}

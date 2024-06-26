@@ -1,0 +1,62 @@
+.root {
+    @apply
+    bg-brawl-purple-header
+    rounded-3xl
+    max-w-[240px]
+    w-full
+    h-[255px]
+    flex
+    flex-col
+    items-center
+    justify-between
+    text-white
+    px-2.5
+    py-3
+    mx-auto
+}
+
+.about {
+    @apply
+    h-full
+    flex
+    flex-col
+    items-center
+    justify-center
+}
+
+.title {
+    @apply
+    opacity-90
+    text-title-case-color
+}
+
+.description {
+    @apply
+    text-white
+    text-xs
+    opacity-75
+}
+
+@media screen and (max-width: 500px){
+    .root {
+        @apply
+        max-h-[230px]
+        max-w-[200px]
+    }
+
+    .image {
+        @apply
+        max-w-[140px]
+        max-h-[140px]
+    }
+
+    .title {
+        @apply
+        text-[11px]
+    }
+
+    .description {
+        @apply
+        text-[10px]
+    }
+}

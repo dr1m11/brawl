@@ -3,6 +3,7 @@ import {useEffect, useRef} from 'react'
 import {Provider} from 'react-redux'
 import {makeStore, AppStore} from '@/lib/store'
 import {setupListeners} from "@reduxjs/toolkit/query";
+import {getAccessToken, removeFromStorage} from "@/services/auth/auth.helper";
 
 export default function StoreProvider({
                                           children,
@@ -16,6 +17,11 @@ export default function StoreProvider({
     }
 
     useEffect(() => {
+        if (!getAccessToken()) {
+            localStorage.clear()
+            removeFromStorage()
+        }
+
         if (storeRef.current != null) {
             const unsubscribe = setupListeners(storeRef.current.dispatch);
             return unsubscribe;

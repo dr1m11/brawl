@@ -5,9 +5,15 @@ export interface IGun {
     price: number
 }
 
-export interface ICase {
+export interface IInCase {
     id: number
     name: string
     price: number
     items: IGun[]
+}
+
+export interface ICase {
+    id: number
+    name: string
+    price: number
 }

@@ -1,0 +1,45 @@
+.root {
+    @apply
+    w-full
+    max-w-[1100px]
+    mx-auto
+    mt-14
+}
+
+.cases__heading {
+    background: linear-gradient(to right, rgba(27, 191, 103, 0.9),rgba(227, 167, 255, 0.9));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    width: fit-content;
+    @apply
+    text-lg
+    font-semibold
+    tracking-wide
+    mb-14
+}
+
+.cases__section {
+    @apply
+    grid
+    grid-cols-4
+    gap-y-10
+    w-full
+    mx-auto
+    mb-32
+}
+
+@media screen and (max-width: 1000px){
+    .cases__section {
+        @apply
+        grid-cols-3
+    }
+}
+
+@media screen and (max-width: 728px){
+    .cases__section {
+        @apply
+        grid-cols-2
+    }
+}

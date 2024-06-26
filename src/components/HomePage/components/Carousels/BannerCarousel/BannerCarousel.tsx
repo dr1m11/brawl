@@ -8,9 +8,9 @@
 
 import Slider, {CustomArrowProps} from "react-slick";
 import Image from "next/image";
-import Case from "../../../public/Case/king.png";
+import Case from "../../../../../../public/Case/king.png";
 import clsx from "clsx";
-import Arrow from "../../../public/Home/Arrow.svg";
+import Arrow from "../../../../../../public/Home/Arrow.svg";
 import {Manrope} from "next/font/google";
 import Slide from "@/components/Slide/Slide";
 import "slick-carousel/slick/slick.css";

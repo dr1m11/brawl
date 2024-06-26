@@ -24,12 +24,12 @@ export default function RootLayout({
             <QueryProvider>
                 <html lang="en">
                 <body
-                    className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative z-1000')}>
+                    className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative')}>
                 <Header/>
-                <main className={'-z-1000'}>
+                <main>
                     {children}
                 </main>
-                <Footer/>
+                {/*<Footer/>*/}
                 </body>
                 </html>
             </QueryProvider>
