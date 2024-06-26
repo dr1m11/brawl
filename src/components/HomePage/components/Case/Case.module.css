@@ -60,3 +60,28 @@
         text-[10px]
     }
 }
+
+@media screen and (max-width: 420px){
+    .root {
+        @apply
+        max-h-[210px]
+        max-w-[160px]
+        p-0
+    }
+
+    .image {
+        @apply
+        max-w-[140px]
+        max-h-[140px]
+    }
+
+    .title {
+        @apply
+        text-[11px]
+    }
+
+    .description {
+        @apply
+        text-[10px]
+    }
+}

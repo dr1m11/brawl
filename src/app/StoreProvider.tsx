@@ -17,9 +17,8 @@ export default function StoreProvider({
     }
 
     useEffect(() => {
-        if (!getAccessToken()) {
+        if (getAccessToken() === null) {
             localStorage.clear()
-            removeFromStorage()
         }
 
         if (storeRef.current != null) {

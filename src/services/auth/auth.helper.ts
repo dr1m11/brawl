@@ -11,7 +11,7 @@ export const saveTokenStorage = (token: string) => {
 	Cookies.set(EnumTokens.TOKEN, token, {
 		domain: 'brawl-alpha.vercel.app',
 		sameSite: 'strict',
-		expires: 12,
+		expires: 12 / 24
 	})
 }
 

@@ -1,17 +1,43 @@
 .header {
-    @apply bg-brawl-purple-header rounded-b-3xl mx-auto max-w-[1345px] max-h-[70px] h-full w-full flex pr-4 text-main container z-50
+    @apply
+    bg-brawl-purple-header
+    rounded-b-3xl
+    mx-auto
+    max-w-[1345px]
+    h-[70px]
+    w-full
+    flex
+    text-main
 }
 
-.header__left, .header__center, .header__right {
-    @apply w-full z-50
+.header__left,
+.header__center,
+.header__right {
+    @apply
+    w-full
+    h-full
 }
 
-.header__left {
-    @apply flex items-center justify-between pr-16 z-50
+.header__left, .header__right {
+    @apply
+    flex
+    items-center
+    justify-between
+    max-w-[350px]
+    w-full
 }
 
 .header__logo {
-    @apply p-5 rounded-b-3xl -mb-7 bg-brawl-purple-header
+    @apply
+    h-[100px]
+    max-w-[154px]
+    w-full
+    rounded-b-3xl
+    bg-brawl-purple-header
+    flex
+    items-center
+    justify-center
+    pt-3
 }
 
 .header__center {
@@ -50,10 +76,6 @@
     @apply absolute w-[69px] h-[69px] bg-43119251 top-2 bottom-0 left-0 right-0 m-auto blur-xl hidden transition-all
 }
 
-.header__right {
-    @apply flex items-center justify-end gap-x-5
-}
-
 .header__right__content {
     background: linear-gradient(90.00deg, rgba(62, 62, 159, 0.5), rgba(69, 46, 145, 0.5) 100%);
     @apply flex h-[42px] w-[144px] items-center rounded-2xl px-4 justify-between
@@ -67,8 +89,8 @@
     @apply text-[9px] justify-self-end
 }
 
-@media screen and (max-width: 1060px){
-    .header {
-        display: none;
-    }
-}
+/*@media screen and (max-width: 1060px){*/
+/*    .header {*/
+/*        display: none;*/
+/*    }*/
+/*}*/

@@ -15,7 +15,7 @@ import LoginButton from "@/components/LoginButton/LoginButton";
 import Login from "@/components/Login/Login";
 import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 import ProfileButton from "@/components/ProfileButton/ProfileButton";
-import MainProfile from "@/components/MainProfile/MainProfile";
+import MainProfile from "@/components/Header/MainProfile/MainProfile";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
