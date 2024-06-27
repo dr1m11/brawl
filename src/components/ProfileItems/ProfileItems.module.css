@@ -6,3 +6,24 @@
     w-full
     gap-y-4
 }
+
+@media screen and (max-width: 1070px){
+    .items {
+        @apply
+        grid-cols-4
+    }
+}
+
+@media screen and (max-width: 850px){
+    .items {
+        @apply
+        grid-cols-3
+    }
+}
+
+@media screen and (max-width: 620px){
+    .items {
+        @apply
+        grid-cols-2
+    }
+}

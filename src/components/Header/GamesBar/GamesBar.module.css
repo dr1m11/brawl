@@ -6,6 +6,15 @@
     h-[91px]
 }
 
+.footer {
+    @apply
+    flex
+    max-w-[507px]
+    w-full
+    h-[100px]
+    text-main
+}
+
 .header__center__content {
     @apply
     h-full
@@ -22,17 +31,34 @@
     justify-center
 }
 
-.header__center__content:hover h3 {
+.footer__content {
+    @apply
+    h-full
+    w-full
+    first-of-type:rounded-l-3xl
+    last-of-type:rounded-r-3xl
+    bg-brawl-purple-header
+    border-x
+    border-header
+    overflow-hidden
+    relative
+    flex
+    items-center
+    justify-center
+    font-bold
+}
+
+.header__center__content:hover h3, .footer__content:hover h3 {
     @apply
     text-white
 }
 
-.header__center__content:hover .header__ellipse {
+.header__center__content:hover .header__ellipse, .footer__content:hover .header__ellipse {
     @apply
     hidden
 }
 
-.header__center__content:hover .header__ellipse__hover {
+.header__center__content:hover .header__ellipse__hover, .footer__content:hover .header__ellipse__hover {
     @apply
     block
 }

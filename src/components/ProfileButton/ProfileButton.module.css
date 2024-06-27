@@ -39,3 +39,17 @@
     @apply
     text-[9px]
 }
+
+@media screen and (max-width: 420px){
+    .root {
+        @apply
+        pl-2
+    }
+}
+
+@media screen and (max-width: 375px){
+    .root {
+        @apply
+        pl-1
+    }
+}

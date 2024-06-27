@@ -1,10 +1,15 @@
+.header__left {
+    @apply
+    w-full
+    max-w-[490px]
+}
+
 .header__left__content {
     @apply
     flex
     ml-12
     pl-20
-    max-w-[490px]
-    w-screen
+    w-full
     h-[56px]
     bg-373070-OP30
     items-center
@@ -53,4 +58,17 @@
     bg-white-OP20
     text-white
     rounded-lg
+}
+
+@media screen and (max-width: 665px){
+    .header__left {
+        @apply
+        max-w-[350px]
+    }
+
+    .username {
+        @apply
+        max-w-[100px]
+        overflow-hidden
+    }
 }

@@ -6,7 +6,6 @@ import clsx from "clsx";
 import Online from '@/../public/Header/Online.svg'
 import Link from "next/link";
 import Logo from '@/../public/Footer/Logo.svg'
-import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 import MainProfile from "@/components/Header/MainProfile/MainProfile";
 import GamesBar from "@/components/Header/GamesBar/GamesBar";
 import Burger from "@/components/Header/Burger/Burger";
@@ -23,7 +22,7 @@ const Header = () => {
                 </Link>
                 <h4 className={styles.header__left__label}>выбирай и побеждай</h4>
             </div>
-            <GamesBar />
+            <GamesBar type={'header'}/>
             <div className={styles.header__right}>
                 <div className={styles.header__right__content}>
                     <div className={'flex'}>

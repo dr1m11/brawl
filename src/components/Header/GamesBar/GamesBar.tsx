@@ -7,24 +7,32 @@ import elPrimo from '@/../public/Header/elPrimo.svg'
 import clsx from "clsx";
 import Image from "next/image";
 import {useAppSelector} from "@/lib/hooks";
-const GamesBar = () => {
+import {Manrope} from "next/font/google";
+
+const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
+
+
+interface GamesBarProps {
+    type?: 'header' | 'footer'
+}
+const GamesBar = ({type}: GamesBarProps) => {
     const isOpen = useAppSelector(state => state.default.isBurgerOpen)
     return (
-        <div className={styles.header__center} style={{left: (isOpen && 50), right: (isOpen && 0)}}>
-            <Link href={'/'} className={styles.header__center__content}>
+        <div className={clsx(type === 'header' ? styles.header__center : styles.footer, manrope.className)} style={{left: (isOpen && type === 'header' && 50), right: (isOpen && type === 'header' && 0)}}>
+            <Link href={'/'} className={type === 'header' ? styles.header__center__content : styles.footer__content}>
                 <div className={styles.header__ellipse}/>
                 <div className={styles.header__ellipse__hover}/>
                 <h3 className={styles.header__center__titles}>КЕЙСЫ</h3>
                 <Image src={holodilnik} alt={'Case'} width={138} height={120}
                        className={clsx(styles.header__center__img)}/>
             </Link>
-            <Link href={'/wheel'} className={styles.header__center__content}>
+            <Link href={'/wheel'} className={type === 'header' ? styles.header__center__content : styles.footer__content}>
                 <div className={styles.header__ellipse}/>
                 <div className={styles.header__ellipse__hover}/>
                 <h3 className={styles.header__center__titles}>БАРАБАН</h3>
                 <Image src={baran} alt={'Wheel'} width={138} height={120} className={clsx(styles.header__center__img)}/>
             </Link>
-            <Link href={'/crash'} className={styles.header__center__content}>
+            <Link href={'/crash'} className={type === 'header' ? styles.header__center__content : styles.footer__content}>
                 <div className={styles.header__ellipse}/>
                 <div className={styles.header__ellipse__hover}/>
                 <h3 className={styles.header__center__titles}>КРАШ</h3>

@@ -18,7 +18,8 @@
 
 .top__left__shadow {
     @apply
-    w-[592px]
+    max-w-[592px]
+    w-full
     h-[637px]
     bg-12620176
     absolute
@@ -33,7 +34,8 @@
 
 .top__right__shadow {
     @apply
-    w-[650px]
+    max-w-[650px]
+    w-full
     h-[534px]
     bg-83110250
     absolute
@@ -147,6 +149,29 @@
     font-semibold
     rounded-xl
     cursor-pointer
+}
+
+@media screen and (max-width: 1020px){
+    .best__item {
+        @apply
+        hidden
+    }
+
+    .header__right {
+        @apply
+        justify-end
+    }
+}
+
+@media screen and (max-width: 660px){
+    .top__right__shadow, .top__left__shadow {
+        max-width: 200px;
+    }
+
+    .sell__all {
+        @apply
+        max-w-[110px]
+    }
 }
 
 
