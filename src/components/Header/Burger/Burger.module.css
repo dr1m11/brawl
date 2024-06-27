@@ -1,0 +1,53 @@
+.root {
+  @apply
+  h-full
+  w-full
+  max-w-[140px]
+  items-center
+  hidden
+  pl-5
+}
+
+.button {
+  width: 25px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+._1, ._2, ._3 {
+  width: 25px;
+  height: 2px;
+  background: white;
+  border: 1px solid white;
+  border-radius: 30px;
+  transition: all .2s ease-in-out;
+}
+
+._2 {
+  position: absolute;
+  top: 9px;
+  transition: opacity .2s ease-in-out;
+}
+
+._3 {
+  position: absolute;
+  bottom: 0;
+  transition: all .2s ease-in-out;
+}
+
+._3rotate {
+  transform: translateY(-9px) rotateZ(45deg);
+}
+
+._1rotate {
+  transform: translateY(9px) rotateZ(-45deg);
+}
+
+@media screen and (max-width: 768px){
+  .root {
+    @apply
+    flex
+  }
+}
+

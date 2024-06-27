@@ -1,0 +1,125 @@
+.header__center {
+    @apply
+    flex
+    max-w-[507px]
+    w-full
+    h-[91px]
+}
+
+.header__center__content {
+    @apply
+    h-full
+    w-full
+    first-of-type:rounded-bl-3xl
+    last-of-type:rounded-br-3xl
+    bg-brawl-purple-header
+    border-x
+    border-header
+    overflow-hidden
+    relative
+    flex
+    items-center
+    justify-center
+}
+
+.header__center__content:hover h3 {
+    @apply
+    text-white
+}
+
+.header__center__content:hover .header__ellipse {
+    @apply
+    hidden
+}
+
+.header__center__content:hover .header__ellipse__hover {
+    @apply
+    block
+}
+
+.header__center__titles {
+    @apply
+    transition
+    w-fit
+    h-1/2
+    z-30
+}
+
+.header__center__img {
+    @apply
+    absolute
+    left-0
+    top-7
+    right-0
+    m-auto
+}
+
+.header__ellipse {
+    @apply
+    absolute
+    w-[69px]
+    h-[69px]
+    bg-43119251-opacity
+    top-6
+    bottom-0
+    left-0
+    right-0
+    m-auto
+    blur-xl
+    transition-all
+}
+
+.header__ellipse__hover {
+    @apply
+    absolute
+    w-[69px]
+    h-[69px]
+    bg-43119251
+    top-2
+    bottom-0
+    left-0
+    right-0
+    m-auto
+    blur-xl
+    hidden
+    transition-all
+}
+
+@media screen and (max-width: 1280px){
+    .header__center {
+        @apply
+        max-w-[411px]
+    }
+}
+
+@media screen and (max-width: 768px){
+    .header__center {
+        transition: all .3s ease-in-out;
+        @apply
+        absolute
+        -left-[100%]
+        right-[100%]
+        m-auto
+        max-w-[90%]
+        max-h-full
+        h-full
+    }
+
+    .header__center__content {
+        @apply
+        first-of-type:border-l-0
+        last-of-type:border-r-0
+    }
+
+    .header__center__img {
+        @apply
+        hidden
+    }
+
+    .header__center__titles {
+        @apply
+        h-full
+        flex
+        items-center
+    }
+}

@@ -44,7 +44,7 @@ const AuthWrapper = () => {
             </div>
         </div>
             :
-            <div></div>
+            <div style={{position: 'absolute'}}></div>
     );
 };
 

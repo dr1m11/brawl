@@ -13,9 +13,7 @@ const LoginButton = () => {
     const dispatch = useAppDispatch()
     return (
             <button className={clsx(styles.button, daysOne)} onClick={() => dispatch(changeLogin())}>
-                <div className={styles.div}>
                     ВОЙТИ
-                </div>
             </button>
     );
 };

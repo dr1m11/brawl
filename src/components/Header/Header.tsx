@@ -1,55 +1,29 @@
 import styles from './Header.module.css'
-import holodilnik from '../../../public/Header/holodilnik.svg'
-import baran from '../../../public/Header/baran.svg'
-import ebobot from '../../../public/Header/ebobot.svg'
+
 import Image from "next/image";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
-import GreenButton from "@/components/GreenButton/GreenButton";
 import Online from '@/../public/Header/Online.svg'
 import Link from "next/link";
 import Logo from '@/../public/Footer/Logo.svg'
-import {useAppDispatch, useAppSelector, useAppStore} from "@/lib/hooks";
-import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
-import LoginButton from "@/components/LoginButton/LoginButton";
-import Login from "@/components/Login/Login";
 import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
-import ProfileButton from "@/components/ProfileButton/ProfileButton";
 import MainProfile from "@/components/Header/MainProfile/MainProfile";
+import GamesBar from "@/components/Header/GamesBar/GamesBar";
+import Burger from "@/components/Header/Burger/Burger";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
 const Header = () => {
     return (
         <header className={clsx(styles.header, manrope.className)}>
+            <Burger />
             <div className={styles.header__left}>
                 <Link href={'/'} className={styles.header__logo}>
-                    <Image src={Logo} alt={'Logo'} width={95} height={68} />
+                    <Image src={Logo} alt={'Logo'} width={95} height={68} className={styles.logo__img}/>
                 </Link>
-                <h4>выбирай и побеждай</h4>
+                <h4 className={styles.header__left__label}>выбирай и побеждай</h4>
             </div>
-            <div className={styles.header__center}>
-                <Link href={'/'} className={styles.header__center__content}>
-                    <div className={styles.header__ellipse}/>
-                    <div className={styles.header__ellipse__hover}/>
-                    <h3 className={styles.header__center__titles}>КЕЙСЫ</h3>
-                    <Image src={holodilnik} alt={'Case'} width={138} height={120}
-                           className={clsx(styles.header__center__img, 'top-20')}/>
-                </Link>
-                <Link href={'/wheel'} className={styles.header__center__content}>
-                    <div className={styles.header__ellipse}/>
-                    <div className={styles.header__ellipse__hover}/>
-                    <h3 className={styles.header__center__titles}>БАРАБАН</h3>
-                    <Image src={baran} alt={'Wheel'} width={138} height={120} className={clsx(styles.header__center__img, 'top-24')}/>
-                </Link>
-                <Link href={'/crash'} className={styles.header__center__content}>
-                    <div className={styles.header__ellipse}/>
-                    <div className={styles.header__ellipse__hover}/>
-                    <h3 className={styles.header__center__titles}>КРАШ</h3>
-                    <Image src={ebobot} alt={'Crash'} width={177} height={133}
-                           className={clsx(styles.header__center__img, 'top-14 min-w-[100px]')}/>
-                </Link>
-            </div>
+            <GamesBar />
             <div className={styles.header__right}>
                 <div className={styles.header__right__content}>
                     <div className={'flex'}>
