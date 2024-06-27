@@ -16,5 +16,5 @@ export const saveTokenStorage = (token: string) => {
 }
 
 export const removeFromStorage = () => {
-	Cookies.remove(EnumTokens.TOKEN)
+	Cookies.remove('token')
 }
