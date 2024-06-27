@@ -28,7 +28,7 @@ const LogoutButton = () => {
         <button className={styles.logout} onClick={() => {
             removeFromStorage()
             localStorage.clear()
-            location.reload()
+            // location.reload()
         }}><Image src={Logout} alt={'Logout'} width={18} height={17}/>
             Выйти
         </button>
