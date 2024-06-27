@@ -10,8 +10,10 @@ import AccountBtn from "@/components/AccountBtn/AccountBtn";
 import Login from "@/components/Login/Login";
 import Register from "@/components/Register/Register";
 import {useAppSelector} from "@/lib/hooks";
+import {Manrope} from "next/font/google";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
+const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
 interface AuthWrapperProps {
     children: ReactNode
@@ -25,8 +27,8 @@ const AuthWrapper = () => {
 
     const [type, setType] = useState<'login' | 'register'>('login')
     return (
-        isAuthOpen ?
-        <div className={styles.login}>
+        isAuthOpen &&
+        <div className={clsx(manrope.className, styles.login)}>
             <div className={styles.shadow}/>
             <div className={styles.login__wrapper} style={{height: type === 'login' ? '323px' : '350px'}}>
                 <div className={styles.images}>
@@ -43,8 +45,6 @@ const AuthWrapper = () => {
                 <AccountBtn type={type} setType={() => setType(type === "login" ? 'register' : 'login')}/>
             </div>
         </div>
-            :
-            <div style={{position: 'absolute'}}></div>
     );
 };
 

@@ -10,6 +10,7 @@
     text-main
     justify-between
     relative
+    z-20
 }
 
 .header__left,

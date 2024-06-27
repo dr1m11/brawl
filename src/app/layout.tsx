@@ -6,6 +6,7 @@ import clsx from "clsx";
 import Footer from "@/components/Footer/Footer";
 import StoreProvider from "@/app/StoreProvider";
 import {QueryProvider} from "@/app/QueryProvider";
+import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 
 const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
@@ -28,6 +29,7 @@ export default function RootLayout({
                 <Header/>
                 <main>
                     {children}
+                    <AuthWrapper />
                 </main>
                 {/*<Footer/>*/}
                 </body>

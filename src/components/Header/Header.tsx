@@ -34,7 +34,6 @@ const Header = () => {
                 </div>
                 <MainProfile />
             </div>
-            <AuthWrapper />
         </header>
     );
 };
