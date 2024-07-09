@@ -1,4 +1,4 @@
-import Crash from "@/components/Crash/Crash";
+import Crash from "@/components/Pages/Crash/Crash";
 
 const CrashPage = () => {
     return (

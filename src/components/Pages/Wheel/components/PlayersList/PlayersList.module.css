@@ -1,0 +1,23 @@
+.players {
+    @apply
+    space-y-1
+    overflow-y-auto
+    max-h-full
+}
+
+.players::-webkit-scrollbar {
+    @apply
+    w-[3px]
+}
+
+.players::-webkit-scrollbar-track {
+    @apply
+    bg-494088
+    rounded
+}
+
+.players::-webkit-scrollbar-thumb {
+    @apply
+    bg-9580160
+    rounded
+}

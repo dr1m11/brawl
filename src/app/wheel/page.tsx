@@ -1,4 +1,4 @@
-import Wheel from "@/components/Wheel/Wheel";
+import Wheel from "@/components/Pages/Wheel/Wheel";
 
 const Page = () => {
     return (

@@ -1,0 +1,74 @@
+.menu__center {
+    @apply
+    w-full
+    max-w-[221px]
+    h-full
+    relative
+}
+
+.determiner {
+    @apply
+    absolute
+    left-0
+    right-0
+    m-auto
+    w-full
+    max-w-[173px]
+    h-[200px]
+    overflow-y-hidden
+    -top-[200px]
+}
+
+.arrow {
+    @apply
+    absolute
+    left-0
+    right-0
+    m-auto
+}
+
+.circle {
+    background: linear-gradient(150.18deg, rgb(131, 105, 209) 24.317%,rgb(107, 68, 226) 81.772%);
+    @apply
+    absolute
+    w-full
+    rounded-full
+    h-[173px]
+    -bottom-24
+    flex
+    items-center
+    flex-col
+    pt-5
+}
+
+.numbers {
+    @apply
+    text-[22px]
+    font-semibold
+}
+
+.numbers__label {
+    @apply
+    text-[13px]
+    -mt-1
+}
+
+.bet__btn {
+    /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
+    @apply
+    w-full
+    h-full
+    border-[10px]
+    rounded-xl
+    border-2551840
+    bg-gradient-to-r
+    from-24416163
+    to-2551840
+    font-bold
+    text-white
+    tracking-wider
+    text-[18px]
+    flex
+    justify-around
+    items-center
+}

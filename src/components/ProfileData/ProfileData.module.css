@@ -60,15 +60,41 @@
     rounded-lg
 }
 
-@media screen and (max-width: 665px){
+@media screen and (max-width: 665px) {
     .header__left {
         @apply
-        max-w-[350px]
+        w-full
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .header__left {
+        @apply
+        flex
+        flex-col
+        items-start
+        justify-between
+        h-full
+    }
+
+    .user__icon {
+        @apply
+        relative
+        top-0
     }
 
     .username {
         @apply
         max-w-[100px]
         overflow-hidden
+    }
+
+    .header__left__content {
+        @apply
+        ml-0
+        w-full
+        max-w-full
+        mr-0
+        pl-5
     }
 }

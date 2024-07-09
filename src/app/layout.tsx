@@ -31,7 +31,7 @@ export default function RootLayout({
                     {children}
                     <AuthWrapper />
                 </main>
-                {/*<Footer/>*/}
+                <Footer/>
                 </body>
                 </html>
             </QueryProvider>

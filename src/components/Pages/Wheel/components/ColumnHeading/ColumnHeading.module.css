@@ -1,0 +1,38 @@
+.bet {
+    @apply
+    flex
+    items-center
+    justify-between
+    px-2.5
+    text-white
+    w-full
+    h-full
+    max-h-[37px]
+    rounded-lg
+}
+
+.players__count {
+    @apply
+    flex
+    space-x-2
+}
+
+.red {
+    background: linear-gradient(90.00deg, rgb(209, 98, 91) 0.02%, rgb(211, 93, 89) 14.742%, rgb(222, 64, 76) 100%), rgb(249, 249, 249);
+}
+
+.green {
+    background: linear-gradient(90.00deg, rgb(40, 177, 100) 0.02%, rgb(78, 190, 57) 100%), rgb(249, 249, 249);
+}
+
+.yellow {
+    background: linear-gradient(90.00deg, rgb(225, 174, 45) 0.02%, rgb(252, 197, 56) 100%), rgb(249, 249, 249);
+}
+
+.grey {
+    background: linear-gradient(90.00deg, rgb(109, 118, 131) 0.02%, rgba(109, 118, 130, 0) 100%), rgb(249, 249, 249);
+}
+
+.purple {
+    background: linear-gradient(90.00deg, rgb(142, 79, 224) 0.02%, rgb(144, 66, 246) 100%), rgb(249, 249, 249);
+}

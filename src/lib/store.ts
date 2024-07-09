@@ -1,9 +1,11 @@
 import {combineReducers, combineSlices, configureStore} from '@reduxjs/toolkit'
 import {defaultSlice} from "@/lib/defaultSlice/defaultSlice";
 import {caseSlice} from "@/lib/caseSlice/caseSlice";
+import {crashSlice} from "@/lib/crashSlice/crashSlice";
+import {wheelSlice} from "@/lib/wheelSlice/wheelSlice";
 
 
-const rootReducer = combineSlices(defaultSlice, caseSlice)
+const rootReducer = combineSlices(defaultSlice, caseSlice, crashSlice, wheelSlice)
 
 export const makeStore = () => {
     return configureStore({

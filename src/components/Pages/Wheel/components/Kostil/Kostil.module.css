@@ -1,0 +1,43 @@
+.game {
+    @apply
+    max-w-[1056px]
+    w-full
+    h-full
+    max-h-[550px]
+    text-white
+    mt-6
+}
+
+.game__label {
+    @apply
+    w-full
+    flex
+    flex-col
+    items-center
+    justify-center
+}
+
+.heading {
+    @apply
+    text-[32px]
+}
+
+.heading__label {
+    @apply
+    text-242
+    opacity-75
+}
+
+.game__menu {
+    background: linear-gradient(90.00deg, rgb(74, 49, 150), rgb(68, 42, 143) 100%);
+    @apply
+    max-w-[1056px]
+    w-full
+    max-h-[97px]
+    h-full
+    p-5
+    rounded-3xl
+    relative
+    flex
+    justify-between
+}

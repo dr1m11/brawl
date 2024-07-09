@@ -1,0 +1,7 @@
+.column {
+    @apply
+    max-w-[197px]
+    w-full
+    h-full
+    space-y-3
+}

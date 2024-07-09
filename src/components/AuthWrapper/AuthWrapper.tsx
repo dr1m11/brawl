@@ -23,7 +23,6 @@ interface AuthWrapperProps {
 const AuthWrapper = () => {
 
     const isAuthOpen = useAppSelector(state => state.default.isAuthOpen)
-    console.log(isAuthOpen)
 
     const [type, setType] = useState<'login' | 'register'>('login')
     return (

@@ -1,0 +1,74 @@
+.graph__game {
+    @apply
+    w-full
+    border-b-2
+    border-b-6445118
+    max-h-[270px]
+    h-full
+    relative
+    overflow-hidden
+    min-w-[640px]
+}
+
+.count {
+    @apply
+    absolute
+    max-w-[275px]
+    w-full
+    max-h-[50px]
+    h-full
+    py-3
+    px-4
+    z-10
+    bg-373070
+}
+
+.multiplier {
+    @apply
+    text-[32px]
+    text-2431440
+}
+
+.multiplier__label {
+    @apply
+    text-[16px]
+    font-medium
+    -mt-1.5
+    text-white
+    opacity-75
+}
+
+.graphic {
+    background: linear-gradient(180.00deg, rgba(249, 160, 99, 0.3) 37.11%,rgba(249, 159, 98, 0) 100%);
+    /*transition: transform 30s ease;*/
+    @apply
+        /*w-[110%]*/
+    h-[200px]
+    absolute
+    z-20
+    left-0
+    -bottom-20
+    /*-rotate-[19.5deg]*/
+}
+
+.crash__charecter {
+    @apply
+    absolute
+    right-0
+    -top-7
+}
+
+.timer {
+    @apply
+    w-full
+    h-full
+    flex
+    justify-center
+    items-center
+}
+
+.timer__label {
+    @apply
+    text-main
+    text-[40px]
+}

@@ -10,11 +10,13 @@ export const getAccessToken = () => {
 export const saveTokenStorage = (token: string) => {
 	Cookies.set(EnumTokens.TOKEN, token, {
 		domain: '.brawl-alpha.vercel.app',
+		// domain: 'localhost',
 		sameSite: 'strict',
 		expires: 12 / 24
 	})
 }
 
 export const removeFromStorage = () => {
-	Cookies.remove('token', {domain: '.brawl-alpha.vercel.app'})
+	// Cookies.remove('token', {domain: '.brawl-alpha.vercel.app'})
+	Cookies.remove(EnumTokens.TOKEN)
 }

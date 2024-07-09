@@ -1,0 +1,25 @@
+.root {
+    @apply
+    h-[500px]
+    w-full
+    flex
+    justify-center
+    items-center
+}
+
+.controls {
+    @apply
+    flex
+    justify-between
+    w-[400px]
+}
+
+.input {
+    @apply
+    outline-0
+    bg-6445118
+    text-white
+    text-3xl
+    max-w-[200px]
+    rounded-xl
+}

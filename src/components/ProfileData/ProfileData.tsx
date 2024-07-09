@@ -9,6 +9,7 @@ import {useQuery} from "@tanstack/react-query";
 import {userService} from "@/services/user/user.service";
 import {useAppDispatch} from "@/lib/hooks";
 import {useEffect} from "react";
+import Link from "next/link";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
@@ -24,8 +25,8 @@ const ProfileData = () => {
             <div className={styles.header__left__content}>
                 <h2 className={clsx(daysOne.className, styles.username)}>{isSuccess && data.username}</h2>
                 <div className={styles.header__left__buttons}>
-                    <button className={styles.wallet}><Image src={Wallet} alt={'Wallet'} width={18}
-                                                             height={18}/></button>
+                    <Link href={'/payment'} className={styles.wallet}><Image src={Wallet} alt={'Wallet'} width={18}
+                                                             height={18}/></Link>
                     <button className={styles.balance}>{isSuccess && data.balance} RUB</button>
                 </div>
             </div>

@@ -1,0 +1,21 @@
+.history {
+    @apply
+    w-full
+    max-w-[480px]
+    h-full
+    max-h-2
+    mx-auto
+    flex
+    justify-between
+    mb-10
+}
+
+.history__item {
+    @apply
+    w-full
+    max-w-[32px]
+    h-0
+    border
+    rounded
+    border-orange-500
+}

@@ -1,0 +1,13 @@
+.info {
+    @apply
+    w-full
+    h-full
+    max-w-[1056px]
+    max-h-[469px]
+    bg-222838-OP40
+    rounded-2xl
+    flex
+    justify-between
+    py-7
+    px-5
+}
