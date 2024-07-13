@@ -3,23 +3,24 @@ import styles from './CaseRadio.module.css';
 import clsx from "clsx";
 import {Manrope} from "next/font/google";
 import {useState} from "react";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {setFast} from "@/lib/caseSlice/caseSlice";
 
 const manrope = Manrope({
     weight: ['400'],
     subsets: ['latin', 'cyrillic']
 })
 
-interface CaseRadio {
-    fast: boolean
-    setFast: (flag: boolean) => void
-}
+const CaseRadio = () => {
 
-const CaseRadio = ({fast, setFast}: CaseRadio) => {
+    const fast = useAppSelector(state => state.case.fast)
+
+    const dispatch = useAppDispatch()
 
     return (
         <div className={clsx(manrope.className, styles.root)}>
             <span className={'text-white tracking-wide text-[16px]'}>Быстро</span>
-            <div className={styles.uncheck} onClick={() => setFast(!fast)}>
+            <div className={styles.uncheck} onClick={() => dispatch(setFast(!fast))}>
                 <div className={styles.check} style={{opacity: fast && '1'}}/>
             </div>
         </div>

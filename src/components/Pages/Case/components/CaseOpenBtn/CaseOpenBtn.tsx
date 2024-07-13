@@ -1,16 +1,14 @@
 'use client'
 import styles from './CaseOpenBtn.module.css'
 import {caseService} from "@/services/case/case.service";
-import {useAppSelector} from "@/lib/hooks";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {randomInteger} from "@/components/Pages/Case/components/Roulette/Roulette";
+import {setIsOpened, setRoulette} from "@/lib/caseSlice/caseSlice";
 
-interface CaseOpenBtnProps {
-    setIsOpened: (flag: boolean) => void
-    setRoulette: (arr: any[]) => void
-}
-
-const CaseOpenBtn = ({setIsOpened, setRoulette}: CaseOpenBtnProps) => {
+const CaseOpenBtn = () => {
     const items = useAppSelector(state => state.case.items)
+
+    const dispatch = useAppDispatch()
 
     const fillArray = (win) => {
         const arr = []
@@ -26,8 +24,8 @@ const CaseOpenBtn = ({setIsOpened, setRoulette}: CaseOpenBtnProps) => {
 
     const openCase = async () => {
         const winItem = await caseService.caseOpen()
-        setRoulette(fillArray(winItem))
-        setIsOpened(true)
+        dispatch(setRoulette(fillArray(winItem)))
+        dispatch(setIsOpened(true))
     }
 
     return (

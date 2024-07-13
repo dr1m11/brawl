@@ -5,7 +5,7 @@ import {useQuery} from "@tanstack/react-query";
 import {caseService} from "@/services/case/case.service";
 import {useAppDispatch} from "@/lib/hooks";
 import {useEffect} from "react";
-import {setCase, setItems} from "@/lib/caseSlice/caseSlice";
+import {setCase, setFast, setIsFinished, setIsOpened, setItems} from "@/lib/caseSlice/caseSlice";
 const ItemsList = () => {
 
     const {data, isSuccess} = useQuery({
@@ -19,9 +19,16 @@ const ItemsList = () => {
         if (isSuccess) {
             dispatch(setItems(data.items))
             dispatch(setCase(data))
-
         }
     }, [isSuccess]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(setIsFinished(false))
+            dispatch(setIsOpened(false))
+            dispatch(setFast(false))
+        }
+    }, []);
 
     return (
         <div className={styles.content}>

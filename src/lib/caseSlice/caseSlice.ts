@@ -4,6 +4,10 @@ import {IGun, IInCase} from "@/services/case/case.types";
 interface initialInterface {
     items: IGun[],
     case: IInCase
+    isOpened: boolean
+    isFinished: boolean
+    fast: boolean
+    roulette: IGun[]
 }
 
 const initialState: initialInterface ={
@@ -13,7 +17,11 @@ const initialState: initialInterface ={
         items: [],
         name: '',
         id: 0
-    }
+    },
+    isOpened: false,
+    isFinished: false,
+    fast: false,
+    roulette: []
 }
 
 export const caseSlice = createSlice({
@@ -25,7 +33,19 @@ export const caseSlice = createSlice({
         },
         setCase: (state, {payload}) => {
             state.case = payload
-        }
+        },
+        setIsOpened: (state, {payload}) => {
+            state.isOpened = payload
+        },
+        setIsFinished: (state, {payload}) => {
+            state.isFinished = payload
+        },
+        setFast: (state, {payload}) => {
+            state.fast = payload
+        },
+        setRoulette: (state, {payload}) => {
+            state.roulette = payload
+        },
     },
     selectors: {
         selectItems: (state) => state.items,
@@ -33,5 +53,15 @@ export const caseSlice = createSlice({
     }
 })
 
-export const {setItems, setCase} = caseSlice.actions
-export const {selectItems, selectCase} = caseSlice.selectors
+export const {
+    setItems,
+    setCase,
+    setIsOpened,
+    setIsFinished,
+    setFast,
+    setRoulette,
+} = caseSlice.actions
+export const {
+    selectItems,
+    selectCase,
+} = caseSlice.selectors
