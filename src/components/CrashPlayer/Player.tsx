@@ -12,10 +12,10 @@ interface PlayerProps {
     hideBet?: boolean
     hideMultiplier?: boolean
     hideWon?: boolean
-    nickname: string
-    multiplier: number
-    winning: number
-    amount: number
+    nickname?: string
+    multiplier?: number
+    winning?: number
+    amount?: number
 }
 
 const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname, amount, nickname, multiplier, winning}: PlayerProps) => {
