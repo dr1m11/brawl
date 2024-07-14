@@ -15,7 +15,7 @@ const BetButton = ({onClick}: BetButtonProps) => {
     return (
         <button className={!isBetSet ? styles.bet__btn : styles.withdraw} onClick={onClick}>
             <h5 className={daysOne.className}>{!isBetSet ? "СТАВКА" : "ВЫВОД"}</h5>
-            <span className={styles.bet__btn__label}>{(isBetSet && socketEvent.status === "Running") ? (bet * socketEvent.multiplier).toFixed(2) : bet} RUB</span>
+            <span className={styles.bet__btn__label}>{(isBetSet && socketEvent.status === "Running") ? (bet * socketEvent.multiplier).toFixed(0) : bet} RUB</span>
         </button>
     );
 };

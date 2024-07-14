@@ -7,7 +7,7 @@ import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import Automation from "@/components/Pages/Crash/components/Automation/Automation";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useEffect, useRef} from "react";
-import {setIsBetSet, setSocketEvent, setUser} from "@/lib/crashSlice/crashSlice";
+import {setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
 
@@ -25,6 +25,7 @@ const Kostil = () => {
     const dispatch = useAppDispatch()
 
     const ws = useRef(null)
+
 
     const {socketEvent, user, bet, isBetSet} = useAppSelector(state => state.crash)
 
@@ -51,7 +52,7 @@ const Kostil = () => {
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
             if (data.bets) {
-                console.log(data.bets)
+                dispatch(setUsersBets(data.bets))
             } else {
                 const mainData: CrashInterface = data
                 dispatch(setSocketEvent(mainData))

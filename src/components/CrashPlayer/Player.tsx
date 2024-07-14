@@ -12,16 +12,20 @@ interface PlayerProps {
     hideBet?: boolean
     hideMultiplier?: boolean
     hideWon?: boolean
+    nickname: string
+    multiplier: number
+    winning: number
+    amount: number
 }
 
-const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname}: PlayerProps) => {
+const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname, amount, nickname, multiplier, winning}: PlayerProps) => {
     return (
         <div className={clsx(styles.root, manrope.className)}>
             <Image src={Avatar} alt={'Avatar'} width={28} height={29} className={styles.avatar} style={{display: hideAvatar && 'none'}}/>
-            <h4 className={styles.nickname} style={{display: hideNickname && 'none'}}>Timosopia...</h4>
-            <h4 className={styles.bet} style={{display: hideBet && 'none'}}>3034 ₽</h4>
-            <h4 className={styles.multiplier} style={{display: hideMultiplier && 'none'}}>2x</h4>
-            <h4 className={styles.won} style={{display: hideWon && 'none'}}>6068 ₽</h4>
+            <h4 className={styles.nickname} style={{display: hideNickname && 'none'}}>{nickname}</h4>
+            <h4 className={styles.bet} style={{display: hideBet && 'none'}}>{amount} ₽</h4>
+            <h4 className={styles.multiplier} style={{display: hideMultiplier && 'none'}}>{multiplier}x</h4>
+            <h4 className={styles.won} style={{display: hideWon && 'none'}}>{winning} ₽</h4>
         </div>
     );
 };

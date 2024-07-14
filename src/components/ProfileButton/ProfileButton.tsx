@@ -18,7 +18,7 @@ const ProfileButton = () => {
         <Link href={'/profile'} className={styles.root}>
             <h2 className={styles.nickname}>{nickname}</h2>
             <div className={styles.balance}>
-                <h5 className={styles.numbers}>{balance}</h5>
+                <h5 className={styles.numbers}>{!!balance && balance.toFixed(0)}</h5>
                 <h5 className={styles.value}>RUB</h5>
             </div>
             <Image src={Avatar} alt={'Avatar'} width={42} height={42}/>

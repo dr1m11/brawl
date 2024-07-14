@@ -5,6 +5,15 @@ interface CrashInterface {
     user: string
     socketEvent: CrashGameInterface
     isBetSet: boolean
+    usersBets: PlayerInterface[]
+}
+
+interface PlayerInterface {
+    player_id: string
+    player_nickname: string
+    amount: number
+    winning: number
+    user_multiplier: number
 }
 
 interface CrashGameInterface {
@@ -28,6 +37,7 @@ const initialState: CrashInterface ={
         game_id: 0
     },
     isBetSet: false,
+    usersBets: []
 }
 
 export const crashSlice = createSlice({
@@ -45,6 +55,9 @@ export const crashSlice = createSlice({
         },
         setIsBetSet: (state, {payload}) => {
             state.isBetSet = payload
+        },
+        setUsersBets: (state, {payload}) => {
+            state.usersBets = payload
         }
     },
     selectors: {
@@ -59,7 +72,8 @@ export const {
     setBet,
     setSocketEvent,
     setUser,
-    setIsBetSet
+    setIsBetSet,
+    setUsersBets
 } = crashSlice.actions
 export const {
     selectBet,
