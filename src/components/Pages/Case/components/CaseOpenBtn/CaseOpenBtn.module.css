@@ -14,3 +14,11 @@
     tracking-wider
     text-[18px]
 }
+
+.root:disabled {
+    background: rgba(84, 73, 140, 0.49);
+    @apply
+    cursor-not-allowed
+    border-0
+    text-gray-400
+}

@@ -1,0 +1,19 @@
+.roulette__closed {
+    @apply relative h-full w-full
+}
+
+.roulette__closed__center {
+    @apply relative h-full w-full
+}
+
+.purp__shadow {
+    @apply absolute left-10 right-0 top-0 bottom-0 m-auto bg-8420126 max-w-[390px] max-h-[272px] blur-[60px] rounded-[50%]
+}
+
+.orange__shadow {
+    @apply absolute left-10 right-0 top-0 bottom-0 m-auto bg-2501760 max-w-[94px] max-h-[92px] blur-[40px] rounded-[100%]
+}
+
+.center__gun {
+    @apply absolute left-0 right-0 top-0 bottom-0 m-auto
+}

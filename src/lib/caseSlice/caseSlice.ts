@@ -3,7 +3,7 @@ import {IGun, IInCase} from "@/services/case/case.types";
 
 interface initialInterface {
     items: IGun[],
-    case: IInCase
+    caseData: IInCase
     isOpened: boolean
     isFinished: boolean
     fast: boolean
@@ -12,7 +12,7 @@ interface initialInterface {
 
 const initialState: initialInterface ={
     items: [],
-    case: {
+    caseData: {
         price: 0,
         items: [],
         name: '',
@@ -32,7 +32,7 @@ export const caseSlice = createSlice({
             state.items = payload
         },
         setCase: (state, {payload}) => {
-            state.case = payload
+            state.caseData = payload
         },
         setIsOpened: (state, {payload}) => {
             state.isOpened = payload
@@ -49,7 +49,7 @@ export const caseSlice = createSlice({
     },
     selectors: {
         selectItems: (state) => state.items,
-        selectCase: (state) => state.case
+        selectCase: (state) => state.caseData
     }
 })
 

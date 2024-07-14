@@ -3,9 +3,10 @@ import {defaultSlice} from "@/lib/defaultSlice/defaultSlice";
 import {caseSlice} from "@/lib/caseSlice/caseSlice";
 import {crashSlice} from "@/lib/crashSlice/crashSlice";
 import {wheelSlice} from "@/lib/wheelSlice/wheelSlice";
+import {userSlice} from "@/lib/userSlice/userSlice";
 
 
-const rootReducer = combineSlices(defaultSlice, caseSlice, crashSlice, wheelSlice)
+const rootReducer = combineSlices(defaultSlice, caseSlice, crashSlice, wheelSlice, userSlice)
 
 export const makeStore = () => {
     return configureStore({

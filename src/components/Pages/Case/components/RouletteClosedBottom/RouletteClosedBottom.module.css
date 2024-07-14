@@ -1,0 +1,11 @@
+.roulette__closed__bottom {
+    @apply bottom-0 left-0 right-0 m-auto absolute max-w-[670px] w-full h-[56px]
+}
+
+.case__price {
+    @apply text-center text-white mb-2 ml-14
+}
+
+.case__bottom__wrapper {
+    @apply flex h-[56px] items-center justify-between
+}

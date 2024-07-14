@@ -1,0 +1,39 @@
+.after__spin {
+    @apply
+    flex
+    max-w-[450px]
+    w-full
+    h-[42px]
+    justify-between
+    items-center
+    absolute
+    -bottom-4
+}
+
+.ones__more__btn {
+    @apply
+    w-[195px]
+    h-full
+    flex
+    justify-center
+    gap-x-2
+    items-center
+    bg-gradient-to-r
+    from-6747127
+    to-5436107
+    rounded-xl
+    text-[13px]
+    text-main
+}
+
+.sell {
+    @apply
+    w-[195px]
+    h-full
+    bg-gradient-to-r
+    from-6747127
+    to-5436107
+    rounded-xl
+    text-[13px]
+    text-main
+}

@@ -9,6 +9,7 @@ import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useEffect, useRef} from "react";
 import {setIsBetSet, setSocketEvent, setUser} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
+import {useQueryClient} from "@tanstack/react-query";
 
 
 interface CrashInterface {
@@ -31,6 +32,13 @@ const Kostil = () => {
         dispatch(setUser(localStorage.getItem('userId')))
     }, []);
 
+    const queryClient = useQueryClient()
+
+    useEffect(() => {
+        queryClient.invalidateQueries({
+            queryKey: ['user']
+        })
+    }, [socketEvent.status]);
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
@@ -41,9 +49,13 @@ const Kostil = () => {
         };
 
         ws.current.onmessage = (event) => {
-            const data: CrashInterface = JSON.parse(event.data)
-            dispatch(setSocketEvent(data))
-            // console.log(socketEvent.game_id)
+            const data = JSON.parse(event.data)
+            if (data.bets) {
+                console.log(data.bets)
+            } else {
+                const mainData: CrashInterface = data
+                dispatch(setSocketEvent(mainData))
+            }
         };
 
         ws.current.onclose = () => {
@@ -69,6 +81,9 @@ const Kostil = () => {
                 "amount": bet
             }))
             dispatch(setIsBetSet(true))
+            queryClient.invalidateQueries({
+                queryKey: ['user']
+            })
         } else {
             console.error('WebSocket соединение не открыто');
         }

@@ -25,16 +25,7 @@ const CaseSection = ({title}: CaseSectionProps) => {
                 {
                     !isPending && data?.length &&
                     data.map(({id, name, price}) => (
-                        <>
-                            <Case image={Custom1} title={name} desc={'dvcghdvsgvdf'} price={price} id={id} key={id} />
-                            <Case image={Custom1} title={name} desc={'dvcghdvsgvdf'} price={price} id={id} key={id + 'asf'} />
-                            <Case image={Custom1} title={name} price={price} id={id} key={id + 'asfd'} />
-                            <Case image={Custom1} title={name} price={price} id={id} key={id + 'sdfgfg'} />
-                            <Case image={Custom1} title={name} desc={'dvcghdvsgvdf'} price={price} id={id} key={id + 'sdfgfgdfg'} />
-                            <Case image={Custom1} title={name} desc={'dvcghdvsgvdf'} price={price} id={id} key={id + 'sdfgfgdfgfd'} />
-                            <Case image={Custom1} title={name} price={price} id={id} key={id + 'sdfgfgbvgt'} />
-                            <Case image={Custom1} title={name} price={price} id={id} key={id + 'sdfgfgrtvcb'} />
-                        </>
+                        <Case image={Custom1} title={name} price={price} id={id} key={id}/>
                     ))
                 }
             </div>

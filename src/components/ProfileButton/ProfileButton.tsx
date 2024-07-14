@@ -9,18 +9,16 @@ import {authService} from "@/services/auth/auth.service";
 import {saveTokenStorage} from "@/services/auth/auth.helper";
 import {userService} from "@/services/user/user.service";
 import {useState} from "react";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 
 const ProfileButton = () => {
-    const {data, isSuccess} = useQuery({
-        queryKey: ['user'],
-        queryFn: () => userService.getUserById(),
-    })
+    const {nickname, balance} = useAppSelector(state => state.user)
 
     return (
         <Link href={'/profile'} className={styles.root}>
-            <h2 className={styles.nickname}>{isSuccess && data.username}</h2>
+            <h2 className={styles.nickname}>{nickname}</h2>
             <div className={styles.balance}>
-                <h5 className={styles.numbers}>{isSuccess && data.balance}</h5>
+                <h5 className={styles.numbers}>{balance}</h5>
                 <h5 className={styles.value}>RUB</h5>
             </div>
             <Image src={Avatar} alt={'Avatar'} width={42} height={42}/>

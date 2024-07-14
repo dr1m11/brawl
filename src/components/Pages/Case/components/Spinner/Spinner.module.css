@@ -1,0 +1,7 @@
+.spin {
+    transition-timing-function: cubic-bezier(.3,0,.34,1);
+    transition-property: transform;
+    transition-duration: 7s;
+    @apply
+    flex
+}
