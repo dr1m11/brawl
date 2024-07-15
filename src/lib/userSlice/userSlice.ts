@@ -3,11 +3,13 @@ import {createSlice} from "@reduxjs/toolkit";
 interface initialStateInterface {
     nickname: string | null
     balance: number | null
+    id: string
 }
 
 const initialState: initialStateInterface = {
     nickname: null,
-    balance: null
+    balance: null,
+    id: ''
 }
 
 export const userSlice = createSlice({
@@ -19,11 +21,15 @@ export const userSlice = createSlice({
         },
         setBalance: (state, {payload}) => {
             state.balance = payload
+        },
+        setId: (state, {payload}) => {
+            state.id = payload
         }
     }
 })
 
 export const {
     setNickname,
-    setBalance
+    setBalance,
+    setId,
 } = userSlice.actions

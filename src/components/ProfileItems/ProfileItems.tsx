@@ -12,12 +12,16 @@ const ProfileItems = () => {
         queryFn: userService.getUserById
     })
 
+    const userId = useAppSelector(state => state.user.id)
+
+    console.log(data?.items)
+
 
     return (
         <div className={styles.items}>
             {isSuccess && !!data.items &&
-                data.items.map(({name, price, rarity}: IGun, index) => (
-                    <ProfileItem key={index} title={name} rarity={rarity} price={price}/>
+                data.items.map(({name, price, rarity, user_item_id}: IGun, index) => (
+                    <ProfileItem key={index} title={name} rarity={rarity} price={price} id={user_item_id} userId={userId}/>
                 ))
             }
         </div>
