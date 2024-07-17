@@ -3,6 +3,12 @@ import styles from './PaymentPage.module.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
+import clsx from "clsx";
+import Link from "next/link";
+import {Manrope} from "next/font/google";
+
+const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin']})
+
 const PaymentPage = () => {
     const [value, setValue] = useState(0)
     const [user, setUser] = useState('')
@@ -24,6 +30,16 @@ const PaymentPage = () => {
                 }}>Пополнить</button>
             </div>
         </div>
+        // <div className={styles.root}>
+        //     <div className={styles.wrapper}>
+        //         <div className={styles.header}>
+        //             <Link href={'/profile'}>
+        //                 <button className={clsx(styles.back__btn, manrope.className)}>Назад</button>
+        //             </Link>
+        //             <span className={styles.header__label}>Пополните баланс</span>
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 

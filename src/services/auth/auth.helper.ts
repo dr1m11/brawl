@@ -17,6 +17,6 @@ export const saveTokenStorage = (token: string) => {
 }
 
 export const removeFromStorage = () => {
-	// Cookies.remove('token', {domain: '.brawl-alpha.vercel.app'})
-	Cookies.remove(EnumTokens.TOKEN)
+	Cookies.remove('token', {domain: '.brawl-alpha.vercel.app'})
+	// Cookies.remove(EnumTokens.TOKEN)
 }

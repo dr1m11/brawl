@@ -1,10 +1,52 @@
 .root {
     @apply
     h-[500px]
+    /*min-h-[500px]*/
     w-full
     flex
     justify-center
     items-center
+}
+
+.wrapper {
+    @apply
+    max-w-[1060px]
+    w-full
+    mt-[100px]
+    h-full
+}
+
+.header {
+    @apply
+    w-full
+    h-full
+    max-h-[32px]
+    relative
+}
+
+.header__label {
+    @apply
+    absolute
+    left-10
+    right-10
+    top-0
+    bottom-0
+    m-auto
+}
+
+.back__btn {
+    @apply
+    rounded-xl
+    bg-gradient-to-r
+    from-8420126
+    to-7381172
+    max-w-[150px]
+    w-full
+    font-semibold
+    text-[13px]
+    text-white
+    leading-8
+    cursor-pointer
 }
 
 .controls {
