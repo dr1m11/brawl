@@ -6,6 +6,21 @@ interface WheelInterface {
     socketEvent: WheelGameInterface
     isBetSet: boolean
     userCell: number
+    userBets: UserBetsInterface
+}
+
+interface UserBetsInterface {
+    main_amount: number
+    bet2: BetInterface[] | null
+    bet3: BetInterface[] | null
+    bet5: BetInterface[] | null
+    bet10: BetInterface[] | null
+    bet100: BetInterface[] | null
+}
+
+export interface BetInterface {
+    amount: number
+    player_nickname: string
 }
 
 interface WheelGameInterface {
@@ -31,7 +46,15 @@ const initialState: WheelInterface ={
         cell: 0
     },
     isBetSet: false,
-    userCell: 0
+    userCell: 0,
+    userBets: {
+        main_amount: 0,
+        bet3: null,
+        bet2: null,
+        bet5: null,
+        bet10: null,
+        bet100: null,
+    }
 }
 
 export const wheelSlice = createSlice({
@@ -52,6 +75,9 @@ export const wheelSlice = createSlice({
         },
         setUserCell: (state, {payload}) => {
             state.userCell = payload
+        },
+        setUserBets: (state, {payload}) => {
+            state.userBets = payload
         }
     },
     selectors: {
@@ -68,7 +94,8 @@ export const {
     setSocketEvent,
     setUser,
     setIsBetSet,
-    setUserCell
+    setUserCell,
+    setUserBets
 } = wheelSlice.actions
 export const {
     selectBet,

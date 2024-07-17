@@ -49,6 +49,7 @@ const Login = () => {
                 <Controller render={({field}) => (
                     <input {...field} placeholder={"Пароль"} type={"password"} className={styles.input}/>
                 )} name={'password'} control={form.control} disabled={isPending}/>
+
                 <button className={styles.reset__password}>Забыли пароль?</button>
             </div>
             <button type={"submit"} disabled={isPending}

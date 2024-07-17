@@ -10,7 +10,8 @@ import Info from "@/components/Pages/Wheel/components/Info/Info";
 import localFont from "next/font/local";
 import {useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setBet, setIsBetSet, setSocketEvent, setUser} from "@/lib/wheelSlice/wheelSlice";
+import {setBet, setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
+import axios from "axios";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -26,10 +27,13 @@ const Kostil = () => {
     const ws = useRef(null)
 
     const {user, bet, socketEvent, userCell} = useAppSelector(state => state.wheel)
+    const main_amount = useAppSelector(state => state.wheel.userBets.main_amount)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
+        axios.get('https://api.youngrusssia.ru/roulette/init-bets-for-new-client')
+            .then(data => dispatch(setUserBets(data.data)))
     }, []);
 
     useEffect(() => {
@@ -40,13 +44,14 @@ const Kostil = () => {
         // Создание WebSocket соединения при монтировании компонента
         ws.current = new WebSocket('wss://api.youngrusssia.ru/roulette');
 
-        ws.current.onopen = () => {
-            console.log('WebSocket открыто');
-        };
-
         ws.current.onmessage = (event) => {
-            dispatch(setSocketEvent(JSON.parse(event.data)))
-            console.log(event.data)
+            const data = JSON.parse(event.data)
+            if (data.main_amount === 0 || data.main_amount) {
+                dispatch(setUserBets(data))
+                console.log(data)
+            } else {
+                dispatch(setSocketEvent(data))
+            }
         };
 
         ws.current.onclose = () => {
@@ -83,7 +88,7 @@ const Kostil = () => {
         <>
             <div className={styles.game}>
                 <div className={styles.game__label}>
-                    <h1 className={clsx(styles.heading, daysOne.className)}>53,40 RUB</h1>
+                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} RUB</h1>
                     <span className={styles.heading__label}>в этом раунде</span>
                 </div>
                 <Game pending={socketEvent.status === "Pending" || socketEvent.status === "End"} cell={socketEvent.cell}/>

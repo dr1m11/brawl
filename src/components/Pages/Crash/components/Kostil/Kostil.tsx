@@ -10,6 +10,7 @@ import {useEffect, useRef} from "react";
 import {setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
+import axios from "axios";
 
 
 interface CrashInterface {
@@ -31,6 +32,8 @@ const Kostil = () => {
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
+        axios.get('https://api.youngrusssia.ru/crash/init-bets-for-new-client')
+            .then(data => dispatch(setUsersBets(data.data.bets)))
     }, []);
 
     const queryClient = useQueryClient()
@@ -51,7 +54,7 @@ const Kostil = () => {
 
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
-            if (data.bets) {
+            if (data.bets === null || data.bets) {
                 dispatch(setUsersBets(data.bets))
             } else {
                 const mainData: CrashInterface = data
