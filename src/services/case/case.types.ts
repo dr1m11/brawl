@@ -3,7 +3,7 @@ export interface IGun {
     name: string
     rarity: number
     price: number
-    user_item_id: number
+    user_item_id?: number
 }
 
 export interface IInCase {
