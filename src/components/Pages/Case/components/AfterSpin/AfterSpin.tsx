@@ -1,11 +1,13 @@
 'use client'
 import styles from './AfterSpin.module.css'
 import clsx from "clsx";
-import {setFast, setIsFinished, setIsOpened} from "@/lib/caseSlice/caseSlice";
+import {setFast, setIsFinished, setIsOpened, setWinedItem} from "@/lib/caseSlice/caseSlice";
 import Image from "next/image";
 import Repeat from "../../../../../../public/CasePage/Repeat.svg";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {Manrope} from "next/font/google";
+import {itemService} from "@/services/item/item.service";
+import {useQueryClient} from "@tanstack/react-query";
 
 const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['500']})
 
@@ -13,10 +15,24 @@ const AfterSpin = () => {
 
     const dispatch = useAppDispatch()
 
-    const { isFinished, roulette} = useAppSelector(state => state.case)
+    const { isFinished, roulette, winedItem} = useAppSelector(state => state.case)
+    const id = useAppSelector(state => state.user.id)
+
+    const queryClient = useQueryClient()
 
     if (!isFinished)
         return null
+
+    const sellItem = async () => {
+        await itemService.sellItem(id, winedItem)
+        queryClient.invalidateQueries({
+            queryKey: ['user']
+        })
+        dispatch(setIsOpened(false))
+        dispatch(setFast(false))
+        dispatch(setIsFinished(false))
+        dispatch(setWinedItem(null))
+    }
 
     return (
         <div className={clsx(manrope.className, styles.after__spin)}>
@@ -29,7 +45,10 @@ const AfterSpin = () => {
                 }}><Image src={Repeat} alt={'Repeat'} width={20} height={19}/>Попробовать еще раз
             </button>
             <button
-                className={styles.sell}>Продать
+                className={styles.sell}
+                onClick={sellItem}
+            >
+                Продать
                 за {roulette[48].price} RUB
             </button>
         </div>

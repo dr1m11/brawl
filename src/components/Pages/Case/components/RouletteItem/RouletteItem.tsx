@@ -20,7 +20,7 @@ const RouletteItem = ({title, rarity, photo_link}: RouletteItemProps) => {
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={styles.blur} style={{background: rarity === 12 ? "#fc4235" : rarity === 10 ? '#E298FFFF' : '#3841A2FF'}}/>
-                {photo_link && <Image src={photo_link} alt={'Gun'} width={130} height={87} className={styles.gun} />}
+                <Image src={photo_link} alt={'Gun'} width={130} height={87} className={styles.gun} />
                 <h4 className={clsx(styles.label, manrope.className)}>{title ? title : 'Timosopia'}</h4>
             </div>
         </div>

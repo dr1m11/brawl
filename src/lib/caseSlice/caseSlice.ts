@@ -8,6 +8,7 @@ interface initialInterface {
     isFinished: boolean
     fast: boolean
     roulette: IGun[]
+    winedItem: number
 }
 
 const initialState: initialInterface ={
@@ -21,7 +22,8 @@ const initialState: initialInterface ={
     isOpened: false,
     isFinished: false,
     fast: false,
-    roulette: []
+    roulette: [],
+    winedItem: null
 }
 
 export const caseSlice = createSlice({
@@ -46,6 +48,9 @@ export const caseSlice = createSlice({
         setRoulette: (state, {payload}) => {
             state.roulette = payload
         },
+        setWinedItem: (state, {payload}) => {
+            state.winedItem = payload
+        }
     },
     selectors: {
         selectItems: (state) => state.items,
@@ -60,6 +65,7 @@ export const {
     setIsFinished,
     setFast,
     setRoulette,
+    setWinedItem,
 } = caseSlice.actions
 export const {
     selectItems,

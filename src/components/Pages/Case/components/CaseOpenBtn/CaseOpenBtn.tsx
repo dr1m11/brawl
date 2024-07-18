@@ -3,7 +3,7 @@ import styles from './CaseOpenBtn.module.css'
 import {caseService} from "@/services/case/case.service";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {randomInteger} from "@/components/Pages/Case/components/Roulette/Roulette";
-import {setIsOpened, setRoulette} from "@/lib/caseSlice/caseSlice";
+import {setIsOpened, setRoulette, setWinedItem} from "@/lib/caseSlice/caseSlice";
 import {useQueryClient} from "@tanstack/react-query";
 
 const CaseOpenBtn = () => {
@@ -26,6 +26,10 @@ const CaseOpenBtn = () => {
         return arr
     }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     const openCase = async () => {
         const data = await caseService.caseOpen(caseData.id)
         await queryClient.invalidateQueries({
@@ -33,6 +37,7 @@ const CaseOpenBtn = () => {
         })
         dispatch(setRoulette(fillArray(data.wined_item)))
         dispatch(setIsOpened(true))
+        dispatch(setWinedItem(data.user_item_id))
     }
 
     return (
