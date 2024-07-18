@@ -4,7 +4,7 @@ import {caseService} from "@/services/case/case.service";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {randomInteger} from "@/components/Pages/Case/components/Roulette/Roulette";
 import {setIsOpened, setRoulette} from "@/lib/caseSlice/caseSlice";
-import {useQuery, useQueryClient} from "@tanstack/react-query";
+import {useQueryClient} from "@tanstack/react-query";
 
 const CaseOpenBtn = () => {
     const {items, caseData} = useAppSelector(state => state.case)
@@ -27,11 +27,11 @@ const CaseOpenBtn = () => {
     }
 
     const openCase = async () => {
-        const data = await caseService.caseOpen()
+        const data = await caseService.caseOpen(caseData.id)
         await queryClient.invalidateQueries({
             queryKey: ['user']
         })
-        dispatch(setRoulette(fillArray(data)))
+        dispatch(setRoulette(fillArray(data.wined_item)))
         dispatch(setIsOpened(true))
     }
 

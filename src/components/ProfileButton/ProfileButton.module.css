@@ -40,6 +40,11 @@
     text-[9px]
 }
 
+.photo {
+    @apply
+    rounded-xl
+}
+
 @media screen and (max-width: 420px){
     .root {
         @apply

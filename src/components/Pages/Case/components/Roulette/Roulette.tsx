@@ -13,7 +13,7 @@ export function randomInteger(min, max) {
 
 
 const Roulette = () => {
-    const {isOpened} = useAppSelector(state => state.case)
+    const {isOpened, caseData} = useAppSelector(state => state.case)
 
     return (
         <div className={styles.open__wrapper}>
@@ -23,7 +23,7 @@ const Roulette = () => {
                     ?
                     <RouletteOpened />
                     :
-                    <RouletteClosed />
+                    <RouletteClosed photo_link={caseData.photo_link}/>
             }
         </div>
     )

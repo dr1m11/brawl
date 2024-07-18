@@ -1,6 +1,6 @@
 'use client'
 import styles from './CaseSection.module.css'
-import Custom1 from "@/../public/Home/Heroes_Box.png";
+import c from "@/../public/Case/c.webp";
 import {useQuery} from "@tanstack/react-query";
 import {caseService} from "@/services/case/case.service";
 import {CaseSectionProps} from "@/components/Pages/HomePage/components/types";
@@ -25,7 +25,7 @@ const CaseSection = ({title}: CaseSectionProps) => {
                 {
                     !isPending && data?.length &&
                     data.map(({id, name, price}) => (
-                        <Case image={Custom1} title={name} price={price} id={id} key={id}/>
+                        <Case image={c} title={name} price={price} id={id} key={id}/>
                     ))
                 }
             </div>

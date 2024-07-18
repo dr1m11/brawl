@@ -4,12 +4,19 @@ export interface IGun {
     rarity: number
     price: number
     user_item_id?: number
+    photo_link?: string
+}
+
+export interface CaseOpenInterface {
+    user_item_id: number
+    wined_item: IGun
 }
 
 export interface IInCase {
     id: number
     name: string
     price: number
+    photo_link?: string
     items: IGun[]
 }
 

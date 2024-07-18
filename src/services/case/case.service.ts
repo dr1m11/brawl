@@ -1,10 +1,10 @@
 import {axiosClassic} from "@/api/axios";
 import {getAccessToken} from "@/services/auth/auth.helper";
-import {ICase, IGun, IInCase} from "@/services/case/case.types";
+import {CaseOpenInterface, ICase, IGun, IInCase} from "@/services/case/case.types";
 
 export const caseService = {
-    async caseOpen() {
-        const response = await axiosClassic.get<IGun>('/games/open?case_id=1', {
+    async caseOpen(id) {
+        const response = await axiosClassic.get<CaseOpenInterface>(`/games/open?case_id=${id}`, {
             headers: {
                 "Authorization": `Bearer ${getAccessToken()}`
             }
@@ -12,8 +12,8 @@ export const caseService = {
         return response.data
     },
 
-    async getItems() {
-        const response = await axiosClassic.get<IInCase>('case/get-case?id=1')
+    async getItems(id) {
+        const response = await axiosClassic.get<IInCase>(`case/get-case?id=${id}`)
         return response.data
     },
 
