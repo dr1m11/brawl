@@ -1,7 +1,7 @@
 'use client'
 import styles from "./Roulette.module.css";
 import Image from "next/image";
-import BG from "@/../public/CasePage/BG.svg";
+import BG from "@/../public/CasePage/BG.png";
 import {useAppSelector} from "@/lib/hooks";
 import RouletteOpened from "@/components/Pages/Case/components/RouletteOpened/RouletteOpened";
 import RouletteClosed from "@/components/Pages/Case/components/RouletteClosed/RouletteClosed";
@@ -17,7 +17,7 @@ const Roulette = () => {
 
     return (
         <div className={styles.open__wrapper}>
-            <Image src={BG} alt={'Background'} width={1058} height={330} className={styles.background__img}/>
+            <Image src={BG} alt={'Background'} width={1058} height={330} className={styles.background__img} quality={95}/>
             {
                 (isOpened && !!caseData.photo_link)
                     ?
