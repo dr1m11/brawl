@@ -7,7 +7,7 @@ import {setIsOpened, setRoulette, setWinedItem} from "@/lib/caseSlice/caseSlice"
 import {useQueryClient} from "@tanstack/react-query";
 
 const CaseOpenBtn = () => {
-    const {items, caseData} = useAppSelector(state => state.case)
+    const {items, caseData, isOpenDisabled} = useAppSelector(state => state.case)
     const balance = useAppSelector(state => state.user.balance)
 
     const queryClient = useQueryClient()
@@ -41,7 +41,7 @@ const CaseOpenBtn = () => {
     }
 
     return (
-        <button onClick={openCase} className={styles.root} disabled={!((balance - caseData.price) >= 0)}>
+        <button onClick={openCase} className={styles.root} disabled={(!((balance - caseData.price) >= 0)) && isOpenDisabled}>
             Открыть
         </button>
     );

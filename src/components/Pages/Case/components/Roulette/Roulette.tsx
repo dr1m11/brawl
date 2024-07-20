@@ -19,11 +19,11 @@ const Roulette = () => {
         <div className={styles.open__wrapper}>
             <Image src={BG} alt={'Background'} width={1058} height={330} className={styles.background__img}/>
             {
-                isOpened
+                (isOpened && !!caseData.photo_link)
                     ?
                     <RouletteOpened />
                     :
-                    <RouletteClosed photo_link={caseData.photo_link}/>
+                    <RouletteClosed photo_link={caseData?.photo_link}/>
             }
         </div>
     )

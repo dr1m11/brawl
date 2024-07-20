@@ -9,6 +9,7 @@ interface initialInterface {
     fast: boolean
     roulette: IGun[]
     winedItem: number
+    isOpenDisabled: boolean
 }
 
 const initialState: initialInterface ={
@@ -20,6 +21,7 @@ const initialState: initialInterface ={
         id: 0
     },
     isOpened: false,
+    isOpenDisabled: true,
     isFinished: false,
     fast: false,
     roulette: [],
@@ -32,6 +34,7 @@ export const caseSlice = createSlice({
     reducers: {
         setItems: (state, {payload}) => {
             state.items = payload
+            state.isOpenDisabled = !state.items.length;
         },
         setCase: (state, {payload}) => {
             state.caseData = payload
