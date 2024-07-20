@@ -1,8 +1,8 @@
 import {object, z} from "zod";
 
 export const LoginSchema = object({
-    email: z.string().email({
-        message: "Введите адрес электронной почты"
+    email: z.string().min(1, 'Введите email').email({
+        message: "Неверный формат email адреса"
     }),
     password: z.string().min(1, {
         message: "Введите пароль"
@@ -11,12 +11,12 @@ export const LoginSchema = object({
 
 export const RegisterSchema = object({
     username: z.string().min(6,{
-        message: 'Введите имя пользователя'
+        message: 'Минимальная длина имени пользователя 6 символов'
     }),
-    email: z.string().email({
-        message: "Введите адрес электронной почты"
+    email: z.string().min(1, 'Введите адрес электронной почты').email({
+        message: "Неверный формат email адреса"
     }),
     password: z.string().min(6, {
-        message: "Введите пароль"
+        message: "Минимальная длина пароля 6 символов"
     }),
 })

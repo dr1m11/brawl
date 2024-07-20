@@ -10,6 +10,8 @@ import {useMutation} from "@tanstack/react-query";
 import {ISignUpData} from "@/services/auth/auth.types";
 import {authService} from "@/services/auth/auth.service";
 import {useState} from "react";
+import {errorAdapter} from "@/utils/errorAdapter";
+import {BiError} from "react-icons/bi";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
@@ -54,8 +56,13 @@ const Register = () => {
                 <Controller render={({field}) => (
                     <input {...field} placeholder={"Пароль"} type={"password"} className={styles.input}/>
                 )} name={'password'} control={form.control} disabled={isPending}/>
-                {success && <div className={styles.success}>Аккаунт создан успешно!</div>}
+                {errorAdapter(form.formState.errors) &&
+                    Object.entries(form.formState.touchedFields).length &&
+                    <div className={styles.error}><BiError className={styles.error__icon}/>
+                        <span className={styles.error__message}>{errorAdapter(form.formState.errors)[0]}</span>
+                    </div>}
             </div>
+            <div className={styles.divider}/>
             <button type={"submit"} disabled={isPending}
                     className={clsx(styles.login__btn, daysOne.className)}>СОЗДАТЬ
             </button>

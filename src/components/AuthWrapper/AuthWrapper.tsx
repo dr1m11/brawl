@@ -29,7 +29,7 @@ const AuthWrapper = () => {
         isAuthOpen &&
         <div className={clsx(manrope.className, styles.login)}>
             <div className={styles.shadow}/>
-            <div className={styles.login__wrapper} style={{height: type === 'login' ? '323px' : '350px'}}>
+            <div className={styles.login__wrapper}>
                 <div className={styles.images}>
                     <Image src={Star} alt={'Star'} width={74} height={77} className={styles.star}/>
                     <Image src={Diamond} alt={'Diamond'} width={17.1} height={19.6} className={styles.diamond}/>
@@ -37,9 +37,9 @@ const AuthWrapper = () => {
                 <h1 className={clsx(styles.title, daysOne.className)}>Играй <br/> и побеждай!</h1>
                 {
                     type == 'login' ?
-                    <Login />
-                    :
-                        <Register />
+                        <Login/>
+                        :
+                        <Register/>
                 }
                 <AccountBtn type={type} setType={() => setType(type === "login" ? 'register' : 'login')}/>
             </div>
