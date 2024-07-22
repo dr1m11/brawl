@@ -15,6 +15,7 @@ const ItemsList = () => {
     useEffect(() => {
         caseService.getItems(params.cases)
             .then((data) => {
+            console.log(data)
             dispatch(setItems(data.items))
             dispatch(setCase(data))
         })
@@ -44,8 +45,8 @@ const ItemsList = () => {
     return (
         <div className={styles.content}>
             {items.length &&
-                items.map(({name, id, rarity, price, photo_link}) => (
-                    <InCaseGun photo_link={photo_link} key={id} name={name} rarity={rarity} price={price} id={id}/>
+                items.map(({name, id, price, photo_link, color}) => (
+                    <InCaseGun color={color} photo_link={photo_link} key={id} name={name} price={price} id={id}/>
                 ))
             }
         </div>

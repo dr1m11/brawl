@@ -12,13 +12,14 @@ const manrope = Manrope({
 interface RouletteItemProps {
     rarity?: number
     photo_link?: string
+    color: string
 }
 
-const RouletteItem = ({rarity, photo_link}: RouletteItemProps) => {
+const RouletteItem = ({rarity, photo_link, color}: RouletteItemProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-                <div className={styles.blur} style={{background: rarity === 12 ? "#fc4235" : rarity === 10 ? '#E298FFFF' : '#3841A2FF'}}/>
+                <div className={styles.blur} style={{background: color}}/>
                 <Image src={photo_link} alt={'Gun'} width={130} height={87} className={styles.gun} />
             </div>
         </div>

@@ -20,11 +20,11 @@
 .blur {
     @apply
     absolute
-    w-[69px]
-    h-[69px]
+    w-[80px]
+    h-[80px]
     rounded-[50%]
     bg-2463838
-    blur-xl
+    blur-lg
     opacity-50
 }
 

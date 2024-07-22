@@ -33,7 +33,7 @@ const Spinner = () => {
             {
                 roulette.length &&
                 roulette.map((item, index) => (
-                    <RouletteItem key={index} rarity={item.rarity} photo_link={item.photo_link}/>
+                    <RouletteItem key={index} rarity={item.rarity} photo_link={item.photo_link} color={item.color}/>
                 ))
             }
         </div>

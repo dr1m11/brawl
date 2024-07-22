@@ -1,10 +1,11 @@
 export interface IGun {
     id: number
     name: string
-    rarity: number
+    rarity?: number
     price: number
     user_item_id?: number
     photo_link?: string
+    color?: string
 }
 
 export interface CaseOpenInterface {
