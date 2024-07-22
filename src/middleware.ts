@@ -9,6 +9,10 @@ export function middleware(request: NextRequest, response: NextResponse) {
     if (!token && request.nextUrl.pathname.startsWith('/profile')) {
         return NextResponse.redirect(new URL('/', request.url))
     }
+
+    if (!token && request.nextUrl.pathname.startsWith('/payment')) {
+        return NextResponse.redirect(new URL('/', request.url))
+    }
 }
 
 // See "Matching Paths" below to learn more
