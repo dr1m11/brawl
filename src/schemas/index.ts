@@ -20,3 +20,8 @@ export const RegisterSchema = object({
         message: "Минимальная длина пароля 6 символов"
     }),
 })
+
+export const PaymentSchema = object({
+    sum: z.number({message: 'Введите число'}),
+    promo: z.string().nullable()
+})

@@ -6,12 +6,14 @@ import {setBalance, setUser} from "@/lib/userSlice/userSlice";
 import {getAccessToken} from "@/services/auth/auth.helper";
 import {useQuery} from "@tanstack/react-query";
 
+
 const AuthProvider = ({children}: {children: ReactNode}) => {
     const dispatch = useAppDispatch()
 
     const {data, isSuccess, isLoading} = useQuery({
         queryKey: ['user'],
         queryFn: () => userService.getUserById(),
+        enabled: !!getAccessToken()
     })
 
     useEffect(() => {

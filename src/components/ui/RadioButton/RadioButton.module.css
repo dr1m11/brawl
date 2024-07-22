@@ -1,0 +1,18 @@
+.root {
+    @apply
+    cursor-pointer
+    w-[30px]
+    h-[30px]
+    bg-white
+    flex
+    justify-center
+    items-center
+}
+
+.inside {
+    @apply
+    bg-sky-600
+    w-[25px]
+    h-[25px]
+    transition-all
+}
