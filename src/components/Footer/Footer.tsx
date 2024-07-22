@@ -18,7 +18,6 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.bg}/>
             <div className={styles.content}>
-                {/*<div className={'w-full min-h-[246px]'}/>*/}
                 <div className={styles.content__left}>
                     <div className={styles.content__left__shadows}>
                         <div className={styles.circle}/>

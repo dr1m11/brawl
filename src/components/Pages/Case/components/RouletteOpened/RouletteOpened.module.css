@@ -3,7 +3,8 @@
     w-full
     h-full
     flex-col
-    flex items-center
+    flex
+    items-center
 }
 
 .roulette__wrapper {

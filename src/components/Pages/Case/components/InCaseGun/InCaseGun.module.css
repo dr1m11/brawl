@@ -13,15 +13,9 @@
 
 .gun {
     @apply
+    mx-auto
     max-w-[100px]
     max-h-[100px]
-    w-full
-    absolute
-    left-0
-    right-0
-    bottom-0
-    top-0
-    m-auto
 }
 
 .shadow {
@@ -46,8 +40,6 @@
     text-[11px]
     font-semibold
     tracking-wider
-    absolute
-    bottom-4
 }
 
 .desc {

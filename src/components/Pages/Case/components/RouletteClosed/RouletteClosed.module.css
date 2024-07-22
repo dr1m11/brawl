@@ -15,5 +15,13 @@
 }
 
 .center__gun {
-    @apply absolute left-0 right-0 top-0 bottom-0 m-auto
+    @apply absolute left-0 right-0 top-0 bottom-0 m-auto max-w-[200px] max-h-[200px]
+}
+
+@media screen and (max-width: 1060px){
+    .center__gun {
+        @apply
+        max-w-[170px]
+        max-h-[170px]
+    }
 }

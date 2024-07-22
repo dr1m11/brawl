@@ -1,5 +1,9 @@
 .open__wrapper {
-    @apply w-full h-[330px] relative mt-4
+    @apply
+    w-full
+    h-[330px]
+    relative
+    mt-4
 }
 
 .background__img {
@@ -10,5 +14,12 @@
     .open__wrapper {
         @apply
         max-h-[240px]
+    }
+}
+
+@media screen and (max-width: 768px){
+    .open__wrapper {
+        @apply
+        h-[240px]
     }
 }

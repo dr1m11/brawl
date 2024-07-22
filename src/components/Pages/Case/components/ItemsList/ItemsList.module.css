@@ -5,3 +5,18 @@
     grid
     grid-cols-5
 }
+
+@media screen and (max-width: 1060px){
+    .content {
+        @apply
+        grid-cols-4
+    }
+}
+
+@media screen and (max-width: 768px){
+    .content {
+        @apply
+        grid-cols-3
+        mx-auto
+    }
+}

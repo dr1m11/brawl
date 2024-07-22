@@ -11,13 +11,6 @@ const ItemsList = () => {
 
     const params = useParams()
 
-    // const {data, isSuccess, error, isLoading, refetch} = useQuery({
-    //     queryKey: ["get-case-items"],
-    //     queryFn: () => caseService.getItems(params.cases),
-    //     staleTime: 0,
-    // })
-
-    const router = useRouter()
 
     useEffect(() => {
         caseService.getItems(params.cases)
@@ -30,21 +23,8 @@ const ItemsList = () => {
             })
     }, []);
 
-    // useEffect(() => {
-    //     // @ts-ignore
-    //     if (error?.response.status === 500)
-    //         router.push('/')
-    // }, [error]);
-
     const {items, caseData} = useAppSelector(state => state.case)
     const dispatch = useAppDispatch()
-
-    // useEffect(() => {
-    //     if (isSuccess) {
-    //         dispatch(setItems(data.items))
-    //         dispatch(setCase(data))
-    //     }
-    // }, [isSuccess]);
 
     useEffect(() => {
         return () => {
@@ -60,9 +40,6 @@ const ItemsList = () => {
             },))
         }
     }, []);
-
-    // if (isLoading)
-    //     return null
 
     return (
         <div className={styles.content}>

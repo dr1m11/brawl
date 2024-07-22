@@ -1,7 +1,7 @@
 .root {
     /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
     @apply
-    w-[246px]
+    w-[280px]
     h-full
     border-[10px]
     rounded-xl
@@ -12,7 +12,26 @@
     font-bold
     text-white
     tracking-wider
-    text-[18px]
+    text-[16px]
+    flex
+    items-center
+    justify-center
+    gap-x-2
+    px-2
+}
+
+.bet__btn__label {
+    @apply
+    bg-white-OP20
+    w-full
+    h-full
+    max-w-[120px]
+    rounded-lg
+    flex
+    items-center
+    justify-center
+    px-2
+    max-h-[35px]
 }
 
 .root:disabled {

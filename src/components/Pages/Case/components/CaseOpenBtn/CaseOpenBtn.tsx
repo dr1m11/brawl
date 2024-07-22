@@ -41,8 +41,11 @@ const CaseOpenBtn = () => {
     }
 
     return (
-        <button onClick={openCase} className={styles.root} disabled={(!((balance - caseData.price) >= 0)) && isOpenDisabled}>
-            Открыть
+        <button onClick={openCase} className={styles.root}
+                disabled={(!((balance - caseData.price) >= 0)) || isOpenDisabled}>
+            <h5>Открыть за</h5>
+            <span
+                className={styles.bet__btn__label}>{caseData.price} RUB</span>
         </button>
     );
 };

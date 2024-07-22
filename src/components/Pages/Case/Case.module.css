@@ -2,6 +2,42 @@
     @apply relative w-full h-full mt-3 mb-20
 }
 
+.main__img {
+    @apply
+    absolute
+    w-full
+    opacity-20
+    -z-10
+}
+
+.left__shadow {
+    @apply
+    w-[400px]
+    h-[400px]
+    bg-sky-600
+    left-0
+    right-96
+    top-24
+    m-auto
+    absolute
+    -z-10
+    blur-[280px]
+}
+
+.right__shadow {
+    @apply
+    w-[400px]
+    h-[400px]
+    bg-rose-900
+    left-96
+    right-0
+    top-24
+    m-auto
+    absolute
+    -z-10
+    blur-[280px]
+}
+
 .background {
     @apply absolute w-full h-full bg-217 blur-xl -z-50
 }
@@ -41,5 +77,16 @@
     .content {
         @apply
         grid-cols-4
+    }
+
+    .right__shadow, .left__shadow {
+        @apply
+        max-w-[200px]
+    }
+}
+
+@media screen and (max-width: 768px){
+    .main__img {
+        height: 240px !important;
     }
 }
