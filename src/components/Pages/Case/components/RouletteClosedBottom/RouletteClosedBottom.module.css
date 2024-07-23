@@ -5,3 +5,36 @@
 .case__bottom__wrapper {
     @apply flex h-[56px] items-center justify-between
 }
+
+.high__res {
+    @apply
+    w-fit
+    h-full
+}
+
+.low__res {
+    @apply
+    h-[55px]
+    mx-auto
+    w-fit
+    mt-2
+    hidden
+}
+
+@media screen and (max-width: 768px){
+    .case__bottom__wrapper {
+        @apply
+        justify-center
+        gap-x-2
+    }
+
+    .high__res {
+        @apply
+        hidden
+    }
+
+    .low__res {
+        @apply
+        block
+    }
+}

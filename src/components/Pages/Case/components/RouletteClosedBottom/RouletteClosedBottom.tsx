@@ -8,8 +8,13 @@ const RouletteClosedBottom = () => {
         <div className={styles.roulette__closed__bottom}>
             <div className={styles.case__bottom__wrapper}>
                 <CasesCount/>
-                <CaseOpenBtn/>
+                <div className={styles.high__res}>
+                    <CaseOpenBtn/>
+                </div>
                 <CaseRadio/>
+            </div>
+            <div className={styles.low__res}>
+                <CaseOpenBtn/>
             </div>
         </div>
     );

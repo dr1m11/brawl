@@ -21,5 +21,12 @@
     .open__wrapper {
         @apply
         h-[240px]
+        w-[600px]
+        mx-auto
+    }
+
+    .background__img {
+        @apply
+        h-[240px]
     }
 }

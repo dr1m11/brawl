@@ -86,7 +86,8 @@
 }
 
 @media screen and (max-width: 768px){
-    .main__img {
-        height: 240px !important;
+    .in__case {
+        @apply
+        mt-24
     }
 }
