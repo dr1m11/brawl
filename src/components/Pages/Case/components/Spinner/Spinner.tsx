@@ -24,8 +24,10 @@ const Spinner = () => {
             return -6410
         } else if (size >= 600) {
             return -6490
-        } else {
+        } else if (size >= 480){
             return -4611
+        } else {
+            return -4671
         }
     }
 
@@ -36,8 +38,10 @@ const Spinner = () => {
             return randomInteger(-6340, -6470)
         } else if (size >= 600) {
             return randomInteger(-6425, -6560)
-        } else {
+        } else if (size >= 480) {
             return randomInteger(-4561, -4657)
+        } else {
+            return randomInteger(-4621, -4719)
         }
     }
 

@@ -39,6 +39,7 @@
     cursor-not-allowed
     border-0
     text-gray-400
+    pr-2
 }
 
 @media screen and (max-width: 600px) {
@@ -62,5 +63,25 @@
         max-h-[30px]
         text-[12px]
         font-semibold
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .root {
+        @apply
+        w-[170px]
+        max-h-[36px]
+        border-[6px]
+        rounded-lg
+        font-bold
+        text-[10px]
+    }
+
+    .bet__btn__label {
+        @apply
+        max-w-[70px]
+        rounded-md
+        max-h-[18px]
+        text-[10px]
     }
 }

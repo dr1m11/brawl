@@ -7,11 +7,33 @@
 }
 
 .purp__shadow {
-    @apply absolute left-10 right-0 top-0 bottom-0 m-auto bg-8420126 max-w-[390px] max-h-[272px] blur-[60px] rounded-[50%]
+    @apply
+    absolute
+    left-10
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    bg-8420126
+    max-w-[390px]
+    max-h-[272px]
+    blur-[60px]
+    rounded-[50%]
 }
 
 .orange__shadow {
-    @apply absolute left-10 right-0 top-0 bottom-0 m-auto bg-2501760 max-w-[94px] max-h-[92px] blur-[40px] rounded-[100%]
+    @apply
+    absolute
+    left-10
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    bg-2501760
+    max-w-[94px]
+    max-h-[92px]
+    blur-[40px]
+    rounded-[100%]
 }
 
 .center__gun {
@@ -41,4 +63,31 @@
         max-h-[110px]
     }
 }
+
+@media screen and (max-width: 480px){
+    .center__gun {
+        @apply
+        max-w-[90px]
+        max-h-[90px]
+    }
+
+    .purp__shadow {
+        @apply
+        left-0
+        max-w-[200px]
+        max-h-[170px]
+        blur-[40px]
+        rounded-[50%]
+    }
+
+    .orange__shadow {
+        @apply
+        left-0
+        max-w-[60px]
+        max-h-[59px]
+        blur-[20px]
+        rounded-[100%]
+    }
+}
+
 

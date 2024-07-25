@@ -49,3 +49,14 @@
         h-[42px]
     }
 }
+
+@media screen and (max-width: 480px){
+    .roulette__closed__bottom {
+        @apply
+        -bottom-10
+    }
+    .case__bottom__wrapper {
+        @apply
+        h-[36px]
+    }
+}

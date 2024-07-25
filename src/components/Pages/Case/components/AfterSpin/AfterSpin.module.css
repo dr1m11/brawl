@@ -50,23 +50,32 @@
     .ones__more__btn {
         @apply
         w-[175px]
-        h-full
-        flex
-        justify-center
-        gap-x-2
-        items-center
-        bg-gradient-to-r
-        from-6747127
-        to-5436107
-        rounded-xl
         text-[11px]
-        text-main
     }
 
     .sell {
         @apply
         w-[145px]
-        h-full
         text-[11px]
+    }
+}
+
+@media screen and (max-width: 600px){
+    .ones__more__btn {
+        @apply
+        w-[145px]
+        text-[10px]
+    }
+
+    .sell {
+        @apply
+        w-[125px]
+        text-[10px]
+    }
+
+    .repeat {
+        @apply
+        w-[16px]
+        h-[16px]
     }
 }

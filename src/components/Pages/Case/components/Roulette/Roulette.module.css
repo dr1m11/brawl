@@ -44,3 +44,16 @@
         h-[200px]
     }
 }
+
+@media screen and (max-width: 480px){
+    .open__wrapper {
+        @apply
+        h-[160px]
+        w-[360px]
+    }
+
+    .background__img {
+        @apply
+        h-[160px]
+    }
+}

@@ -142,3 +142,46 @@
         leading-8
     }
 }
+
+@media screen and (max-width: 480px){
+    .root {
+        @apply
+        max-w-[360px]
+    }
+
+    .left__shadow, .right__shadow {
+        @apply
+        w-[150px]
+        h-[150px]
+        blur-[80px]
+    }
+
+    .right__shadow {
+        @apply
+        left-24
+    }
+
+    .left__shadow {
+        @apply
+        right-24
+    }
+
+    .back__btn {
+        @apply
+        mt-8
+        max-w-[110px]
+        text-[10px]
+        leading-6
+        rounded-lg
+    }
+
+    .title {
+        @apply
+        text-[14px]
+    }
+
+    .in__case {
+        @apply
+        mt-20
+    }
+}

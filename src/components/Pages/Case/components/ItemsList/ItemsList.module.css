@@ -20,3 +20,12 @@
         mx-auto
     }
 }
+
+@media screen and (max-width: 480px){
+    .content {
+        @apply
+        mt-4
+        grid-cols-2
+        mx-auto
+    }
+}

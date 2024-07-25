@@ -60,3 +60,31 @@
         rounded-lg
     }
 }
+
+@media screen and (max-width: 600px){
+    .root {
+        @apply
+        w-[110px]
+        px-1.5
+        rounded-lg
+    }
+
+    .label {
+        @apply
+        tracking-wide
+        text-[10px]
+    }
+
+    .uncheck {
+        @apply
+        w-[25px]
+        h-[25px]
+    }
+
+    .check {
+        @apply
+        w-[15px]
+        h-[15px]
+        rounded
+    }
+}

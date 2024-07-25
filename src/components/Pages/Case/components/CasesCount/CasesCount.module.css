@@ -24,3 +24,13 @@
         text-[12px]
     }
 }
+
+@media screen and (max-width: 480px){
+    .cases__counter {
+        @apply
+        w-[25px]
+        h-[25px]
+        rounded-md
+        text-[10px]
+    }
+}

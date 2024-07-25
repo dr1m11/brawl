@@ -42,7 +42,7 @@ const AfterSpin = () => {
                     dispatch(setFast(false))
                     dispatch(setIsFinished(false))
                     dispatch(setIsOpened(false))
-                }}><Image src={Repeat} alt={'Repeat'} width={20} height={19}/>Попробовать еще раз
+                }}><Image src={Repeat} alt={'Repeat'} width={20} height={19} className={styles.repeat}/>Попробовать еще раз
             </button>
             <button
                 className={styles.sell}
