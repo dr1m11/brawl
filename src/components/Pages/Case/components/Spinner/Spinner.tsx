@@ -22,8 +22,10 @@ const Spinner = () => {
             return -7670
         } else if (size >= 768) {
             return -6410
-        } else {
+        } else if (size >= 600) {
             return -6490
+        } else {
+            return -4611
         }
     }
 
@@ -32,8 +34,10 @@ const Spinner = () => {
             return randomInteger(-7750, -7600)
         } else if (size >= 768) {
             return randomInteger(-6340, -6470)
-        } else {
+        } else if (size >= 600) {
             return randomInteger(-6425, -6560)
+        } else {
+            return randomInteger(-4561, -4657)
         }
     }
 
@@ -53,7 +57,7 @@ const Spinner = () => {
             {
                 roulette.length &&
                 roulette.map((item, index) => (
-                    <RouletteItem key={index} rarity={item.rarity} photo_link={item.photo_link} color={item.color}/>
+                    <RouletteItem key={index} photo_link={item.photo_link} color={item.color}/>
                 ))
             }
         </div>

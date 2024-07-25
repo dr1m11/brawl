@@ -15,9 +15,8 @@
     text-[16px]
     flex
     items-center
-    justify-center
-    gap-x-2
-    px-2
+    justify-between
+    pl-2
 }
 
 .bet__btn__label {
@@ -40,4 +39,28 @@
     cursor-not-allowed
     border-0
     text-gray-400
+}
+
+@media screen and (max-width: 600px) {
+    .root {
+        @apply
+        w-[200px]
+        max-h-[40px]
+        border-[6px]
+        rounded-xl
+        font-semibold
+        tracking-wider
+        text-[12px]
+        pl-2
+    }
+
+    .bet__btn__label {
+        @apply
+        max-w-[80px]
+        rounded-lg
+        px-2
+        max-h-[30px]
+        text-[12px]
+        font-semibold
+    }
 }

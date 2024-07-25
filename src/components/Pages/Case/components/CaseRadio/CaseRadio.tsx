@@ -19,7 +19,7 @@ const CaseRadio = () => {
 
     return (
         <div className={clsx(manrope.className, styles.root)}>
-            <span className={'text-white tracking-wide text-[16px]'}>Быстро</span>
+            <span className={styles.label}>Быстро</span>
             <div className={styles.uncheck} onClick={() => dispatch(setFast(!fast))}>
                 <div className={styles.check} style={{opacity: fast && '1'}}/>
             </div>

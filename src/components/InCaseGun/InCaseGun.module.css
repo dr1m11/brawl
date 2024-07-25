@@ -9,6 +9,7 @@
     -z-10
     overflow-hidden
     p-3
+    mx-auto
 }
 
 .gun {
@@ -64,5 +65,34 @@
         h-[140px]
         pt-2
         pb-1
+    }
+}
+
+@media screen and (max-width: 600px){
+    .root {
+        @apply
+        max-w-[140px]
+        h-[110px]
+        pt-2
+        pb-1
+    }
+
+    .gun {
+        @apply
+        max-w-[60px]
+        max-h-[60px]
+        bottom-6
+    }
+
+    .shadow {
+        @apply
+        w-[58px]
+        h-[58px]
+    }
+
+    .title {
+        @apply
+        text-[9px]
+        bottom-2
     }
 }

@@ -9,3 +9,18 @@
 .active {
     @apply bg-9580160
 }
+
+@media screen and (max-width: 600px){
+    .cases__count {
+        @apply
+        p-1.5
+        h-fit
+    }
+    .cases__counter {
+        @apply
+        w-[30px]
+        h-[30px]
+        rounded-lg
+        text-[12px]
+    }
+}

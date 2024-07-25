@@ -10,12 +10,11 @@ const manrope = Manrope({
 })
 
 interface RouletteItemProps {
-    rarity?: number
     photo_link?: string
     color: string
 }
 
-const RouletteItem = ({rarity, photo_link, color}: RouletteItemProps) => {
+const RouletteItem = ({photo_link, color}: RouletteItemProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>

@@ -3,7 +3,8 @@
     bg-6747127
     w-[176px]
     h-full
-    flex items-center
+    flex
+    items-center
     px-3
     rounded-xl
     justify-between
@@ -29,4 +30,33 @@
     bg-yellow-500
     opacity-0
     transition-all
+}
+
+.label {
+    @apply
+    text-white
+    tracking-wide
+    text-[16px]
+}
+
+@media screen and (max-width: 600px){
+    .root {
+        @apply
+        w-[130px]
+        px-2
+        rounded-xl
+    }
+
+    .label {
+        @apply
+        tracking-wide
+        text-[12px]
+    }
+
+    .uncheck {
+        @apply
+        w-[30px]
+        h-[30px]
+        rounded-lg
+    }
 }

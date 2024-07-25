@@ -7,12 +7,12 @@ const RouletteOpened = () => {
 
     return (
         <div className={styles.roulette__opened}>
-            <Image src={triangle} alt={'Triangle'} width={33} height={43}/>
+            <Image src={triangle} alt={'Triangle'} width={33} height={43} className={styles.triangle}/>
             <div className={styles.roulette__wrapper}>
                 <div/>
                 <Spinner />
             </div>
-            <Image src={triangle} alt={'Triangle'} width={33} height={43}
+            <Image src={triangle} alt={'Triangle'} width={33} height={43} className={styles.triangle}
                    style={{transform: 'rotateZ(180deg)'}}/>
             <AfterSpin />
         </div>

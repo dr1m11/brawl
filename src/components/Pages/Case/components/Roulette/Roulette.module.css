@@ -30,3 +30,17 @@
         h-[240px]
     }
 }
+
+@media screen and (max-width: 600px){
+    .open__wrapper {
+        @apply
+        h-[200px]
+        w-[480px]
+        mx-auto
+    }
+
+    .background__img {
+        @apply
+        h-[200px]
+    }
+}

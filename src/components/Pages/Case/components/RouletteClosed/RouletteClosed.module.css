@@ -25,3 +25,20 @@
         max-h-[170px]
     }
 }
+
+@media screen and (max-width: 768px){
+    .center__gun {
+        @apply
+        max-w-[130px]
+        max-h-[130px]
+    }
+}
+
+@media screen and (max-width: 600px){
+    .center__gun {
+        @apply
+        max-w-[110px]
+        max-h-[110px]
+    }
+}
+

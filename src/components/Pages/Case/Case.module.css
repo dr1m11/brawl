@@ -47,7 +47,19 @@
 }
 
 .back__btn {
-    @apply mt-20 rounded-xl bg-gradient-to-r from-8420126 to-7381172 max-w-[150px] w-full font-semibold text-[13px] text-white leading-8 cursor-pointer
+    @apply
+    mt-20
+    rounded-xl
+    bg-gradient-to-r
+    from-8420126
+    to-7381172
+    max-w-[150px]
+    w-full
+    font-semibold
+    text-[13px]
+    text-white
+    leading-8
+    cursor-pointer
 }
 
 .in__case {
@@ -86,8 +98,47 @@
 }
 
 @media screen and (max-width: 768px){
+    .root {
+        @apply
+        max-w-[600px]
+        mx-auto
+    }
+
     .in__case {
         @apply
         mt-24
+    }
+}
+
+@media screen and (max-width: 600px){
+    .root {
+        @apply
+        max-w-[480px]
+        mx-auto
+    }
+
+    .left__shadow, .right__shadow {
+        @apply
+        w-[200px]
+        h-[200px]
+        blur-[100px]
+    }
+
+    .right__shadow {
+        @apply
+        left-48
+    }
+
+    .left__shadow {
+        @apply
+        right-48
+    }
+
+    .back__btn {
+        @apply
+        mt-14
+        max-w-[120px]
+        text-[11px]
+        leading-8
     }
 }

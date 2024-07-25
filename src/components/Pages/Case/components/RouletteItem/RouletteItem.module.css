@@ -56,3 +56,24 @@
         h-[140px]
     }
 }
+
+@media screen and (max-width: 600px){
+    .root {
+        @apply
+        w-[100px]
+        h-[100px]
+    }
+
+    .gun {
+        @apply
+        max-w-[60px]
+        max-h-[60px]
+    }
+
+    .blur {
+        @apply
+        w-[60px]
+        h-[60px]
+        blur-lg
+    }
+}

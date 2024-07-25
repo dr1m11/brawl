@@ -6,11 +6,19 @@
 }
 
 .main__img {
-    @apply absolute w-full opacity-20 -z-10
+    @apply
+    absolute
+    w-full
+    opacity-20
+    -z-10
 }
 
 .content {
-    @apply max-w-[1600px] mx-auto w-full
+    @apply
+    max-w-[1600px]
+    mx-auto
+    w-full
+    pb-12
 }
 
 .bottom__img {
@@ -18,7 +26,7 @@
     absolute
     w-full
     -z-20
-    -bottom-[43%]
+    -bottom-[300px]
 }
 
 @media screen and (max-width: 768px){

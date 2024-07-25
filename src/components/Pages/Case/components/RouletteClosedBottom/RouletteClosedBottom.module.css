@@ -38,3 +38,14 @@
         block
     }
 }
+
+@media screen and (max-width: 600px){
+    .roulette__closed__bottom {
+        @apply
+        -bottom-9
+    }
+    .case__bottom__wrapper {
+        @apply
+        h-[42px]
+    }
+}

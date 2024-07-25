@@ -37,3 +37,36 @@
     text-[13px]
     text-main
 }
+
+@media screen and (max-width: 600px){
+    .after__spin {
+        @apply
+        h-[36px]
+        justify-center
+        gap-x-2
+        -bottom-14
+    }
+
+    .ones__more__btn {
+        @apply
+        w-[175px]
+        h-full
+        flex
+        justify-center
+        gap-x-2
+        items-center
+        bg-gradient-to-r
+        from-6747127
+        to-5436107
+        rounded-xl
+        text-[11px]
+        text-main
+    }
+
+    .sell {
+        @apply
+        w-[145px]
+        h-full
+        text-[11px]
+    }
+}
