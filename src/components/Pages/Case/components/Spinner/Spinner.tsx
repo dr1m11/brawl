@@ -17,6 +17,10 @@ const Spinner = () => {
 
     const size = useResize()
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     const getRotationBySize = () => {
         if (size >= 1060) {
             return -7670
@@ -46,14 +50,19 @@ const Spinner = () => {
     }
 
     useEffect(() => {
-        setStart(true)
+        sleep(10).then(() => setStart(true))
+        return () => {
+            setStart(false)
+        }
     }, []);
 
     return (
         <div
             className={styles.spin}
             style={{
-                transform: start && isOpened ? isFinished ? `translateX(${getRotationBySize()}px)` : `translateX(${getSecondRotationBySize()}px)` : 'translateX(0px)',
+                transform: (start && isOpened) ?
+                    isFinished ? `translateX(${getRotationBySize()}px)` : `translateX(${getSecondRotationBySize()}px)`
+                    : 'translateX(0px)',
                 transitionDuration: fast ? '2.5s' : isFinished && '.6s',
             }}
             onTransitionEnd={() => dispatch(setIsFinished(true))}

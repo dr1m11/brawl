@@ -26,18 +26,14 @@ const CaseOpenBtn = () => {
         return arr
     }
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
     const openCase = async () => {
         const data = await caseService.caseOpen(caseData.id)
         await queryClient.invalidateQueries({
             queryKey: ['user']
         })
+        dispatch(setWinedItem(data.user_item_id))
         dispatch(setRoulette(fillArray(data.wined_item)))
         dispatch(setIsOpened(true))
-        dispatch(setWinedItem(data.user_item_id))
     }
 
     return (

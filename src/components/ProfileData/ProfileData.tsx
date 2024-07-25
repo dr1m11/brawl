@@ -4,11 +4,7 @@ import localFont from "next/font/local";
 import clsx from "clsx";
 import Wallet from '@/../public/Profile/Wallet.svg'
 import Image from "next/image";
-import UserIcon from "../../../public/Profile/UserIcon.svg";
-import {useQuery} from "@tanstack/react-query";
-import {userService} from "@/services/user/user.service";
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {useEffect} from "react";
+import { useAppSelector} from "@/lib/hooks";
 import Link from "next/link";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});

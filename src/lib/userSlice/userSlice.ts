@@ -38,7 +38,7 @@ export const userSlice = createSlice({
         },
         setUser: (state, {payload}) => {
             state.username = payload.username
-            state.balance = payload.balance
+            state.balance = payload.balance.toFixed(0)
             state.id = payload.id
             state.photo = `https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${payload.photo}.jpg`
             state.items = payload.items

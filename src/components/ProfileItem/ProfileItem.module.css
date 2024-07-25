@@ -30,7 +30,7 @@
     absolute
     top-0
     bottom-0
-    -left-4
+    left-0
     right-0
     m-auto
     z-10
@@ -64,6 +64,7 @@
 }
 
 .sell {
+    color: #492e80;
     @apply
     w-[100px]
     h-[32px]
@@ -73,6 +74,9 @@
     rounded-xl
     text-white
     opacity-75
+    flex
+    items-center
+    justify-center
 }
 
 .price {

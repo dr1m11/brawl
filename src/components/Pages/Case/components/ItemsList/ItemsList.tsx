@@ -5,7 +5,15 @@ import {useQuery} from "@tanstack/react-query";
 import {caseService} from "@/services/case/case.service";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useEffect} from "react";
-import {setCase, setFast, setIsFinished, setIsOpened, setItems} from "@/lib/caseSlice/caseSlice";
+import {
+    setCase,
+    setFast,
+    setIsFinished,
+    setIsOpened,
+    setItems,
+    setRoulette,
+    setWinedItem
+} from "@/lib/caseSlice/caseSlice";
 import {useParams, useRouter} from "next/navigation";
 const ItemsList = () => {
 
@@ -24,11 +32,13 @@ const ItemsList = () => {
             })
     }, []);
 
-    const {items, caseData} = useAppSelector(state => state.case)
+    const {items} = useAppSelector(state => state.case)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         return () => {
+            dispatch(setWinedItem(null))
+            dispatch(setRoulette(null))
             dispatch(setIsFinished(false))
             dispatch(setIsOpened(false))
             dispatch(setFast(false))

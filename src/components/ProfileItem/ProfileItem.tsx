@@ -5,33 +5,55 @@ import Gun from "../../../public/CasePage/Gun.svg";
 import {useAppSelector} from "@/lib/hooks";
 import {itemService} from "@/services/item/item.service";
 import {useQueryClient} from "@tanstack/react-query";
+import {useState} from "react";
+import {TailSpin} from "react-loader-spinner";
 
 interface ProfileItemProps {
     title: string
     price: number
-    rarity: number
     id: number
     userId: string
+    photo_link: string
+    color: string
 }
 
-const ProfileItem = ({title, rarity, price, id, userId}: ProfileItemProps) => {
+const ProfileItem = ({title, price, id, userId, color, photo_link}: ProfileItemProps) => {
+    const [isLoading, setIsLoading] = useState(false)
 
     const queryClient = useQueryClient()
     async function sellItem() {
-        await itemService.sellItem(userId, id)
-        queryClient.invalidateQueries({
-            queryKey: ['user']
-        })
+        setIsLoading(true)
+        try {
+            await itemService.sellItem(userId, id)
+            queryClient.invalidateQueries({
+                queryKey: ['user']
+            })
+        } catch {
+            alert('Произошла ошибка удаления')
+        }
+        setIsLoading(false)
     }
 
     return (
         <div className={styles.root}>
             <h1 className={styles.title}>{title}</h1>
-            <h2 className={styles.desc}>дополнительное место</h2>
-            <Image src={Gun} alt={'Gun'} width={141} height={95} className={styles.gun}/>
-            <div className={styles.shadow} style={{background: rarity === 12 ? "#fc4235" : rarity === 10 ? '#E298FFFF' : '#3841A2FF'}}/>
+            {photo_link && <Image src={photo_link} alt={'Gun'} width={110} height={70} className={styles.gun}/>}
+            <div className={styles.shadow} style={{background: color}}/>
             <div className={styles.info}>
-                <button className={styles.sell} onClick={sellItem}>Продать</button>
+                <button className={styles.sell} onClick={sellItem}>{
+                    isLoading ?
+                        <TailSpin
+                            visible={true}
+                            height="24"
+                            width="24"
+                            color="#492e80"
+                            ariaLabel="tail-spin-loading"
+                            radius="1"
+                        />
+                        :
+                        'Продать'
+                }
+                </button>
                 <span className={styles.price}>{price} RUB</span>
             </div>
         </div>
