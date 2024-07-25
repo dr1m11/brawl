@@ -5,10 +5,13 @@ import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {randomInteger} from "@/components/Pages/Case/components/Roulette/Roulette";
 import {setIsOpened, setRoulette, setWinedItem} from "@/lib/caseSlice/caseSlice";
 import {useQueryClient} from "@tanstack/react-query";
+import {useState} from "react";
+import {TailSpin} from "react-loader-spinner";
 
 const CaseOpenBtn = () => {
     const {items, caseData, isOpenDisabled} = useAppSelector(state => state.case)
     const balance = useAppSelector(state => state.user.balance)
+    const [isLoading, setIsLoading] = useState(false)
 
     const queryClient = useQueryClient()
 
@@ -27,6 +30,7 @@ const CaseOpenBtn = () => {
     }
 
     const openCase = async () => {
+        setIsLoading(true)
         const data = await caseService.caseOpen(caseData.id)
         await queryClient.invalidateQueries({
             queryKey: ['user']
@@ -34,14 +38,29 @@ const CaseOpenBtn = () => {
         dispatch(setWinedItem(data.user_item_id))
         dispatch(setRoulette(fillArray(data.wined_item)))
         dispatch(setIsOpened(true))
+        setIsLoading(false)
     }
 
     return (
         <button onClick={openCase} className={styles.root}
-                disabled={(!((balance - caseData.price) >= 0)) || isOpenDisabled}>
-            <h5>Открыть за</h5>
-            <span
-                className={styles.bet__btn__label}>{caseData.price} RUB</span>
+                disabled={(!((balance - caseData.price) >= 0)) || isOpenDisabled} style={{justifyContent: isLoading && 'center'}}>
+            {
+                isLoading ?
+                    <TailSpin
+                        visible={true}
+                        height="24"
+                        width="24"
+                        color="#FFF"
+                        ariaLabel="tail-spin-loading"
+                        radius="2"
+                    />
+                    :
+                    <>
+                        <h5>Открыть за</h5>
+                        <span
+                            className={styles.bet__btn__label}>{caseData.price} RUB</span>
+                    </>
+            }
         </button>
     );
 };
