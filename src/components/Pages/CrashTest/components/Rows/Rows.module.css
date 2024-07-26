@@ -1,0 +1,17 @@
+.rows {
+    @apply
+    w-full
+    h-full
+    flex
+    flex-col
+    justify-around
+    transition-all
+}
+
+.row {
+    @apply
+    w-full
+    border
+    border-dashed
+    border-7767146
+}

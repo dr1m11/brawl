@@ -1,0 +1,35 @@
+.root {
+    @apply
+    max-w-[1435px]
+    w-full
+    h-[850px]
+    mx-auto
+    -mt-14
+    flex
+    items-center
+    justify-center
+}
+
+.bg {
+    @apply
+    absolute
+    left-0
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    opacity-20
+    min-w-[1400px]
+    -z-50
+}
+
+.wrapper {
+    @apply
+    max-w-[1064px]
+    w-full
+    max-h-[500px]
+    h-full
+    flex
+    flex-col
+    justify-between
+}

@@ -1,0 +1,76 @@
+.automation {
+    @apply
+    w-full
+    h-full
+    bg-383838-OP20
+    max-w-[335px]
+    flex
+    justify-around
+    items-center
+    rounded-xl
+    text-[13px]
+}
+
+.auto {
+    @apply
+    flex
+    items-center
+    w-full
+    max-w-[112px]
+    justify-between
+}
+
+.auto__button {
+    @apply
+    w-[30px]
+    h-[32px]
+    bg-332762
+    rounded-lg
+    flex
+    items-center
+    justify-center
+    cursor-pointer
+}
+
+.auto__button__active {
+    @apply
+    w-[18px]
+    h-[19px]
+    bg-2501760
+    rounded
+}
+
+.auto__multiplier {
+    @apply
+    max-w-[64px]
+    w-full
+    max-h-[32px]
+    h-full
+    flex
+    items-center
+    justify-center
+    bg-332762
+    rounded-lg
+}
+
+.input {
+    @apply
+    outline-0
+    border-0
+    bg-transparent
+    max-w-[35px]
+    overflow-hidden
+    w-full
+}
+
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.input[type='number'],
+.input[type="number"]:hover,
+.input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}

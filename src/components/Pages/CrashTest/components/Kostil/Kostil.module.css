@@ -1,0 +1,79 @@
+.game {
+    @apply
+    bg-6944145
+    w-full
+    h-full
+    max-w-[1064px]
+    max-h-[387px]
+    rounded-2xl
+    p-4
+    flex
+    justify-between
+}
+
+.graph {
+    @apply
+    h-full
+    max-w-[670px]
+    w-full
+    rounded-2xl
+    p-3
+    bg-373070
+}
+
+.players {
+    @apply
+    h-full
+    w-full
+    rounded-2xl
+    max-w-[350px]
+    bg-373070
+    p-2.5
+}
+
+.choose__filter {
+    @apply
+    w-full
+    h-full
+    max-h-[32px]
+    flex
+    justify-between
+}
+
+.filter__button {
+    @apply
+    text-center
+    w-full
+    max-w-[106px]
+    text-white
+    text-[13px]
+    bg-9580160-OP20
+    rounded-lg
+    hover:bg-9580160
+    transition
+}
+
+.bets__count {
+    @apply
+    text-center
+    mt-3
+    text-main-op40
+    text-[13px]
+    font-medium
+    opacity-75
+}
+
+.bet {
+    @apply
+    max-w-[1064px]
+    w-full
+    max-h-[97px]
+    h-full
+    bg-6944145
+    rounded-2xl
+    flex
+    justify-between
+    items-center
+    p-5
+    text-white
+}
