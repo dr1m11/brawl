@@ -11,6 +11,7 @@ import {setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSli
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
+import useResize from "@/hooks/useResize";
 
 
 interface CrashInterface {
@@ -27,8 +28,7 @@ const Kostil = () => {
 
     const ws = useRef(null)
 
-
-    const {socketEvent, user, bet, isBetSet} = useAppSelector(state => state.crash)
+    const {socketEvent, isAutoBet, user, bet, isBetSet, usersBets} = useAppSelector(state => state.crash)
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
@@ -106,6 +106,12 @@ const Kostil = () => {
         }
     };
 
+    useEffect(() => {
+        if (isAutoBet && bet && (socketEvent.status === 'Pending')) {
+            sendBet()
+        }
+    }, [socketEvent.status]);
+
     return (
         <>
             <div className={styles.game}>
@@ -120,14 +126,25 @@ const Kostil = () => {
                         <button className={styles.filter__button}>Топ</button>
                     </div>
                     <PlayersList/>
-                    <h5 className={styles.bets__count}>Всего 40 ставок</h5>
+                    <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>
                 </div>
             </div>
-            <div className={styles.bet}>
-                <BetCounter/>
-                <BetTips/>
-                <Automation/>
-                <BetButton onClick={!isBetSet ? sendBet : withdrawBet} />
+            <div className={styles.bottom_menu}>
+                <div className={styles.bet}>
+                    <BetCounter/>
+                    <BetTips/>
+                    <Automation/>
+                    <BetButton onClick={!isBetSet ? sendBet : withdrawBet}/>
+                </div>
+                <div className={styles.playersVisible}>
+                    <div className={styles.choose__filter}>
+                        <button className={styles.filter__button}>Все</button>
+                        <button className={styles.filter__button}>Мои</button>
+                        <button className={styles.filter__button}>Топ</button>
+                    </div>
+                    <PlayersList/>
+                    <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>
+                </div>
             </div>
         </>
     );

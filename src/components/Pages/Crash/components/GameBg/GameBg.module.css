@@ -1,0 +1,9 @@
+.bg {
+    transition: all 300s linear;
+    @apply
+    absolute
+    bottom-0
+    flex
+    w-[10000px]
+    left-0
+}

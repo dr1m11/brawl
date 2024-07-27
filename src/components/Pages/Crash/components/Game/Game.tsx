@@ -6,6 +6,8 @@ import Image from "next/image";
 import Charecter from "../../../../../../public/Crash/Charecter.svg";
 import {useAppSelector} from "@/lib/hooks";
 import localFont from "next/font/local";
+import GameBg from "@/components/Pages/Crash/components/GameBg/GameBg";
+import useResize from "@/hooks/useResize";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -21,10 +23,19 @@ interface CrashInterface {
 const Game = () => {
     const {socketEvent} = useAppSelector(state => state.crash)
 
+    const size = useResize()
+
+    function getWidth(data) {
+        if ((size <= 900) && (data >= 105)) {
+            return data - ((size / 8) / 100)
+        }
+        return data
+    }
 
     return (
         socketEvent.status === "Running" || socketEvent.status === "Crashed" ?
             <div className={styles.graph__game}>
+                <GameBg />
                 <div className={styles.count}>
                     <h1 className={clsx(styles.multiplier, daysOne.className)}
                         style={{color: socketEvent.status === "Crashed" && '#ff0000'}}>{socketEvent.multiplier.toFixed(2)}x</h1>
@@ -33,7 +44,7 @@ const Game = () => {
                 <Rows />
                 <div className={styles.graphic}
                      style={{
-                         width: `${socketEvent.length}%`,
+                         width: `${getWidth(socketEvent.length)}%`,
                          transform: `rotateZ(-${socketEvent.rotate}deg)`,
                          background: socketEvent.status === "Crashed" && "linear-gradient(180.00deg, rgba(255, 24, 24, 0.3) 37.11%,rgba(249, 159, 98, 0) 100%)"
                      }}>

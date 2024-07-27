@@ -24,3 +24,10 @@
     bg-9580160
     rounded
 }
+
+@media screen and (max-width: 630px){
+    .players__list {
+        @apply
+        max-h-[240px]
+    }
+}

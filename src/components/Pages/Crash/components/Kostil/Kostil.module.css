@@ -9,12 +9,13 @@
     p-4
     flex
     justify-between
+    gap-x-2
 }
 
 .graph {
     @apply
     h-full
-    max-w-[670px]
+    min-w-[600px]
     w-full
     rounded-2xl
     p-3
@@ -38,6 +39,7 @@
     max-h-[32px]
     flex
     justify-between
+    gap-x-2
 }
 
 .filter__button {
@@ -76,4 +78,75 @@
     items-center
     p-5
     text-white
+}
+
+.playersVisible {
+    @apply
+    h-full
+    w-full
+    rounded-2xl
+    max-w-[350px]
+    bg-373070
+    p-2.5
+    hidden
+}
+
+@media screen and (max-width: 900px) {
+    .players {
+        display: none;
+    }
+
+    .playersVisible {
+        @apply
+        block
+        min-w-[250px]
+        w-full
+    }
+
+    .bottom_menu {
+        @apply
+        flex
+        flex-row-reverse
+        h-full
+        max-h-[350px]
+        gap-x-4
+        w-full
+    }
+
+    .bet {
+        @apply
+        flex-col
+        max-h-full
+    }
+
+    .graph {
+        @apply
+        min-w-0
+    }
+
+    .game {
+        @apply
+        mx-auto
+        block
+        max-w-[900px]
+    }
+}
+
+@media screen and (max-width: 630px){
+    .bottom_menu {
+        @apply
+        flex-col
+        gap-y-4
+        max-h-[700px]
+    }
+
+    .playersVisible {
+        @apply
+        max-w-full
+    }
+
+    .choose__filter {
+        @apply
+        justify-around
+    }
 }

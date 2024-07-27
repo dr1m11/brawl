@@ -1,7 +1,7 @@
 .root {
     @apply
     w-full
-    max-w-[314px]
+    max-w-full
     h-full
     max-h-[51px]
     p-2.5

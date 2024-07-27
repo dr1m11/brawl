@@ -18,6 +18,21 @@
     items-center
 }
 
+.bet__btn:disabled {
+    background: rgba(84, 73, 140, 0.49);
+    @apply
+    cursor-not-allowed
+    border-0
+    text-gray-400
+    pr-2
+    max-h-[70px]
+}
+
+.bet__btn:disabled > .bet__btn__label {
+    @apply
+    max-h-[70%]
+}
+
 .withdraw {
     /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
     @apply
@@ -48,4 +63,13 @@
     flex
     items-center
     justify-center
+}
+
+@media screen and (max-width: 900px) {
+    .bet__btn, .withdraw {
+        @apply
+        max-w-full
+        w-full
+        max-h-[70px]
+    }
 }

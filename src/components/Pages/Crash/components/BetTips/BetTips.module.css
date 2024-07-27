@@ -30,3 +30,11 @@
     @apply
     bg-8766187
 }
+
+@media screen and (max-width: 900px){
+    .bet__tips {
+        @apply
+        max-w-full
+        max-h-[70px]
+    }
+}

@@ -1,15 +1,18 @@
 'use client'
 import styles from './Automation.module.css'
 import {useState} from "react";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {setIsAutoBet} from "@/lib/crashSlice/crashSlice";
 const Automation = () => {
-    const [activeBet, setActiveBet] = useState(false)
+    const {isAutoBet, bet} = useAppSelector(state => state.crash)
+    const dispatch = useAppDispatch()
     const [activeWithdraw, setActiveWithdraw] = useState(false)
     const [multiplier, setMultiplier] = useState(1)
     return (
         <div className={styles.automation}>
             <div className={styles.auto}>
-                <div className={styles.auto__button} onClick={() => setActiveBet(!activeBet)}>
-                    {activeBet && <div className={styles.auto__button__active}/>}
+                <div className={styles.auto__button} onClick={() => dispatch(setIsAutoBet(!isAutoBet))}>
+                    {(isAutoBet && !!bet) && <div className={styles.auto__button__active}/>}
                 </div>
                 <span className={styles.auto__label}>Автоставка</span>
             </div>

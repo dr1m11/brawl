@@ -17,7 +17,8 @@
     items-center
     w-full
     max-w-[112px]
-    justify-between
+    justify-center
+    gap-x-2
 }
 
 .auto__button {
@@ -73,4 +74,24 @@
 .input[type="number"]:focus {
     appearance: none;
     -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 900px){
+    .automation {
+        @apply
+        max-w-full
+        max-h-[70px]
+        gap-x-2
+    }
+
+    .auto {
+        @apply
+        gap-x-2
+        justify-center
+    }
+
+    .auto__multiplier {
+        @apply
+        min-w-[40px]
+    }
 }

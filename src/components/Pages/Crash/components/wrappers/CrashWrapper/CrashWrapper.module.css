@@ -33,3 +33,30 @@
     flex-col
     justify-between
 }
+
+@media screen and (max-width: 900px){
+    .root {
+        @apply
+        h-[1000px]
+    }
+
+    .wrapper {
+        @apply
+        max-h-[1000px]
+        justify-center
+        gap-y-4
+        px-4
+    }
+}
+
+@media screen and (max-width: 630px){
+    .root {
+        @apply
+        h-[1300px]
+    }
+
+    .wrapper {
+        @apply
+        max-h-[1300px]
+    }
+}
