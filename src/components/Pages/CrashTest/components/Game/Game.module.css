@@ -13,7 +13,7 @@
 }
 
 .chart {
-    transition: all 2s linear;
+    transition: width 1s linear;
     @apply
     h-full
     flex
@@ -49,24 +49,11 @@
     opacity-75
 }
 
-.graphic {
-    background: #f39c12;
-    transition: transform 35s ease;
-    @apply
-        /*w-[110%]*/
-    h-[200px]
-    absolute
-    z-20
-    left-0
-    -bottom-20
-    /*-rotate-[19.5deg]*/
-}
-
 .crash__charecter {
+    transition: all 1s linear;
     @apply
     absolute
     -right-10
-    transition-all
     z-10
     top-0
 }
