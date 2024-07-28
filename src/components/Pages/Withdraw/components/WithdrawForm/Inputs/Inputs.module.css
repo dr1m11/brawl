@@ -1,0 +1,12 @@
+.payment__input {
+    @apply
+    w-full
+    bg-5537108
+    h-full
+    max-h-[42px]
+    outline-0
+    px-4
+    rounded-xl
+    text-white-OP60
+    font-bold
+}

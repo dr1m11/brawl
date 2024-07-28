@@ -1,0 +1,6 @@
+.content__right {
+    @apply
+    w-full
+    max-w-[300px]
+    h-full
+}

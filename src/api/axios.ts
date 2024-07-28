@@ -1,18 +1,21 @@
 import axios, { CreateAxiosDefaults } from 'axios'
 
-import { getAccessToken, removeFromStorage } from '@/services/auth/auth.helper'
-
-import { API_URL } from '@/constants'
-import { authService } from '@/services/auth/auth.service'
-import { errorCatch, getContentType } from './api.helper'
+import {API_URL, SC_API_URL} from '@/constants'
+import {errorCatch, getContentType, getSCHeaders} from './api.helper'
 
 const axiosOptions: CreateAxiosDefaults = {
 	baseURL: API_URL,
 	headers: getContentType(),
-	// withCredentials: true,
 }
 
 export const axiosClassic = axios.create(axiosOptions)
+
+const axiosWithdrawOptions: CreateAxiosDefaults = {
+	baseURL: SC_API_URL,
+	headers: getSCHeaders(),
+}
+
+export const axiosWithdraw = axios.create(axiosWithdrawOptions)
 
 // export const instance = axios.create(axiosOptions)
 

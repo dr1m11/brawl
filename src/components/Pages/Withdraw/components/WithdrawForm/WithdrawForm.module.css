@@ -1,0 +1,39 @@
+.form {
+    @apply
+    w-full
+    h-full
+    max-h-[200px]
+}
+
+.inputs {
+    @apply
+    flex
+    flex-col
+    mt-2
+    gap-y-2
+    h-full
+    max-h-[140px]
+}
+
+.success {
+    background: rgba(37, 168, 28, 0.51);
+    @apply
+    w-full
+    h-full
+    max-h-[40px]
+    flex
+    items-center
+    justify-center
+    text-white
+    font-semibold
+    border-2
+    border-green-500
+    rounded-xl
+    my-2.5
+}
+
+.error {
+    background: rgba(168, 28, 28, 0.51);
+    @apply
+    border-2364141
+}

@@ -1,0 +1,11 @@
+.content {
+    @apply
+    w-full
+    h-[400px]
+    bg-432583
+    rounded-3xl
+    mt-6
+    p-[24px]
+    flex
+    relative
+}

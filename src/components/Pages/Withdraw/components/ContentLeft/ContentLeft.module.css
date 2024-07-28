@@ -1,0 +1,48 @@
+.content__left {
+    @apply
+    w-full
+    h-full
+    max-w-[700px]
+}
+
+.content__left__header {
+    @apply
+    text-white
+    font-semibold
+    text-[13px]
+}
+
+.annotation {
+    @apply
+    text-main
+    w-full
+    h-full
+    max-w-[567px]
+    text-[11px]
+    tracking-wide
+    font-bold
+    max-h-[47px]
+}
+
+.content__bottom {
+    @apply
+    w-full
+    bottom-0
+    bg-5537108
+    max-w-[650px]
+    h-full
+    max-h-[56px]
+    mt-7
+    rounded-xl
+    px-6
+    py-3
+    flex
+    items-center
+    gap-x-2
+}
+
+.acception {
+    @apply
+    text-white-OP60
+    text-[13px]
+}

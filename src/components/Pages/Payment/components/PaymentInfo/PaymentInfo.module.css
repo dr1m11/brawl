@@ -1,0 +1,21 @@
+.info {
+    @apply
+    flex
+    w-full
+    justify-between
+    items-center
+    mt-12
+}
+
+.info__label {
+    @apply
+    text-848CEC
+    text-[13px]
+    font-bold
+}
+
+.info__value {
+    @apply
+    text-white
+    text-[22px]
+}

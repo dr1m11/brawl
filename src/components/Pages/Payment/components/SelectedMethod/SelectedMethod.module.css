@@ -1,0 +1,28 @@
+.selected__method {
+    @apply
+    bg-6944145
+    w-full
+    h-full
+    max-h-[72px]
+    rounded-2xl
+    py-3
+    px-4
+}
+
+.selected__method__title {
+    @apply
+    text-848CEC
+    w-full
+    max-w-[150px]
+    text-[13px]
+    leading-tight
+    font-bold
+    h-fit
+}
+
+.selected__method__value {
+    @apply
+    text-white-OP60
+    text-[13px]
+    font-bold
+}

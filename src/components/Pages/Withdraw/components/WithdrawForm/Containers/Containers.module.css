@@ -1,0 +1,16 @@
+.input__container {
+    @apply
+    w-full
+    h-full
+    max-h-[64px]
+    flex-col
+    flex
+    justify-between
+}
+
+.input__label {
+    @apply
+    text-main-op40
+    font-bold
+    text-[13px]
+}

@@ -1,0 +1,10 @@
+.payment__methods {
+    @apply
+    grid
+    grid-cols-4
+    w-full
+    max-w-[500px]
+    h-full
+    max-h-[234px]
+    mt-4
+}

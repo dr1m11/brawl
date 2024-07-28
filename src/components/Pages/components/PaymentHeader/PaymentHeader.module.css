@@ -1,0 +1,35 @@
+.header {
+    @apply
+    w-full
+    h-full
+    max-h-[32px]
+    relative
+}
+
+.header__label {
+    @apply
+    absolute
+    left-0
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    w-fit
+    text-main
+    font-semibold
+}
+
+.back__btn {
+    @apply
+    rounded-xl
+    bg-gradient-to-r
+    from-8420126
+    to-7381172
+    max-w-[150px]
+    w-full
+    font-semibold
+    text-[13px]
+    text-white
+    leading-8
+    cursor-pointer
+}

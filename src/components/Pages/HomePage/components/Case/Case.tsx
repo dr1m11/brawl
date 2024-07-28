@@ -10,7 +10,7 @@ const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
 const Case = ({image, desc, price, title, width, height, imgStyles, id}: CaseProps) => {
     return (
-        <Link href={`/${id}`} className={styles.root}>
+        <Link href={`/case/${id}`} className={styles.root}>
             <Image
                 src={image}
                 alt={"Case"}

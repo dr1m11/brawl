@@ -1,0 +1,23 @@
+.payment__card {
+    @apply
+    rounded-xl
+    w-full
+    h-full
+    max-w-[133px]
+    max-h-[74px]
+    bg-5436107
+    cursor-pointer
+    transition-all
+    border
+    border-5436107
+    flex
+    items-center
+    justify-center
+}
+
+.payment__card:hover, .selected {
+    @apply
+    bg-5436107NO-OP
+    border
+    border-132140236
+}

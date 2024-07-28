@@ -1,7 +1,6 @@
 'use client'
 import InCaseGun from "@/components/InCaseGun/InCaseGun";
 import styles from "./ItemsList.module.css"
-import {useQuery} from "@tanstack/react-query";
 import {caseService} from "@/services/case/case.service";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useEffect} from "react";
@@ -18,17 +17,16 @@ import {useParams, useRouter} from "next/navigation";
 const ItemsList = () => {
 
     const params = useParams()
-
+    const router = useRouter()
 
     useEffect(() => {
         caseService.getItems(params.cases)
             .then((data) => {
-            console.log(data)
             dispatch(setItems(data.items))
             dispatch(setCase(data))
         })
-            .catch((e) => {
-                console.log(e)
+            .catch(() => {
+                router.push('/')
             })
     }, []);
 

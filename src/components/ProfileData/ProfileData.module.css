@@ -34,7 +34,7 @@
 
 .header__left__buttons {
     @apply
-    max-w-[130px]
+    max-w-[180px]
     w-screen
     flex
     justify-between
@@ -50,6 +50,12 @@
     justify-center
     items-center
     rounded-lg
+}
+
+.withdraw {
+    @apply
+    w-[70%]
+    h-[70%]
 }
 
 .balance {

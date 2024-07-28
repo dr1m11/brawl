@@ -1,0 +1,28 @@
+.payment__info {
+    @apply
+    w-full
+    max-w-[500px]
+    h-full
+    max-h-[284px]
+    mt-4
+}
+
+.payment__methods {
+    @apply
+    grid
+    grid-cols-4
+    w-full
+    h-full
+    max-h-[80px]
+}
+
+.gems {
+    @apply
+    grid
+    grid-cols-4
+    w-full
+    h-full
+    gap-x-2
+    max-h-[170px]
+    mt-2
+}
