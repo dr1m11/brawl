@@ -49,6 +49,16 @@ export const withdrawSlice = createSlice({
         },
         setField: (state, {payload}) => {
             state.field = payload
+        },
+        reset: (state) => {
+            state.isGameSelected = false
+            state.value = ''
+            state.isEmailSend = false
+            state.isValidEmail = false
+            state.emailValue = ''
+            state.code = ''
+            state.error = null
+            state.field = ''
         }
     },
 })
@@ -61,5 +71,6 @@ export const {
     setEmailValue,
     setCode,
     setError,
-    setField
+    setField,
+    reset,
 } = withdrawSlice.actions

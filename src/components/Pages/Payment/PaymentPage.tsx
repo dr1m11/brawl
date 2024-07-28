@@ -1,7 +1,7 @@
 import styles from './PaymentPage.module.css'
 import clsx from "clsx";
 import {Manrope} from "next/font/google";
-import PaymentHeader from "@/components/Pages/components/PaymentHeader/PaymentHeader";
+import PaymentHeader from "@/components/Pages/components/Payment/PaymentHeader/PaymentHeader";
 import Content from "@/components/Pages/Payment/components/Content/Content";
 
 

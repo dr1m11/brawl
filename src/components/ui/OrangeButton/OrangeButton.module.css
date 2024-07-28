@@ -18,6 +18,11 @@
     items-center
     mt-[27px]
     cursor-pointer
+    absolute
+    left-0
+    right-0
+    m-auto
+    -bottom-[50px]
 }
 
 .root:disabled {

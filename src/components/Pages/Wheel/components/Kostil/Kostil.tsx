@@ -37,7 +37,9 @@ const Kostil = () => {
     }, []);
 
     useEffect(() => {
-        setIsBetSet(false)
+        if (socketEvent.status === "Pending") {
+            dispatch(setIsBetSet(false))
+        }
     }, [socketEvent.status]);
 
     useEffect(() => {
@@ -48,7 +50,6 @@ const Kostil = () => {
             const data = JSON.parse(event.data)
             if (data.main_amount === 0 || data.main_amount) {
                 dispatch(setUserBets(data))
-                console.log(data)
             } else {
                 dispatch(setSocketEvent(data))
             }
@@ -74,7 +75,7 @@ const Kostil = () => {
             ws.current.send(JSON.stringify({
                 "game_id": socketEvent.game_id,
                 "player_id": user,
-                "amount": bet,
+                "amount": +((+bet).toFixed(0)),
                 "cell": userCell
             }))
             dispatch(setIsBetSet(true))

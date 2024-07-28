@@ -4,8 +4,8 @@ import axios from "axios";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useRouter} from "next/navigation";
 import {handleSendLoginCode, validateLoginCode, withdrawService} from "@/services/withdraw/withdraw.service";
-import {setError, setField, setIsEmailSend} from "@/lib/withdrawSlice/withdraw.slice";
-import {useState} from "react";
+import {reset, setError, setField, setIsEmailSend} from "@/lib/withdrawSlice/withdraw.slice";
+import {useEffect, useState} from "react";
 import {useQueryClient} from "@tanstack/react-query";
 
 
@@ -16,6 +16,13 @@ const WithdrawButton = () => {
     const dispatch = useAppDispatch()
 
     const queryClient = useQueryClient()
+
+    useEffect(() => {
+        return () => {
+            console.log('as')
+            dispatch(reset())
+        }
+    }, []);
 
     return (
         <OrangeButton
@@ -37,21 +44,20 @@ const WithdrawButton = () => {
                     const SCresponse = await validateLoginCode(emailValue, code)
 
                     if (SCresponse.ok) {
-                        const response = await withdrawService.withdraw({
-                            user_id: userId,
-                            code: +code,
-                            account_email: emailValue,
-                            amount: +value
-                        })
-
-                        if (response === 'OK!') {
+                        try {
+                            await withdrawService.withdraw({
+                                user_id: userId,
+                                code: +code,
+                                account_email: emailValue,
+                                amount: +value
+                            })
                             dispatch(setError(null))
                             dispatch(setField('Заявка на вывод создана!'))
                             queryClient.invalidateQueries({
                                 queryKey: ['user']
                             })
-                        } else {
-                            setError('Недостаточный баланс!')
+                        } catch {
+                            dispatch(setError('Недостаточный баланс!'))
                         }
                     } else {
                         dispatch(setError('Вы ввели неверный код'))

@@ -8,3 +8,17 @@
     max-h-[234px]
     mt-4
 }
+
+@media screen and (max-width: 900px){
+    .payment__methods {
+        @apply
+        grid-cols-3
+    }
+}
+
+@media screen and (max-width: 768px){
+    .payment__methods {
+        @apply
+        grid-cols-2
+    }
+}

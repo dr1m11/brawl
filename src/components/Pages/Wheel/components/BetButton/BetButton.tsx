@@ -11,8 +11,10 @@ interface BetButtonProps {
     time: number
     onClick: () => void
 }
+
 const BetButton = ({time, onClick}: BetButtonProps) => {
-    const isBetSet = useAppSelector(state => state.wheel.isBetSet)
+    const {isBetSet, socketEvent, bet} = useAppSelector(state => state.wheel)
+    const balance = useAppSelector(state => state.user.balance)
     return (
         <div className={styles.menu__center}>
             <div className={styles.determiner}>
@@ -22,8 +24,15 @@ const BetButton = ({time, onClick}: BetButtonProps) => {
                     <span className={styles.numbers__label}>сделайте ставку</span>
                 </div>
             </div>
-            <button className={styles.bet__btn} onClick={onClick} style={{background: isBetSet && "#D85154"}}>
-                <h5 className={daysOne.className}>СТАВКА</h5>
+            <button className={styles.bet__btn} onClick={onClick}
+                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+balance < +bet)}
+            >
+                <h5 className={daysOne.className}>
+                    {(isBetSet || (socketEvent.status !== "Pending")) ?
+                        "ОЖИДАЙТЕ" :
+                        "СТАВКА"
+                    }
+                </h5>
             </button>
         </div>
     );

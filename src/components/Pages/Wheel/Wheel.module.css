@@ -18,7 +18,7 @@
     left-0
     right-0
     -top-16
-    opacity-50
+    opacity-10
 }
 
 .wrapper {
@@ -31,6 +31,29 @@
     flex-col
     justify-between
     items-center
+}
+
+.shadow__right, .shadow__left {
+    @apply
+    absolute
+    w-[600px]
+    h-[600px]
+    rounded-full
+    top-32
+    -z-10
+    blur-[300px]
+}
+
+.shadow__left {
+    @apply
+    bg-rose-900
+    left-[30%]
+}
+
+.shadow__right {
+    @apply
+    bg-sky-800
+    right-[30%]
 }
 
 

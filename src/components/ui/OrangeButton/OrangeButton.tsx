@@ -9,10 +9,11 @@ interface OrangeButtonProps {
     onClick: () => void
     disabled: boolean
     children?: ReactNode
+    margin?: number
 }
-const OrangeButton = ({onClick, disabled, children}: OrangeButtonProps) => {
+const OrangeButton = ({onClick, disabled, children, margin}: OrangeButtonProps) => {
     return (
-        <button className={clsx(styles.root, daysOne.className)} onClick={onClick} disabled={disabled}>
+        <button className={clsx(styles.root, daysOne.className)} style={{marginTop: margin}} onClick={onClick} disabled={disabled}>
             {
                 children ?
                     children

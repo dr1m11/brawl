@@ -72,3 +72,12 @@
     justify-around
     items-center
 }
+
+.bet__btn:disabled {
+    background: rgba(84, 73, 140, 0.49);
+    @apply
+    cursor-not-allowed
+    border-0
+    text-gray-400
+    pr-2
+}

@@ -23,6 +23,7 @@ const PayButton = () => {
                 router.push(url)
             }}
             disabled={!value || !isPaymentSelected}
+            margin={44}
         />
     );
 };

@@ -40,4 +40,12 @@
     relative
     flex
     justify-between
+    gap-x-2
+}
+
+@media screen and (max-width: 768px){
+    .game__menu {
+        @apply
+        px-2
+    }
 }

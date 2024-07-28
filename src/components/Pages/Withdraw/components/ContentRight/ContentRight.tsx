@@ -1,17 +1,17 @@
-import styles from './ContentRight.module.css'
 import SelectedMethod from "@/components/Pages/Payment/components/SelectedMethod/SelectedMethod";
 import WithdrawForm from "@/components/Pages/Withdraw/components/WithdrawForm/WithdrawForm";
 import WithdrawInfo from "@/components/Pages/Withdraw/components/WithdrawInfo/WithdrawInfo";
 import WithdrawButton from "@/components/Pages/Withdraw/components/WithdrawButton/WithdrawButton";
+import ContentRightWrapper from "@/components/Pages/components/Payment/ContentRightWrapper/ContentRightWrapper";
 
 const ContentRight = () => {
     return (
-        <div className={styles.content__right}>
+        <ContentRightWrapper>
             <SelectedMethod />
             <WithdrawForm />
             <WithdrawInfo />
             <WithdrawButton />
-        </div>
+        </ContentRightWrapper>
     );
 };
 

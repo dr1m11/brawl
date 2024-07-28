@@ -9,9 +9,10 @@
     border-2
     rounded-2xl
     cursor-pointer
+    transition-all
 }
 
 .multiplier:hover {
     @apply
-    bg-43119251
+    opacity-65
 }

@@ -11,16 +11,16 @@ const BetCounter = () => {
     return (
         <div className={styles.current__bet}>
             <button className={styles.minus} onClick={() => {
-                if (bet >= 10) {
-                    dispatch(setBet(bet - 10))
+                if (+bet >= 10) {
+                    dispatch(setBet(+bet - 10))
                 }
             }}>-</button>
             <form className={styles.form}>
-                <input className={styles.sum__input} value={bet} onChange={(e) => dispatch(setBet(+(e.target.value.replace(/[^\d]/g,''))))}/>
+                <input className={styles.sum__input} value={(+bet).toFixed(0)} onChange={(e) => dispatch(setBet(+(e.target.value.replace(/[^\d]/g,''))))}/>
                 <label>RUB</label>
             </form>
             <button className={styles.plus} onClick={() => {
-                dispatch(setBet(bet + 10))
+                dispatch(setBet(+bet + 10))
             }}>+
             </button>
         </div>

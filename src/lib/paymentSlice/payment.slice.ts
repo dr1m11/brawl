@@ -20,11 +20,16 @@ export const paymentSlice = createSlice({
         },
         setValue: (state, {payload}) => {
             state.value = payload
+        },
+        reset: (state) => {
+            state.isPaymentSelected = false
+            state.value = ''
         }
     },
 })
 
 export const {
     setIsPaymentSelected,
-    setValue
+    setValue,
+    reset
 } = paymentSlice.actions

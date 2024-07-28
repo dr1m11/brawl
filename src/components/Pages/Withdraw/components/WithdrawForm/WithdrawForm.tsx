@@ -13,7 +13,7 @@ const WithdrawForm = () => {
                 <EmailInputContainer label={'Введите email привязанный к Supercell ID'} placeholder={"example@example.com"}/>
                 {isEmailSend && <CodeInputContainer label={'Введите код подтверждения'} placeholder={'123456'} />}
             </div>
-            { (isEmailSend || error) &&
+            { (isEmailSend || !!error) &&
                 <div className={clsx(styles.success, !!error && styles.error)}>
                     {error || field}
                 </div>

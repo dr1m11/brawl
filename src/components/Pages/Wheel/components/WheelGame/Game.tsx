@@ -7,6 +7,7 @@ import RedItem from "@/../public/Wheel/Red.svg";
 import OrangeItem from "@/../public/Wheel/OrangeItem.svg";
 import {useEffect, useState} from "react";
 import WheelItem from "@/components/ui/WheelItem/WheelItem";
+import useResize from "@/hooks/useResize";
 
 let arr = [
     {
@@ -169,6 +170,8 @@ const Game = ({cell, pending}: GameInterface) => {
         }
     }, [cell]);
 
+    const size = useResize()
+
     return (
         <div className={styles.container}>
             {
@@ -177,7 +180,11 @@ const Game = ({cell, pending}: GameInterface) => {
                                pending={pending}/>
                 ))
             }
-            <div className={styles.circle}/>
+            <div className={styles.circle} style={{
+                left: (size <= 757) && (-(757 - size)),
+                right: (size <= 757) && (-(757 - size))
+            }}
+            />
         </div>
     );
 };

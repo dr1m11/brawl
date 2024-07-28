@@ -8,10 +8,17 @@ interface MultiplyButtonProps {
 }
 
 const MultiplyButton = ({multiplier, borderColor}: MultiplyButtonProps) => {
-    const { userCell} = useAppSelector(state => state.wheel)
+    const {userCell} = useAppSelector(state => state.wheel)
     const dispatch = useAppDispatch()
     return (
-        <div className={styles.multiplier} style={{borderColor: borderColor, backgroundColor: userCell === multiplier && 'rgb(43, 119, 251)'}} onClick={() => dispatch(setUserCell(multiplier))}>
+        <div
+            className={styles.multiplier}
+            style={{
+                borderColor: borderColor,
+                backgroundColor: (userCell === multiplier) && borderColor,
+                color: ((borderColor === '#D0D3D7') && (userCell === multiplier)) && "#000"
+            }}
+            onClick={() => dispatch(setUserCell(multiplier))}>
             <span className={styles.multiplier__label}>X{multiplier}</span>
         </div>
     );
