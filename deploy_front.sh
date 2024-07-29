@@ -18,6 +18,5 @@ cd $REPO_DIR && git pull origin main
 tmux kill-session -t $SESSION_NAME
 
 tmux new-session -d -s $SESSION_NAME
-tmux_send "cd $REPO_DIR"
 tmux_send "npm install"
 tmux_send "npm run deploy"
