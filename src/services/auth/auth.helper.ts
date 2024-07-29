@@ -9,7 +9,7 @@ export const getAccessToken = () => {
 
 export const saveTokenStorage = (token: string) => {
 	Cookies.set(EnumTokens.TOKEN, token, {
-		domain: '.brawl-alpha.vercel.app',
+		domain: '.dododrop.ru',
 		// domain: 'localhost',
 		sameSite: 'strict',
 		expires: 12 / 24
@@ -17,6 +17,6 @@ export const saveTokenStorage = (token: string) => {
 }
 
 export const removeFromStorage = () => {
-	Cookies.remove('token', {domain: '.brawl-alpha.vercel.app'})
+	Cookies.remove('token', {domain: '.dododrop.ru'})
 	// Cookies.remove(EnumTokens.TOKEN)
 }

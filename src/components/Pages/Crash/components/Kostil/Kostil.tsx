@@ -12,6 +12,7 @@ import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
 import useResize from "@/hooks/useResize";
+import {API_URL, SOCKET_API_URL} from "@/constants";
 
 
 interface CrashInterface {
@@ -32,7 +33,7 @@ const Kostil = () => {
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
-        axios.get('https://api.youngrusssia.ru/crash/init-bets-for-new-client')
+        axios.get(`${API_URL}/crash/init-bets-for-new-client`)
             .then(data => dispatch(setUsersBets(data.data.bets)))
     }, []);
 
@@ -46,7 +47,7 @@ const Kostil = () => {
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
-        ws.current = new WebSocket('wss://api.youngrusssia.ru/crash');
+        ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
 
         ws.current.onopen = () => {
             console.log('WebSocket открыто');

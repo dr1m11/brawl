@@ -12,6 +12,7 @@ import {useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setBet, setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
 import axios from "axios";
+import {API_URL, SOCKET_API_URL} from "@/constants";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -32,7 +33,7 @@ const Kostil = () => {
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
-        axios.get('https://api.youngrusssia.ru/roulette/init-bets-for-new-client')
+        axios.get(`${API_URL}/roulette/init-bets-for-new-client`)
             .then(data => dispatch(setUserBets(data.data)))
     }, []);
 
@@ -44,7 +45,7 @@ const Kostil = () => {
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
-        ws.current = new WebSocket('wss://api.youngrusssia.ru/roulette');
+        ws.current = new WebSocket(`${SOCKET_API_URL}/roulette`);
 
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)

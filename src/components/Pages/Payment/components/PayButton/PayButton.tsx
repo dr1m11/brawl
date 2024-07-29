@@ -3,6 +3,7 @@ import OrangeButton from "@/components/ui/OrangeButton/OrangeButton";
 import axios from "axios";
 import {useAppSelector} from "@/lib/hooks";
 import {useRouter} from "next/navigation";
+import {API_URL} from "@/constants";
 
 
 const PayButton = () => {
@@ -15,7 +16,7 @@ const PayButton = () => {
     return (
         <OrangeButton
             onClick={async () => {
-                const response = await axios.post('https://api.youngrusssia.ru/replenishment', JSON.stringify({
+                const response = await axios.post(`${API_URL}/replenishment`, JSON.stringify({
                     user_id: user,
                     amount: +value
                 }))
