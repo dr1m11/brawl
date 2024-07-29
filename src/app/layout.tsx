@@ -12,7 +12,7 @@ import AuthProvider from "@/app/AuthProvider";
 const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
 export const metadata: Metadata = {
-    title: "Cases",
+    title: "DodoDrop",
     description: "Brawl stars roulette",
 };
 
