@@ -20,4 +20,4 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no github_front@91.200.150.71 'bash -s' < deploy_gems.sh
+          ssh -o StrictHostKeyChecking=no github_front@91.200.150.71 'bash -s' < deploy_front.sh
