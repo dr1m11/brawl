@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     description: "Brawl stars roulette",
 };
 
+// favicon
+
 export default function RootLayout({
                                        children,
                                    }: Readonly<{
