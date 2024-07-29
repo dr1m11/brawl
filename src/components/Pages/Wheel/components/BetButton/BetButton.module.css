@@ -81,3 +81,15 @@
     text-gray-400
     pr-2
 }
+
+@media screen and (max-width: 768px){
+    .menu__center {
+        @apply
+        max-h-[57px]
+        absolute
+        left-0
+        right-0
+        m-auto
+        top-2
+    }
+}

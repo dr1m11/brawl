@@ -43,9 +43,30 @@
     gap-x-2
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1070px) {
+    .game {
+        @apply
+        px-4
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .game {
+        @apply
+        px-0
+    }
+
     .game__menu {
         @apply
-        px-2
+        rounded-none
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game__menu {
+        @apply
+        p-2
+        max-h-[150px]
+        flex-col
     }
 }

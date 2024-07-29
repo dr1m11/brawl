@@ -33,3 +33,26 @@
     leading-8
     cursor-pointer
 }
+
+@media screen and (max-width: 500px){
+    .header {
+        @apply
+        flex
+        justify-between
+        w-full
+        items-center
+        pl-2
+        pr-4
+    }
+
+    .header__label {
+        @apply
+        static
+        m-0
+    }
+
+    .back__btn {
+        @apply
+        w-[200px]
+    }
+}

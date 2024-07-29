@@ -16,3 +16,11 @@
     @apply
     opacity-65
 }
+
+@media screen and (max-width: 768px){
+    .multiplier {
+        @apply
+        w-full
+        max-w-full
+    }
+}

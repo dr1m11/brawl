@@ -36,3 +36,15 @@
 .purple {
     background: linear-gradient(90.00deg, rgb(142, 79, 224) 0.02%, rgb(144, 66, 246) 100%), rgb(249, 249, 249);
 }
+
+@media screen and (max-width: 768px){
+    .bet {
+        @apply
+        h-full
+        max-h-full
+        max-w-[50px]
+        flex-col
+        gap-y-2
+        p-2
+    }
+}

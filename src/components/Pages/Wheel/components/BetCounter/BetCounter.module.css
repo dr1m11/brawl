@@ -40,3 +40,12 @@
     overflow-hidden
     w-full
 }
+
+@media screen and (max-width: 768px){
+    .current__bet {
+        @apply
+        w-full
+        max-w-full
+        mr-6
+    }
+}

@@ -7,3 +7,13 @@
     justify-between
     gap-x-2
 }
+
+@media screen and (max-width: 768px){
+    .menu__left {
+        @apply
+        max-h-[57px]
+        justify-between
+        max-w-full
+        gap-x-[230px]
+    }
+}

@@ -21,3 +21,14 @@
     bg-9580160
     rounded
 }
+
+@media screen and (max-width: 768px){
+    .players {
+        @apply
+        w-full
+        gap-y-2
+        grid
+        grid-rows-2
+        grid-cols-4
+    }
+}

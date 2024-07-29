@@ -9,15 +9,18 @@
     gap-x-1
 }
 
-.multiplier {
-    @apply
-    w-full
-    h-full
-    max-w-[74px]
-    flex
-    items-center
-    justify-center
-    border-2
-    border-white
-    rounded-2xl
+@media screen and (max-width: 768px){
+    .menu__right {
+        @apply
+        w-full
+        max-w-full
+        max-h-[60px]
+        gap-x-4
+    }
+
+    .multiplier {
+        @apply
+        w-full
+        max-w-full
+    }
 }

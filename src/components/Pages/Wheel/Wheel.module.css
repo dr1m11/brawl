@@ -56,5 +56,11 @@
     right-[30%]
 }
 
+@media screen and (max-width: 768px){
+    .root {
+        @apply
+        h-[1400px]
+    }
+}
 
 

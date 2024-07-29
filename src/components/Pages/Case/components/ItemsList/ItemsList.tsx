@@ -14,6 +14,7 @@ import {
     setWinedItem
 } from "@/lib/caseSlice/caseSlice";
 import {useParams, useRouter} from "next/navigation";
+
 const ItemsList = () => {
 
     const params = useParams()
@@ -22,9 +23,9 @@ const ItemsList = () => {
     useEffect(() => {
         caseService.getItems(params.cases)
             .then((data) => {
-            dispatch(setItems(data.items))
-            dispatch(setCase(data))
-        })
+                dispatch(setItems(data.items))
+                dispatch(setCase(data))
+            })
             .catch(() => {
                 router.push('/')
             })
@@ -43,9 +44,9 @@ const ItemsList = () => {
             dispatch(setItems([]))
             dispatch(setCase({
                 price: 0,
-                    items: [],
-                    name: '',
-                    id: 0
+                items: [],
+                name: '',
+                id: 0
             },))
         }
     }, []);
