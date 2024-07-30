@@ -7,6 +7,11 @@ import Image from "next/image";
 import Case from '@/../public/Case/king.png'
 import Arrow from '@/../public/Home/Arrow.svg'
 import {Manrope} from "next/font/google";
+import {useEffect, useRef} from "react";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
+import axios from "axios";
+import {API_URL, SOCKET_API_URL} from "@/constants";
 
 
 function SampleNextArrow(props: CustomArrowProps) {
@@ -54,6 +59,33 @@ function Carousel() {
             }
         ]
     };
+
+    const ws = useRef(null)
+
+    useEffect(() => {
+        // Создание WebSocket соединения при монтировании компонента
+        ws.current = new WebSocket(`${SOCKET_API_URL}/drops`);
+
+        ws.current.onmessage = (event) => {
+            const data = JSON.parse(event.data)
+            console.log(data)
+        };
+
+        ws.current.onclose = () => {
+            console.log('WebSocket закрыто');
+        };
+
+        ws.current.onerror = (error) => {
+            console.error('Ошибка WebSocket:', error);
+        };
+
+        return () => {
+            if (ws.current) {
+                ws.current.close();
+            }
+        };
+    }, []);
+
     return (
         <div className="slider-container w-[840px] 1060:w-[1010px] gap-x-2 mx-auto">
             <Slider {...settings} >

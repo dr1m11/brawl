@@ -1,4 +1,11 @@
+import {getAccessToken} from "@/services/auth/auth.helper";
+
 export const getContentType = () => ({
+	'Content-Type': 'application/json',
+})
+
+export const AuthHeaders = () => ({
+	'Authorization': `Bearer ${getAccessToken()}`,
 	'Content-Type': 'application/json',
 })
 

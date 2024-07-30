@@ -16,8 +16,25 @@
 @media screen and (max-width: 768px){
     .info {
         @apply
-        flex-col
-        max-h-[700px]
+        grid
+        max-h-[620px]
+        pt-2
+        grid-cols-3
         gap-y-2
+    }
+}
+
+@media screen and (max-width: 645px){
+    .info {
+        @apply
+        max-h-[850px]
+        grid-cols-2
+    }
+}
+
+@media screen and (max-width: 545px){
+    .info {
+        @apply
+        mt-10
     }
 }

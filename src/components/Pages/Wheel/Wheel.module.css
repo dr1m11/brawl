@@ -59,7 +59,19 @@
 @media screen and (max-width: 768px){
     .root {
         @apply
-        h-[1400px]
+        h-[1250px]
+    }
+}
+
+@media screen and (max-width: 645px){
+    .root {
+        @apply
+        h-[1830px]
+    }
+
+    .wrapper {
+        @apply
+        max-h-[1630px]
     }
 }
 

@@ -44,10 +44,3 @@
     text-2431440
     font-medium
 }
-
-@media screen and (max-width: 768px){
-    .root {
-        @apply
-        max-w-[200px]
-    }
-}

@@ -16,13 +16,6 @@ import {API_URL, SOCKET_API_URL} from "@/constants";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-interface SocketEventInterface {
-    game_id: number
-    status: "Pending" | "Playing" | "End"
-    cell: number
-    time_before_start: number
-}
-
 const Kostil = () => {
 
     const ws = useRef(null)
@@ -93,7 +86,9 @@ const Kostil = () => {
                     <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} RUB</h1>
                     <span className={styles.heading__label}>в этом раунде</span>
                 </div>
-                <Game pending={socketEvent.status === "Pending" || socketEvent.status === "End"} cell={socketEvent.cell}/>
+                <Game pending={socketEvent.status === "Pending" || socketEvent.status === "End"}
+                      cell={socketEvent.cell}/>
+                <div className={styles.game__bg}/>
                 <div className={styles.game__menu}>
                     <Better/>
                     <BetButton time={socketEvent.time_before_start} onClick={sendBet}/>

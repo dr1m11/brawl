@@ -13,6 +13,8 @@ const PlayersList = ({users}: {users: BetInterface[]}) => {
             <Player hideMultiplier hideWon nickname={"nick"} amount={300}/>
             <Player hideMultiplier hideWon nickname={"nick"} amount={300}/>
             <Player hideMultiplier hideWon nickname={"nick"} amount={300}/>
+            <Player hideMultiplier hideWon nickname={"nick"} amount={300}/>
+            <Player hideMultiplier hideWon nickname={"nick"} amount={300}/>
         </div>
     );
 };

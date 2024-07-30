@@ -28,3 +28,12 @@
     border-453091
     min-w-0
 }
+
+@media screen and (max-width: 545px){
+    .circle {
+        background: rgb(60, 38, 121);
+        @apply
+        shadow-none
+        top-24
+    }
+}

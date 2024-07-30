@@ -1,6 +1,6 @@
-import {axiosClassic, axiosWithdraw} from "@/api/axios";
+import {axiosAuth, axiosClassic, axiosWithdraw} from "@/api/axios";
 import {EmailType, IWithdrawData} from "@/services/withdraw/withdraw.types";
-
+// /authenticated/withdraw/info
 export const withdrawService = {
     async post(endpoint, data) {
         try {
@@ -16,7 +16,7 @@ export const withdrawService = {
     },
 
     async withdraw(data: IWithdrawData) {
-        const response = await axiosClassic.post('/withdraw/create', data)
+        const response = await axiosAuth.post('/authenticated/withdraw/create', data)
         return response.data
     }
 }

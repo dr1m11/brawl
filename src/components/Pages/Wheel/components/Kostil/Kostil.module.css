@@ -70,3 +70,32 @@
         flex-col
     }
 }
+
+@media screen and (max-width: 545px) {
+    .game__menu {
+        @apply
+        max-h-[210px]
+        justify-end
+        gap-y-3
+        rounded-2xl
+        max-w-[90%]
+        mx-auto
+        mt-10
+    }
+
+    .game {
+        @apply
+        relative
+    }
+
+    .game__bg {
+        background: rgb(60, 38, 121);
+        @apply
+        w-[100vw]
+        absolute
+        h-[1600px]
+        -z-10
+        left-0
+        -bottom-[1400px]
+    }
+}

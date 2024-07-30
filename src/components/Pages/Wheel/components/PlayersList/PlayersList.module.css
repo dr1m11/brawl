@@ -26,9 +26,6 @@
     .players {
         @apply
         w-full
-        gap-y-2
-        grid
-        grid-rows-2
-        grid-cols-4
+        max-h-[210px]
     }
 }

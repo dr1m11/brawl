@@ -19,3 +19,18 @@
     rounded
     border-orange-500
 }
+
+@media screen and (max-width: 768px){
+    .history {
+        @apply
+        mb-0
+        max-h-1
+    }
+}
+
+@media screen and (max-width: 545px){
+    .history {
+        @apply
+        mt-16
+    }
+}

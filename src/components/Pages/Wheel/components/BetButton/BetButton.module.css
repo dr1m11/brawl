@@ -27,6 +27,15 @@
     m-auto
 }
 
+.arrow__mobile {
+    @apply
+    absolute
+    left-0
+    right-0
+    m-auto
+    hidden
+}
+
 .circle {
     background: linear-gradient(150.18deg, rgb(131, 105, 209) 24.317%,rgb(107, 68, 226) 81.772%);
     @apply
@@ -91,5 +100,35 @@
         right-0
         m-auto
         top-2
+    }
+}
+
+@media screen and (max-width: 545px){
+    .circle {
+        @apply
+        bg-none
+    }
+
+    .arrow {
+        @apply
+        hidden
+    }
+
+    .arrow__mobile {
+        @apply
+        block
+        bottom-0
+        h-[140px]
+        w-[70px]
+    }
+
+    .determiner {
+        @apply
+        -mt-6
+        opacity-75
+    }
+
+    .numbers__label {
+        color: rgba(255, 255, 255, 0.5);
     }
 }

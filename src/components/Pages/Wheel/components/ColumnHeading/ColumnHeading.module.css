@@ -39,12 +39,6 @@
 
 @media screen and (max-width: 768px){
     .bet {
-        @apply
-        h-full
-        max-h-full
-        max-w-[50px]
-        flex-col
-        gap-y-2
-        p-2
+
     }
 }
