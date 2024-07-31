@@ -7,6 +7,7 @@ import clsx from "clsx";
 import LogoutButton from "@/components/LogoutButton/LogoutButton";
 import ProfileData from "@/components/ProfileData/ProfileData";
 import ProfileItems from "@/components/ProfileItems/ProfileItems";
+import HeaderRight from "@/components/Pages/Profile/components/HeaderRight/HeaderRight";
 
 
 const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['400', '500', '600', '700']})
@@ -20,15 +21,7 @@ export const ProfilePage = () => {
                 <LogoutButton />
                 <div className={styles.profile__header}>
                     <ProfileData />
-                    <div className={styles.header__right}>
-                        <div className={styles.best__item}>
-                            <h3 className={styles.best__title}>Лучший предмет</h3>
-                            <h5 className={styles.best__desc}>Название предмет...</h5>
-                            <p className={styles.price}>345 RUB</p>
-                            <Image src={BestGun} alt={'Gun'} width={139} height={93} className={styles.best__gun}/>
-                        </div>
-                        <h3 className={styles.sell__all}>Продать все</h3>
-                    </div>
+                    <HeaderRight />
                 </div>
                 <ProfileItems />
             </div>

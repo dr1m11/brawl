@@ -1,16 +1,16 @@
 'use client'
 import styles from './GemsCard.module.css'
 import clsx from "clsx";
-import Image from "next/image";
-import Gems from "../../../../../../public/Withdraw/Gems.png";
+import Image, {StaticImageData} from "next/image";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setValue} from "@/lib/withdrawSlice/withdraw.slice";
 
 interface GemsCardProps {
     value: number
+    img: StaticImageData
 }
 
-const GemsCard = ({value}: GemsCardProps) => {
+const GemsCard = ({value, img}: GemsCardProps) => {
     const {isGameSelected, value: gemsValue} = useAppSelector(state => state.withdraw)
 
     const dispatch = useAppDispatch()
@@ -21,7 +21,7 @@ const GemsCard = ({value}: GemsCardProps) => {
     return (
         <div className={clsx(styles.payment__card, value === gemsValue && styles.selected)}
              onClick={() => dispatch(setValue(value))}>
-            <Image src={Gems} alt={'Gems'} quality={100} width={73}
+            <Image src={img} alt={'Gems'} quality={100} width={73}
                    height={73}/>
         </div>
     );

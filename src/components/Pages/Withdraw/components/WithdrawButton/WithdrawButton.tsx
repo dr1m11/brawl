@@ -19,7 +19,6 @@ const WithdrawButton = () => {
 
     useEffect(() => {
         return () => {
-            console.log('as')
             dispatch(reset())
         }
     }, []);

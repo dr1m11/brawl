@@ -1,0 +1,124 @@
+.header__right {
+    @apply
+    max-w-[430px]
+    w-screen
+    h-[56px]
+    flex
+    justify-between
+    items-center
+}
+
+.best__item {
+    @apply
+    relative
+    max-w-[238px]
+    w-full
+    bg-gradient-to-r
+    from-24013247
+    to-2432190
+    h-full
+    rounded-xl
+    pt-2.5
+    pl-5
+}
+
+.best__title {
+    @apply
+    text-white
+    font-semibold
+    text-[13px]
+}
+
+.best__desc {
+    @apply
+    text-white-OP60
+    font-semibold
+    text-[11px]
+}
+
+.best__gun {
+    @apply
+    absolute
+    top-0
+    right-0
+    bottom-0
+    m-auto
+    max-w-[100px]
+}
+
+.price {
+    @apply
+    absolute
+    -top-2.5
+    right-4
+    z-10
+    bg-255248231
+    w-[64px]
+    text-[13px]
+    leading-[21px]
+    text-center
+    rounded-xl
+    font-bold
+}
+
+.sell__all {
+    @apply
+    max-w-[185px]
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
+    bg-373070-OP30
+    text-main
+    font-semibold
+    rounded-xl
+    cursor-pointer
+}
+
+@media screen and (max-width: 1020px){
+    .best__item {
+        @apply
+        hidden
+    }
+
+    .header__right {
+        @apply
+        justify-end
+    }
+}
+
+@media screen and (max-width: 660px){
+    .sell__all {
+        @apply
+        max-w-[110px]
+    }
+}
+
+@media screen and (max-width: 540px){
+    .header__right {
+        @apply
+        relative
+        h-0
+    }
+
+    .sell__all {
+        @apply
+        absolute
+        h-[70px]
+        w-[240px]
+        max-w-[240px]
+        top-6
+        left-24
+        text-[20px]
+        right-0
+        m-auto
+    }
+}
+
+@media screen and (max-width: 380px){
+    .sell__all {
+        @apply
+        w-[200px]
+    }
+}
