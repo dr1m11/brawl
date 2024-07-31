@@ -27,7 +27,7 @@ const BetButton = ({time, onClick}: BetButtonProps) => {
                 </div>
             </div>
             <button className={styles.bet__btn} onClick={onClick}
-                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+balance < +bet)}
+                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+balance < +bet) || !(+bet)}
             >
                 <h5 className={daysOne.className}>
                     {(isBetSet || (socketEvent.status !== "Pending")) ?

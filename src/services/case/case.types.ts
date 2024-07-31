@@ -26,4 +26,5 @@ export interface ICase {
     name: string
     price: number
     photo_link?: string
+    color?: string
 }

@@ -11,4 +11,5 @@ export interface CaseProps {
     height?: number
     imgStyles?: string
     id: number
+    color?: string
 }

@@ -8,9 +8,10 @@ import {CaseProps} from "@/components/Pages/HomePage/components/types";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
-const Case = ({image, desc, price, title, width, height, imgStyles, id}: CaseProps) => {
+const Case = ({image, desc, price, title, width, height, imgStyles, id, color}: CaseProps) => {
     return (
         <Link href={`/case/${id}`} className={styles.root}>
+            <div className={styles.shadow} style={{background: color}}/>
             <Image
                 src={image}
                 alt={"Case"}

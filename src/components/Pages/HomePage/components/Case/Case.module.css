@@ -13,6 +13,13 @@
     px-2.5
     py-3
     mx-auto
+    relative
+    overflow-hidden
+}
+
+.image {
+    @apply
+    z-10
 }
 
 .about {
@@ -35,6 +42,19 @@
     text-white
     text-xs
     opacity-75
+}
+
+.shadow {
+    @apply
+    w-[120px]
+    h-[120px]
+    blur-[40px]
+    absolute
+    left-0
+    right-0
+    bottom-0
+    top-0
+    m-auto
 }
 
 @media screen and (max-width: 500px){

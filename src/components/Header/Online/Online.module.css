@@ -1,0 +1,32 @@
+.header__right__content {
+    background: linear-gradient(90.00deg, rgba(62, 62, 159, 0.5), rgba(69, 46, 145, 0.5) 100%);
+    @apply
+    flex
+    max-h-[42px]
+    max-w-[144px]
+    w-full
+    h-full
+    items-center
+    rounded-2xl
+    px-4
+    justify-between
+}
+
+.header__right__count {
+    @apply
+    text-white
+    font-light
+    ml-2
+}
+
+.header__right__heading {
+    @apply
+    text-[9px]
+}
+
+@media screen and (max-width: 1080px){
+    .header__left__label, .header__right__content {
+        @apply
+        hidden
+    }
+}

@@ -23,8 +23,8 @@ const CaseSection = ({title}: CaseSectionProps) => {
             <div className={styles.cases__section}>
                 {
                     !isPending && data?.length &&
-                    data.map(({id, name, price, photo_link}) => (
-                        <Case image={photo_link} title={name} price={price} id={id} key={id}/>
+                    data.map(({id, name, price, photo_link, color}) => (
+                        <Case image={photo_link} color={color} title={name} price={price} id={id} key={id}/>
                     ))
                 }
             </div>

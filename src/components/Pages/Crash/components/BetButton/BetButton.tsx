@@ -13,15 +13,16 @@ interface BetButtonProps {
 
 const BetButton = ({onClick}: BetButtonProps) => {
     const { bet, isBetSet, socketEvent, usersBets } = useAppSelector(state => state.crash)
-    const userId = useAppSelector(state => state.user.id)
+    const {id, balance} = useAppSelector(state => state.user)
     const isUserBet = useMemo(() => {
-        return usersBets && usersBets.find(item => item.player_id === userId)
+        return usersBets && usersBets.find(item => item.player_id === id)
     }, [usersBets])
 
     return (
         <button
             className={!isBetSet ? styles.bet__btn : styles.withdraw}
-            onClick={onClick} disabled={!(socketEvent.status === "Pending") && !isBetSet}
+            onClick={onClick}
+            disabled={(!(socketEvent.status === "Pending") && !isBetSet) || !(+balance) || (+balance < +bet)}
             style={{
                 background: (isUserBet && !isBetSet) && "green",
                 borderColor: (isUserBet && !isBetSet) && "green"

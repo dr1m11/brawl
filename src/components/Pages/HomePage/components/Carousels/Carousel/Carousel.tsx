@@ -3,9 +3,11 @@ import {useEffect, useRef, useState} from "react";
 import {SOCKET_API_URL} from "@/constants";
 import styles from './Carousel.module.css'
 import Image from "next/image";
+import {useQuery} from "@tanstack/react-query";
+import {axiosClassic} from "@/api/axios";
 
 interface ItemInterface {
-    photo: string
+    photo_link: string
     color: string
 }
 
@@ -13,7 +15,19 @@ interface ItemInterface {
 function Carousel() {
     const ws = useRef(null)
 
+    const {data} = useQuery({
+        queryKey: ['lastDrops'],
+        queryFn: () => axiosClassic.get('/last-drops')
+    })
+
+    useEffect(() => {
+        if (data?.data) {
+            setItems(data.data)
+        }
+    }, [data?.data]);
+
     const [items, setItems] = useState<ItemInterface[]>([])
+
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
@@ -48,7 +62,7 @@ function Carousel() {
                     items.map((item, index) => (
                         <div className={styles.item} key={index}>
                             <div className={styles.shadow} style={{background: item.color}}/>
-                            <Image src={item.photo} alt={'Item'} width={100} height={100} className={styles.img}/>
+                            <Image src={item.photo_link} alt={'Item'} width={100} height={100} className={styles.img}/>
                         </div>
                     ))
                 }
