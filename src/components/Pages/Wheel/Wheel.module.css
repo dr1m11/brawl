@@ -56,6 +56,13 @@
     right-[30%]
 }
 
+@media screen and (max-width: 865px){
+    .shadow__right, .shadow__left {
+        @apply
+        w-[400px]
+    }
+}
+
 @media screen and (max-width: 768px){
     .root {
         @apply
@@ -67,6 +74,11 @@
     .root {
         @apply
         h-[1830px]
+    }
+
+    .shadow__right, .shadow__left {
+        @apply
+        w-[200px]
     }
 
     .wrapper {
