@@ -49,3 +49,11 @@
         mr-6
     }
 }
+
+@media screen and (max-width: 545px){
+    .current__bet {
+        @apply
+        mr-0
+        rounded-3xl
+    }
+}

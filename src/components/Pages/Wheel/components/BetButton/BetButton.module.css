@@ -124,11 +124,22 @@
 
     .determiner {
         @apply
-        -mt-6
         opacity-75
+        -mt-[150px]
     }
 
     .numbers__label {
         color: rgba(255, 255, 255, 0.5);
+    }
+
+    .menu__center {
+        @apply
+        -bottom-[130px]
+        max-w-[95%]
+    }
+
+    .bet__btn {
+        @apply
+        rounded-3xl
     }
 }

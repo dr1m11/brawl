@@ -29,6 +29,7 @@
         @apply
         max-h-[850px]
         grid-cols-2
+        max-w-[95%]
     }
 }
 
@@ -36,5 +37,13 @@
     .info {
         @apply
         mt-10
+    }
+}
+
+@media screen and (max-width: 480px){
+    .info {
+        @apply
+        grid-cols-1
+        max-h-[1450px]
     }
 }

@@ -75,12 +75,12 @@
     .game__menu {
         @apply
         max-h-[210px]
-        justify-end
         gap-y-3
         rounded-2xl
         max-w-[90%]
         mx-auto
         mt-10
+        justify-start
     }
 
     .game {
@@ -97,5 +97,13 @@
         -z-10
         left-0
         -bottom-[1400px]
+    }
+}
+
+@media screen and (max-width: 545px) {
+    .game__bg {
+        @apply
+        -bottom-[2000px]
+        h-[2200px]
     }
 }

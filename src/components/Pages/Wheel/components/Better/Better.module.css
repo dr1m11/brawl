@@ -17,3 +17,12 @@
         gap-x-[230px]
     }
 }
+
+@media screen and (max-width: 545px){
+    .menu__left {
+        @apply
+        max-h-[57px]
+        justify-center
+        gap-x-0
+    }
+}

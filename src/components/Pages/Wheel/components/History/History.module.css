@@ -31,6 +31,6 @@
 @media screen and (max-width: 545px){
     .history {
         @apply
-        mt-16
+        mt-[150px]
     }
 }
