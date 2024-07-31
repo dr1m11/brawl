@@ -11,7 +11,10 @@ import 'swiper/css/effect-coverflow'
 
 import styles from './BannerCarousel.module.css'
 import BannerBG from '@/../public/Home/Banner.png'
+import Charecters from '@/../public/Home/Charecters.png'
 import Image from "next/image";
+import GreenButton from "@/components/GreenButton/GreenButton";
+import {Autoplay} from "swiper/modules";
 
 export const BannerCarousel = () => {
     const swiper = useSwiper();
@@ -20,23 +23,152 @@ export const BannerCarousel = () => {
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <Swiper
-                    spaceBetween={50}
+                    modules={[Autoplay]}
+                    spaceBetween={0}
                     slidesPerView={3}
                     centeredSlides={true}
                     loop={true}
-                    className={'w-full h-full'}
+                    className={'w-full h-full overflow-y-visible'}
+                    autoplay={true}
+                    breakpoints={{
+                        1200: {
+                            spaceBetween: -120
+                        },
+                        940: {
+                            spaceBetween: -100
+                        },
+                        0: {
+                            spaceBetween: -60
+                        }
+                    }}
                 >
-                    <SwiperSlide>
-                        <Image src={BannerBG} quality={100} alt={'Banner'} width={1057} height={478} className={styles.banner}/>
+                    <SwiperSlide className={'overflow-visible'}>
+                        {
+                            ({isActive}) => (
+                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                    <Image
+                                        src={BannerBG}
+                                        quality={100}
+                                        alt={'Banner'}
+                                        width={1057}
+                                        height={478}
+                                        className={styles.banner}/>
+                                    <Image
+                                        src={Charecters}
+                                        alt={'Charecters'}
+                                        width={910}
+                                        height={543}
+                                        className={styles.charecters}
+                                        quality={100}
+                                    />
+                                    <div className={styles.info}>
+                                        <div className={styles.info__content}>
+                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                            <button className={styles.right__btn}>
+                                                РЕГСИТРАЦИЯ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src={BannerBG} quality={100} alt={'Banner'} width={1057} height={478} className={styles.banner}/>
+                    <SwiperSlide className={'overflow-visible'}>
+                        {
+                            ({isActive}) => (
+                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                    <Image
+                                        src={BannerBG}
+                                        quality={100}
+                                        alt={'Banner'}
+                                        width={1057}
+                                        height={478}
+                                        className={styles.banner}/>
+                                    <Image
+                                        src={Charecters}
+                                        alt={'Charecters'}
+                                        width={910}
+                                        height={543}
+                                        className={styles.charecters}
+                                        quality={100}
+                                    />
+                                    <div className={styles.info}>
+                                        <div className={styles.info__content}>
+                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                            <button className={styles.right__btn}>
+                                                РЕГСИТРАЦИЯ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src={BannerBG} quality={100} alt={'Banner'} width={1057} height={478} className={styles.banner}/>
+                    <SwiperSlide className={'overflow-visible'}>
+                        {
+                            ({isActive}) => (
+                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                    <Image
+                                        src={BannerBG}
+                                        quality={100}
+                                        alt={'Banner'}
+                                        width={1057}
+                                        height={478}
+                                        className={styles.banner}/>
+                                    <Image
+                                        src={Charecters}
+                                        alt={'Charecters'}
+                                        width={910}
+                                        height={543}
+                                        className={styles.charecters}
+                                        quality={100}
+                                    />
+                                    <div className={styles.info}>
+                                        <div className={styles.info__content}>
+                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                            <button className={styles.right__btn}>
+                                                РЕГСИТРАЦИЯ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src={BannerBG} quality={100} alt={'Banner'} width={1057} height={478} className={styles.banner}/>
+                    <SwiperSlide className={'overflow-visible'}>
+                        {
+                            ({isActive}) => (
+                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                    <Image
+                                        src={BannerBG}
+                                        quality={100}
+                                        alt={'Banner'}
+                                        width={1057}
+                                        height={478}
+                                        className={styles.banner}/>
+                                    <Image
+                                        src={Charecters}
+                                        alt={'Charecters'}
+                                        width={910}
+                                        height={543}
+                                        className={styles.charecters}
+                                        quality={100}
+                                    />
+                                    <div className={styles.info}>
+                                        <div className={styles.info__content}>
+                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                            <button className={styles.right__btn}>
+                                                РЕГСИТРАЦИЯ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </SwiperSlide>
                 </Swiper>
             </div>

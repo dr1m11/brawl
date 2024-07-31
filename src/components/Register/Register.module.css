@@ -57,6 +57,11 @@
     -bottom-7
 }
 
+.login__btn:disabled {
+    background: rgb(82, 82, 110);
+    opacity: 0.75;
+}
+
 .divider {
     @apply
     h-10
@@ -96,11 +101,14 @@
     background: rgba(0, 168, 35, 0.42);
     @apply
     w-full
-    h-[30px]
+    h-[50px]
     text-white
     font-thin
-    rounded-lg
+    rounded-xl
     flex
     items-center
     justify-center
+    border-green-500
+    border
+    flex-col
 }

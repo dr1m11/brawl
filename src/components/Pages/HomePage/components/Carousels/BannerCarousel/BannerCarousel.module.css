@@ -1,11 +1,12 @@
 .root {
     @apply
     w-full
-    h-[480px]
-    mt-16
+    h-[534px]
+    mt-12
     flex
     justify-center
-    overflow-hidden
+    overflow-x-hidden
+    overflow-y-visible
 }
 
 .wrapper {
@@ -15,8 +16,143 @@
     h-full
 }
 
-.banner {
+.banner__root {
     @apply
     w-full
     h-full
+    transition-all
+    relative
+    flex
+    items-end
+    justify-center
+}
+
+.banner {
+    @apply
+    w-full
+    h-[90%]
+    rounded-t-3xl
+}
+
+.charecters {
+    @apply
+    absolute
+    left-0
+    right-0
+    bottom-0
+    m-auto
+}
+
+.info {
+    @apply
+    absolute
+    w-full
+    h-[250px]
+    bg-gradient-to-t
+    from-black
+    to-black-op-0
+    rounded-b-xl
+    pb-[60px]
+    flex
+    items-end
+    justify-center
+}
+
+.info__content {
+    @apply
+    flex
+    items-center
+    justify-between
+    text-white
+    w-full
+    px-[50px]
+}
+
+.button {
+    @apply
+    rounded-xl
+}
+
+.title {
+    @apply
+    w-fit
+}
+
+.right__btn {
+    background: linear-gradient(90.00deg, rgba(62, 62, 159, 0.5),rgba(69, 46, 145, 0.5) 100%);
+    @apply
+    w-full
+    max-w-[200px]
+    h-[45px]
+    rounded-2xl
+}
+
+@media screen and (max-width: 1200px){
+    .root {
+        @apply
+        h-[400px]
+    }
+
+    .wrapper {
+        @apply
+        min-w-[2400px]
+        w-[2400px]
+    }
+
+    .charecters {
+        @apply
+        h-full
+        w-[80%]
+    }
+}
+
+@media screen and (max-width: 940px){
+    .root {
+        @apply
+        h-[300px]
+    }
+
+    .wrapper {
+        @apply
+        min-w-[1500px]
+        w-[1500px]
+    }
+
+    .charecters {
+        @apply
+        w-[90%]
+    }
+
+    .info {
+        @apply
+        h-[200px]
+        pb-[30px]
+    }
+
+    .info__content {
+        @apply
+        px-3
+    }
+
+    .right__btn {
+        @apply
+        max-w-[140px]
+        max-h-[30px]
+        text-[13px]
+        rounded-lg
+    }
+
+    .button {
+        @apply
+        max-w-[140px]
+        max-h-[30px]
+        text-[13px]
+        rounded-lg
+    }
+
+    .title {
+        @apply
+        text-center
+        text-[13px]
+    }
 }

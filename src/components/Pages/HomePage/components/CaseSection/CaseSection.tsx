@@ -16,7 +16,7 @@ const CaseSection = ({title}: CaseSectionProps) => {
             {
                 title
                 &&
-                <h2 className={styles.cases__heading}>
+                <h2 className={styles.cases__heading} id={'mainTitle'}>
                     {title}
                 </h2>
             }

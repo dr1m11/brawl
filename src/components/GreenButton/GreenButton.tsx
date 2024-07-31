@@ -10,14 +10,15 @@ const daysOne = Days_One({subsets: ["latin"], weight: ["400"]});
 interface GreenButtonProps {
     children: ReactNode
     link?: string
+    className: any
 }
 
 
-const GreenButton = ({children, link}: GreenButtonProps) => {
+const GreenButton = ({children, link, className}: GreenButtonProps) => {
 
     return (
         <Link href={link ? link : '/'}>
-            <button className={clsx(styles.button, daysOne)}>
+            <button className={clsx(styles.button, daysOne, className)}>
                 <div className={styles.div}>
                     {children}
                 </div>

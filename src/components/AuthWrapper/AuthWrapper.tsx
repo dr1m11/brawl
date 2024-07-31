@@ -39,7 +39,7 @@ const AuthWrapper = () => {
                     type == 'login' ?
                         <Login/>
                         :
-                        <Register/>
+                        <Register toLogin={() => setType('login')}/>
                 }
                 <AccountBtn type={type} setType={() => setType(type === "login" ? 'register' : 'login')}/>
             </div>

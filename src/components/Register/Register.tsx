@@ -15,15 +15,32 @@ import {BiError} from "react-icons/bi";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
+interface RegisterInterface {
+    toLogin: () => void
+}
 
-const Register = () => {
+const Register = ({toLogin}: RegisterInterface) => {
     const [success, setSuccess] = useState<boolean>(false)
+    const [time, setTime] = useState(3)
+
 
     const { mutate: mutateRegister, isPending } = useMutation({
         mutationKey: ['signUp'],
         mutationFn: (data: ISignUpData) => authService.signUp(data),
         onSuccess() {
             setSuccess(true)
+            setTimeout(() => {
+                toLogin()
+            }, 3000)
+            setTimeout(() => {
+                setTime(2)
+            }, 1000)
+            setTimeout(() => {
+                setTime(1)
+            }, 2000)
+            setTimeout(() => {
+                setTime(0)
+            }, 3000)
         },
         onError(error) {
             console.log(error.message)
@@ -61,9 +78,19 @@ const Register = () => {
                     <div className={styles.error}><BiError className={styles.error__icon}/>
                         <span className={styles.error__message}>{errorAdapter(form.formState.errors)[0]}</span>
                     </div>}
+                {
+                    !!success &&
+                    <div className={styles.success}>
+                        <p>Аккаунт зарегистрирован</p>
+                    </div>
+                }
+                {
+                    !!success &&
+                    <p>Вы будете перенаправлены на страницу входа через: {time}</p>
+                }
             </div>
             <div className={styles.divider}/>
-            <button type={"submit"} disabled={isPending}
+            <button type={"submit"} disabled={isPending || success}
                     className={clsx(styles.login__btn, daysOne.className)}>СОЗДАТЬ
             </button>
         </form>
