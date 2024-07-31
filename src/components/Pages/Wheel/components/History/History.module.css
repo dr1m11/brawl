@@ -15,9 +15,8 @@
     w-full
     max-w-[32px]
     h-0
-    border
+    border-2
     rounded
-    border-orange-500
 }
 
 @media screen and (max-width: 768px){
@@ -32,5 +31,10 @@
     .history {
         @apply
         mt-[150px]
+    }
+
+    .history:last-child {
+        @apply
+        hidden
     }
 }

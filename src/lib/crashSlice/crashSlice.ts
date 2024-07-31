@@ -7,6 +7,12 @@ interface CrashInterface {
     isBetSet: boolean
     usersBets: PlayerInterface[]
     isAutoBet: boolean
+    history: HistoryInterface[]
+}
+
+interface HistoryInterface {
+    id: number
+    win_multiplier: number | string
 }
 
 interface PlayerInterface {
@@ -40,6 +46,7 @@ const initialState: CrashInterface ={
     isBetSet: false,
     usersBets: [],
     isAutoBet: false,
+    history: []
 }
 
 export const crashSlice = createSlice({
@@ -66,6 +73,9 @@ export const crashSlice = createSlice({
         },
         setIsAutoBet: (state, {payload}) => {
             state.isAutoBet = payload
+        },
+        setHistory: (state, {payload}) => {
+            state.history = payload
         }
     },
     selectors: {
@@ -83,6 +93,7 @@ export const {
     setIsBetSet,
     setUsersBets,
     setIsAutoBet,
+    setHistory,
 } = crashSlice.actions
 export const {
     selectBet,

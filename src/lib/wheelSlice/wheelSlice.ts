@@ -7,6 +7,12 @@ interface WheelInterface {
     isBetSet: boolean
     userCell: number
     userBets: UserBetsInterface
+    history: HistoryInterface[]
+}
+
+interface HistoryInterface {
+    id: number
+    win_cell: number | string
 }
 
 interface UserBetsInterface {
@@ -54,7 +60,8 @@ const initialState: WheelInterface ={
         bet5: null,
         bet10: null,
         bet100: null,
-    }
+    },
+    history: []
 }
 
 export const wheelSlice = createSlice({
@@ -78,6 +85,9 @@ export const wheelSlice = createSlice({
         },
         setUserBets: (state, {payload}) => {
             state.userBets = payload
+        },
+        setHistory: (state, {payload}) => {
+            state.history = payload
         }
     },
     selectors: {
@@ -95,7 +105,8 @@ export const {
     setUser,
     setIsBetSet,
     setUserCell,
-    setUserBets
+    setUserBets,
+    setHistory,
 } = wheelSlice.actions
 export const {
     selectBet,

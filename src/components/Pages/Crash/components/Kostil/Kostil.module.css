@@ -20,6 +20,11 @@
     rounded-2xl
     p-3
     bg-373070
+    flex
+    flex-col
+    max-h-[360px]
+    justify-between
+    pb-0
 }
 
 .players {

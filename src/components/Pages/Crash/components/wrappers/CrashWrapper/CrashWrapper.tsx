@@ -12,6 +12,8 @@ const CrashWrapper = ({children}: {children: ReactNode}) => {
     return (
         <div className={clsx(styles.root, manrope.className)}>
             <Image src={BG} alt={'Background'} width={1435} height={876} className={styles.bg} quality={100}/>
+            <div className={styles.shadow__left}/>
+            <div className={styles.shadow__right}/>
             <div className={styles.wrapper}>
                 {children}
             </div>

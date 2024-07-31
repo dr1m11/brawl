@@ -1,0 +1,71 @@
+.root {
+    background: rgba(54, 36, 107, 0.4);
+    @apply
+    w-full
+    h-[100px]
+    max-w-[1020px]
+    mx-auto
+    mt-12
+    rounded-xl
+    overflow-hidden
+    relative
+}
+
+.wrapper {
+    transition: left 0.3s ease-in-out;
+    @apply
+    flex
+    h-full
+    w-[1190px]
+    absolute
+    flex-row-reverse
+    -left-[170px]
+}
+
+.item {
+    @apply
+    w-[170px]
+    min-w-[170px]
+    h-full
+    border-x
+    flex
+    items-center
+    justify-center
+    relative
+    overflow-hidden
+    border-6445118
+}
+
+.shadow {
+    @apply
+    absolute
+    left-0
+    right-0
+    top-0
+    bottom-0
+    w-[50px]
+    h-[50px]
+    blur-[25px]
+    m-auto
+    -z-10
+}
+
+.img {
+    @apply
+    max-h-[90%]
+}
+
+/*.item:last-of-type {*/
+/*    @apply*/
+/*    hidden*/
+/*}*/
+
+.item:nth-of-type(6) {
+    @apply
+    border-r-0
+}
+
+.item:first-of-type {
+    @apply
+    border-l-0
+}

@@ -10,9 +10,10 @@ import Info from "@/components/Pages/Wheel/components/Info/Info";
 import localFont from "next/font/local";
 import {useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setBet, setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
+import {setBet, setHistory, setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
 import axios from "axios";
 import {API_URL, SOCKET_API_URL} from "@/constants";
+import {axiosClassic} from "@/api/axios";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -34,6 +35,9 @@ const Kostil = () => {
         if (socketEvent.status === "Pending") {
             dispatch(setIsBetSet(false))
         }
+        axiosClassic.get('/all-roulette-records').then(data => {
+            dispatch(setHistory(data.data))
+        })
     }, [socketEvent.status]);
 
     useEffect(() => {

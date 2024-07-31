@@ -1,0 +1,26 @@
+.history {
+    @apply
+    w-full
+    overflow-hidden
+    h-full
+    flex
+    items-center
+    gap-x-2
+    max-h-[75px]
+    border-t-2
+    border-t-6445118
+}
+
+.history__item {
+    @apply
+    min-w-[80px]
+    w-[80px]
+    h-[40px]
+    rounded-xl
+    flex
+    items-center
+    justify-center
+    text-white
+    text-[14px]
+    tracking-widest
+}

@@ -1,0 +1,22 @@
+.root {
+    @apply
+    w-full
+    h-[480px]
+    mt-16
+    flex
+    justify-center
+    overflow-hidden
+}
+
+.wrapper {
+    @apply
+    min-w-[3000px]
+    w-[3000px]
+    h-full
+}
+
+.banner {
+    @apply
+    w-full
+    h-full
+}

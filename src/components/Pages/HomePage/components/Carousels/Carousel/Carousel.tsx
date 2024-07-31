@@ -1,50 +1,19 @@
 'use client'
-import Slider, {CustomArrowProps} from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import clsx from "clsx";
+import {useEffect, useRef, useState} from "react";
+import {SOCKET_API_URL} from "@/constants";
+import styles from './Carousel.module.css'
 import Image from "next/image";
-import Case from '@/../public/Case/king.png'
-import Arrow from '@/../public/Home/Arrow.svg'
-import {Manrope} from "next/font/google";
-import {useEffect, useRef} from "react";
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
-import axios from "axios";
-import {API_URL, SOCKET_API_URL} from "@/constants";
 
-
-function SampleNextArrow(props: CustomArrowProps) {
-    const { onClick } = props;
-    return (
-        <div>
-            <div onClick={onClick}
-                 className={'absolute rounded-r-2xl bg-amber-50 -right-[25px] top-0 w-[25px] h-[100px] flex items-center justify-center cursor-pointer'}
-                 style={{background: 'linear-gradient(180.00deg, rgb(74, 79, 146),rgb(70, 76, 149) 100%)'}}>
-                <Image src={Arrow} alt={'Arrow'} width={8} height={13} className={'rotate-180'}/>
-            </div>
-        </div>
-    );
+interface ItemInterface {
+    photo: string
+    color: string
 }
-
-function SamplePrevArrow(props: CustomArrowProps) {
-    const {onClick} = props;
-    return (
-        <div>
-            <div onClick={onClick}
-                 className={'absolute rounded-l-2xl bg-amber-50 -left-[25px] w-[25px] h-[100px] flex items-center justify-center cursor-pointer'}
-                 style={{background: 'linear-gradient(180.00deg, rgb(74, 79, 146),rgb(70, 76, 149) 100%)'}}>
-                <Image src={Arrow} alt={'Arrow'} width={8} height={13} />
-            </div>
-        </div>
-    );
-}
-
-const manrope = Manrope({weight: ['500'], subsets: ["latin"]})
 
 
 function Carousel() {
     const ws = useRef(null)
+
+    const [items, setItems] = useState<ItemInterface[]>([])
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
@@ -52,7 +21,7 @@ function Carousel() {
 
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
-            console.log(data)
+            setItems(data)
         };
 
         ws.current.onclose = () => {
@@ -70,8 +39,21 @@ function Carousel() {
         };
     }, []);
 
+
     return (
-        <div></div>
+        !!items.length &&
+        <div className={styles.root}>
+            <div className={styles.wrapper}>
+                {
+                    items.map((item, index) => (
+                        <div className={styles.item} key={index}>
+                            <div className={styles.shadow} style={{background: item.color}}/>
+                            <Image src={item.photo} alt={'Item'} width={100} height={100} className={styles.img}/>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
     );
 }
 

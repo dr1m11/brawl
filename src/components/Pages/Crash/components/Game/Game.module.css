@@ -1,8 +1,6 @@
 .graph__game {
     @apply
     w-full
-    border-b-2
-    border-b-6445118
     max-h-[270px]
     h-full
     relative
@@ -44,7 +42,7 @@
         /*w-[110%]*/
     h-[200px]
     absolute
-    z-20
+    z-10
     left-0
     -bottom-20
     /*-rotate-[19.5deg]*/

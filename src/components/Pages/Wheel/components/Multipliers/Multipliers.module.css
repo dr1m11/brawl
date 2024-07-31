@@ -24,3 +24,10 @@
         max-w-full
     }
 }
+
+@media screen and (max-width: 480px){
+    .menu__right {
+        @apply
+        gap-x-1
+    }
+}

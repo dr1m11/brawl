@@ -7,12 +7,14 @@ import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import Automation from "@/components/Pages/Crash/components/Automation/Automation";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useEffect, useRef} from "react";
-import {setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
+import {setHistory, setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
 import useResize from "@/hooks/useResize";
 import {API_URL, SOCKET_API_URL} from "@/constants";
+import {axiosClassic} from "@/api/axios";
+import History from "@/components/Pages/Crash/components/History/History";
 
 
 interface CrashInterface {
@@ -43,6 +45,10 @@ const Kostil = () => {
         queryClient.invalidateQueries({
             queryKey: ['user']
         })
+        axiosClassic.get('/all-crash-records').then(data => dispatch(setHistory(data.data)))
+        if ((socketEvent.status === "Pending") && (!isAutoBet)) {
+            dispatch(setIsBetSet(false))
+        }
     }, [socketEvent.status]);
 
     useEffect(() => {
@@ -118,7 +124,7 @@ const Kostil = () => {
             <div className={styles.game}>
                 <div className={styles.graph}>
                     <Game/>
-                    <div className={styles.prev__bets}></div>
+                    <History />
                 </div>
                 <div className={styles.players}>
                     <div className={styles.choose__filter}>

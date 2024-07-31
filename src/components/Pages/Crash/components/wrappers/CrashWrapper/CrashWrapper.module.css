@@ -8,6 +8,28 @@
     flex
     items-center
     justify-center
+    relative
+}
+
+.shadow__left, .shadow__right {
+    @apply
+    absolute
+    w-[500px]
+    h-[500px]
+    blur-[250px]
+    -z-10
+}
+
+.shadow__left {
+    @apply
+    left-[20%]
+    bg-rose-900
+}
+
+.shadow__right {
+    @apply
+    right-[15%]
+    bg-sky-800
 }
 
 .bg {
@@ -16,10 +38,8 @@
     left-0
     right-0
     top-0
-    bottom-0
     m-auto
-    opacity-20
-    min-w-[1400px]
+    opacity-10
     -z-50
 }
 
@@ -32,6 +52,7 @@
     flex
     flex-col
     justify-between
+    mx-auto
 }
 
 @media screen and (max-width: 900px){
@@ -58,5 +79,12 @@
     .wrapper {
         @apply
         max-h-[1300px]
+    }
+
+    .shadow__left, .shadow__right {
+        @apply
+        w-[300px]
+        h-[300px]
+        blur-[150px]
     }
 }

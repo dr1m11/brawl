@@ -2,16 +2,3 @@
     @apply
     mt-4
 }
-
-.banner__carousel {
-    @apply
-    mb-4
-    overflow-y-visible
-}
-
-@media screen and (max-width: 1280px){
-    .carousels {
-        @apply
-        hidden
-    }
-}
