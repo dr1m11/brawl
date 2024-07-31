@@ -3,7 +3,7 @@ import Image from "next/image";
 import holodilnik from "../../../public/Header/holodilnik.svg";
 import baran from "../../../public/Header/baran.svg";
 import ebobot from "../../../public/Header/elPrimo.svg";
-import logo from '@/../public/Footer/Logo.svg'
+import logo from '@/../public/Footer/Logo.png'
 import BigStar from '@/../public/Footer/BigStar.svg'
 import Valina from '@/../public/Footer/valinu_uberi.svg'
 import Baba from '@/../public/Footer/baba.svg'
@@ -24,7 +24,7 @@ const Footer = () => {
                         <div className={styles.elipse}/>
                     </div>
                     <div className={styles.characters}>
-                        <Image src={logo} alt={'Logo'} width={131} height={93} className={styles.logo}/>
+                        <Image src={logo} alt={'Logo'} quality={100} width={131} height={93} className={styles.logo}/>
                         <Image src={Diamond} alt={'Diamond'} width={34} height={39}
                                className={styles.diamond}/>
                         <Image src={Baba} alt={'Character'} width={371} height={331}

@@ -88,7 +88,7 @@ const Kostil = () => {
         <>
             <div className={styles.game}>
                 <div className={styles.game__label}>
-                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} <PriceIcon /></h1>
+                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} <PriceIcon width={30} height={30} /></h1>
                     <span className={styles.heading__label}>в этом раунде</span>
                 </div>
                 <Game pending={socketEvent.status === "Pending" || socketEvent.status === "End"}
