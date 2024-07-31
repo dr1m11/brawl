@@ -10,11 +10,11 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/effect-coverflow'
 
 import styles from './BannerCarousel.module.css'
-import BannerBG from '@/../public/Home/Banner.png'
-import Charecters from '@/../public/Home/Charecters.png'
+import BannerBG from '../../../../../../../../public/Home/Banner.png'
+import Charecters from '../../../../../../../../public/Home/Charecters.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
-import {Autoplay} from "swiper/modules";
+import {Autoplay, Scrollbar} from "swiper/modules";
 
 export const BannerCarousel = () => {
     const swiper = useSwiper();
@@ -37,8 +37,13 @@ export const BannerCarousel = () => {
                         940: {
                             spaceBetween: -100
                         },
-                        0: {
+                        600: {
                             spaceBetween: -60
+                        },
+                        0: {
+                            modules: [Scrollbar],
+                            scrollbar: true,
+                            slidesPerView: 1,
                         }
                     }}
                 >

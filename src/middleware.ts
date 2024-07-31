@@ -14,6 +14,10 @@ export function middleware(request: NextRequest, response: NextResponse) {
         return NextResponse.redirect(new URL('/', request.url))
     }
 
+    if (!token && request.nextUrl.pathname.startsWith('/withdraw')) {
+        return NextResponse.redirect(new URL('/', request.url))
+    }
+
     if (request.nextUrl.pathname.startsWith('/case') && request.nextUrl.pathname.endsWith('/case')) {
         return NextResponse.redirect(new URL('/', request.url))
     }
