@@ -5,6 +5,7 @@ import BestGun from "../../../../../../public/Profile/BestGun.svg";
 import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {axiosAuth, axiosClassic} from "@/api/axios";
 import {useAppSelector} from "@/lib/hooks";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const HeaderRight = () => {
     const queryClient= useQueryClient()
@@ -16,7 +17,7 @@ const HeaderRight = () => {
                 <div className={styles.best__item}>
                     <h3 className={styles.best__title}>Лучший предмет</h3>
                     <h5 className={styles.best__desc}>{bestItem.name}</h5>
-                    <p className={styles.price}>{bestItem.price} RUB</p>
+                    <p className={styles.price}>{bestItem.price} <PriceIcon/></p>
                     <Image src={bestItem.photo_link} alt={'Gun'} width={139} height={93}
                                           className={styles.best__gun}/>
                 </div>

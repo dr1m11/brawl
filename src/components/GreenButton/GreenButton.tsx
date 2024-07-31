@@ -11,19 +11,18 @@ interface GreenButtonProps {
     children: ReactNode
     link?: string
     className: any
+    onClick: () => void
 }
 
 
-const GreenButton = ({children, link, className}: GreenButtonProps) => {
+const GreenButton = ({children, link, className, onClick}: GreenButtonProps) => {
 
     return (
-        <Link href={link ? link : '/'}>
-            <button className={clsx(styles.button, daysOne, className)}>
+            <button className={clsx(styles.button, daysOne, className)} onClick={onClick}>
                 <div className={styles.div}>
                     {children}
                 </div>
             </button>
-        </Link>
     );
 };
 

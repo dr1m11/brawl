@@ -14,6 +14,7 @@ import {setBet, setHistory, setIsBetSet, setSocketEvent, setUser, setUserBets} f
 import axios from "axios";
 import {API_URL, SOCKET_API_URL} from "@/constants";
 import {axiosClassic} from "@/api/axios";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -87,7 +88,7 @@ const Kostil = () => {
         <>
             <div className={styles.game}>
                 <div className={styles.game__label}>
-                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} RUB</h1>
+                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} <PriceIcon /></h1>
                     <span className={styles.heading__label}>в этом раунде</span>
                 </div>
                 <Game pending={socketEvent.status === "Pending" || socketEvent.status === "End"}

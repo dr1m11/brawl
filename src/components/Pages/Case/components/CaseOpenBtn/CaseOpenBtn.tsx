@@ -7,6 +7,7 @@ import {setIsOpened, setRoulette, setWinedItem} from "@/lib/caseSlice/caseSlice"
 import {useQueryClient} from "@tanstack/react-query";
 import {useState} from "react";
 import {TailSpin} from "react-loader-spinner";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const CaseOpenBtn = () => {
     const {items, caseData, isOpenDisabled} = useAppSelector(state => state.case)
@@ -58,7 +59,7 @@ const CaseOpenBtn = () => {
                     <>
                         <h5>Открыть за</h5>
                         <span
-                            className={styles.bet__btn__label}>{caseData.price} RUB</span>
+                            className={styles.bet__btn__label}>{caseData.price} <PriceIcon /></span>
                     </>
             }
         </button>

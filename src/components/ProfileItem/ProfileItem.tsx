@@ -7,6 +7,7 @@ import {itemService} from "@/services/item/item.service";
 import {useQueryClient} from "@tanstack/react-query";
 import {useState} from "react";
 import {TailSpin} from "react-loader-spinner";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 interface ProfileItemProps {
     title: string
@@ -54,7 +55,7 @@ const ProfileItem = ({title, price, id, userId, color, photo_link}: ProfileItemP
                         'Продать'
                 }
                 </button>
-                <span className={styles.price}>{price} RUB</span>
+                <span className={styles.price}>{price} <PriceIcon/></span>
             </div>
         </div>
     );

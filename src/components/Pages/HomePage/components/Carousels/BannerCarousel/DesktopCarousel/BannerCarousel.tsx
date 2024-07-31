@@ -15,9 +15,13 @@ import Charecters from '../../../../../../../../public/Home/Charecters.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, Scrollbar} from "swiper/modules";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 
 export const BannerCarousel = () => {
-    const swiper = useSwiper();
+    const user = useAppSelector(state => state.user.id)
+
+    const dispatch = useAppDispatch()
 
     return (
         <div className={styles.root}>
@@ -68,11 +72,14 @@ export const BannerCarousel = () => {
                                     />
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
-                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <GreenButton onClick={() => {
+                                                if (!!user) {
+                                                    window.scroll(0, 800)
+                                                } else {
+                                                    dispatch(changeLogin())
+                                                }
+                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                             <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                            <button className={styles.right__btn}>
-                                                РЕГСИТРАЦИЯ
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -100,11 +107,14 @@ export const BannerCarousel = () => {
                                     />
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
-                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <GreenButton onClick={() => {
+                                                if (!!user) {
+                                                    window.scroll(0, 800)
+                                                } else {
+                                                    dispatch(changeLogin())
+                                                }
+                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                             <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                            <button className={styles.right__btn}>
-                                                РЕГСИТРАЦИЯ
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -132,11 +142,14 @@ export const BannerCarousel = () => {
                                     />
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
-                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <GreenButton onClick={() => {
+                                                if (!!user) {
+                                                    window.scroll(0, 800)
+                                                } else {
+                                                    dispatch(changeLogin())
+                                                }
+                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                             <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                            <button className={styles.right__btn}>
-                                                РЕГСИТРАЦИЯ
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -164,11 +177,14 @@ export const BannerCarousel = () => {
                                     />
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
-                                            <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                            <GreenButton onClick={() => {
+                                                if (!!user) {
+                                                    window.scroll(0, 800)
+                                                } else {
+                                                    dispatch(changeLogin())
+                                                }
+                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                             <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                            <button className={styles.right__btn}>
-                                                РЕГСИТРАЦИЯ
-                                            </button>
                                         </div>
                                     </div>
                                 </div>

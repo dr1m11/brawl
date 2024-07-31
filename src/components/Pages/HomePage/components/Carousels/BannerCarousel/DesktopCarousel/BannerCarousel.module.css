@@ -55,7 +55,6 @@
     pb-[60px]
     flex
     items-end
-    justify-center
 }
 
 .info__content {
@@ -64,7 +63,7 @@
     items-center
     justify-between
     text-white
-    w-full
+    w-[73%]
     px-[50px]
 }
 
@@ -97,6 +96,11 @@
         @apply
         min-w-[2400px]
         w-[2400px]
+    }
+
+    .info__content {
+        @apply
+        w-[80%]
     }
 
     .charecters {
@@ -132,6 +136,7 @@
     .info__content {
         @apply
         px-3
+        w-[83%]
     }
 
     .right__btn {

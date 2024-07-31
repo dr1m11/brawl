@@ -3,6 +3,7 @@ import styles from "./BetButton.module.css";
 import localFont from "next/font/local";
 import {useAppSelector} from "@/lib/hooks";
 import {useMemo} from "react";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
@@ -29,7 +30,7 @@ const BetButton = ({onClick}: BetButtonProps) => {
             }}
         >
             <h5 className={daysOne.className}>{!isBetSet ? "СТАВКА" : "ВЫВОД"}</h5>
-            <span className={styles.bet__btn__label}>{(isBetSet && socketEvent.status === "Running") ? (bet * socketEvent.multiplier).toFixed(0) : bet} RUB</span>
+            <span className={styles.bet__btn__label}>{(isBetSet && socketEvent.status === "Running") ? (bet * socketEvent.multiplier).toFixed(0) : bet} <PriceIcon /></span>
         </button>
     );
 };

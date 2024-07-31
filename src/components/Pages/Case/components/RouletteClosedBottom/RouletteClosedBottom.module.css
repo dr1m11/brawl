@@ -3,7 +3,11 @@
 }
 
 .case__bottom__wrapper {
-    @apply flex h-[56px] items-center justify-between
+    @apply
+    flex
+    h-[56px]
+    items-center
+    justify-between
 }
 
 .high__res {

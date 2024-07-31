@@ -2,6 +2,7 @@
 import styles from './BetCounter.module.css'
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setBet} from "@/lib/wheelSlice/wheelSlice";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 
 const BetCounter = () => {
@@ -17,7 +18,7 @@ const BetCounter = () => {
             }}>-</button>
             <form className={styles.form}>
                 <input className={styles.sum__input} value={(+bet).toFixed(0)} onChange={(e) => dispatch(setBet(+(e.target.value.replace(/[^\d]/g,''))))}/>
-                <label>RUB</label>
+                <label><PriceIcon/></label>
             </form>
             <button className={styles.plus} onClick={() => {
                 dispatch(setBet(+bet + 10))

@@ -16,9 +16,13 @@ import Charecters from '../../../../../../../../public/Home/Charecters.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, EffectFade, Pagination, Scrollbar} from "swiper/modules";
+import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 
 export const MobileCarousel = () => {
-    const swiper = useSwiper();
+    const user = useAppSelector(state => state.user.id)
+
+    const dispatch = useAppDispatch()
 
     return (
         <div className={styles.root}>
@@ -30,6 +34,7 @@ export const MobileCarousel = () => {
                     pagination={{
                         type: 'bullets',
                         enabled: true,
+                        clickable: true,
                     }}
                     slidesPerView={1}
                     loop={true}
@@ -60,7 +65,13 @@ export const MobileCarousel = () => {
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
                                     <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                    <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                    <GreenButton onClick={() => {
+                                        if (!!user) {
+                                            window.scroll(0, 500)
+                                        } else {
+                                            dispatch(changeLogin())
+                                        }
+                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +96,13 @@ export const MobileCarousel = () => {
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
                                     <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                    <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                    <GreenButton onClick={() => {
+                                        if (!!user) {
+                                            window.scroll(0, 500)
+                                        } else {
+                                            dispatch(changeLogin())
+                                        }
+                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +127,13 @@ export const MobileCarousel = () => {
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
                                     <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
-                                    <GreenButton className={styles.button}>ВПЕРЕД!</GreenButton>
+                                    <GreenButton onClick={() => {
+                                        if (!!user) {
+                                            window.scroll(0, 500)
+                                        } else {
+                                            dispatch(changeLogin())
+                                        }
+                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
                                 </div>
                             </div>
                         </div>

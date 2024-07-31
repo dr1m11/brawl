@@ -8,6 +8,7 @@ import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {Manrope} from "next/font/google";
 import {itemService} from "@/services/item/item.service";
 import {useQueryClient} from "@tanstack/react-query";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['500']})
 
@@ -49,7 +50,7 @@ const AfterSpin = () => {
                 onClick={sellItem}
             >
                 Продать
-                за {roulette[48].price} RUB
+                за {roulette[48].price} <PriceIcon />
             </button>
         </div>
     );

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useAppSelector} from "@/lib/hooks";
 import Link from "next/link";
 import {PiHandWithdraw} from "react-icons/pi";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
@@ -22,7 +23,7 @@ const ProfileData = () => {
                     <Link href={'/withdraw'} className={styles.wallet}><PiHandWithdraw color={'white'} className={styles.withdraw}/></Link>
                     <Link href={'/payment'} className={styles.wallet}><Image src={Wallet} alt={'Wallet'} width={18}
                                                              height={18}/></Link>
-                    <button className={styles.balance}>{balance} RUB</button>
+                    <button className={styles.balance}>{balance} <PriceIcon/></button>
                 </div>
             </div>
         </div>

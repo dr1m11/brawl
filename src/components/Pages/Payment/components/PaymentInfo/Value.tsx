@@ -4,6 +4,7 @@ import styles from "@/components/Pages/Payment/components/PaymentInfo/PaymentInf
 import clsx from "clsx";
 import localFont from "next/font/local";
 import {useAppSelector} from "@/lib/hooks";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -11,7 +12,7 @@ const Value = () => {
     const value = useAppSelector(state => state.payment.value)
 
     return (
-        <span className={clsx(styles.info__value, daysOne.className)}>{value ? value : 0} RUB</span>
+        <span className={clsx(styles.info__value, daysOne.className)}>{value ? value : 0} <PriceIcon/></span>
     );
 };
 

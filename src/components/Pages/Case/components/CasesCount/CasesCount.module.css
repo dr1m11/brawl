@@ -3,7 +3,7 @@
 }
 
 .cases__counter {
-    @apply w-[42px] h-[42px] text-white bg-494088 rounded-xl transition-all
+    @apply w-[42px] h-[42px] text-white bg-494088 rounded-xl transition-all flex justify-center items-center
 }
 
 .active {

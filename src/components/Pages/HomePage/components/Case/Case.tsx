@@ -5,6 +5,7 @@ import {Manrope} from "next/font/google";
 import clsx from "clsx";
 import Link from "next/link";
 import {CaseProps} from "@/components/Pages/HomePage/components/types";
+import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
@@ -23,7 +24,7 @@ const Case = ({image, desc, price, title, width, height, imgStyles, id, color}: 
                 <h3 className={styles.title}>{title}</h3>
                 {desc && <p className={clsx(manrope.className, styles.description)}>{desc}</p>}
             </div>
-            <CaseButton>{price} RUB</CaseButton>
+            <CaseButton>{price} <PriceIcon/></CaseButton>
         </Link>
     );
 };
