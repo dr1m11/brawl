@@ -9,11 +9,12 @@ const ProfileItems = () => {
 
     const {id, items} = useAppSelector(state => state.user)
 
+    console.log(items)
     return (
         <div className={styles.items}>
             {!!items &&
-                items.map(({name, price, user_item_id, photo_link, color}: IGun, index) => (
-                    <ProfileItem key={index} title={name} price={price} id={user_item_id} userId={id} color={color} photo_link={photo_link}/>
+                items.map(({name, price, user_item_id, photo_link, color, sold}: IGun, index) => (
+                    <ProfileItem key={index} title={name} price={price} id={user_item_id} userId={id} color={color} photo_link={photo_link} sold={sold}/>
                 ))
             }
         </div>

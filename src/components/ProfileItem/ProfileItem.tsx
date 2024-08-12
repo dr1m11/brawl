@@ -16,9 +16,10 @@ interface ProfileItemProps {
     userId: string
     photo_link: string
     color: string
+    sold: boolean
 }
 
-const ProfileItem = ({title, price, id, userId, color, photo_link}: ProfileItemProps) => {
+const ProfileItem = ({title, price, id, userId, color, photo_link, sold}: ProfileItemProps) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const queryClient = useQueryClient()
@@ -36,12 +37,12 @@ const ProfileItem = ({title, price, id, userId, color, photo_link}: ProfileItemP
     }
 
     return (
-        <div className={styles.root}>
+        <div className={styles.root} style={{opacity: sold && 0.5}}>
             <h1 className={styles.title}>{title}</h1>
             {photo_link && <Image src={photo_link} alt={'Gun'} width={110} height={70} className={styles.gun}/>}
             <div className={styles.shadow} style={{background: color}}/>
             <div className={styles.info}>
-                <button className={styles.sell} onClick={sellItem}>{
+                <button className={styles.sell} onClick={sellItem} disabled={sold} style={{opacity: sold && 0}}>{
                     isLoading ?
                         <TailSpin
                             visible={true}

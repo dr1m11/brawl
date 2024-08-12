@@ -6,6 +6,7 @@ export interface IGun {
     user_item_id?: number
     photo_link?: string
     color?: string
+    sold?: boolean
 }
 
 export interface CaseOpenInterface {
