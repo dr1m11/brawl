@@ -1,13 +1,5 @@
 import styles from './RouletteItem.module.css';
 import Image from "next/image";
-import Gun from "@/../public/CasePage/Gun.svg";
-import {Manrope} from "next/font/google";
-import clsx from "clsx";
-
-const manrope = Manrope({
-    subsets: ['latin', 'cyrillic'],
-    weight: ['500']
-})
 
 interface RouletteItemProps {
     photo_link?: string

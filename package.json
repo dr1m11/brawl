@@ -16,8 +16,10 @@
     "@types/next-auth": "^3.15.0",
     "@types/react-slick": "^0.23.13",
     "axios": "^1.7.2",
+    "bezier-easing": "^2.1.0",
     "chart.js": "^4.4.3",
     "clsx": "^2.1.0",
+    "cubic-bezier": "^0.1.2",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "next": "14.1.4",
@@ -38,6 +40,7 @@
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.7.5",
     "swiper": "^11.1.9",
+    "use-sound": "^4.0.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -49,6 +52,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
+    "file-loader": "^6.2.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"

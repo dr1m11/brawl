@@ -68,7 +68,7 @@ const Spinner = () => {
             onTransitionEnd={() => dispatch(setIsFinished(true))}
         >
             {
-                roulette.length &&
+                !!roulette.length &&
                 roulette.map((item, index) => (
                     <RouletteItem key={index} photo_link={item.photo_link} color={item.color}/>
                 ))

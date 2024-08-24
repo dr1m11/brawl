@@ -53,7 +53,7 @@ const ItemsList = () => {
 
     return (
         <div className={styles.content}>
-            {items.length &&
+            {!!items.length &&
                 items.map(({name, id, price, photo_link, color}) => (
                     <InCaseGun color={color} photo_link={photo_link} key={id} name={name} price={price} id={id}/>
                 ))
