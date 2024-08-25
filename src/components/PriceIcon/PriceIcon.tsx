@@ -7,8 +7,8 @@ const PriceIcon = ({width, height}: {width?: number, height?: number}) => {
             src={PriceIconImg}
             alt={'Price'}
             quality={100}
-            width={width ? width : 20}
-            height={height ? height : 20}
+            width={width ? width : 50}
+            height={height ? height : 50}
             style={{display: 'inline'}}
         />
     );
