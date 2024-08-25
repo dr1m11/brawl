@@ -132,6 +132,17 @@
     w-full
 }
 
+.links {
+    @apply
+    absolute
+    -bottom-16
+    flex
+    gap-12
+    text-main
+    font-bold
+    left-[50%]
+}
+
 .footer__text {
     background: linear-gradient(90.00deg, rgba(27, 191, 103, 0.9), rgba(227, 167, 255, 0.9));
     -webkit-background-clip: text;
@@ -158,21 +169,21 @@
     rounded-3xl
 }
 
-@media screen and (max-width: 1215px){
+@media screen and (max-width: 1215px) {
     .shooter {
         @apply
         hidden
     }
 }
 
-@media screen and (max-width: 1145px){
+@media screen and (max-width: 1145px) {
     .diamond {
         @apply
         hidden
     }
 }
 
-@media screen and (max-width: 1060px){
+@media screen and (max-width: 1060px) {
     .baba {
         @apply
         hidden
@@ -184,14 +195,14 @@
     }
 }
 
-@media screen and (max-width: 880px){
+@media screen and (max-width: 880px) {
     .content__left {
         @apply
         max-w-[200px]
     }
 }
 
-@media screen and (max-width: 880px){
+@media screen and (max-width: 880px) {
     .content__right {
         @apply
         hidden
@@ -214,7 +225,7 @@
     }
 }
 
-@media screen and (max-width: 672px){
+@media screen and (max-width: 672px) {
     .circle {
         @apply
         max-w-[200px]
@@ -224,9 +235,18 @@
         @apply
         max-w-[200px]
     }
+
+    .links {
+        left: initial;
+        @apply
+        right-6
+        gap-2
+        flex-col
+        items-center
+    }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) {
     .circle {
         @apply
         max-w-[100px]
@@ -240,7 +260,7 @@
     }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) {
     .circle {
         @apply
         max-w-[50px]

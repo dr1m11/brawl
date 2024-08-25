@@ -1,17 +1,16 @@
 import styles from './Footer.module.css';
 import Image from "next/image";
-import holodilnik from "../../../public/Header/holodilnik.svg";
-import baran from "../../../public/Header/baran.svg";
-import ebobot from "../../../public/Header/elPrimo.svg";
 import logo from '@/../public/Footer/Logo.png'
 import BigStar from '@/../public/Footer/BigStar.svg'
 import Valina from '@/../public/Footer/valinu_uberi.svg'
 import Baba from '@/../public/Footer/baba.svg'
-import SmallStar from '@/../public/Footer/SmallStar.svg'
 import Diamond from '@/../public/Footer/Diamond.svg'
-import Link from "next/link";
 import GamesBar from "@/components/Header/GamesBar/GamesBar";
+import Link from "next/link";
+import {Manrope} from "next/font/google";
+import clsx from "clsx";
 
+const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin']})
 
 const Footer = () => {
     return (
@@ -36,13 +35,17 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={styles.content__right}>
-                        <div className={styles.content__right__top}>
-                            <h1 className={styles.footer__text}>Играй и побеждай!</h1>
-                            <div className={styles.game__bar}>
-                                <GamesBar type={'footer'}/>
-                            </div>
+                    <div className={styles.content__right__top}>
+                        <h1 className={styles.footer__text}>Играй и побеждай!</h1>
+                        <div className={styles.game__bar}>
+                            <GamesBar type={'footer'}/>
                         </div>
+                    </div>
                 </div>
+            </div>
+            <div className={clsx(styles.links, manrope.className)}>
+                <Link href={'https://web.telegram.org/a/#6504876997'} className={styles.link}>Поддержка</Link>
+                <Link href={'https://t.me/DoDoDonate'} className={styles.link}>Наш Telegram</Link>
             </div>
         </footer>
     );
