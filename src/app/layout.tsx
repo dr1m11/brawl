@@ -8,6 +8,7 @@ import StoreProvider from "@/app/StoreProvider";
 import {QueryProvider} from "@/app/QueryProvider";
 import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 import AuthProvider from "@/app/AuthProvider";
+import {BottomMenu} from "@/components/BottomMenu/BottomMenu";
 
 const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
@@ -27,15 +28,16 @@ export default function RootLayout({
         <StoreProvider>
             <QueryProvider>
                 <AuthProvider>
-                    <html lang="en">
+                    <html lang="en" className={'h-screen w-screen'}>
                     <body
-                        className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full max-w-[1920px] overflow-x-hidden mx-auto relative')}>
+                        className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full overflow-x-hidden relative')}>
                     <Header/>
                     <main>
                         {children}
                         <AuthWrapper/>
                     </main>
                     <Footer/>
+                    <BottomMenu/>
                     </body>
                     </html>
                 </AuthProvider>

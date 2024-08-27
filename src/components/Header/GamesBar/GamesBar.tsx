@@ -1,4 +1,3 @@
-'use client'
 import styles from './GamesBar.module.css'
 import Link from "next/link";
 import holodilnik from '@/../public/Header/holodilnik.svg'
@@ -6,7 +5,6 @@ import baran from '@/../public/Header/baran.svg'
 import elPrimo from '@/../public/Header/elPrimo.svg'
 import clsx from "clsx";
 import Image from "next/image";
-import {useAppSelector} from "@/lib/hooks";
 import {Manrope} from "next/font/google";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
@@ -16,9 +14,8 @@ interface GamesBarProps {
     type?: 'header' | 'footer'
 }
 const GamesBar = ({type}: GamesBarProps) => {
-    const isOpen = useAppSelector(state => state.default.isBurgerOpen)
     return (
-        <div className={clsx(type === 'header' ? styles.header__center : styles.footer, manrope.className)} style={{left: (isOpen && type === 'header' && 50), right: (isOpen && type === 'header' && 0)}}>
+        <div className={clsx(type === 'header' ? styles.header__center : styles.footer, manrope.className)}>
             <Link href={'/'} className={type === 'header' ? styles.header__center__content : styles.footer__content}>
                 <div className={styles.header__ellipse}/>
                 <div className={styles.header__ellipse__hover}/>

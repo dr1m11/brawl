@@ -7,7 +7,6 @@ import Link from "next/link";
 import Logo from '@/../public/Footer/Logo.png'
 import MainProfile from "@/components/Header/MainProfile/MainProfile";
 import GamesBar from "@/components/Header/GamesBar/GamesBar";
-import Burger from "@/components/Header/Burger/Burger";
 import Online from "@/components/Header/Online/Online";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
@@ -15,7 +14,6 @@ const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 const Header = () => {
     return (
         <header className={clsx(styles.header, manrope.className)}>
-            <Burger />
             <div className={styles.header__left}>
                 <Link href={'/'} className={styles.header__logo}>
                     <Image src={Logo} alt={'Logo'} width={95} height={68} className={styles.logo__img} quality={100}/>

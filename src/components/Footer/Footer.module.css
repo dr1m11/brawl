@@ -1,22 +1,18 @@
 .footer {
     @apply
-    h-[246px]
+    h-[280px]
     w-full
     relative
-    z-10
-    -mb-[200px]
 }
 
 .bg {
     @apply
     bg-brawl-purple-header
-    w-screen
+    w-full
     h-full
-    mt-20
     absolute
-    -left-full
-    -right-full
-    m-auto
+    max-h-[247px]
+    bottom-0
 }
 
 .content {
@@ -30,7 +26,6 @@
 
 .content__left {
     @apply
-    mt-20
     w-full
     h-full
     mx-auto
@@ -130,17 +125,20 @@
     items-center
     h-full
     w-full
+    absolute
+    -top-16
 }
 
 .links {
     @apply
     absolute
-    -bottom-16
     flex
     gap-12
     text-main
     font-bold
     left-[50%]
+    bottom-2
+    z-10
 }
 
 .footer__text {
@@ -192,13 +190,6 @@
     .content__left {
         @apply
         max-w-[300px]
-    }
-}
-
-@media screen and (max-width: 880px) {
-    .content__left {
-        @apply
-        max-w-[200px]
     }
 }
 
