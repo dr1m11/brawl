@@ -1,7 +1,7 @@
 'use client'
 import styles from './FormInput.module.css'
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setValue} from "@/lib/paymentSlice/payment.slice";
+import {setPromo, setValue} from "@/lib/paymentSlice/payment.slice";
 
 interface FormInputProps {
     placeholder: string,
@@ -9,11 +9,11 @@ interface FormInputProps {
 }
 
 const FormInput = ({placeholder, type}: FormInputProps) => {
-    const value = useAppSelector(state => state.payment.value)
+    const {value, promo} = useAppSelector(state => state.payment)
 
     const dispatch = useAppDispatch()
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeSum = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {value: inputValue} = e.target;
         const numericValue = inputValue.replace(/[^0-9.,]/g, ''); // allow decimal points and commas
         const decimalParts = numericValue.split(/[.,]/);
@@ -27,9 +27,10 @@ const FormInput = ({placeholder, type}: FormInputProps) => {
     return (
         type === 'SUM' ?
             <input placeholder={placeholder} className={styles.payment__input} value={value}
-                   onChange={handleChange}/>
+                   onChange={handleChangeSum}/>
             :
-            <input placeholder={placeholder} className={styles.payment__input}/>
+            <input placeholder={placeholder} value={promo} className={styles.payment__input}
+                   onChange={(event) => dispatch(setPromo(event.target.value))}/>
     );
 };
 
