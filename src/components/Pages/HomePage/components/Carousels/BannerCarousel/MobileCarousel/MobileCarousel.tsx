@@ -12,7 +12,13 @@ import 'swiper/css/effect-fade';
 
 import styles from './MobileCarousel.module.css'
 import BannerBG from '../../../../../../../../public/Home/Banner.png'
+import BannerBG2 from '../../../../../../../../public/Home/Banner2.png'
+import BannerBG3 from '../../../../../../../../public/Home/Banner3.png'
 import Charecters from '../../../../../../../../public/Home/Charecters.png'
+import Charecters21 from '../../../../../../../../public/Home/Charecters2_1.png'
+import Charecters22 from '../../../../../../../../public/Home/Charecters2_2.png'
+import Charecters23 from '../../../../../../../../public/Home/Charecters2_3.png'
+import Charecters3 from '../../../../../../../../public/Home/Charecters3.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, EffectFade, Pagination, Scrollbar} from "swiper/modules";
@@ -79,14 +85,30 @@ export const MobileCarousel = () => {
                     <SwiperSlide className={'overflow-visible'}>
                         <div className={styles.banner__root}>
                             <Image
-                                src={BannerBG}
+                                src={BannerBG2}
                                 quality={100}
                                 alt={'Banner'}
                                 width={1057}
                                 height={478}
                                 className={styles.banner}/>
                             <Image
-                                src={Charecters}
+                                src={Charecters22}
+                                alt={'Charecters'}
+                                width={910}
+                                height={543}
+                                className={styles.charecters}
+                                quality={100}
+                            />
+                            <Image
+                                src={Charecters21}
+                                alt={'Charecters'}
+                                width={910}
+                                height={543}
+                                className={styles.charecters}
+                                quality={100}
+                            />
+                            <Image
+                                src={Charecters23}
                                 alt={'Charecters'}
                                 width={910}
                                 height={543}
@@ -110,14 +132,14 @@ export const MobileCarousel = () => {
                     <SwiperSlide className={'overflow-visible'}>
                         <div className={styles.banner__root}>
                             <Image
-                                src={BannerBG}
+                                src={BannerBG3}
                                 quality={100}
                                 alt={'Banner'}
                                 width={1057}
                                 height={478}
                                 className={styles.banner}/>
                             <Image
-                                src={Charecters}
+                                src={Charecters3}
                                 alt={'Charecters'}
                                 width={910}
                                 height={543}

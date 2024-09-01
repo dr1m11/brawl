@@ -10,16 +10,18 @@ import {axiosAuth} from "@/api/axios";
 const PayButton = () => {
     const router = useRouter()
 
-    const {value, isPaymentSelected} = useAppSelector(state => state.payment)
+    const {value, isPaymentSelected, promo} = useAppSelector(state => state.payment)
 
     return (
         <OrangeButton
             onClick={async () => {
                 const response = await axiosAuth.post(`/authenticated/replenishment`, JSON.stringify({
-                    amount: +value
+                    amount: +value,
+                    promo
                 }))
                 const url = response.data
-                router.push(url)
+                // router.push(url)
+                console.log(url)
             }}
             disabled={!value || !isPaymentSelected}
             margin={44}
