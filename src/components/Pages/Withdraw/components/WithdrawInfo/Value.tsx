@@ -11,7 +11,7 @@ const Value = () => {
     const value = useAppSelector(state => state.withdraw.value)
 
     return (
-        <span className={clsx(styles.info__value, daysOne.className)}>{value ? value : 0} гемов</span>
+        <span className={clsx(styles.info__value, daysOne.className)}>{value ? value : `0 гемов`}</span>
     );
 };
 

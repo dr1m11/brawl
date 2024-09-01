@@ -8,19 +8,28 @@ import Gems3 from '../../../../../../public/Withdraw/Gems3.png'
 import Gems4 from '../../../../../../public/Withdraw/Gems4.png'
 import Gems5 from '../../../../../../public/Withdraw/Gems5.png'
 import Gems6 from '../../../../../../public/Withdraw/Gems6.png'
+import {useQuery} from "@tanstack/react-query";
+import {axiosClassic} from "@/api/axios";
+
 const WithdrawMethods = () => {
+
+    const {data, isSuccess} = useQuery({
+        queryKey: ['get-gems-price'],
+        queryFn: () => axiosClassic.get('/gems-prices')
+    })
+
     return (
         <div className={styles.payment__info}>
             <div className={styles.payment__methods}>
                 <WithdrawCard/>
             </div>
             <div className={styles.gems}>
-                <GemsCard value={'30 gems'} img={Gems1}/>
-                <GemsCard value={'80 gems'} img={Gems2}/>
-                <GemsCard value={'170 gems'} img={Gems3}/>
-                <GemsCard value={'360 gems'} img={Gems4}/>
-                <GemsCard value={'950 gems'} img={Gems5}/>
-                <GemsCard value={'2000 gems'} img={Gems6}/>
+                {
+                    isSuccess &&
+                    data.data.map((item) => (
+                        <GemsCard key={item.id} value={item.position} img={item.photo} price={item.price}/>
+                    ))
+                }
             </div>
         </div>
     );

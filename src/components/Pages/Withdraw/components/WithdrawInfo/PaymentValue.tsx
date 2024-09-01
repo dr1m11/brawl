@@ -21,18 +21,7 @@ const formatPrice = (price: string) => {
 }
 
 const PaymentValue = () => {
-    const {data} = useQuery({
-        queryKey: ['get-gems-price'],
-        queryFn: () => axiosClassic.get('/gems-prices')
-    })
-
-    const value = useAppSelector(state => state.withdraw.value)
-
-    const price = useMemo(() => {
-        return (data?.data.length && value) ? (data?.data.find(item => item.position.includes(value)))?.price : 0
-    }, [value, data?.data])
-
-    console.log(price)
+    const {price} = useAppSelector(state => state.withdraw)
 
     return (
         <span className={clsx(styles.info__value, daysOne.className)}>{price} <PriceIcon /></span>

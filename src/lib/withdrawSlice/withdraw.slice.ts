@@ -9,6 +9,7 @@ interface initialInterface {
     code: string
     error: null | string
     field: string
+    price: number
 }
 
 const initialState: initialInterface ={
@@ -19,7 +20,8 @@ const initialState: initialInterface ={
     emailValue: '',
     code: '',
     error: null,
-    field: ''
+    field: '',
+    price: 0,
 }
 
 export const withdrawSlice = createSlice({
@@ -31,10 +33,13 @@ export const withdrawSlice = createSlice({
         },
         setValue: (state, {payload}) => {
             if (payload.includes(' gems')) {
-                state.value = payload.replace(' gems', '')
+                state.value = payload.replace(' gems', ' гемов')
             } else {
-                state.value = payload
+                state.value = 'Brawl pass'
             }
+        },
+        setPrice: (state, {payload}) => {
+            state.price = payload
         },
         setIsEmailSend: (state, {payload}) => {
             state.isEmailSend = payload
@@ -63,6 +68,7 @@ export const withdrawSlice = createSlice({
             state.code = ''
             state.error = null
             state.field = ''
+            state.price = 0
         }
     },
 })
@@ -77,4 +83,5 @@ export const {
     setError,
     setField,
     reset,
+    setPrice
 } = withdrawSlice.actions

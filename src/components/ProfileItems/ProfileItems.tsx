@@ -9,7 +9,6 @@ const ProfileItems = () => {
 
     const {id, items} = useAppSelector(state => state.user)
 
-    console.log(items)
     return (
         <div className={styles.items}>
             {!!items &&
