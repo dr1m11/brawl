@@ -20,8 +20,7 @@ const PayButton = () => {
                     promo
                 }))
                 const url = response.data
-                // router.push(url)
-                console.log(url)
+                router.push(url)
             }}
             disabled={!value || !isPaymentSelected}
             margin={44}
