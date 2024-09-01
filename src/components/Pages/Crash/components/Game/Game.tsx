@@ -25,14 +25,8 @@ const link = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAElCAYAAACS8Vri
 
 const Game = () => {
     const {socketEvent} = useAppSelector(state => state.crash)
-    const [width, setWidth] = useState(0)
-    const [height, setHeight] = useState(180)
-    // const [height, setHeight] = useState(280)
-    let socketStatus = socketEvent.status
-
-    setInterval(() => {
-        socketStatus = socketEvent.status
-    }, 100)
+    const [width, setWidth] = useState(-20)
+    const [height, setHeight] = useState(300)
 
     const size = useResize()
 
@@ -47,106 +41,42 @@ const Game = () => {
         return data
     }
 
-    useEffect(() => {
-        socketStatus = socketEvent.status
-    }, [socketEvent.status]);
+    async function gogo() {
+        for (let i = 0; i <= 630; i += 1) {
+            if (socketEvent.status === 'Running') {
+                setWidth(i)
+            }
+            await sleep(5)
+        }
+    }
 
-    // async function gogo() {
-    // for (let i = 0; i <= 630; i+=0.1) {
-    //     if (socketEvent.status === 'Running') {
-    //         setWidth(i)
-    //         console.log(i)
-    //     }
-    //     await sleep(5)
-    // }
-    //     let i = 0
-    //     while (socketEvent.status === 'Running' && i <= 630) {
-    //         setWidth(i)
-    //         i += 0.1
-    //         await sleep(5)
-    //     }
-    //     setWidth(300)
-    // }
-    //
-    // async function gogoEnd() {
-    //     for (let i = width; i <= 800; i++) {
-    //         setWidth(i)
-    //         await sleep(2)
-    //     }
-    // }
-    //
-    // async function gogoH() {
-    //     for (let i = 280; i >= 40; i-= 0.05) {
-    //         if (socketEvent.status === 'Running') {
-    //             setHeight(i)
-    //             console.log(i)
-    //         }
-    //         await sleep(7)
-    //     }
-    // }
-    //
-    // async function gogoHEnd() {
-    //     console.log(height)
-    //     for (let i = height; i >= 0; i-= 0.5) {
-    //         setHeight(i)
-    //         await sleep(3)
-    //     }
-    // }
-    //
+    async function gogoH() {
+        for (let i = 280; i >= 40; i -= 0.5) {
+            if (socketEvent.status === 'Running') {
+                setHeight(i)
+            }
+            await sleep(7)
+        }
+    }
+
     function getSocketStatus() {
         return socketEvent.status
     }
-    async function gogo() {
-        let i = 0
-        let previousStatus = socketStatus
-        while (i <= 630) {
-            setWidth(i)
-            i += 10
-            await sleep(500)
-            console.log(socketStatus)
-            const currentStatus = socketStatus
-            if (currentStatus !== previousStatus) {
-                console.log(`Status changed from ${previousStatus} to ${currentStatus}`)
-                previousStatus = currentStatus
-            }
-            if (currentStatus !== 'Running') break
-        }
-        setWidth(300)
-    }
 
-    // async function gogoH() {
-    //     for (let i = 280; i >= 40; i -= 0.05) {
-    //         if (socketEvent.status === 'Running') {
-    //             setHeight(i)
-    //             console.log(i)
-    //         }
-    //         await sleep(7)
-    //     }
-    // }
 
     useEffect(() => {
-        // if (socketEvent.status === 'Running') {
-        //     gogoH()
-        //     gogo()
-        // } else if (socketEvent.status === 'Crashed') {
-        //     gogoEnd()
-        //     gogoHEnd()
-        // } else {
-        //     setWidth(0)
-        //     setHeight(280)
-        // }
         if (socketEvent.status === 'Running') {
-            // gogoH()
+            gogoH()
             gogo()
         } else {
             setWidth(0)
-            setHeight(280)
+            setHeight(300)
         }
     }, [socketEvent.status])
 
 
     return (
-        socketEvent.status === "Running" || socketEvent.status === "Crashed" || socketEvent.status === 'Pending' ?
+        socketEvent.status === "Running" || socketEvent.status === "Crashed" ?
             <div className={styles.graph__game}>
                 <GameBg/>
                 <div className={styles.count} style={{zIndex: 100}}>
@@ -155,49 +85,50 @@ const Game = () => {
                     <h2 className={styles.multiplier__label}>в раунде</h2>
                 </div>
                 <Rows/>
-                {/*<div className={'absolute left-0 right-0 bottom-0 top-0'}>*/}
-                {/*    <svg style={{width: "100%", height: '100%',}}>*/}
-                {/*        <defs>*/}
-                {/*            <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">*/}
-                {/*                <stop stopColor="#9d7aff" stopOpacity=".33"/>*/}
-                {/*                <stop offset="1.87" stopColor="#9d7aff" stopOpacity="0"/>*/}
-                {/*            </linearGradient>*/}
-                {/*            <linearGradient id="grad_stroke" x1="0" x2="1" y1="0" y2="1">*/}
-                {/*                <stop stopColor="#9D7AFF"/>*/}
-                {/*                <stop offset=".687" stopColor="#622BFC"/>*/}
-                {/*                <stop offset="0.1" stopColor="#5c24fc" stopOpacity="0"/>*/}
-                {/*            </linearGradient>*/}
-                {/*        </defs>*/}
-                {/*        <g>*/}
-                {/*            <path*/}
-                {/*                d={`M 0 266.39 Q ${width * 0.6} 266.39 ${width} ${height}`}*/}
-                {/*                fill="transparent"*/}
-                {/*                stroke="url(#grad_stroke)"*/}
-                {/*            />*/}
-                {/*            <path*/}
-                {/*                d={`M 0 266.39 Q ${width * 0.6} 266.39 ${width} ${height} L ${width} 266.39 Z`}*/}
-                {/*                fill="url(#grad)"*/}
-                {/*            />*/}
-                {/*        </g>*/}
-                {/*    </svg>*/}
-                {/*</div>*/}
-                {/*<div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>*/}
-                {/*    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"*/}
-                {/*         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">*/}
-                {/*        <defs>*/}
-                {/*            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"*/}
-                {/*                     height="1.000000">*/}
-                {/*                <use xlinkHref="#image183_199_0"*/}
-                {/*                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>*/}
-                {/*            </pattern>*/}
-                {/*            <image id="image183_199_0" width="512.000000" height="293.000000"*/}
-                {/*                   xlinkHref={link}/>*/}
-                {/*        </defs>*/}
-                {/*        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"*/}
-                {/*               fill="url(#pattern_183_1990)"*/}
-                {/*              fillOpacity="1.000000" transform={`translate(${width - 70}, ${height - 20}) rotate(-25.9718 0.000000 15.631226)`}/>*/}
-                {/*    </svg>*/}
-                {/*</div>*/}
+                <div className={'absolute left-0 right-0 bottom-0 top-0'}>
+                    <svg style={{width: "100%", height: '100%',}}>
+                        <defs>
+                            <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+                                <stop stopColor="#9d7aff" stopOpacity=".33"/>
+                                <stop offset="1.87" stopColor="#9d7aff" stopOpacity="0"/>
+                            </linearGradient>
+                            <linearGradient id="grad_stroke" x1="0" x2="1" y1="0" y2="1">
+                                <stop stopColor="#9D7AFF"/>
+                                <stop offset=".687" stopColor="#622BFC"/>
+                                <stop offset="0.1" stopColor="#5c24fc" stopOpacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <g>
+                            <path
+                                d={`M 0 266.39 Q ${width * 0.6} 266.39 ${width} ${height}`}
+                                fill="transparent"
+                                stroke="url(#grad_stroke)"
+                            />
+                            <path
+                                d={`M 0 266.39 Q ${width * 0.6} 266.39 ${width} ${height} L ${width} 266.39 Z`}
+                                fill="url(#grad)"
+                            />
+                        </g>
+                    </svg>
+                </div>
+                <div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>
+                    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"
+                         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"
+                                     height="1.000000">
+                                <use xlinkHref="#image183_199_0"
+                                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>
+                            </pattern>
+                            <image id="image183_199_0" width="512.000000" height="293.000000"
+                                   xlinkHref={link}/>
+                        </defs>
+                        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
+                              fill="url(#pattern_183_1990)"
+                              fillOpacity="1.000000"
+                              transform={`translate(${width - 70}, ${height - 20}) rotate(-25.9718 0.000000 15.631226)`}/>
+                    </svg>
+                </div>
             </div>
             :
             <div className={styles.timer}>
