@@ -63,16 +63,18 @@ const Game = () => {
         return socketEvent.status
     }
 
+    console.log(socketEvent.length)
 
-    useEffect(() => {
-        if (socketEvent.status === 'Running') {
-            gogoH()
-            gogo()
-        } else {
-            setWidth(0)
-            setHeight(300)
-        }
-    }, [socketEvent.status])
+
+    // useEffect(() => {
+    //     if (socketEvent.status === 'Running') {
+    //         gogoH()
+    //         gogo()
+    //     } else {
+    //         setWidth(0)
+    //         setHeight(300)
+    //     }
+    // }, [socketEvent.status])
 
 
     return (
@@ -100,12 +102,12 @@ const Game = () => {
                         </defs>
                         <g>
                             <path
-                                d={`M 0 266.39 Q ${width * 0.6} 266.39 ${width} ${height}`}
+                                d={`M 0 266.39 Q ${(socketEvent.length * 6.3) * 0.6} 266.39 ${(socketEvent.length * 6.3)} ${280 - (socketEvent.length * 2.4)}`}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
                             />
                             <path
-                                d={`M 0 266.39 Q ${width * 0.6} 266.39 ${width} ${height} L ${width} 266.39 Z`}
+                                d={`M 0 266.39 Q ${(socketEvent.length * 6.3) * 0.6} 266.39 ${socketEvent.length * 6.3} ${280 - (socketEvent.length * 2.4)} L ${socketEvent.length * 6.3} 266.39 Z`}
                                 fill="url(#grad)"
                             />
                         </g>
@@ -126,7 +128,7 @@ const Game = () => {
                         <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
                               fill="url(#pattern_183_1990)"
                               fillOpacity="1.000000"
-                              transform={`translate(${width - 70}, ${height - 20}) rotate(-25.9718 0.000000 15.631226)`}/>
+                              transform={`translate(${(socketEvent.length * 6.3) - 70}, ${(280 - (socketEvent.length * 2.4)) - 20}) rotate(-25.9718 0.000000 15.631226)`}/>
                     </svg>
                 </div>
             </div>

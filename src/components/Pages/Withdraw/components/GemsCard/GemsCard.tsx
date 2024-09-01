@@ -6,7 +6,7 @@ import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setValue} from "@/lib/withdrawSlice/withdraw.slice";
 
 interface GemsCardProps {
-    value: number
+    value: string
     img: StaticImageData
 }
 
@@ -18,8 +18,10 @@ const GemsCard = ({value, img}: GemsCardProps) => {
     if (!isGameSelected)
         return null
 
+    console.log(gemsValue)
+
     return (
-        <div className={clsx(styles.payment__card, value === gemsValue && styles.selected)}
+        <div className={clsx(styles.payment__card, value == gemsValue && styles.selected)}
              onClick={() => dispatch(setValue(value))}>
             <Image src={img} alt={'Gems'} quality={100} width={73}
                    height={73}/>

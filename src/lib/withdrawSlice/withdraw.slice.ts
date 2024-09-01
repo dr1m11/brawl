@@ -30,7 +30,11 @@ export const withdrawSlice = createSlice({
             state.isGameSelected = payload
         },
         setValue: (state, {payload}) => {
-            state.value = payload
+            if (payload.includes(' gems')) {
+                state.value = payload.replace(' gems', '')
+            } else {
+                state.value = payload
+            }
         },
         setIsEmailSend: (state, {payload}) => {
             state.isEmailSend = payload

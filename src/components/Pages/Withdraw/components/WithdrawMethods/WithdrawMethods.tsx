@@ -1,3 +1,4 @@
+'use client'
 import styles from './WithdrawMethods.module.css'
 import WithdrawCard from "@/components/Pages/Withdraw/components/WithdrawCard/WithdrawCard";
 import GemsCard from "@/components/Pages/Withdraw/components/GemsCard/GemsCard";
@@ -14,12 +15,12 @@ const WithdrawMethods = () => {
                 <WithdrawCard/>
             </div>
             <div className={styles.gems}>
-                <GemsCard value={30} img={Gems1}/>
-                <GemsCard value={80} img={Gems2}/>
-                <GemsCard value={170} img={Gems3}/>
-                <GemsCard value={360} img={Gems4}/>
-                <GemsCard value={950} img={Gems5}/>
-                <GemsCard value={2000} img={Gems6}/>
+                <GemsCard value={'30 gems'} img={Gems1}/>
+                <GemsCard value={'80 gems'} img={Gems2}/>
+                <GemsCard value={'170 gems'} img={Gems3}/>
+                <GemsCard value={'360 gems'} img={Gems4}/>
+                <GemsCard value={'950 gems'} img={Gems5}/>
+                <GemsCard value={'2000 gems'} img={Gems6}/>
             </div>
         </div>
     );

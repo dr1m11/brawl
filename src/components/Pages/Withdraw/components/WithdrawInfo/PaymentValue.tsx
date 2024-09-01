@@ -10,6 +10,16 @@ import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
+const formatPrice = (price: string) => {
+    if (!price) {
+        return
+    }
+    if (price.includes('gems')) {
+        return price.replace(' gems', '')
+    }
+    return price
+}
+
 const PaymentValue = () => {
     const {data} = useQuery({
         queryKey: ['get-gems-price'],
@@ -19,8 +29,10 @@ const PaymentValue = () => {
     const value = useAppSelector(state => state.withdraw.value)
 
     const price = useMemo(() => {
-        return (data?.data.length && value) ? (data?.data.find(item => item.position == value))?.price : 0
+        return (data?.data.length && value) ? (data?.data.find(item => item.position.includes(value)))?.price : 0
     }, [value, data?.data])
+
+    console.log(price)
 
     return (
         <span className={clsx(styles.info__value, daysOne.className)}>{price} <PriceIcon /></span>
