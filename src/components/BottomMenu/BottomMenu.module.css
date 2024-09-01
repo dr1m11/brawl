@@ -1,6 +1,6 @@
 .bottom__space {
     @apply
-    h-24
+    h-16
     bg-brawl-purple-header
     hidden
     /*border-header*/
@@ -16,7 +16,7 @@
     bg-brawl-purple-header
     fixed
     bottom-0
-    h-24
+    h-16
     /*border-header*/
     /*border*/
     /*rounded-3xl*/

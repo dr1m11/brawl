@@ -25,7 +25,7 @@ export const BottomMenu = () => {
                         <div className={styles.header__ellipse}/>
                         <div className={styles.header__ellipse__hover}/>
                         <h3 className={styles.header__center__titles}>КЕЙСЫ</h3>
-                        <Image src={holodilnik} alt={'Case'} width={138} height={120}
+                        <Image src={holodilnik} alt={'Case'} width={63} height={60}
                                className={clsx(styles.header__center__img)}/>
                     </Link>
                     <Link href={'/wheel'}
@@ -33,7 +33,7 @@ export const BottomMenu = () => {
                         <div className={styles.header__ellipse}/>
                         <div className={styles.header__ellipse__hover}/>
                         <h3 className={styles.header__center__titles}>БАРАБАН</h3>
-                        <Image src={baran} alt={'Wheel'} width={138} height={120}
+                        <Image src={baran} alt={'Wheel'} width={63} height={60}
                                className={clsx(styles.header__center__img)}/>
                     </Link>
                     <Link href={'/crash'}
@@ -41,8 +41,8 @@ export const BottomMenu = () => {
                         <div className={styles.header__ellipse}/>
                         <div className={styles.header__ellipse__hover}/>
                         <h3 className={styles.header__center__titles}>КРАШ</h3>
-                        <Image src={elPrimo} alt={'Crash'} width={177} height={133}
-                               className={clsx(styles.header__center__img,)} style={{left: -35}}/>
+                        <Image src={elPrimo} alt={'Crash'} width={70} height={60}
+                               className={clsx(styles.header__center__img,)} style={{left: -15}}/>
                     </Link>
                 </div>
             </div>
