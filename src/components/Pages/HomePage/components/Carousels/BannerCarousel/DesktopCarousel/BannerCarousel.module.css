@@ -31,10 +31,19 @@
     @apply
     w-full
     h-[90%]
-    rounded-t-3xl
+    rounded-3xl
 }
 
 .charecters {
+    @apply
+    absolute
+    left-0
+    right-0
+    bottom-0
+    m-auto
+}
+
+.charecters3 {
     @apply
     absolute
     left-0
