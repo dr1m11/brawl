@@ -30,46 +30,12 @@ const Game = () => {
 
     const size = useResize()
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
     function getWidth(data) {
         if ((size <= 900) && (data >= 105)) {
             return data - ((size / 8) / 100)
         }
         return data
     }
-
-    function getSocketStatus() {
-        return socketEvent.status
-    }
-
-    async function crashEndLength() {
-        for (let i = 0; i < (950 - (socketEvent.length * 6.3)); i+=3) {
-            setWidth(i)
-            console.log('asd')
-            await sleep(10)
-        }
-        setWidth(0)
-    }
-
-    async function crashEndHeight() {
-        for (let i = 0; i < (620 - (socketEvent.length * 2.4)); i+=2) {
-            setHeight(i)
-            await sleep(10)
-        }
-        setHeight(0)
-    }
-
-
-    // useEffect(() => {
-    //     if (socketEvent.status === 'Crashed') {
-    //         crashEndLength()
-    //         crashEndHeight()
-    //     }
-    // }, [socketEvent.status])
-
 
     return (
         socketEvent.status === "Running" || socketEvent.status === "Crashed" ?
@@ -85,12 +51,11 @@ const Game = () => {
                     <svg style={{width: "100%", height: '100%',}}>
                         <defs>
                             <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
-                                <stop stopColor="#9d7aff" stopOpacity=".33"/>
-                                <stop offset="1.87" stopColor="#9d7aff" stopOpacity="0"/>
+                                <stop stopColor={socketEvent.status !== 'Crashed' ? "#9d7aff" : '#ff0000'} stopOpacity=".33"/>
+                                <stop offset="1.87" stopColor={socketEvent.status !== 'Crashed' ? "#9d7aff" : '#ff0000'} stopOpacity="0"/>
                             </linearGradient>
                             <linearGradient id="grad_stroke" x1="0" x2="1" y1="0" y2="1">
-                                <stop stopColor="#9D7AFF"/>
-                                <stop offset=".687" stopColor="#622BFC"/>
+                                <stop offset=".687" stopColor={socketEvent.status !== 'Crashed' ? "#622BFC" : '#ff0000'}/>
                                 <stop offset="0.1" stopColor="#5c24fc" stopOpacity="0"/>
                             </linearGradient>
                         </defs>
