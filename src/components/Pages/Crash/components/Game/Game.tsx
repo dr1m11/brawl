@@ -8,7 +8,7 @@ import {useAppSelector} from "@/lib/hooks";
 import localFont from "next/font/local";
 import GameBg from "@/components/Pages/Crash/components/GameBg/GameBg";
 import useResize from "@/hooks/useResize";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -30,12 +30,16 @@ const Game = () => {
 
     const size = useResize()
 
-    function getWidth(data) {
-        if ((size <= 900) && (data >= 105)) {
-            return data - ((size / 8) / 100)
+    const screenWidth = useMemo(() => {
+        if (size < 1060 && size > 990) {
+            return 1060 - size
+        } else if (size < 990 && size > 900) {
+            return 70
+        } else if (size < 900 && size > 785) {
+            return -140 + 900 - size
         }
-        return data
-    }
+        return -140 + 870 - size
+    }, [size])
 
     return (
         socketEvent.status === "Running" || socketEvent.status === "Crashed" ?
@@ -61,14 +65,14 @@ const Game = () => {
                         </defs>
                         <g>
                             <path
-                                d={`M 0 266.39 Q ${((socketEvent.length * 6.2) * 0.6) + width} 266.39 ${(socketEvent.length * 6.2) + width} ${(280 - (socketEvent.length * 2.4)) - height}`}
+                                d={`M 0 266.39 Q ${((socketEvent.length * 6.2) * 0.6) + width - screenWidth} 266.39 ${(socketEvent.length * 6.2) + width - screenWidth} ${(280 - (socketEvent.length * 2.4)) - height}`}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
                             />
                             <path
-                                d={`M 0 266.39 Q ${((socketEvent.length * 6.2) * 0.6) + width} 266.39 ${(socketEvent.length * 6.2) + width} ${(
+                                d={`M 0 266.39 Q ${((socketEvent.length * 6.2) * 0.6) + width - screenWidth} 266.39 ${(socketEvent.length * 6.2) + width - screenWidth} ${(
                                     280 - (socketEvent.length * 2.4) - height
-                                )} L ${(socketEvent.length * 6.2) + width} 266.39 Z`}
+                                )} L ${(socketEvent.length * 6.2) + width - screenWidth} 266.39 Z`}
                                 fill="url(#grad)"
                             />
                         </g>
@@ -89,7 +93,7 @@ const Game = () => {
                         <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
                               fill="url(#pattern_183_1990)"
                               fillOpacity="1.000000"
-                              transform={`translate(${(socketEvent.length * 6.2) - 70 + width}, ${((280 - (socketEvent.length * 2.4)) - 20) - height}) rotate(-25.9718 0.000000 15.631226)`}/>
+                              transform={`translate(${(socketEvent.length * 6.2) - 70 + width - screenWidth}, ${((280 - (socketEvent.length * 2.4)) - 20) - height}) rotate(-25.9718 0.000000 15.631226)`}/>
                     </svg>
                 </div>
             </div>
