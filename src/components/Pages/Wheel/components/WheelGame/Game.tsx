@@ -8,6 +8,7 @@ import OrangeItem from "@/../public/Wheel/OrangeItem.svg";
 import {useEffect, useState} from "react";
 import WheelItem from "@/components/ui/WheelItem/WheelItem";
 import useResize from "@/hooks/useResize";
+import useSound from "use-sound";
 
 let arr = [
     {
@@ -156,6 +157,8 @@ interface GameInterface {
 
 const Game = ({cell, pending}: GameInterface) => {
 
+    const [play] = useSound('/sounds/wheel/onWheel.mp3')
+
     const [rotate, setRotate] = useState(1080)
 
     useEffect(() => {
@@ -167,6 +170,7 @@ const Game = ({cell, pending}: GameInterface) => {
     useEffect(() => {
         if (!!cell) {
             setRotate(getRandomObjectByMultiply(arr, cell) + 1080)
+            play()
         }
     }, [cell]);
 

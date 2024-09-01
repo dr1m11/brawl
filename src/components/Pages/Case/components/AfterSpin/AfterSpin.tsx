@@ -9,6 +9,8 @@ import {Manrope} from "next/font/google";
 import {itemService} from "@/services/item/item.service";
 import {useQueryClient} from "@tanstack/react-query";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
+import {useEffect} from "react";
+import useSound from "use-sound";
 
 const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['500']})
 
@@ -19,7 +21,15 @@ const AfterSpin = () => {
     const { isFinished, roulette, winedItem} = useAppSelector(state => state.case)
     const id = useAppSelector(state => state.user.id)
 
+    const [playHover] = useSound('/sounds/case/onClose.mp3')
+
     const queryClient = useQueryClient()
+
+    useEffect(() => {
+        if (isFinished) {
+            playHover()
+        }
+    }, [isFinished]);
 
     if (!isFinished)
         return null

@@ -8,11 +8,14 @@ import {useQueryClient} from "@tanstack/react-query";
 import {useState} from "react";
 import {TailSpin} from "react-loader-spinner";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
+import useSound from "use-sound";
 
 const CaseOpenBtn = () => {
     const {items, caseData, isOpenDisabled} = useAppSelector(state => state.case)
     const balance = useAppSelector(state => state.user.balance)
     const [isLoading, setIsLoading] = useState(false)
+
+    const [play] = useSound('/sounds/case/open.mp3')
 
     const queryClient = useQueryClient()
 
@@ -36,6 +39,7 @@ const CaseOpenBtn = () => {
         await queryClient.invalidateQueries({
             queryKey: ['user']
         })
+        play()
         dispatch(setWinedItem(data.user_item_id))
         dispatch(setRoulette(fillArray(data.wined_item)))
         dispatch(setIsOpened(true))

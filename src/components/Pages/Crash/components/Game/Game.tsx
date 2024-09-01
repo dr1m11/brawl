@@ -25,8 +25,8 @@ const link = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAElCAYAAACS8Vri
 
 const Game = () => {
     const {socketEvent} = useAppSelector(state => state.crash)
-    const [width, setWidth] = useState(-20)
-    const [height, setHeight] = useState(300)
+    const [width, setWidth] = useState(0)
+    const [height, setHeight] = useState(0)
 
     const size = useResize()
 
@@ -41,38 +41,32 @@ const Game = () => {
         return data
     }
 
-    async function gogo() {
-        for (let i = 0; i <= 630; i += 1) {
-            if (socketEvent.status === 'Running') {
-                setWidth(i)
-            }
-            await sleep(5)
-        }
-    }
-
-    async function gogoH() {
-        for (let i = 280; i >= 40; i -= 0.5) {
-            if (socketEvent.status === 'Running') {
-                setHeight(i)
-            }
-            await sleep(7)
-        }
-    }
-
     function getSocketStatus() {
         return socketEvent.status
     }
 
-    console.log(socketEvent.length)
+    async function crashEndLength() {
+        for (let i = 0; i < (950 - (socketEvent.length * 6.3)); i+=3) {
+            setWidth(i)
+            console.log('asd')
+            await sleep(10)
+        }
+        setWidth(0)
+    }
+
+    async function crashEndHeight() {
+        for (let i = 0; i < (620 - (socketEvent.length * 2.4)); i+=2) {
+            setHeight(i)
+            await sleep(10)
+        }
+        setHeight(0)
+    }
 
 
     // useEffect(() => {
-    //     if (socketEvent.status === 'Running') {
-    //         gogoH()
-    //         gogo()
-    //     } else {
-    //         setWidth(0)
-    //         setHeight(300)
+    //     if (socketEvent.status === 'Crashed') {
+    //         crashEndLength()
+    //         crashEndHeight()
     //     }
     // }, [socketEvent.status])
 
@@ -81,7 +75,7 @@ const Game = () => {
         socketEvent.status === "Running" || socketEvent.status === "Crashed" ?
             <div className={styles.graph__game}>
                 <GameBg/>
-                <div className={styles.count} style={{zIndex: 100}}>
+                <div className={styles.count}>
                     <h1 className={clsx(styles.multiplier, daysOne.className)}
                         style={{color: socketEvent.status === "Crashed" && '#ff0000'}}>{socketEvent.multiplier.toFixed(2)}x</h1>
                     <h2 className={styles.multiplier__label}>в раунде</h2>
@@ -102,12 +96,14 @@ const Game = () => {
                         </defs>
                         <g>
                             <path
-                                d={`M 0 266.39 Q ${(socketEvent.length * 6.3) * 0.6} 266.39 ${(socketEvent.length * 6.3)} ${280 - (socketEvent.length * 2.4)}`}
+                                d={`M 0 266.39 Q ${((socketEvent.length * 6.2) * 0.6) + width} 266.39 ${(socketEvent.length * 6.2) + width} ${(280 - (socketEvent.length * 2.4)) - height}`}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
                             />
                             <path
-                                d={`M 0 266.39 Q ${(socketEvent.length * 6.3) * 0.6} 266.39 ${socketEvent.length * 6.3} ${280 - (socketEvent.length * 2.4)} L ${socketEvent.length * 6.3} 266.39 Z`}
+                                d={`M 0 266.39 Q ${((socketEvent.length * 6.2) * 0.6) + width} 266.39 ${(socketEvent.length * 6.2) + width} ${(
+                                    280 - (socketEvent.length * 2.4) - height
+                                )} L ${(socketEvent.length * 6.2) + width} 266.39 Z`}
                                 fill="url(#grad)"
                             />
                         </g>
@@ -128,7 +124,7 @@ const Game = () => {
                         <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
                               fill="url(#pattern_183_1990)"
                               fillOpacity="1.000000"
-                              transform={`translate(${(socketEvent.length * 6.3) - 70}, ${(280 - (socketEvent.length * 2.4)) - 20}) rotate(-25.9718 0.000000 15.631226)`}/>
+                              transform={`translate(${(socketEvent.length * 6.2) - 70 + width}, ${((280 - (socketEvent.length * 2.4)) - 20) - height}) rotate(-25.9718 0.000000 15.631226)`}/>
                     </svg>
                 </div>
             </div>
