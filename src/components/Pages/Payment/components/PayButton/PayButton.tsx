@@ -1,10 +1,8 @@
 'use client'
-import OrangeButton from "@/components/ui/OrangeButton/OrangeButton";
-import axios from "axios";
-import {useAppSelector} from "@/lib/hooks";
-import {useRouter} from "next/navigation";
-import {API_URL} from "@/constants";
-import {axiosAuth} from "@/api/axios";
+import { axiosAuth } from "@/api/axios"
+import OrangeButton from "@/components/ui/OrangeButton/OrangeButton"
+import { useAppSelector } from "@/lib/hooks"
+import { useRouter } from "next/navigation"
 
 
 const PayButton = () => {

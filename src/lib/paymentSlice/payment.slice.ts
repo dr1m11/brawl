@@ -4,13 +4,13 @@ import {IUser} from "@/utils/types";
 interface initialInterface {
     isPaymentSelected: boolean
     value: string | number
-    promo: string | null
+    promo: string
 }
 
 const initialState: initialInterface ={
     isPaymentSelected: false,
     value: '',
-    promo: null,
+    promo: '',
 }
 
 export const paymentSlice = createSlice({
