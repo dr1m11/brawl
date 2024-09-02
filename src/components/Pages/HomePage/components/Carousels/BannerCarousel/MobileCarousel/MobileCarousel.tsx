@@ -14,11 +14,13 @@ import styles from './MobileCarousel.module.css'
 import BannerBG from '../../../../../../../../public/Home/Banner.png'
 import BannerBG2 from '../../../../../../../../public/Home/Banner2.png'
 import BannerBG3 from '../../../../../../../../public/Home/Banner3.png'
+import BannerBG4 from '../../../../../../../../public/Home/Banner4.png'
 import Charecters from '../../../../../../../../public/Home/Charecters.png'
 import Charecters21 from '../../../../../../../../public/Home/Charecters2_1.png'
 import Charecters22 from '../../../../../../../../public/Home/Charecters2_2.png'
 import Charecters23 from '../../../../../../../../public/Home/Charecters2_3.png'
 import Charecters3 from '../../../../../../../../public/Home/Charecters3.png'
+import Charecters4 from '../../../../../../../../public/Home/Charecters4.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, EffectFade, Pagination, Scrollbar} from "swiper/modules";
@@ -140,6 +142,37 @@ export const MobileCarousel = () => {
                                 className={styles.banner}/>
                             <Image
                                 src={Charecters3}
+                                alt={'Charecters'}
+                                width={910}
+                                height={543}
+                                className={styles.charecters}
+                                quality={100}
+                            />
+                            <div className={styles.info}>
+                                <div className={styles.info__content}>
+                                    <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                    <GreenButton onClick={() => {
+                                        if (!!user) {
+                                            window.scroll(0, 500)
+                                        } else {
+                                            dispatch(changeLogin())
+                                        }
+                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide className={'overflow-visible'}>
+                        <div className={styles.banner__root}>
+                            <Image
+                                src={BannerBG4}
+                                quality={100}
+                                alt={'Banner'}
+                                width={1057}
+                                height={478}
+                                className={styles.banner}/>
+                            <Image
+                                src={Charecters4}
                                 alt={'Charecters'}
                                 width={910}
                                 height={543}
