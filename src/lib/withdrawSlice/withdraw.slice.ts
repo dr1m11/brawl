@@ -12,7 +12,7 @@ interface initialInterface {
     price: number
 }
 
-const initialState: initialInterface ={
+const initialState: initialInterface = {
     isGameSelected: false,
     value: '',
     isEmailSend: false,
@@ -32,11 +32,7 @@ export const withdrawSlice = createSlice({
             state.isGameSelected = payload
         },
         setValue: (state, {payload}) => {
-            if (payload.includes(' gems')) {
-                state.value = payload.replace(' gems', ' гемов')
-            } else {
-                state.value = payload
-            }
+            state.value = payload
         },
         setPrice: (state, {payload}) => {
             state.price = payload
