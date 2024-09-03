@@ -29,6 +29,13 @@
     -bottom-[270px]
 }
 
+@media screen and (max-width: 880px) {
+    .bottom__img {
+        @apply
+        -bottom-[150px]
+    }
+}
+
 @media screen and (max-width: 768px){
     .bottom__img {
         @apply

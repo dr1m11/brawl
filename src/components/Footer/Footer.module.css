@@ -182,7 +182,7 @@
 }
 
 @media screen and (max-width: 1060px) {
-    .baba {
+    .baba, .bigStar {
         @apply
         hidden
     }
@@ -199,10 +199,16 @@
         hidden
     }
 
+    .footer, .bg {
+        @apply
+        max-h-[150px]
+    }
+
     .content__left {
         @apply
         max-w-full
         w-full
+        ml-4
     }
 
     .characters {
