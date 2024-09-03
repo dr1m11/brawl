@@ -37,8 +37,10 @@ const Game = () => {
             return 70
         } else if (size < 900 && size > 785) {
             return -140 + 900 - size
+        } else if (size < 785) {
+            return -140 + 870 - size
         }
-        return -140 + 870 - size
+        return 0
     }, [size])
 
     return (
