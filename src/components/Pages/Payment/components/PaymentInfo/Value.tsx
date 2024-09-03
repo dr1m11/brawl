@@ -11,8 +11,6 @@ const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 const Value = () => {
     const {value, promo} = useAppSelector(state => state.payment)
 
-    console.log(value)
-
     return (
         <span className={clsx(styles.info__value, daysOne.className)}>{value ? promo === 'NEW10' ? +value * 1.1 : value : 0} <PriceIcon/></span>
     );

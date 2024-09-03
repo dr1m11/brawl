@@ -4,6 +4,7 @@ import Image from "next/image";
 import Arrow from '@/../public/Wheel/Arrow.svg'
 import ArrowMobile from '@/../public/Wheel/ArrowMobile.svg'
 import {useAppSelector} from "@/lib/hooks";
+import {useEffect} from "react";
 
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
@@ -14,7 +15,7 @@ interface BetButtonProps {
 }
 
 const BetButton = ({time, onClick}: BetButtonProps) => {
-    const {isBetSet, socketEvent, bet} = useAppSelector(state => state.wheel)
+    const {isBetSet, userCell, socketEvent, bet} = useAppSelector(state => state.wheel)
     const balance = useAppSelector(state => state.user.balance)
     return (
         <div className={styles.menu__center}>
@@ -27,10 +28,10 @@ const BetButton = ({time, onClick}: BetButtonProps) => {
                 </div>
             </div>
             <button className={styles.bet__btn} onClick={onClick}
-                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+balance < +bet) || !(+bet)}
+                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+balance < +bet) || !(+bet) || !userCell}
             >
                 <h5 className={daysOne.className}>
-                    {(isBetSet || (socketEvent.status !== "Pending")) ?
+                    {(isBetSet|| (socketEvent.status !== "Pending")) ?
                         "ОЖИДАЙТЕ" :
                         "СТАВКА"
                     }

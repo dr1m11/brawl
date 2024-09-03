@@ -164,13 +164,14 @@ const Game = ({cell, pending}: GameInterface) => {
     useEffect(() => {
         if (pending) {
             setRotate(rotate - 1080)
+        } else {
+            play()
         }
     }, [pending, cell]);
 
     useEffect(() => {
         if (!!cell) {
             setRotate(getRandomObjectByMultiply(arr, cell) + 1080)
-            play()
         }
     }, [cell]);
 

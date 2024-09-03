@@ -35,7 +35,7 @@ export const withdrawSlice = createSlice({
             if (payload.includes(' gems')) {
                 state.value = payload.replace(' gems', ' гемов')
             } else {
-                state.value = 'Brawl pass'
+                state.value = payload
             }
         },
         setPrice: (state, {payload}) => {
