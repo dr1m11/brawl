@@ -204,6 +204,15 @@
         max-h-[150px]
     }
 
+    .links {
+        @apply
+        bottom-0
+        top-0
+        m-auto
+        items-end
+        mb-6
+    }
+
     .content__left {
         @apply
         max-w-full
@@ -240,6 +249,8 @@
         gap-2
         flex-col
         items-center
+        justify-center
+        mb-0
     }
 }
 
