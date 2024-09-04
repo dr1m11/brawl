@@ -5,6 +5,7 @@
     mx-auto
     relative
     max-w-[1420px]
+    pr-4
 }
 
 .bg {
@@ -72,6 +73,36 @@
     items-center
     relative
     pr-5
+}
+
+.wallet {
+    @apply
+    flex
+    items-center
+    w-fit
+    px-4
+    h-[40px]
+    justify-center
+    gap-x-2
+    bg-6944145
+    rounded-xl
+    text-main
+    font-bold
+}
+
+.withdraw {
+    @apply
+    w-[70%]
+    h-[70%]
+}
+
+.button__group {
+    @apply
+    flex
+    w-full
+    justify-end
+    gap-2
+    mb-4
 }
 
 @media screen and (max-width: 660px){

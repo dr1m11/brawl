@@ -1,11 +1,11 @@
-import {getAccessToken} from "@/services/auth/auth.helper";
+import Cookies from "js-cookie";
 
 export const getContentType = () => ({
 	'Content-Type': 'application/json',
 })
 
 export const AuthHeaders = () => ({
-	'Authorization': `Bearer ${getAccessToken()}`,
+	'Authorization': `Bearer ${Cookies.get('token') ? Cookies.get('token') : null}`,
 	'Content-Type': 'application/json',
 })
 

@@ -17,12 +17,11 @@ const InCaseGun = ({name, photo_link, color, price}: IGun) => {
     const [timeoutId, setTimeoutId] = useState(null);
 
     return (
-        <div className={clsx(manrope.className, styles.root)} onMouseEnter={() => {
-            setTimeoutId(setTimeout(() => setActive(true), 1000));
-        }} onMouseLeave={() => {
-            clearTimeout(timeoutId);
-            setActive(false)
-        }}>
+        <div
+            className={clsx(manrope.className, styles.root)}
+            onMouseEnter={() => setActive(true)}
+            onMouseLeave={() => setActive(false)}
+        >
             <div className={styles.price} style={{opacity: isActive && 1}}>{price} <PriceIcon/></div>
             <div className={styles.wrapper}>
                 {photo_link && <Image src={photo_link} alt={'Gun'} width={141} height={95} className={styles.gun}/>}

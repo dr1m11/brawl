@@ -35,27 +35,10 @@
 .header__left__buttons {
     @apply
     max-w-[180px]
-    w-screen
+    w-fit
     flex
     justify-between
     items-center
-}
-
-.wallet {
-    @apply
-    w-[35px]
-    h-[35px]
-    bg-white-OP20
-    flex
-    justify-center
-    items-center
-    rounded-lg
-}
-
-.withdraw {
-    @apply
-    w-[70%]
-    h-[70%]
 }
 
 .balance {
@@ -65,6 +48,9 @@
     bg-white-OP20
     text-white
     rounded-lg
+    flex
+    items-center
+    justify-center
 }
 
 @media screen and (max-width: 665px) {

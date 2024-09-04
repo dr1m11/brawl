@@ -6,24 +6,6 @@ import {removeFromStorage} from "@/services/auth/auth.helper";
 import {axiosClassic} from "@/api/axios";
 
 const LogoutButton = () => {
-    // const createItem = async () => {
-    //     const res = await axiosClassic({
-    //         method: "POST",
-    //         url: "/case/create",
-    //         data: {
-    //             name: "Оружейный",
-    //             price: 300,
-    //             items: [
-    //                 {
-    //                     item_id: 1,
-    //                     weight: 5
-    //                 }
-    //             ]
-    //         }
-    //     })
-    //     console.log(res.data)
-    // }
-
     return (
         <button className={styles.logout} onClick={() => {
             removeFromStorage()

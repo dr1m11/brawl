@@ -1,12 +1,10 @@
 .logout {
     @apply
-    float-end
-    mb-3
     flex
     items-center
-    w-full
     max-w-[108px]
-    h-[32px]
+    px-4
+    h-[40px]
     justify-center
     gap-x-2
     bg-6944145

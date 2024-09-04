@@ -9,7 +9,7 @@ const PriceIcon = ({width, height}: {width?: number, height?: number}) => {
             quality={100}
             width={width ? width : 20}
             height={height ? height : 20}
-            style={{display: 'inline'}}
+            style={{display: 'inline', marginLeft: '5px'}}
         />
     );
 };

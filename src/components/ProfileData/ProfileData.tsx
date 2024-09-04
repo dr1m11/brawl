@@ -20,10 +20,7 @@ const ProfileData = () => {
             <div className={styles.header__left__content}>
                 <h2 className={clsx(daysOne.className, styles.username)}>{username}</h2>
                 <div className={styles.header__left__buttons}>
-                    <Link href={'/withdraw'} className={styles.wallet}><PiHandWithdraw color={'white'} className={styles.withdraw}/></Link>
-                    <Link href={'/payment'} className={styles.wallet}><Image src={Wallet} alt={'Wallet'} width={18}
-                                                             height={18}/></Link>
-                    <button className={styles.balance}>{balance} <PriceIcon/></button>
+                    <div className={styles.balance}>{balance} <PriceIcon/></div>
                 </div>
             </div>
         </div>
