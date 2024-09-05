@@ -8,10 +8,10 @@ import {useAppSelector} from "@/lib/hooks";
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 const Value = () => {
-    const value = useAppSelector(state => state.withdraw.value)
+    const position = useAppSelector(state => state.withdraw.position)
 
     return (
-        <span className={clsx(styles.info__value, daysOne.className)}>{value ? value : `0 гемов`}</span>
+        <span className={clsx(styles.info__value, daysOne.className)}>{position ? position : `0 гемов`}</span>
     );
 };
 

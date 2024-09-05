@@ -10,7 +10,7 @@ import {useQueryClient} from "@tanstack/react-query";
 
 
 const WithdrawButton = () => {
-    const {emailValue, value, isEmailSend, isValidEmail, code} = useAppSelector(state => state.withdraw)
+    const {emailValue, position, isEmailSend, isValidEmail, code} = useAppSelector(state => state.withdraw)
     const userId = useAppSelector(state => state.user.id)
 
     const dispatch = useAppDispatch()
@@ -23,6 +23,7 @@ const WithdrawButton = () => {
         }
     }, []);
 
+    console.log(position)
     return (
         <OrangeButton
             onClick={async () => {
@@ -48,7 +49,7 @@ const WithdrawButton = () => {
                                 user_id: userId,
                                 code: +code,
                                 account_email: emailValue,
-                                amount: +value
+                                position: position
                             })
                             dispatch(setError(null))
                             dispatch(setField('Заявка на вывод создана!'))
@@ -64,7 +65,7 @@ const WithdrawButton = () => {
                     }
                 }
             }}
-            disabled={isEmailSend ? ((code.length !== 6) || !value) : !isValidEmail}
+            disabled={isEmailSend ? ((code.length !== 6) || !position) : !isValidEmail}
         >
             {isEmailSend ? "Вывести" : "Отправить код"}
         </OrangeButton>

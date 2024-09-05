@@ -27,7 +27,7 @@ const WithdrawMethods = () => {
                 {
                     isSuccess &&
                     data.data.map((item) => (
-                        <GemsCard key={item.id} value={item.position} img={item.photo} price={item.price}/>
+                        <GemsCard key={item.id} position={item.position} img={item.photo} price={item.price}/>
                     ))
                 }
             </div>

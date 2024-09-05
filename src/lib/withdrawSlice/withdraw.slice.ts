@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 interface initialInterface {
     isGameSelected: boolean
-    value: string | number
+    position: string
     isEmailSend: boolean
     isValidEmail: boolean
     emailValue: string
@@ -14,7 +14,7 @@ interface initialInterface {
 
 const initialState: initialInterface = {
     isGameSelected: false,
-    value: '',
+    position: '',
     isEmailSend: false,
     isValidEmail: false,
     emailValue: '',
@@ -31,8 +31,8 @@ export const withdrawSlice = createSlice({
         setIsGameSelected: (state, {payload}) => {
             state.isGameSelected = payload
         },
-        setValue: (state, {payload}) => {
-            state.value = payload
+        setPosition: (state, {payload}) => {
+            state.position = payload
         },
         setPrice: (state, {payload}) => {
             state.price = payload
@@ -57,7 +57,7 @@ export const withdrawSlice = createSlice({
         },
         reset: (state) => {
             state.isGameSelected = false
-            state.value = ''
+            state.position = ''
             state.isEmailSend = false
             state.isValidEmail = false
             state.emailValue = ''
@@ -71,7 +71,7 @@ export const withdrawSlice = createSlice({
 
 export const {
     setIsGameSelected,
-    setValue,
+    setPosition,
     setIsValidEmail,
     setIsEmailSend,
     setEmailValue,

@@ -3,15 +3,15 @@ import styles from './GemsCard.module.css'
 import clsx from "clsx";
 import Image, {StaticImageData} from "next/image";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setPrice, setValue} from "@/lib/withdrawSlice/withdraw.slice";
+import {setPosition, setPrice} from "@/lib/withdrawSlice/withdraw.slice";
 
 interface GemsCardProps {
-    value: string
+    position: string
     img: StaticImageData
     price: number
 }
 
-const GemsCard = ({value, img, price}: GemsCardProps) => {
+const GemsCard = ({position, img, price}: GemsCardProps) => {
     const {isGameSelected, price: gemsPrice} = useAppSelector(state => state.withdraw)
 
     const dispatch = useAppDispatch()
@@ -21,7 +21,7 @@ const GemsCard = ({value, img, price}: GemsCardProps) => {
 
     const onClickHandler = () => {
         dispatch(setPrice(price))
-        dispatch(setValue(value))
+        dispatch(setPosition(position))
     }
 
     return (

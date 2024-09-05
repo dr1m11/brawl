@@ -5,7 +5,7 @@ import Link from "next/link";
 const ContentLeft = () => {
     return (
         <div className={styles.content__left}>
-            <h2 className={styles.content__left__header}>Все доступные методы вывода</h2>
+            <h2 className={styles.content__left__header}>Все доступные методы пополнения</h2>
             <PaymentMethods />
             <p className={styles.annotation}>Для пополнения баланса вы будете перемещены на сайт платёжной
                 системы. Баланс пополняется

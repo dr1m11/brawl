@@ -1,4 +1,4 @@
-import SelectedMethod from "@/components/Pages/Payment/components/SelectedMethod/SelectedMethod";
+import SelectedMethod from "@/components/Pages/Withdraw/components/SelectedMethod/SelectedMethod";
 import WithdrawForm from "@/components/Pages/Withdraw/components/WithdrawForm/WithdrawForm";
 import WithdrawInfo from "@/components/Pages/Withdraw/components/WithdrawInfo/WithdrawInfo";
 import WithdrawButton from "@/components/Pages/Withdraw/components/WithdrawButton/WithdrawButton";
