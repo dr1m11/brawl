@@ -13,6 +13,7 @@ const PayButton = () => {
 
     const {value, selectedMethod, promo} = useAppSelector(state => state.payment)
 
+    console.log(selectedMethod?.id)
     return (
         <OrangeButton
             onClick={async () => {
@@ -22,7 +23,7 @@ const PayButton = () => {
                     amount: +value,
                     promo,
                     ip: ip.data.ip,
-                    i: selectedMethod.data
+                    i: selectedMethod.id
                 }))
                 const url = response.data
                 router.push(url)

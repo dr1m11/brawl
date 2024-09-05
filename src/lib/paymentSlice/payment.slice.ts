@@ -3,7 +3,7 @@ import {IUser} from "@/utils/types";
 
 interface initialInterface {
     selectedMethod: {
-        data: number
+        id: number
         title: string
     }
     value: string | number
