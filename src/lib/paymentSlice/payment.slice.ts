@@ -2,13 +2,16 @@ import {createSlice} from "@reduxjs/toolkit";
 import {IUser} from "@/utils/types";
 
 interface initialInterface {
-    isPaymentSelected: boolean
+    selectedMethod: {
+        data: number
+        title: string
+    }
     value: string | number
     promo: string
 }
 
 const initialState: initialInterface ={
-    isPaymentSelected: false,
+    selectedMethod: null,
     value: '',
     promo: '',
 }
@@ -17,8 +20,8 @@ export const paymentSlice = createSlice({
     name: 'payment',
     initialState,
     reducers: {
-        setIsPaymentSelected: (state, {payload}) => {
-            state.isPaymentSelected = payload
+        setSelectedMethod: (state, {payload}) => {
+            state.selectedMethod = payload
         },
         setValue: (state, {payload}) => {
             state.value = payload
@@ -27,14 +30,14 @@ export const paymentSlice = createSlice({
             state.promo = payload
         },
         reset: (state) => {
-            state.isPaymentSelected = false
+            state.selectedMethod = null
             state.value = ''
         }
     },
 })
 
 export const {
-    setIsPaymentSelected,
+    setSelectedMethod,
     setValue,
     reset,
     setPromo

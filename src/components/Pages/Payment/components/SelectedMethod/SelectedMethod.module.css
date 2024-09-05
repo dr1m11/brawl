@@ -9,6 +9,18 @@
     px-4
 }
 
+.unselected {
+    @apply
+    w-full
+    h-full
+    flex
+    justify-center
+    items-center
+    text-848CEC
+    font-bold
+    text-lg
+}
+
 .selected__method__title {
     @apply
     text-848CEC
@@ -25,4 +37,11 @@
     text-white-OP60
     text-[13px]
     font-bold
+}
+
+@media screen and (max-width: 600px){
+    .unselected {
+        @apply
+        text-sm
+    }
 }

@@ -1,19 +1,13 @@
 .payment__methods {
     @apply
     grid
-    grid-cols-4
+    grid-cols-3
     w-full
     max-w-[500px]
     h-full
     max-h-[234px]
     mt-4
-}
-
-@media screen and (max-width: 900px){
-    .payment__methods {
-        @apply
-        grid-cols-3
-    }
+    gap-2
 }
 
 @media screen and (max-width: 768px){

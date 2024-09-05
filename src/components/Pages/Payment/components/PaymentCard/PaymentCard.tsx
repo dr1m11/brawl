@@ -1,19 +1,27 @@
 'use client'
 import styles from './PaymentCard.module.css'
 import clsx from "clsx";
-import Image from "next/image";
-import FreeKassa from '@/../public/Payment/FreeKassa.png'
+import Image, {StaticImageData} from "next/image";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setIsPaymentSelected} from "@/lib/paymentSlice/payment.slice";
-const PaymentCard = () => {
-    const isPaymentSelected = useAppSelector(state => state.payment.isPaymentSelected)
+import {setSelectedMethod} from "@/lib/paymentSlice/payment.slice";
+
+interface IPaymentCardProps {
+    image: StaticImageData
+    data: {
+        title: string
+        id: number
+    }
+}
+
+const PaymentCard = ({image, data}: IPaymentCardProps) => {
+    const selectedMethod = useAppSelector(state => state.payment.selectedMethod)
 
     const dispatch = useAppDispatch()
 
     return (
-        <div className={clsx(styles.payment__card, isPaymentSelected && styles.selected)}
-             onClick={() => dispatch(setIsPaymentSelected(!isPaymentSelected))}>
-            <Image src={FreeKassa} alt={'FreeKassa'} quality={100} width={73} height={73}/>
+        <div className={clsx(styles.payment__card, selectedMethod?.title === data.title && styles.selected)}
+             onClick={() => dispatch(setSelectedMethod(data))}>
+            <Image src={image} alt={data.title} quality={100} width={73} height={73}/>
         </div>
     );
 };

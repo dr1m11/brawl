@@ -31,3 +31,10 @@
     max-w-[200px]
     rounded-xl
 }
+
+@media screen and (max-width: 690px){
+    .root {
+        @apply
+        h-[650px]
+    }
+}

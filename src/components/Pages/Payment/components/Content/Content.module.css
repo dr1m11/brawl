@@ -10,3 +10,10 @@
     relative
     gap-x-4
 }
+
+@media screen and (max-width: 690px){
+    .content {
+        @apply
+        h-[450px]
+    }
+}
