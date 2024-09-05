@@ -26,11 +26,14 @@ import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, EffectFade, Pagination, Scrollbar} from "swiper/modules";
 import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {useRouter} from "next/navigation";
 
 export const MobileCarousel = () => {
     const user = useAppSelector(state => state.user.id)
 
     const dispatch = useAppDispatch()
+
+    const router = useRouter()
 
     return (
         <div className={styles.root}>
@@ -39,11 +42,11 @@ export const MobileCarousel = () => {
                     modules={[Autoplay, EffectFade, Pagination]}
                     effect={'fade'}
                     spaceBetween={0}
-                    pagination={{
-                        type: 'bullets',
-                        enabled: true,
-                        clickable: true,
-                    }}
+                    // pagination={{
+                    //     type: 'bullets',
+                    //     enabled: true,
+                    //     clickable: true,
+                    // }}
                     slidesPerView={1}
                     loop={true}
                     fadeEffect={{
@@ -119,14 +122,14 @@ export const MobileCarousel = () => {
                             />
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
-                                    <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                    <h1 className={styles.title}>+10% К ПОПОЛНЕНИЮ ПО ПРОМОКОДУ NEW10</h1>
                                     <GreenButton onClick={() => {
-                                        if (!!user) {
-                                            window.scroll(0, 500)
+                                        if (user) {
+                                            router.push('/payment')
                                         } else {
                                             dispatch(changeLogin())
                                         }
-                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
+                                    }} className={styles.button}>ПОПОЛНЕНИЕ</GreenButton>
                                 </div>
                             </div>
                         </div>
@@ -150,14 +153,10 @@ export const MobileCarousel = () => {
                             />
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
-                                    <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                    <h1 className={styles.title}>ПРИУМНОЖЬ ВЫИГРЫШ КЕЙСОМ С ГЕМАМИ И БП</h1>
                                     <GreenButton onClick={() => {
-                                        if (!!user) {
-                                            window.scroll(0, 500)
-                                        } else {
-                                            dispatch(changeLogin())
-                                        }
-                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
+                                        router.push('/case/3')
+                                    }} className={styles.button}>ЗА ГЕМАМИ</GreenButton>
                                 </div>
                             </div>
                         </div>
@@ -181,14 +180,10 @@ export const MobileCarousel = () => {
                             />
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
-                                    <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                    <h1 className={styles.title}>НЕ ДАЙ ЭЛЬ ПРИМО УПАСТЬ, ЗАБЕРИ ГЕМЫ</h1>
                                     <GreenButton onClick={() => {
-                                        if (!!user) {
-                                            window.scroll(0, 500)
-                                        } else {
-                                            dispatch(changeLogin())
-                                        }
-                                    }} className={styles.button}>ВПЕРЕД!</GreenButton>
+                                        router.push('/crash')
+                                    }} className={styles.button}>КРАШ</GreenButton>
                                 </div>
                             </div>
                         </div>

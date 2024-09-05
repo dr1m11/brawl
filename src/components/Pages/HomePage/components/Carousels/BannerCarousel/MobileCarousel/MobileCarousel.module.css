@@ -85,7 +85,7 @@
 .title {
     @apply
     text-center
-    max-w-[200px]
+    max-w-[300px]
 }
 
 .right__btn {

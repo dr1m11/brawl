@@ -13,7 +13,6 @@ const PayButton = () => {
 
     const {value, selectedMethod, promo} = useAppSelector(state => state.payment)
 
-    console.log(selectedMethod?.id)
     return (
         <OrangeButton
             onClick={async () => {

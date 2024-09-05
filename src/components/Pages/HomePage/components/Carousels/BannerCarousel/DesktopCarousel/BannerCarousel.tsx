@@ -23,9 +23,12 @@ import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, Scrollbar} from "swiper/modules";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
+import {useRouter} from "next/navigation";
 
 export const BannerCarousel = () => {
     const user = useAppSelector(state => state.user.id)
+
+    const router = useRouter()
 
     const dispatch = useAppDispatch()
 
@@ -39,7 +42,7 @@ export const BannerCarousel = () => {
                     centeredSlides={true}
                     loop={true}
                     className={'w-full h-full overflow-y-visible'}
-                    autoplay={true}
+                    // autoplay={true}
                     breakpoints={{
                         1200: {
                             spaceBetween: -120
@@ -130,13 +133,13 @@ export const BannerCarousel = () => {
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
                                             <GreenButton onClick={() => {
-                                                if (!!user) {
-                                                    window.scroll(0, 800)
+                                                if (user) {
+                                                    router.push('/payment')
                                                 } else {
                                                     dispatch(changeLogin())
                                                 }
-                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
-                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                            }} className={styles.button}>ПОПОЛНЕНИЕ</GreenButton>
+                                            <h1 className={styles.title}>+10% К ПОПОЛНЕНИЮ ПО ПРОМОКОДУ NEW10</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -165,13 +168,9 @@ export const BannerCarousel = () => {
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
                                             <GreenButton onClick={() => {
-                                                if (!!user) {
-                                                    window.scroll(0, 800)
-                                                } else {
-                                                    dispatch(changeLogin())
-                                                }
-                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
-                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                                router.push('/case/3')
+                                            }} className={styles.button}>ЗА ГЕМАМИ</GreenButton>
+                                            <h1 className={styles.title}>ПРИУМНОЖЬ ВЫИГРЫШ КЕЙСОМ С ГЕМАМИ И БП</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -200,13 +199,9 @@ export const BannerCarousel = () => {
                                     <div className={styles.info}>
                                         <div className={styles.info__content}>
                                             <GreenButton onClick={() => {
-                                                if (!!user) {
-                                                    window.scroll(0, 800)
-                                                } else {
-                                                    dispatch(changeLogin())
-                                                }
-                                            }} className={styles.button}>ВПЕРЕД!</GreenButton>
-                                            <h1 className={styles.title}>РЕГИСТРИРУЙСЯ В ЧИСЛЕ ПЕРВЫХ</h1>
+                                                router.push('/crash')
+                                            }} className={styles.button}>КРАШ</GreenButton>
+                                            <h1 className={styles.title}>НЕ ДАЙ ЭЛЬ ПРИМО УПАСТЬ, ЗАБЕРИ ГЕМЫ</h1>
                                         </div>
                                     </div>
                                 </div>

@@ -84,6 +84,7 @@
 .title {
     @apply
     w-fit
+    text-center
 }
 
 .right__btn {
