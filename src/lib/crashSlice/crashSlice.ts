@@ -8,6 +8,7 @@ interface CrashInterface {
     usersBets: PlayerInterface[]
     isAutoBet: boolean
     history: HistoryInterface[]
+    isAutoWithdraw: boolean
 }
 
 interface HistoryInterface {
@@ -46,7 +47,8 @@ const initialState: CrashInterface ={
     isBetSet: false,
     usersBets: [],
     isAutoBet: false,
-    history: []
+    history: [],
+    isAutoWithdraw: false
 }
 
 export const crashSlice = createSlice({
@@ -76,6 +78,9 @@ export const crashSlice = createSlice({
         },
         setHistory: (state, {payload}) => {
             state.history = payload
+        },
+        setIsAutoWithdraw: (state, {payload}) => {
+            state.isAutoWithdraw = payload
         }
     },
     selectors: {
@@ -94,11 +99,6 @@ export const {
     setUsersBets,
     setIsAutoBet,
     setHistory,
+    setIsAutoWithdraw
 } = crashSlice.actions
-export const {
-    selectBet,
-    selectUser,
-    selectSocketEvent,
-    selectIsBetSet
-} = crashSlice.selectors
 

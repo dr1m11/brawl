@@ -6,7 +6,7 @@ import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounte
 import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import Automation from "@/components/Pages/Crash/components/Automation/Automation";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {setHistory, setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
@@ -31,7 +31,9 @@ const Kostil = () => {
 
     const ws = useRef(null)
 
-    const {socketEvent, isAutoBet, user, bet, isBetSet, usersBets} = useAppSelector(state => state.crash)
+    const [multiplier, setMultiplier] = useState('2')
+
+    const {socketEvent, isAutoBet, isAutoWithdraw, user, bet, isBetSet, usersBets} = useAppSelector(state => state.crash)
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
@@ -50,6 +52,13 @@ const Kostil = () => {
             dispatch(setIsBetSet(false))
         }
     }, [socketEvent.status]);
+
+    useEffect(() => {
+        if ((socketEvent.multiplier >= +multiplier) && (socketEvent.status === 'Running') && isAutoWithdraw && isBetSet) {
+            withdrawBet()
+            console.log('with')
+        }
+    }, [socketEvent.multiplier]);
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
@@ -140,7 +149,7 @@ const Kostil = () => {
                 <div className={styles.bet}>
                     <BetCounter/>
                     <BetTips/>
-                    <Automation/>
+                    <Automation multiplier={multiplier} setMultiplier={setMultiplier}/>
                     <BetButton onClick={!isBetSet ? sendBet : withdrawBet}/>
                 </div>
                 <div className={styles.playersVisible}>
