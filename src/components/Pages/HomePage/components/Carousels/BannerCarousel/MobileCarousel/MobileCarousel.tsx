@@ -122,7 +122,7 @@ export const MobileCarousel = () => {
                             />
                             <div className={styles.info}>
                                 <div className={styles.info__content}>
-                                    <h1 className={styles.title}>+10% К ПОПОЛНЕНИЮ ПО ПРОМОКОДУ NEW10</h1>
+                                    <h1 className={styles.title}>+10% К ПОПОЛНЕНИЮ ПО ПРОМОКОДУ OPEN10</h1>
                                     <GreenButton onClick={() => {
                                         if (user) {
                                             router.push('/payment')

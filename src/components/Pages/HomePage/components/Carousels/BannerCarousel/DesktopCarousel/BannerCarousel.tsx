@@ -139,7 +139,7 @@ export const BannerCarousel = () => {
                                                     dispatch(changeLogin())
                                                 }
                                             }} className={styles.button}>ПОПОЛНЕНИЕ</GreenButton>
-                                            <h1 className={styles.title}>+10% К ПОПОЛНЕНИЮ ПО ПРОМОКОДУ NEW10</h1>
+                                            <h1 className={styles.title}>+10% К ПОПОЛНЕНИЮ ПО ПРОМОКОДУ OPEN10</h1>
                                         </div>
                                     </div>
                                 </div>
