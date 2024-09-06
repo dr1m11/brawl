@@ -52,7 +52,7 @@ const Login = () => {
                     <input {...field} placeholder={"Пароль"} type={"password"} className={styles.input}/>
                 )} name={'password'} control={form.control} disabled={isPending}/>
                 {errorAdapter(form.formState.errors)&& Object.entries(form.formState.touchedFields).length && <div className={styles.error}><BiError className={styles.error__icon}/><span className={styles.error__message}>{errorAdapter(form.formState.errors)[0]}</span></div>}
-                <button className={styles.reset__password}>Забыли пароль?</button>
+                {/*<button className={styles.reset__password}>Забыли пароль?</button>*/}
             </div>
             <div className={styles.divider}/>
             <button type={"submit"} disabled={isPending}
