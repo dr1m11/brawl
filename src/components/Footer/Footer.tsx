@@ -46,7 +46,7 @@ const Footer = () => {
                 </div>
                 <div className={clsx(styles.links, manrope.className)}>
                     <Link href={'https://t.me/DoDoSellerHelp_Bot'} className={styles.link}>Поддержка</Link>
-                    <Link href={'https://t.me/DoDoDonate'} className={styles.link}>Наш Telegram</Link>
+                    <Link href={'https://t.me/DodoDrop_news'} className={styles.link}>Наш Telegram</Link>
                 </div>
             </div>
         </footer>
