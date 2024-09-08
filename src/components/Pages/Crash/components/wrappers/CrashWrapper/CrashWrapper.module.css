@@ -66,7 +66,8 @@
         max-h-[1000px]
         justify-center
         gap-y-4
-        px-4
+        pr-6
+        pl-1
     }
 }
 

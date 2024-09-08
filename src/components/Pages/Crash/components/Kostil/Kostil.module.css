@@ -37,6 +37,13 @@
     p-2.5
 }
 
+.players__title {
+    @apply
+    text-main-op40
+    text-center
+    w-full
+}
+
 .choose__filter {
     @apply
     w-full

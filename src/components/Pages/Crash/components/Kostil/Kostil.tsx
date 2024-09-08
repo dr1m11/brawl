@@ -11,7 +11,6 @@ import {setHistory, setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
-import useResize from "@/hooks/useResize";
 import {API_URL, SOCKET_API_URL} from "@/constants";
 import {axiosClassic} from "@/api/axios";
 import History from "@/components/Pages/Crash/components/History/History";
@@ -137,9 +136,10 @@ const Kostil = () => {
                 </div>
                 <div className={styles.players}>
                     <div className={styles.choose__filter}>
-                        <button className={styles.filter__button}>Все</button>
-                        <button className={styles.filter__button}>Мои</button>
-                        <button className={styles.filter__button}>Топ</button>
+                        {/*<button className={styles.filter__button}>Все</button>*/}
+                        {/*<button className={styles.filter__button}>Мои</button>*/}
+                        {/*<button className={styles.filter__button}>Топ</button>*/}
+                        <h5 className={styles.players__title}>Ставки</h5>
                     </div>
                     <PlayersList/>
                     <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>
@@ -154,9 +154,10 @@ const Kostil = () => {
                 </div>
                 <div className={styles.playersVisible}>
                     <div className={styles.choose__filter}>
-                        <button className={styles.filter__button}>Все</button>
-                        <button className={styles.filter__button}>Мои</button>
-                        <button className={styles.filter__button}>Топ</button>
+                        {/*<button className={styles.filter__button}>Все</button>*/}
+                        {/*<button className={styles.filter__button}>Мои</button>*/}
+                        {/*<button className={styles.filter__button}>Топ</button>*/}
+                        <h5 className={styles.players__title}>Ставки</h5>
                     </div>
                     <PlayersList/>
                     <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>

@@ -1,0 +1,42 @@
+.players {
+    @apply
+    h-full
+    w-full
+    rounded-2xl
+    max-w-[350px]
+    bg-373070
+    p-2.5
+}
+
+.choose__filter {
+    @apply
+    w-full
+    h-full
+    max-h-[32px]
+    flex
+    justify-between
+    gap-x-2
+}
+
+.filter__button {
+    @apply
+    text-center
+    w-full
+    max-w-[106px]
+    text-white
+    text-[13px]
+    bg-9580160-OP20
+    rounded-lg
+    hover:bg-9580160
+    transition
+}
+
+.bets__count {
+    @apply
+    text-center
+    mt-3
+    text-main-op40
+    text-[13px]
+    font-medium
+    opacity-75
+}
