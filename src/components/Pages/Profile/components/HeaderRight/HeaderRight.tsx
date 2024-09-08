@@ -22,10 +22,10 @@ const HeaderRight = () => {
                                           className={styles.best__gun}/>
                 </div>
             }
-            <h3 className={styles.sell__all} onClick={async () => {
-                await axiosAuth.get('/authenticated/user/sell-all-items')
-                queryClient.invalidateQueries({queryKey: ['user']})
-            }}>Продать все</h3>
+            {/*<h3 className={styles.sell__all} onClick={async () => {*/}
+            {/*    await axiosAuth.get('/authenticated/user/sell-all-items')*/}
+            {/*    queryClient.invalidateQueries({queryKey: ['user']})*/}
+            {/*}}>Продать все</h3>*/}
         </div>
     );
 };

@@ -5,8 +5,8 @@ import Card from '@/../public/Payment/Card.png'
 const PaymentMethods = () => {
     return (
         <div className={styles.payment__methods}>
-            <PaymentCard image={SBP} data={{id: 44, title: 'СБП'}}/>
-            <PaymentCard image={Card} data={{id: 36, title: 'Карта'}}/>
+            <PaymentCard image={SBP} data={{id: 42, title: 'СБП'}}/>
+            <PaymentCard image={Card} data={{id: 4, title: 'Карта'}}/>
         </div>
     );
 };
