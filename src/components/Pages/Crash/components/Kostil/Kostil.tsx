@@ -32,7 +32,15 @@ const Kostil = () => {
 
     const [multiplier, setMultiplier] = useState('2')
 
-    const {socketEvent, isAutoBet, isAutoWithdraw, user, bet, isBetSet, usersBets} = useAppSelector(state => state.crash)
+    const {
+        socketEvent,
+        isAutoBet,
+        isAutoWithdraw,
+        user,
+        bet,
+        isBetSet,
+        usersBets
+    } = useAppSelector(state => state.crash)
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
@@ -132,7 +140,7 @@ const Kostil = () => {
             <div className={styles.game}>
                 <div className={styles.graph}>
                     <Game/>
-                    <History />
+                    <History/>
                 </div>
                 <div className={styles.players}>
                     <div className={styles.choose__filter}>
@@ -168,3 +176,4 @@ const Kostil = () => {
 };
 
 export default Kostil;
+
