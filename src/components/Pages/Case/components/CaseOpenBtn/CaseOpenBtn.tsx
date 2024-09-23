@@ -9,10 +9,11 @@ import {useState} from "react";
 import {TailSpin} from "react-loader-spinner";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
 import useSound from "use-sound";
+import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 
 const CaseOpenBtn = () => {
     const {items, caseData, isOpenDisabled} = useAppSelector(state => state.case)
-    const balance = useAppSelector(state => state.user.balance)
+    const {balance, id} = useAppSelector(state => state.user)
     const [isLoading, setIsLoading] = useState(false)
 
     const [play] = useSound('/sounds/case/open.mp3')
@@ -47,26 +48,40 @@ const CaseOpenBtn = () => {
     }
 
     return (
-        <button onClick={openCase} className={styles.root}
-                disabled={(!((balance - caseData.price) >= 0)) || isOpenDisabled} style={{justifyContent: isLoading && 'center'}}>
-            {
-                isLoading ?
-                    <TailSpin
-                        visible={true}
-                        height="24"
-                        width="24"
-                        color="#FFF"
-                        ariaLabel="tail-spin-loading"
-                        radius="2"
-                    />
-                    :
-                    <>
-                        <h5>Открыть за</h5>
-                        <span
-                            className={styles.bet__btn__label}>{caseData.price} <PriceIcon /></span>
-                    </>
-            }
-        </button>
+        !!id ?
+            <button onClick={openCase} className={styles.root}
+                    disabled={(!((balance - caseData.price) >= 0)) || isOpenDisabled}
+                    style={{justifyContent: isLoading && 'center'}}>
+                {
+                    isLoading ?
+                        <TailSpin
+                            visible={true}
+                            height="24"
+                            width="24"
+                            color="#FFF"
+                            ariaLabel="tail-spin-loading"
+                            radius="2"
+                        />
+                        :
+                        <>
+                            <h5>Открыть за</h5>
+                            <span
+                                className={styles.bet__btn__label}>{caseData.price} <PriceIcon/></span>
+                        </>
+                }
+            </button>
+            :
+            <button
+                className={styles.root}
+                style={{
+                    background: 'rgba(10,110,34,0.85)',
+                    border: 'none',
+                    justifyContent: 'center'
+                }}
+                onClick={() => dispatch(changeLogin())}
+            >
+                ВОЙТИ
+            </button>
     );
 };
 
