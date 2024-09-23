@@ -149,7 +149,7 @@ const Kostil = () => {
                 <div className={styles.bet}>
                     <BetCounter/>
                     <BetTips/>
-                    <Automation multiplier={multiplier} setMultiplier={setMultiplier}/>
+                    {/*<Automation multiplier={multiplier} setMultiplier={setMultiplier}/>*/}
                     <BetButton onClick={!isBetSet ? sendBet : withdrawBet}/>
                 </div>
                 <div className={styles.playersVisible}>

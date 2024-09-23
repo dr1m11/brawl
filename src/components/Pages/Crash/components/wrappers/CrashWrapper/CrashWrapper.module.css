@@ -2,9 +2,8 @@
     @apply
     max-w-[1435px]
     w-full
-    h-[850px]
+    h-[650px]
     mx-auto
-    -mt-14
     flex
     items-center
     justify-center
@@ -51,8 +50,8 @@
     h-full
     flex
     flex-col
-    justify-between
     mx-auto
+    gap-2
 }
 
 @media screen and (max-width: 900px){
@@ -66,7 +65,6 @@
         max-h-[1000px]
         justify-center
         gap-y-4
-        pl-3
     }
 }
 

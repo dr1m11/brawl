@@ -25,9 +25,16 @@
     rounded
 }
 
+@media screen and (max-width: 900px){
+    .players__list {
+        @apply
+        max-h-[230px]
+    }
+}
+
 @media screen and (max-width: 630px){
     .players__list {
         @apply
-        max-h-[240px]
+        max-h-[300px]
     }
 }

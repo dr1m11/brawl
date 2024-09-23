@@ -28,7 +28,7 @@ export default function RootLayout({
         <StoreProvider>
             <QueryProvider>
                 <AuthProvider>
-                    <html lang="en" className={'h-screen w-screen'}>
+                    <html lang="en">
                     <body
                         className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full overflow-x-hidden relative')}>
                     <Header/>

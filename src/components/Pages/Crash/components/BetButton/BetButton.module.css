@@ -1,7 +1,7 @@
 .bet__btn {
-    /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
     @apply
-    w-[230px]
+    w-full
+    max-w-[300px]
     h-full
     border-[10px]
     rounded-xl
@@ -14,8 +14,9 @@
     tracking-wider
     text-[18px]
     flex
-    justify-around
+    justify-between
     items-center
+    px-4
 }
 
 .bet__btn:disabled {
@@ -24,7 +25,6 @@
     cursor-not-allowed
     border-0
     text-gray-400
-    pr-2
     max-h-[70px]
 }
 
@@ -58,7 +58,7 @@
     bg-white-OP20
     w-full
     h-full
-    max-w-[90px]
+    max-w-[100px]
     rounded-lg
     flex
     items-center

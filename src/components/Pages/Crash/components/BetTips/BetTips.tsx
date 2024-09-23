@@ -13,6 +13,7 @@ const BetTips = () => {
             <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 100))}>+100</span>
             <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 200))}>+200</span>
             <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 500))}>+500</span>
+            <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 1000))}>+1000</span>
         </div>
     );
 };

@@ -1,48 +1,20 @@
-.current__bet {
+.range {
     @apply
+    w-full
     h-full
-    w-full
-    max-w-[162px]
-    flex
-    items-center
-    justify-between
-    bg-383838-OP20
-    rounded-xl
-    font-semibold
-    p-4
-}
-
-.minus, .plus {
-    @apply
-    text-[25px]
-}
-
-.form {
-    @apply
-    flex
-    max-w-[75px]
-    w-full
-}
-
-.sum {
-    @apply
-    text-[18px]
-}
-
-.sum__input {
-    @apply
-    outline-0
-    border-0
-    bg-transparent
-    max-w-[65px]
-    overflow-hidden
-    w-full
+    max-w-[270px]
 }
 
 @media screen and (max-width: 900px){
-    .current__bet {
+    .range {
+        @apply
+        max-h-[80px]
+    }
+}
+
+@media screen and (max-width: 630px){
+    .range {
         @apply
         max-w-full
-        max-h-[70px]
     }
 }

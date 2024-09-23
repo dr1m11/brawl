@@ -3,11 +3,14 @@
     bg-383838-OP20
     h-full
     w-full
-    max-w-[278px]
+    max-w-[350px]
+    min-w-[350px]
     rounded-xl
     flex
     items-center
-    justify-around
+    justify-center
+    gap-2
+    px-2
 }
 
 .tip__sums {
@@ -31,10 +34,21 @@
     bg-8766187
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 900px) {
     .bet__tips {
         @apply
         max-w-full
-        max-h-[70px]
+        max-h-[80px]
+        min-w-0
+    }
+
+    .tip__sums:last-of-type {
+        @apply
+        hidden
+    }
+
+    .tip__sums {
+        @apply
+        max-w-[80px]
     }
 }
