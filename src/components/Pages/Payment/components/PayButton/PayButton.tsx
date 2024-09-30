@@ -16,7 +16,7 @@ const PayButton = () => {
     return (
         <OrangeButton
             onClick={() => dispatch(setIsCheckModalOpen(true))}
-            disabled={!value}
+            disabled={!value || +value < 200}
             margin={44}
         >
             Я оплатил
