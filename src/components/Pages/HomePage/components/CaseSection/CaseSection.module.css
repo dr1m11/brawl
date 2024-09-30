@@ -3,7 +3,6 @@
     w-full
     max-w-[1100px]
     mx-auto
-    mt-14
 }
 
 .cases__heading {
@@ -28,7 +27,6 @@
     gap-y-10
     w-full
     mx-auto
-    mb-32
 }
 
 @media screen and (max-width: 1000px){

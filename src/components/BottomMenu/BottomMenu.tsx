@@ -1,49 +1,56 @@
+'use client'
 import styles from './BottomMenu.module.css'
-import GamesBar from "@/components/Header/GamesBar/GamesBar";
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import holodilnik from "../../../public/Header/holodilnik.svg";
-import baran from "../../../public/Header/baran.svg";
-import elPrimo from "../../../public/Header/elPrimo.svg";
+import CaseMobile from '@/../public/BottomMenu/CaseMobile.svg'
+import WheelMobile from '@/../public/BottomMenu/WheelMobile.svg'
 import {Manrope} from "next/font/google";
+import {FaChartLine, FaMoneyBill1Wave} from "react-icons/fa6";
+import {GiTwoCoins} from "react-icons/gi";
+import {useAppSelector} from "@/lib/hooks";
+import {RxAvatar} from "react-icons/rx";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
 export const BottomMenu = () => {
+    const {balance} = useAppSelector(state => state.user)
     return (
         <>
             <div className={styles.bottom__space}/>
-            <div className={styles.root}>
-                <div className={styles.content__left__shadows}>
-                    <div className={styles.circle}/>
-                    <div className={styles.elipse}/>
-                </div>
-                <div className={clsx(styles.header__center, manrope.className)}>
-                    <Link href={'/'}
-                          className={styles.header__center__content}>
-                        <div className={styles.header__ellipse}/>
-                        <div className={styles.header__ellipse__hover}/>
-                        <h3 className={styles.header__center__titles}>КЕЙСЫ</h3>
-                        <Image src={holodilnik} alt={'Case'} width={63} height={60}
-                               className={clsx(styles.header__center__img)}/>
+            <div className={clsx(styles.root, manrope.className)}>
+                <div className={styles.content}>
+                    <Link href={'/'} className={styles.option}>
+                        <Image src={CaseMobile} alt={'asd'} width={20} height={20}/>
+                        <div className={styles.shadow}/>
+                        <p className={styles.optionLabel}>КЕЙСЫ</p>
                     </Link>
-                    <Link href={'/wheel'}
-                          className={styles.header__center__content}>
-                        <div className={styles.header__ellipse}/>
-                        <div className={styles.header__ellipse__hover}/>
-                        <h3 className={styles.header__center__titles}>БАРАБАН</h3>
-                        <Image src={baran} alt={'Wheel'} width={63} height={60}
-                               className={clsx(styles.header__center__img)}/>
+                    <Link href={'/crash'} className={styles.option}>
+                        <FaChartLine fontSize={20} color={'#848CEC'} height={20}/>
+                        <div className={styles.shadow}/>
+                        <p className={styles.optionLabel}>КРАШ</p>
                     </Link>
-                    <Link href={'/crash'}
-                          className={styles.header__center__content}>
-                        <div className={styles.header__ellipse}/>
-                        <div className={styles.header__ellipse__hover}/>
-                        <h3 className={styles.header__center__titles}>КРАШ</h3>
-                        <Image src={elPrimo} alt={'Crash'} width={70} height={60}
-                               className={clsx(styles.header__center__img,)} style={{left: -15}}/>
+                    {
+                        balance !== null &&
+                        <Link href={'/payment'} className={styles.option}>
+                            <FaMoneyBill1Wave fontSize={20} color={'#848CEC'} height={20}/>
+                            <div className={styles.shadow}/>
+                            <div className={styles.optionLabel}>{balance} <GiTwoCoins width={20} height={20}/></div>
+                        </Link>
+                    }
+                    <Link href={'/'} className={styles.option}>
+                        <Image src={WheelMobile} alt={'asd'} width={20} height={20}/>
+                        <div className={styles.shadow}/>
+                        <p className={styles.optionLabel}>КОЛЕСО</p>
                     </Link>
+                    {
+                        balance !== null &&
+                        <Link href={'/profile'} className={styles.option}>
+                            <RxAvatar fontSize={20} color={'#848CEC'} height={20}/>
+                            <div className={styles.shadow}/>
+                            <div className={styles.optionLabel}>Профиль</div>
+                        </Link>
+                    }
                 </div>
             </div>
         </>

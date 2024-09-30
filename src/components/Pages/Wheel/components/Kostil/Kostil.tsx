@@ -10,7 +10,15 @@ import Info from "@/components/Pages/Wheel/components/Info/Info";
 import localFont from "next/font/local";
 import {useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setBet, setHistory, setIsBetSet, setSocketEvent, setUser, setUserBets} from "@/lib/wheelSlice/wheelSlice";
+import {
+    setBet,
+    setHistory,
+    setIsBetSet,
+    setIsModalOpen,
+    setSocketEvent,
+    setUser,
+    setUserBets
+} from "@/lib/wheelSlice/wheelSlice";
 import axios from "axios";
 import {API_URL, SOCKET_API_URL} from "@/constants";
 import {axiosClassic} from "@/api/axios";
@@ -86,9 +94,13 @@ const Kostil = () => {
 
     return (
         <>
+
             <div className={styles.game}>
                 <div className={styles.game__label}>
-                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} <PriceIcon width={30} height={30} /></h1>
+                    <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?
+                    </button>
+                    <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} <PriceIcon width={30}
+                                                                                                     height={30}/></h1>
                     <span className={styles.heading__label}>в этом раунде</span>
                 </div>
                 <Game pending={socketEvent.status === "Pending" || socketEvent.status === "End"}

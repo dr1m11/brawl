@@ -28,4 +28,10 @@ export interface ICase {
     price: number
     photo_link?: string
     color?: string
+    collection?: string
+}
+
+export interface ICollection {
+    name: string
+    data: ICase[]
 }

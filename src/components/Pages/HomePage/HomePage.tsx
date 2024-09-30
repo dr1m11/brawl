@@ -3,7 +3,7 @@ import Image from "next/image";
 import mainBg from '@/../public/Home/Main.png'
 import footerBg from '@/../public/Home/Footer.png'
 import Carousels from "@/components/Pages/HomePage/components/Carousels/Carousels";
-import CaseSection from "@/components/Pages/HomePage/components/CaseSection/CaseSection";
+import {Cases} from "@/components/Pages/HomePage/components/Cases/Cases";
 
 
 const HomePage = () => {
@@ -12,7 +12,7 @@ const HomePage = () => {
             <Image src={mainBg} alt={"Background"} height={820} width={1435} className={styles.main__img} quality={100}/>
             <div className={styles.content}>
                 <Carousels />
-                <CaseSection title={'Популярные кейсы'}/>
+                <Cases />
             </div>
             <Image src={footerBg} alt={"Background"} height={820} width={1435} className={styles.bottom__img} quality={100}/>
         </div>

@@ -1,5 +1,8 @@
+import {ICase} from "@/services/case/case.types";
+
 export interface CaseSectionProps {
     title?: string
+    data: ICase[]
 }
 
 export interface CaseProps {

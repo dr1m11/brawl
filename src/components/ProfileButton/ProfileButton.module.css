@@ -15,6 +15,10 @@
 .nickname {
     @apply
     text-[11px]
+    max-w-[60px]
+    overflow-hidden
+    text-ellipsis
+    whitespace-nowrap
 }
 
 .balance {
@@ -27,7 +31,6 @@
     max-w-[41px]
     w-full
     flex
-    flex-col
     justify-center
     items-center
     -space-y-1
@@ -43,6 +46,13 @@
 .photo {
     @apply
     rounded-xl
+}
+
+@media screen and (max-width: 768px){
+    .balance {
+        @apply
+        hidden
+    }
 }
 
 @media screen and (max-width: 420px){

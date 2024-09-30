@@ -1,3 +1,17 @@
+.infoBtn {
+    @apply
+    w-fit
+    px-6
+    bg-6944145
+    text-main
+    font-bold
+    rounded-xl
+    z-10
+    absolute
+    left-0
+    h-[40px]
+}
+
 .game {
     @apply
     max-w-[1056px]
@@ -15,6 +29,7 @@
     flex-col
     items-center
     justify-center
+    relative
 }
 
 .heading {

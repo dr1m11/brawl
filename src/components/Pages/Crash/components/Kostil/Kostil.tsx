@@ -7,7 +7,14 @@ import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import Automation from "@/components/Pages/Crash/components/Automation/Automation";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useEffect, useRef, useState} from "react";
-import {setHistory, setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
+import {
+    setHistory,
+    setIsBetSet,
+    setIsModalOpen,
+    setSocketEvent,
+    setUser,
+    setUsersBets
+} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import {useQueryClient} from "@tanstack/react-query";
 import axios from "axios";
@@ -137,8 +144,11 @@ const Kostil = () => {
 
     return (
         <>
+            <div className={styles.info}>
+                <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>
+            </div>
             <div className={styles.game}>
-                <div className={styles.graph}>
+            <div className={styles.graph}>
                     <Game/>
                     <History/>
                 </div>
@@ -170,6 +180,9 @@ const Kostil = () => {
                     <PlayersList/>
                     <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>
                 </div>
+            </div>
+            <div className={styles.modal}>
+
             </div>
         </>
     );

@@ -12,7 +12,7 @@ const HeaderRight = () => {
     const bestItem = useAppSelector(state => state.user.best_item)
 
     return (
-        <div className={styles.header__right} style={{justifyContent: !bestItem?.id && 'end'}}>
+        <div className={styles.header__right} style={{justifyContent: bestItem?.id && 'end'}}>
             { !!bestItem?.id &&
                 <div className={styles.best__item}>
                     <h3 className={styles.best__title}>Лучший предмет</h3>

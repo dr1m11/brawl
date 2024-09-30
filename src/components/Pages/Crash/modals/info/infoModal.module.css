@@ -1,0 +1,70 @@
+.root {
+    backdrop-filter: blur(4px);
+    @apply
+    absolute
+    w-full
+    h-full
+    -top-24
+    z-10
+    flex
+    items-center
+    justify-center
+}
+
+.wrapper {
+    @apply
+    w-full
+    max-w-[400px]
+    h-full
+    max-h-[400px]
+    bg-brawl-purple-header
+    rounded-2xl
+    px-8
+    py-4
+    flex-col
+    flex
+    justify-between
+}
+
+.content {
+    @apply
+    flex
+    flex-col
+    gap-4
+}
+
+.heading {
+    @apply
+    text-center
+    font-bold
+    text-[24px]
+    text-main
+}
+
+.list {
+    @apply
+    list-disc
+    text-main
+    flex
+    flex-col
+    gap-8
+}
+
+@media screen and (max-width: 900px){
+    .root {
+        @apply
+        -top-48
+    }
+}
+
+@media screen and (max-width: 630px){
+    .root {
+        @apply
+        -top-96
+    }
+
+    .list {
+        @apply
+        text-[15px]
+    }
+}

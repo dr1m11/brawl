@@ -2,7 +2,7 @@
     @apply
     max-w-[1435px]
     w-full
-    h-[650px]
+    h-[700px]
     mx-auto
     flex
     items-center
@@ -46,7 +46,7 @@
     @apply
     max-w-[1064px]
     w-full
-    max-h-[500px]
+    max-h-[550px]
     h-full
     flex
     flex-col
@@ -57,12 +57,12 @@
 @media screen and (max-width: 900px){
     .root {
         @apply
-        h-[1000px]
+        h-[1050px]
     }
 
     .wrapper {
         @apply
-        max-h-[1000px]
+        max-h-[1050px]
         justify-center
         gap-y-4
     }
@@ -71,12 +71,12 @@
 @media screen and (max-width: 630px){
     .root {
         @apply
-        h-[1300px]
+        h-[1350px]
     }
 
     .wrapper {
         @apply
-        max-h-[1300px]
+        max-h-[1350px]
     }
 
     .shadow__left, .shadow__right {

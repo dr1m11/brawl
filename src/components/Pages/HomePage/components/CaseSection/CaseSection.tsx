@@ -5,11 +5,7 @@ import {caseService} from "@/services/case/case.service";
 import {CaseSectionProps} from "@/components/Pages/HomePage/components/types";
 import Case from "@/components/Pages/HomePage/components/Case/Case";
 
-const CaseSection = ({title}: CaseSectionProps) => {
-    const {isPending, data} = useQuery({
-        queryKey: ['get-all-cases'],
-        queryFn: () => caseService.getCases()
-    })
+const CaseSection = ({title, data}: CaseSectionProps) => {
 
     return (
         <div className={styles.root}>
@@ -22,7 +18,7 @@ const CaseSection = ({title}: CaseSectionProps) => {
             }
             <div className={styles.cases__section}>
                 {
-                    !isPending && data?.length &&
+                    data.length &&
                     data.map(({id, name, price, photo_link, color}) => (
                         <Case image={photo_link} color={color} title={name} price={price} id={id} key={id}/>
                     ))

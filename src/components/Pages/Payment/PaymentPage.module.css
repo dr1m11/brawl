@@ -32,6 +32,18 @@
     rounded-xl
 }
 
+@media screen and (max-width: 880px){
+    .root {
+        @apply
+        h-[700px]
+    }
+
+    .wrapper {
+        @apply
+        h-[700px]
+    }
+}
+
 @media screen and (max-width: 782px){
     .root {
         @apply

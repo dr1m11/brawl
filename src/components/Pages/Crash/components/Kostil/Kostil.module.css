@@ -1,3 +1,21 @@
+.info {
+    @apply
+    w-full
+    h-[40px]
+    flex
+    justify-end
+}
+
+.infoBtn {
+    @apply
+    w-fit
+    px-6
+    bg-6944145
+    text-main
+    font-bold
+    rounded-xl
+}
+
 .game {
     @apply
     bg-6944145

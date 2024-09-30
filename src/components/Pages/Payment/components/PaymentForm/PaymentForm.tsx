@@ -4,7 +4,7 @@ import InputContainer from "@/components/Pages/Payment/components/PaymentForm/In
 const PaymentForm = () => {
     return (
         <form className={styles.form}>
-            <InputContainer label={'Введите сумму RUB'} placeholder={"0.00 RUB"} type={'SUM'}/>
+            <InputContainer label={'Введите сумму RUB'} placeholder={"0.00 RUB"} type={'SUM'} note={'Минимальная сумма 200Р'}/>
             <InputContainer label={'Введите промокод'} placeholder={"PROMO"} type={'PROMO'}/>
         </form>
     );

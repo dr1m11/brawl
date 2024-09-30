@@ -14,3 +14,9 @@
     font-bold
     text-[13px]
 }
+
+.note {
+    @apply
+    text-main-op40
+    text-[11px]
+}

@@ -14,10 +14,11 @@ interface GreenButtonProps {
     onClick?: (event?: MouseEvent<HTMLButtonElement>) => void
     style?: CSSProperties
     disabled?: boolean
+    sameColor?: boolean
 }
 
 
-const GreenButton = ({children, style, className, onClick, disabled}: GreenButtonProps) => {
+const GreenButton = ({children, style, className, onClick, disabled, sameColor}: GreenButtonProps) => {
 
     return (
         <button className={clsx(styles.button, daysOne, className)} onClick={onClick} style={{
@@ -27,7 +28,7 @@ const GreenButton = ({children, style, className, onClick, disabled}: GreenButto
         }}
                 disabled={disabled}
         >
-            <div className={styles.div} style={{background: disabled && 'inherit'}}>
+            <div className={styles.div} style={{background: (disabled || sameColor) && 'transparent'}}>
                 {children}
             </div>
         </button>

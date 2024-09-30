@@ -8,6 +8,7 @@ interface WheelInterface {
     userCell: number
     userBets: UserBetsInterface
     history: HistoryInterface[]
+    isModalOpen: boolean
 }
 
 interface HistoryInterface {
@@ -61,7 +62,8 @@ const initialState: WheelInterface ={
         bet10: null,
         bet100: null,
     },
-    history: []
+    history: [],
+    isModalOpen: false
 }
 
 export const wheelSlice = createSlice({
@@ -88,6 +90,9 @@ export const wheelSlice = createSlice({
         },
         setHistory: (state, {payload}) => {
             state.history = payload
+        },
+        setIsModalOpen: (state, {payload}) => {
+            state.isModalOpen = payload
         }
     },
     selectors: {
@@ -107,6 +112,7 @@ export const {
     setUserCell,
     setUserBets,
     setHistory,
+    setIsModalOpen,
 } = wheelSlice.actions
 export const {
     selectBet,
