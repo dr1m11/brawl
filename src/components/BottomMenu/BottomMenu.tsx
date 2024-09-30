@@ -38,7 +38,7 @@ export const BottomMenu = () => {
                             <div className={styles.optionLabel}>{balance} <GiTwoCoins width={20} height={20}/></div>
                         </Link>
                     }
-                    <Link href={'/'} className={styles.option}>
+                    <Link href={'/wheel'} className={styles.option}>
                         <Image src={WheelMobile} alt={'asd'} width={20} height={20}/>
                         <div className={styles.shadow}/>
                         <p className={styles.optionLabel}>КОЛЕСО</p>
