@@ -9,6 +9,7 @@ import {QueryProvider} from "@/app/QueryProvider";
 import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 import AuthProvider from "@/app/AuthProvider";
 import {BottomMenu} from "@/components/BottomMenu/BottomMenu";
+import {Toaster} from "react-hot-toast";
 
 const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
@@ -35,6 +36,7 @@ export default function RootLayout({
                     <main>
                         {children}
                         <AuthWrapper/>
+                        <Toaster />
                     </main>
                     <Footer/>
                     <BottomMenu/>

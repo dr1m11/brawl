@@ -3,6 +3,7 @@ import PaymentInfo from "@/components/Pages/Payment/components/PaymentInfo/Payme
 import PaymentForm from "@/components/Pages/Payment/components/PaymentForm/PaymentForm";
 import SelectedMethod from "@/components/Pages/Payment/components/SelectedMethod/SelectedMethod";
 import ContentRightWrapper from "@/components/Pages/components/Payment/ContentRightWrapper/ContentRightWrapper";
+import {ContentBottom} from "@/components/Pages/Payment/components/ContentBottom/ContentBottom";
 
 const ContentRight = () => {
     return (
@@ -10,6 +11,7 @@ const ContentRight = () => {
             <SelectedMethod />
             <PaymentForm />
             <PaymentInfo />
+            <ContentBottom />
             <PayButton />
         </ContentRightWrapper>
     );

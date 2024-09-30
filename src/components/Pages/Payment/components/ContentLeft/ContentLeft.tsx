@@ -5,11 +5,10 @@ import Link from "next/link";
 const ContentLeft = () => {
     return (
         <div className={styles.content__left}>
-            <h2 className={styles.content__left__header}>Все доступные методы пополнения</h2>
+            <h2 className={styles.content__left__header}>Переведите сумму на указанную карту</h2>
             <PaymentMethods />
-            <p className={styles.annotation}>Для пополнения баланса вы будете перемещены на сайт платёжной
-                системы. Баланс пополняется
-                моментально, но, если этого не произошло в течение часа, напишите в наш <Link
+            <p className={styles.annotation}>Для пополнения баланса вы должны будете загрузить скриншот оплаты. Баланс пополняется
+                в течение 6 часов, в редких случаях задержка может составлять 24 часа, но, если по истечении этого срока баланс не был пополнен, напишите в наш <Link
                     href={'https://web.telegram.org/a/#6504876997'} style={{color: 'white', cursor: 'pointer'}}>чат бот</Link>,
                 указав подробные данные платежа.</p>
             <div className={styles.content__bottom}>

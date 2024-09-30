@@ -24,11 +24,14 @@
     "jwt-decode": "^4.0.0",
     "next": "14.1.4",
     "next-auth": "^5.0.0-beta.19",
+    "notistack": "^3.0.1",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-content-loader": "^7.0.2",
     "react-dom": "^18",
+    "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.51.5",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
     "react-loader-spinner": "^6.1.6",
     "react-multi-carousel": "^2.8.5",
@@ -41,6 +44,7 @@
     "socket.io-client": "^4.7.5",
     "swiper": "^11.1.9",
     "use-sound": "^4.0.3",
+    "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

@@ -1,9 +1,7 @@
 'use client'
 import styles from './ProfileItems.module.css'
 import ProfileItem from "@/components/ProfileItem/ProfileItem";
-import {useQuery} from "@tanstack/react-query";
 import {useAppSelector} from "@/lib/hooks";
-import {userService} from "@/services/user/user.service";
 import {IGun} from "@/services/case/case.types";
 const ProfileItems = () => {
 

@@ -1,36 +1,26 @@
 'use client'
 import { axiosAuth } from "@/api/axios"
 import OrangeButton from "@/components/ui/OrangeButton/OrangeButton"
-import { useAppSelector } from "@/lib/hooks"
+import {useAppDispatch, useAppSelector} from "@/lib/hooks"
 import { useRouter } from "next/navigation"
 import axios from "axios";
 import {useState} from "react";
+import {setIsCheckModalOpen} from "@/lib/paymentSlice/payment.slice";
 
 
 const PayButton = () => {
-    const router = useRouter()
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const dispatch = useAppDispatch()
 
-    const {value, selectedMethod, promo} = useAppSelector(state => state.payment)
+    const {value, promo} = useAppSelector(state => state.payment)
 
     return (
         <OrangeButton
-            onClick={async () => {
-                setIsLoading(true)
-                const ip = await axios.get('https://api.ipify.org?format=json')
-                const response = await axiosAuth.post(`/authenticated/replenishment`, JSON.stringify({
-                    amount: +value,
-                    promo,
-                    ip: ip.data.ip,
-                    i: selectedMethod.id
-                }))
-                const url = response.data
-                router.push(url)
-                setIsLoading(false)
-            }}
-            disabled={!value || !selectedMethod || isLoading}
+            onClick={() => dispatch(setIsCheckModalOpen(true))}
+            disabled={!value}
             margin={44}
-        />
+        >
+            Я оплатил
+        </OrangeButton>
     );
 };
 

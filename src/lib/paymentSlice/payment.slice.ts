@@ -8,12 +8,14 @@ interface initialInterface {
     }
     value: string | number
     promo: string
+    isCheckModalOpen: boolean
 }
 
 const initialState: initialInterface ={
     selectedMethod: null,
     value: '',
     promo: '',
+    isCheckModalOpen: false
 }
 
 export const paymentSlice = createSlice({
@@ -29,9 +31,13 @@ export const paymentSlice = createSlice({
         setPromo: (state, {payload}) => {
             state.promo = payload
         },
+        setIsCheckModalOpen: (state, {payload}) => {
+            state.isCheckModalOpen = payload
+        },
         reset: (state) => {
             state.selectedMethod = null
             state.value = ''
+            state.isCheckModalOpen = false
         }
     },
 })
@@ -40,5 +46,6 @@ export const {
     setSelectedMethod,
     setValue,
     reset,
-    setPromo
+    setPromo,
+    setIsCheckModalOpen,
 } = paymentSlice.actions

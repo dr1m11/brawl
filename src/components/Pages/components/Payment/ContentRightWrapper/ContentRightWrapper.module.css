@@ -5,3 +5,11 @@
     h-full
     relative
 }
+
+@media screen and (max-width: 782px){
+    .content__right {
+        @apply
+        max-w-[90%]
+        mx-auto
+    }
+}

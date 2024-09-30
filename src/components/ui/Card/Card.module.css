@@ -1,0 +1,77 @@
+.root {
+    @apply
+    w-full
+    h-full
+    border
+    border-gray-600
+    rounded-2xl
+    flex
+    justify-center
+    flex-col
+    gap-6
+    pl-8
+    relative
+    bg-brawl-purple-header
+    pb-5
+}
+
+.logo {
+    @apply
+    absolute
+    right-[20px]
+    top-[20px]
+    w-[80px]
+}
+
+.content {
+    @apply
+    flex
+    gap-8
+    items-center
+}
+
+.numbers {
+    @apply
+    text-[20px]
+    tracking-[7px]
+    text-justify
+    w-fit
+    text-main
+}
+
+@media screen and (max-width: 480px){
+    .root {
+        @apply
+        gap-3
+        px-4
+        pb-3
+    }
+
+    .logo {
+        @apply
+        right-[10px]
+        top-[10px]
+        w-[60px]
+    }
+
+    .content {
+        @apply
+        gap-2
+    }
+
+    .numbers {
+        @apply
+        text-[16px]
+        tracking-[4px]
+    }
+
+    .chip {
+        @apply
+        max-w-[40px]
+    }
+
+    .copy {
+        @apply
+        text-[13px]
+    }
+}

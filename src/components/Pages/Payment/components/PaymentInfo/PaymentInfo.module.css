@@ -19,3 +19,10 @@
     text-white
     text-[22px]
 }
+
+@media screen and (max-width: 782px){
+    .info {
+        @apply
+        mt-4
+    }
+}

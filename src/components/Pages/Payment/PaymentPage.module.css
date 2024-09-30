@@ -32,9 +32,14 @@
     rounded-xl
 }
 
-@media screen and (max-width: 690px){
+@media screen and (max-width: 782px){
     .root {
         @apply
-        h-[650px]
+        h-[1000px]
+    }
+
+    .wrapper {
+        @apply
+        h-[1000px]
     }
 }
