@@ -96,7 +96,7 @@ export const CheckPaymentModal = () => {
                         type={'file'}
                         className={styles.input}
                         onChange={(e) => setFile(e.target.files[0])}
-                        accept="image/*"
+                        accept="image/*, .heic"
                     />
                 </div>
                 <div className={styles.button__group}>

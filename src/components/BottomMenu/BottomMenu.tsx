@@ -10,6 +10,7 @@ import {FaChartLine, FaMoneyBill1Wave} from "react-icons/fa6";
 import {GiTwoCoins} from "react-icons/gi";
 import {useAppSelector} from "@/lib/hooks";
 import {RxAvatar} from "react-icons/rx";
+import {FaWallet} from "react-icons/fa";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
 
@@ -33,7 +34,7 @@ export const BottomMenu = () => {
                     {
                         balance !== null &&
                         <Link href={'/payment'} className={styles.option}>
-                            <FaMoneyBill1Wave fontSize={20} color={'#848CEC'} height={20}/>
+                            <FaWallet fontSize={20} color={'#848CEC'} height={20}/>
                             <div className={styles.shadow}/>
                             <div className={styles.optionLabel}>{balance} <GiTwoCoins width={20} height={20}/></div>
                         </Link>

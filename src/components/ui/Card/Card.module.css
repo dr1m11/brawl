@@ -8,11 +8,11 @@
     flex
     justify-center
     flex-col
-    gap-6
+    gap-3
     pl-8
     relative
     bg-brawl-purple-header
-    pb-5
+    pt-5
 }
 
 .logo {

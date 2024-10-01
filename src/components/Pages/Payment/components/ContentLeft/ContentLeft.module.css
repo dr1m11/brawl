@@ -20,7 +20,6 @@
     h-full
     max-w-[567px]
     text-[11px]
-    tracking-wide
     font-bold
     max-h-[47px]
 }
@@ -49,6 +48,12 @@
     @apply
     text-white-OP60
     text-[13px]
+}
+
+@media screen and (max-width: 788px){
+    .content__bottom {
+        bottom: -60px
+    }
 }
 
 @media screen and (max-width: 782px){

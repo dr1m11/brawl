@@ -28,10 +28,14 @@ export const Card = () => {
     return (
         <div className={styles.root}>
             <Image src={Chip} alt={'Chip'} width={50} height={35} style={{marginLeft: '10px'}} className={styles.chip}/>
-            <Image src={Logo} alt={'Logo'} width={208} height={156} className={styles.logo} />
+            <Image src={Logo} alt={'Logo'} width={208} height={156} className={styles.logo}/>
             <div className={styles.content}>
                 <p className={clsx(pragatiNarrow.className, styles.numbers)}>{card.number}</p>
-                <MdContentCopy fontSize={'18px'} cursor={'pointer'} color={'rgba(132, 140, 236)'} onClick={handleCopy} className={styles.copy}/>
+                <MdContentCopy fontSize={'18px'} cursor={'pointer'} color={'rgba(132, 140, 236)'} onClick={handleCopy}
+                               className={styles.copy}/>
+            </div>
+            <div className={styles.content}>
+                <p className={clsx(pragatiNarrow.className, styles.numbers)}>{card.name}</p>
             </div>
         </div>
     )

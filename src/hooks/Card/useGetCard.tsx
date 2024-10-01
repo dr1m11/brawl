@@ -17,6 +17,7 @@ export const useGetCard = () => {
 
     return {
         number: data.data.number.replace(/\d{4}/g, '$& '),
-        bank: data.data.bank
+        bank: data.data.bank,
+        name: data.data.name
     }
 }
