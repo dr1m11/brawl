@@ -25,7 +25,7 @@ const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname, amo
             <h4 className={styles.nickname} style={{display: hideNickname && 'none'}}>{nickname}</h4>
             <h4 className={styles.bet} style={{display: hideBet && 'none'}}>{amount.toFixed(0)} ₽</h4>
             <h4 className={styles.multiplier} style={{display: hideMultiplier && 'none'}}>{multiplier}x</h4>
-            <h4 className={styles.won} style={{display: hideWon && 'none'}}>{winning.toFixed(0)} ₽</h4>
+            <h4 className={styles.won} style={{display: hideWon && 'none'}}>{winning ? winning.toFixed(0) : winning} ₽</h4>
         </div>
     );
 };
