@@ -1,4 +1,4 @@
-import {CSSProperties, ReactNode} from "react";
+import {CSSProperties, memo, ReactNode} from "react";
 import styles from './GreenButton.module.css'
 import {Days_One} from "next/font/google";
 import clsx from "clsx";
@@ -35,4 +35,4 @@ const GreenButton = ({children, style, className, onClick, disabled, sameColor}:
     );
 };
 
-export default GreenButton;
+export default memo(GreenButton);

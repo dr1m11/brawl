@@ -10,7 +10,7 @@ const Online = () => {
     const online = useQuery({
         queryKey: ['online'],
         queryFn: () => axiosClassic.get('/online'),
-        refetchInterval: 5000
+        refetchInterval: 30000
     })
 
     return (

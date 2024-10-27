@@ -2,9 +2,14 @@
 import styles from './PlayersList.module.css'
 import Player from "@/components/CrashPlayer/Player";
 import {useAppSelector} from "@/lib/hooks";
+import {PlayerInterface} from "@/lib/crashSlice/crashSlice";
+import {memo} from "react";
 
-const PlayersList = () => {
-    const bets = useAppSelector(state => state.crash.usersBets)
+interface IPlayersListProps {
+    bets: PlayerInterface[]
+}
+
+const PlayersList = ({bets}: IPlayersListProps) => {
     return (
         <div className={styles.players__list}>
             {
@@ -17,4 +22,4 @@ const PlayersList = () => {
     );
 };
 
-export default PlayersList;
+export default memo(PlayersList);

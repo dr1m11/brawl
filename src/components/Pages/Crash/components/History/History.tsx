@@ -1,14 +1,19 @@
 'use client'
 import styles from './History.module.css'
-import {useAppSelector} from "@/lib/hooks";
 import localFont from "next/font/local";
 import clsx from "clsx";
+import {memo} from "react";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-const History = () => {
-    const history = useAppSelector(state => state.crash.history)
+export interface IHistoryProps {
+    history: {
+        id: number
+        win_multiplier: number | string
+    }[]
+}
 
+const History = ({history}: IHistoryProps) => {
     function getColorByMultiplier(mult) {
         if (mult >= 10) {
             return '#e0b700'
@@ -40,4 +45,4 @@ const History = () => {
     );
 };
 
-export default History;
+export default memo(History);

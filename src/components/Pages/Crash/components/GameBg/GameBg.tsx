@@ -1,5 +1,5 @@
 'use client'
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import styles from "./GameBg.module.css";
 
 const GameBg = () => {
@@ -81,4 +81,4 @@ const GameBg = () => {
     );
 };
 
-export default GameBg;
+export default memo(GameBg);

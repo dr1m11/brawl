@@ -17,7 +17,7 @@ interface HistoryInterface {
     win_multiplier: number | string
 }
 
-interface PlayerInterface {
+export interface PlayerInterface {
     player_id: string
     player_nickname: string
     amount: number

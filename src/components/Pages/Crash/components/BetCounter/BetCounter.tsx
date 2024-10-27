@@ -1,15 +1,15 @@
 'use client'
 import styles from './BetCounter.module.css'
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setBet} from "@/lib/crashSlice/crashSlice";
-import PriceIcon from "@/components/PriceIcon/PriceIcon";
+import {useAppSelector} from "@/lib/hooks";
 import Range from "@/components/ui/Range/Range";
+import {memo} from "react";
 
+interface BetCounterProps {
+    bet: number
+    setBet: (bet: number) => void
+}
 
-const BetCounter = () => {
-    const dispatch = useAppDispatch()
-    const {bet} = useAppSelector(state => state.crash)
-
+const BetCounter = ({bet, setBet}: BetCounterProps) => {
     const balance = useAppSelector(state => state.user.balance)
 
     return (
@@ -19,10 +19,10 @@ const BetCounter = () => {
                 max={balance}
                 value={bet}
                 min={0}
-                onChange={(e) => dispatch(setBet(+(e.target.value.replace(/[^\d]/g,''))))}
+                onChange={(e) => setBet(+(e.target.value.replace(/[^\d]/g,'')))}
             />
         </div>
     );
 };
 
-export default BetCounter;
+export default memo(BetCounter);

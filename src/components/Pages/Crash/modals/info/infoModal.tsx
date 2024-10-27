@@ -2,7 +2,7 @@
 import styles from './infoModal.module.css'
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setIsModalOpen} from "@/lib/crashSlice/crashSlice";
-import {MouseEvent} from "react";
+import {memo, MouseEvent} from "react";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
 import GreenButton from "@/components/GreenButton/GreenButton";
@@ -10,7 +10,7 @@ import GreenButton from "@/components/GreenButton/GreenButton";
 const manrope = Manrope({subsets: ["latin"], weight: ["500", '600']});
 
 
-export const InfoModal = () => {
+const InfoModal = () => {
     const isOpen = useAppSelector(state => state.crash.isModalOpen)
 
     const dispatch = useAppDispatch()
@@ -40,3 +40,5 @@ export const InfoModal = () => {
         </div>
     )
 }
+
+export default memo(InfoModal)

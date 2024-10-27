@@ -4,15 +4,13 @@ import Game from "@/components/Pages/Crash/components/Game/Game";
 import PlayersList from "@/components/Pages/Crash/components/PlayersList/PlayersList";
 import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
 import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
-import Automation from "@/components/Pages/Crash/components/Automation/Automation";
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {useAppDispatch, useAppSelector, useAppStore} from "@/lib/hooks";
 import {useEffect, useRef, useState} from "react";
 import {
-    setHistory,
+    PlayerInterface,
     setIsBetSet,
     setIsModalOpen,
     setSocketEvent,
-    setUser,
     setUsersBets
 } from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
@@ -32,27 +30,34 @@ interface CrashInterface {
     game_id: number,
 }
 
+interface IHistory {
+    id: number
+    win_multiplier: number | string
+}
+
 const Kostil = () => {
     const dispatch = useAppDispatch()
 
     const ws = useRef(null)
 
+    const user = useAppSelector(state => state.user.id)
+
     const [multiplier, setMultiplier] = useState('2')
+    const [history, setHistory] = useState<IHistory[]>([])
+    const [userBets, setUserBets] = useState<PlayerInterface[]>([])
+    const [bet, setBet] = useState(0)
 
     const {
         socketEvent,
         isAutoBet,
         isAutoWithdraw,
-        user,
-        bet,
         isBetSet,
         usersBets
     } = useAppSelector(state => state.crash)
 
     useEffect(() => {
-        dispatch(setUser(localStorage.getItem('userId')))
         axios.get(`${API_URL}/crash/init-bets-for-new-client`)
-            .then(data => dispatch(setUsersBets(data.data.bets)))
+            .then(data => setUserBets(data.data.bets))
     }, []);
 
     const queryClient = useQueryClient()
@@ -61,7 +66,7 @@ const Kostil = () => {
         queryClient.invalidateQueries({
             queryKey: ['user']
         })
-        axiosClassic.get('/all-crash-records').then(data => dispatch(setHistory(data.data)))
+        axiosClassic.get('/all-crash-records').then(data => setHistory(data.data))
         if ((socketEvent.status === "Pending") && (!isAutoBet)) {
             dispatch(setIsBetSet(false))
         }
@@ -149,40 +154,37 @@ const Kostil = () => {
             </div>
             <div className={styles.game}>
             <div className={styles.graph}>
-                    <Game/>
-                    <History/>
+                    <Game
+                        length={socketEvent.length}
+                        status={socketEvent.status}
+                        time_before_start={socketEvent.time_before_start}
+                        multiplier={socketEvent.multiplier}
+                    />
+                    <History
+                        history={history}
+                    />
                 </div>
                 <div className={styles.players}>
                     <div className={styles.choose__filter}>
-                        {/*<button className={styles.filter__button}>Все</button>*/}
-                        {/*<button className={styles.filter__button}>Мои</button>*/}
-                        {/*<button className={styles.filter__button}>Топ</button>*/}
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <PlayersList/>
+                    <PlayersList bets={userBets} />
                     <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>
                 </div>
             </div>
             <div className={styles.bottom_menu}>
                 <div className={styles.bet}>
-                    <BetCounter/>
+                    <BetCounter bet={bet} setBet={setBet}/>
                     <BetTips/>
-                    {/*<Automation multiplier={multiplier} setMultiplier={setMultiplier}/>*/}
                     <BetButton onClick={!isBetSet ? sendBet : withdrawBet}/>
                 </div>
                 <div className={styles.playersVisible}>
                     <div className={styles.choose__filter}>
-                        {/*<button className={styles.filter__button}>Все</button>*/}
-                        {/*<button className={styles.filter__button}>Мои</button>*/}
-                        {/*<button className={styles.filter__button}>Топ</button>*/}
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <PlayersList/>
+                    <PlayersList bets={userBets}/>
                     <h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>
                 </div>
-            </div>
-            <div className={styles.modal}>
-
             </div>
         </>
     );
