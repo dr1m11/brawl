@@ -62,22 +62,22 @@ const Kostil = () => {
 
     const queryClient = useQueryClient()
 
-    useEffect(() => {
-        queryClient.invalidateQueries({
-            queryKey: ['user']
-        })
-        axiosClassic.get('/all-crash-records').then(data => setHistory(data.data))
-        if ((socketEvent.status === "Pending") && (!isAutoBet)) {
-            dispatch(setIsBetSet(false))
-        }
-    }, [socketEvent.status]);
+    // useEffect(() => {
+    //     queryClient.invalidateQueries({
+    //         queryKey: ['user']
+    //     })
+    //     axiosClassic.get('/all-crash-records').then(data => setHistory(data.data))
+    //     if ((socketEvent.status === "Pending") && (!isAutoBet)) {
+    //         dispatch(setIsBetSet(false))
+    //     }
+    // }, [socketEvent.status]);
 
-    useEffect(() => {
-        if ((socketEvent.multiplier >= +multiplier) && (socketEvent.status === 'Running') && isAutoWithdraw && isBetSet) {
-            withdrawBet()
-            console.log('with')
-        }
-    }, [socketEvent.multiplier]);
+    // useEffect(() => {
+    //     if ((socketEvent.multiplier >= +multiplier) && (socketEvent.status === 'Running') && isAutoWithdraw && isBetSet) {
+    //         withdrawBet()
+    //         console.log('with')
+    //     }
+    // }, [socketEvent.multiplier]);
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
@@ -141,11 +141,11 @@ const Kostil = () => {
         }
     };
 
-    useEffect(() => {
-        if (isAutoBet && bet && (socketEvent.status === 'Pending')) {
-            sendBet()
-        }
-    }, [socketEvent.status]);
+    // useEffect(() => {
+    //     if (isAutoBet && bet && (socketEvent.status === 'Pending')) {
+    //         sendBet()
+    //     }
+    // }, [socketEvent.status]);
 
     return (
         <>
