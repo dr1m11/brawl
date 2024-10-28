@@ -19,6 +19,7 @@ import axios from "axios";
 import {API_URL, SOCKET_API_URL} from "@/constants";
 import {axiosClassic} from "@/api/axios";
 import History from "@/components/Pages/Crash/components/History/History";
+import useWebSocket from "react-use-websocket";
 
 
 interface CrashInterface {
@@ -79,38 +80,38 @@ const Kostil = () => {
     //     }
     // }, [socketEvent.multiplier]);
 
-    useEffect(() => {
-        // Создание WebSocket соединения при монтировании компонента
-        ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
-
-        ws.current.onopen = () => {
-            console.log('WebSocket открыто');
-        };
-
-        ws.current.onmessage = (event) => {
-            const data = JSON.parse(event.data)
-            if (data.bets === null || data.bets) {
-                dispatch(setUsersBets(data.bets))
-            } else {
-                const mainData: CrashInterface = data
-                dispatch(setSocketEvent(mainData))
-            }
-        };
-
-        ws.current.onclose = () => {
-            console.log('WebSocket закрыто');
-        };
-
-        ws.current.onerror = (error) => {
-            console.error('Ошибка WebSocket:', error);
-        };
-
-        return () => {
-            if (ws.current) {
-                ws.current.close();
-            }
-        };
-    }, []);
+    // useEffect(() => {
+    //     // Создание WebSocket соединения при монтировании компонента
+    //     ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
+    //
+    //     ws.current.onopen = () => {
+    //         console.log('WebSocket открыто');
+    //     };
+    //
+    //     ws.current.onmessage = (event) => {
+    //         const data = JSON.parse(event.data)
+    //         if (data.bets === null || data.bets) {
+    //             dispatch(setUsersBets(data.bets))
+    //         } else {
+    //             const mainData: CrashInterface = data
+    //             dispatch(setSocketEvent(mainData))
+    //         }
+    //     };
+    //
+    //     ws.current.onclose = () => {
+    //         console.log('WebSocket закрыто');
+    //     };
+    //
+    //     ws.current.onerror = (error) => {
+    //         console.error('Ошибка WebSocket:', error);
+    //     };
+    //
+    //     return () => {
+    //         if (ws.current) {
+    //             ws.current.close();
+    //         }
+    //     };
+    // }, []);
 
     const sendBet = () => {
         if (ws.current && ws.current.readyState === WebSocket.OPEN) {
@@ -156,7 +157,7 @@ const Kostil = () => {
             <div className={styles.graph}>
                     <Game
                         length={socketEvent.length}
-                        status={socketEvent.status}
+                        status={'Running'}
                         time_before_start={socketEvent.time_before_start}
                         multiplier={socketEvent.multiplier}
                     />
