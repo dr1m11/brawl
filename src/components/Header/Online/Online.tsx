@@ -4,6 +4,7 @@ import Image from "next/image";
 import OnlineImg from '@/../public/Header/Online.svg'
 import {useQuery} from "@tanstack/react-query";
 import {axiosClassic} from "@/api/axios";
+import {memo} from "react";
 
 const Online = () => {
 
@@ -24,4 +25,4 @@ const Online = () => {
     );
 };
 
-export default Online;
+export default memo(Online);

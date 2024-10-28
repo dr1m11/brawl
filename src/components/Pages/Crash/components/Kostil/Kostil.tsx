@@ -175,8 +175,15 @@ const Kostil = () => {
             <div className={styles.bottom_menu}>
                 <div className={styles.bet}>
                     <BetCounter bet={bet} setBet={setBet}/>
-                    <BetTips/>
-                    <BetButton onClick={!isBetSet ? sendBet : withdrawBet}/>
+                    <BetTips setBet={setBet} bet={bet} />
+                    <BetButton
+                        onClick={!isBetSet ? sendBet : withdrawBet}
+                        status={socketEvent.status}
+                        multiplier={socketEvent.multiplier}
+                        bet={bet}
+                        isBetSet={isBetSet}
+                        usersBets={userBets}
+                    />
                 </div>
                 <div className={styles.playersVisible}>
                     <div className={styles.choose__filter}>

@@ -1,21 +1,22 @@
 'use client'
 import styles from './BetTips.module.css'
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setBet} from "@/lib/crashSlice/crashSlice";
+import {memo} from "react";
 
-const BetTips = () => {
-    const dispatch = useAppDispatch()
-    const bet = useAppSelector(state => state.crash.bet)
+interface IBetTipsProps {
+    setBet: (bet: number) => void
+    bet: number
+}
 
+const BetTips = ({setBet, bet}: IBetTipsProps) => {
     return (
         <div className={styles.bet__tips}>
-            <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 50))}>+50</span>
-            <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 100))}>+100</span>
-            <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 200))}>+200</span>
-            <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 500))}>+500</span>
-            <span className={styles.tip__sums} onClick={() => dispatch(setBet(bet + 1000))}>+1000</span>
+            <span className={styles.tip__sums} onClick={() => setBet(bet + 50)}>+50</span>
+            <span className={styles.tip__sums} onClick={() => setBet(bet + 100)}>+100</span>
+            <span className={styles.tip__sums} onClick={() => setBet(bet + 200)}>+200</span>
+            <span className={styles.tip__sums} onClick={() => setBet(bet + 500)}>+500</span>
+            <span className={styles.tip__sums} onClick={() => setBet(bet + 1000)}>+1000</span>
         </div>
     );
 };
 
-export default BetTips;
+export default memo(BetTips);
