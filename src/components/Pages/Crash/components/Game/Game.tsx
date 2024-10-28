@@ -31,16 +31,14 @@ interface IGameProps {
 
 const Game = ({status, multiplier, time_before_start}: IGameProps) => {
     const size = useResize()
-    const [length, setLength] = useState(0)
 
-    const { lastMessage, } = useWebSocket(`${SOCKET_API_URL}/crash`, {
-        onMessage: (message) => {
-            const parsed = JSON.parse(message?.data)
-            if (parsed?.length) {
-                setLength(parsed.length)
-            }
-        }
-    })
+    const { lastMessage, } = useWebSocket(`${SOCKET_API_URL}/crash`)
+
+    const length = useMemo(() => {
+        if (!lastMessage?.data) return 0
+        const parsed = JSON.parse(lastMessage.data)
+        return parsed?.length ?? 0
+    }, [lastMessage])
 
     const screenWidth = useMemo(() => {
         if (size < 1060 && size > 990) {
