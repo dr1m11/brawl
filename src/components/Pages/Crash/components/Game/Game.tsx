@@ -56,13 +56,13 @@ const Game = ({status, multiplier, time_before_start}: IGameProps) => {
     return (
         status === "Running" || status === "Crashed" ?
             <div className={styles.graph__game}>
-                <GameBg/>
+                {/*<GameBg/>*/}
                 <div className={styles.count}>
                     <h1 className={clsx(styles.multiplier, daysOne.className)}
                         style={{color: status === "Crashed" && '#ff0000'}}>{multiplier.toFixed(2)}x</h1>
                     <h2 className={styles.multiplier__label}>в раунде</h2>
                 </div>
-                <Rows/>
+                {/*<Rows/>*/}
                 <div className={'absolute left-0 right-0 bottom-0 top-0'}>
                     <svg style={{width: "100%", height: '100%',}}>
                         <defs>
