@@ -6,8 +6,6 @@ import localFont from "next/font/local";
 import useResize from "@/hooks/useResize";
 import {useEffect, useMemo, useState} from "react";
 import GameBg from "@/components/Pages/Crash/components/GameBg/GameBg";
-import useWebSocket from "react-use-websocket";
-import {SOCKET_API_URL} from "@/constants";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -29,18 +27,8 @@ interface IGameProps {
     length: number
 }
 
-const Game = ({status, multiplier, time_before_start}: IGameProps) => {
+const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
     const size = useResize()
-    const [length, setLength] = useState(0)
-
-    const { lastMessage, } = useWebSocket(`${SOCKET_API_URL}/crash`, {
-        onMessage: (message) => {
-            const parsed = JSON.parse(message?.data)
-            if (parsed?.length) {
-                setLength(parsed.length)
-            }
-        }
-    })
 
     const screenWidth = useMemo(() => {
         if (size < 1060 && size > 990) {
