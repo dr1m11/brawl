@@ -11,7 +11,7 @@ const RouletteItem = ({photo_link, color}: RouletteItemProps) => {
         <div className={styles.root}>
             <div className={styles.wrapper}>
                 <div className={styles.blur} style={{background: color}}/>
-                <Image src={photo_link} alt={'Gun'} width={130} height={87} className={styles.gun} />
+                <Image src={photo_link} alt={'Gun'} width={130} height={87} className={styles.gun} loading={'eager'}/>
             </div>
         </div>
     );
