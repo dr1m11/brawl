@@ -32,13 +32,13 @@ export default function RootLayout({
                     <html lang="en">
                     <body
                         className={clsx(daysOne.className, 'bg-brawl-purple-main h-full w-full overflow-x-hidden relative')}>
-                    {/*<Header/>*/}
+                    <Header/>
                     <main>
                         {children}
                         <AuthWrapper/>
                         <Toaster />
                     </main>
-                    {/*<Footer/>*/}
+                    <Footer/>
                     <BottomMenu/>
                     </body>
                     </html>

@@ -1,5 +1,5 @@
 'use client'
-import {memo, ReactNode, useEffect} from "react";
+import {ReactNode, useEffect} from "react";
 import {userService} from "@/services/user/user.service";
 import {useAppDispatch} from "@/lib/hooks";
 import {setBalance, setUser} from "@/lib/userSlice/userSlice";
@@ -27,4 +27,4 @@ const AuthProvider = ({children}: {children: ReactNode}) => {
     return children
 };
 
-export default memo(AuthProvider);
+export default AuthProvider;
