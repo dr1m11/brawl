@@ -4,8 +4,9 @@ import clsx from "clsx";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import localFont from "next/font/local";
 import useResize from "@/hooks/useResize";
-import {memo, useEffect, useMemo, useState} from "react";
+import {memo, useEffect, useMemo, useRef, useState} from "react";
 import GameBg from "@/components/Pages/Crash/components/GameBg/GameBg";
+import anime from 'animejs/lib/anime.es.js';
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -43,6 +44,26 @@ const Game = ({status, multiplier, time_before_start}: IGameProps) => {
         return 0
     }, [size])
 
+    const pathRef = useRef(null);
+
+    useEffect(() => {
+        const pathData = {
+            Pending: "M 0 266.39 Q 0 266.39 0 280",
+            Running: "M 0 266.39 Q 372 266.39 620 40",
+            Crashed: "M 0 266.39 Q 800 266.39 1200 -300"
+        };
+
+        anime({
+            targets: pathRef.current,
+            d: pathData[status] || pathData.Crashed, // Установите путь в зависимости от статуса
+            easing: 'linear',
+            duration: 1000,
+            begin: () => {
+                pathRef.current.setAttribute('d', pathData[status]);
+            }
+        });
+    }, [status]);
+
     return (
         // status === "Running" || status === "Crashed" ?
         <div className={'relative w-full h-full'}>
@@ -72,28 +93,27 @@ const Game = ({status, multiplier, time_before_start}: IGameProps) => {
                         </defs>
                         <g>
                             <path
+                                ref={pathRef}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
                                 className={clsx(
                                     styles.graph,
-                                    status === 'Pending' ?
-                                        styles.line__pending :
-                                        status === 'Running' ?
-                                            styles.line__running :
+                                    status === 'Pending' ? styles.line__pending :
+                                        status === 'Running' ? styles.line__running :
                                             styles.line__crashed
                                 )}
                             />
-                            <path
-                                fill="url(#grad)"
-                                className={clsx(
-                                    styles.graph,
-                                    status === 'Pending' ?
-                                        styles.shadow__pending :
-                                        status === 'Running' ?
-                                            styles.shadow__running :
-                                            styles.shadow__crashed
-                                )}
-                            />
+                            {/*<path*/}
+                            {/*    fill="url(#grad)"*/}
+                            {/*    className={clsx(*/}
+                            {/*        styles.graph,*/}
+                            {/*        status === 'Pending' ?*/}
+                            {/*            styles.shadow__pending :*/}
+                            {/*            status === 'Running' ?*/}
+                            {/*                styles.shadow__running :*/}
+                            {/*                styles.shadow__crashed*/}
+                            {/*    )}*/}
+                            {/*/>*/}
                         </g>
                     </svg>
                 </div>
