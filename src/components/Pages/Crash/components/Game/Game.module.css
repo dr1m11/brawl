@@ -35,19 +35,6 @@
     opacity-75
 }
 
-.graphic {
-    background: linear-gradient(180.00deg, rgba(249, 160, 99, 0.3) 37.11%,rgba(249, 159, 98, 0) 100%);
-    /*transition: transform 30s ease;*/
-    @apply
-        /*w-[110%]*/
-    h-[200px]
-    absolute
-    z-10
-    left-0
-    -bottom-20
-    /*-rotate-[19.5deg]*/
-}
-
 .crash__charecter {
     @apply
     absolute
@@ -62,11 +49,56 @@
     flex
     justify-center
     items-center
+    absolute
+    left-0
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    bg-373070
+    z-10
 }
 
 .timer__label {
     @apply
     text-main
     text-[40px]
+}
+
+.graphic__svg {
+    width: 100%;
+    height: 100%;
+}
+
+.graph {
+    transition: d 2s linear;
+}
+
+.line__pending {
+    d: path("M 0 266.39 Q 0 266.39 0 280")
+}
+
+.line__running {
+    d: path("M 0 266.39 Q 372 266.39 620 40")
+}
+
+.line__crashed {
+    d: path("M 0 266.39 Q 800 266.39 1200 -300")
+}
+
+.shadow__pending {
+    d: path("M 0 266.39 Q 0 266.39 0 280 L 0 266.39 Z")
+}
+
+.shadow__running {
+    d: path("M 0 266.39 Q 372 266.39 620 40 L 620 266.39 Z")
+}
+
+.shadow__crashed {
+    d: path("M 0 266.39 Q 800 266.39 1200 -300 L 1200 266.39 Z")
+}
+
+.path__two {
+    animation: secondaryCrash 3s linear forwards;
 }
 

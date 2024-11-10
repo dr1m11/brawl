@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import localFont from "next/font/local";
 import useResize from "@/hooks/useResize";
-import {useEffect, useMemo, useState} from "react";
+import {memo, useEffect, useMemo, useState} from "react";
 import GameBg from "@/components/Pages/Crash/components/GameBg/GameBg";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
@@ -24,10 +24,10 @@ interface IGameProps {
     status: 'Pending' | 'Crashed' | 'Running'
     multiplier: number
     time_before_start: number
-    length: number
+    // length: number
 }
 
-const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
+const Game = ({status, multiplier, time_before_start}: IGameProps) => {
     const size = useResize()
 
     const screenWidth = useMemo(() => {
@@ -44,7 +44,8 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
     }, [size])
 
     return (
-        status === "Running" || status === "Crashed" ?
+        // status === "Running" || status === "Crashed" ?
+        <div className={'relative w-full h-full'}>
             <div className={styles.graph__game}>
                 <GameBg/>
                 <div className={styles.count}>
@@ -54,14 +55,15 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
                 </div>
                 <Rows/>
                 <div className={'absolute left-0 right-0 bottom-0 top-0'}>
-                    <svg style={{width: "100%", height: '100%',}}>
+                    <svg className={styles.graphic__svg}>
                         <defs>
                             <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
                                 <stop
                                     stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'}
                                     stopOpacity=".33"
                                 />
-                                <stop offset="1.87" stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'} stopOpacity="0"/>
+                                <stop offset="1.87" stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'}
+                                      stopOpacity="0"/>
                             </linearGradient>
                             <linearGradient id="grad_stroke" x1="0" x2="1" y1="0" y2="1">
                                 <stop offset=".687" stopColor={status !== 'Crashed' ? "#622BFC" : '#ff0000'}/>
@@ -70,44 +72,59 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
                         </defs>
                         <g>
                             <path
-                                d={`M 0 266.39 Q ${((length * 6.2) * 0.6) - screenWidth} 266.39 ${(length * 6.2) - screenWidth} ${(280 - (length * 2.4))}`}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
+                                className={clsx(
+                                    styles.graph,
+                                    status === 'Pending' ?
+                                        styles.line__pending :
+                                        status === 'Running' ?
+                                            styles.line__running :
+                                            styles.line__crashed
+                                )}
                             />
                             <path
-                                d={`M 0 266.39 Q ${((length * 6.2) * 0.6) - screenWidth} 266.39 ${(length * 6.2) - screenWidth} ${(
-                                    280 - (length * 2.4)
-                                )} L ${(length * 6.2) - screenWidth} 266.39 Z`}
                                 fill="url(#grad)"
+                                className={clsx(
+                                    styles.graph,
+                                    status === 'Pending' ?
+                                        styles.shadow__pending :
+                                        status === 'Running' ?
+                                            styles.shadow__running :
+                                            styles.shadow__crashed
+                                )}
                             />
                         </g>
                     </svg>
                 </div>
-                <div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>
-                    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"
-                         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
-                        <defs>
-                            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"
-                                     height="1.000000">
-                                <use xlinkHref="#image183_199_0"
-                                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>
-                            </pattern>
-                            <image id="image183_199_0" width="512.000000" height="293.000000"
-                                   xlinkHref={link}/>
-                        </defs>
-                        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
-                              fill="url(#pattern_183_1990)"
-                              fillOpacity="1.000000"
-                              transform={`translate(${(length * 6.2) - 70 - screenWidth}, ${((280 - (length * 2.4)) - 20)}) rotate(-25.9718 0.000000 15.631226)`}/>
-                    </svg>
+                {/*<div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>*/}
+                {/*    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"*/}
+                {/*         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">*/}
+                {/*        <defs>*/}
+                {/*            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"*/}
+                {/*                     height="1.000000">*/}
+                {/*                <use xlinkHref="#image183_199_0"*/}
+                {/*                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>*/}
+                {/*            </pattern>*/}
+                {/*            <image id="image183_199_0" width="512.000000" height="293.000000"*/}
+                {/*                   xlinkHref={link}/>*/}
+                {/*        </defs>*/}
+                {/*        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"*/}
+                {/*              fill="url(#pattern_183_1990)"*/}
+                {/*              fillOpacity="1.000000"*/}
+                {/*              transform={`translate(${(length * 6.2) - 70 - screenWidth}, ${((280 - (length * 2.4)) - 20)}) rotate(-25.9718 0.000000 15.631226)`}/>*/}
+                {/*    </svg>*/}
+                {/*</div>*/}
+            </div>
+            {
+                status === 'Pending' &&
+                <div className={styles.timer}>
+                    <h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start).toFixed(1)}s</h1>
                 </div>
-            </div>
-            :
-            <div className={styles.timer}>
-                <h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start).toFixed(1)}s</h1>
-            </div>
+            }
+        </div>
     )
         ;
 };
 
-export default Game;
+export default memo(Game);
