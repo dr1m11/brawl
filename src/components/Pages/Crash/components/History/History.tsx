@@ -3,17 +3,11 @@ import styles from './History.module.css'
 import localFont from "next/font/local";
 import clsx from "clsx";
 import {memo} from "react";
+import {useAppSelector} from "@/lib/hooks";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-export interface IHistoryProps {
-    history: {
-        id: number
-        win_multiplier: number | string
-    }[]
-}
-
-const History = ({history}: IHistoryProps) => {
+const History = () => {
     function getColorByMultiplier(mult) {
         if (mult >= 10) {
             return '#e0b700'
@@ -27,6 +21,8 @@ const History = ({history}: IHistoryProps) => {
             return '#2200425E'
         }
     }
+
+    const history = useAppSelector(state => state.crash.history)
 
     return (
         <div className={styles.history}>
