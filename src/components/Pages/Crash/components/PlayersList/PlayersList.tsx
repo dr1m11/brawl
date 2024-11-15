@@ -1,21 +1,15 @@
 'use client'
 import styles from './PlayersList.module.css'
 import Player from "@/components/CrashPlayer/Player";
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {PlayerInterface, setUsersBets} from "@/lib/crashSlice/crashSlice";
-import {memo, useEffect} from "react";
-import axios from "axios";
-import {API_URL} from "@/constants";
+import {useAppSelector} from "@/lib/hooks";
+import {PlayerInterface} from "@/lib/crashSlice/crashSlice";
+import {memo} from "react";
 
-const PlayersList = () => {
-    const dispatch = useAppDispatch()
+interface IPlayersListProps {
+    bets: PlayerInterface[]
+}
 
-    const bets = useAppSelector(state => state.crash.usersBets)
-
-    useEffect(() => {
-        axios.get(`${API_URL}/crash/init-bets-for-new-client`)
-            .then(data => dispatch(setUsersBets(data.data.bets)))
-    }, []);
+const PlayersList = ({bets}: IPlayersListProps) => {
     return (
         <div className={styles.players__list}>
             {
