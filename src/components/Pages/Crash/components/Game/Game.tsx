@@ -24,7 +24,7 @@ const Game = () => {
 
     const size = useResize()
 
-    const status = useAppSelector(state => state.crash.socketEvent.status)
+    const {status, multiplier, time_before_start} = useAppSelector(state => state.crash.socketEvent)
 
     // const sendBet = () => {
     //     if (lastMessage && readyState === ReadyState.OPEN) {
@@ -68,39 +68,59 @@ const Game = () => {
         return 0
     }, [size])
 
-    const pathRef = useRef(null);
+    const linePathRef = useRef(null);
+    const shadowPathRef = useRef(null);
 
     useEffect(() => {
-        const pathData = {
+        const linePathData = {
             Pending: "M 0 266.39 Q 0 266.39 0 280",
             Running: "M 0 266.39 Q 372 266.39 620 40",
             Crashed: "M 0 266.39 Q 800 266.39 1200 -300"
         };
+
+        const shadowPathData = {
+            Pending: "M 0 266.39 Q 0 266.39 0 280 L 0 266.39 Z",
+            Running: "M 0 266.39 Q 372 266.39 620 40 L 620 266.39 Z",
+            Crashed: "M 0 266.39 Q 800 266.39 1200 -300 L 1200 266.39 Z"
+        };
     
         // Добавляем префиксы для Safari
         anime({
-            targets: pathRef.current,
-            d: pathData[status] || pathData.Crashed,
+            targets: linePathRef.current,
+            d: linePathData[status] || linePathData.Crashed,
             easing: 'linear',
             duration: 500,
             begin: () => {
-                pathRef.current.setAttribute('d', pathData[status]);
+                linePathRef.current.setAttribute('d', linePathData[status]);
             },
             update: function(anim) {
                 // Принудительное обновление для Safari
-                pathRef.current.style.webkitTransform = 'translateZ(0)';
+                linePathRef.current.style.webkitTransform = 'translateZ(0)'
+            }
+        });
+
+        anime({
+            targets: shadowPathRef.current,
+            d: shadowPathData[status] || shadowPathData.Crashed,
+            easing: 'linear',
+            duration: 500,
+            begin: () => {
+                shadowPathRef.current.setAttribute('d', shadowPathData[status]);
+            },
+            update: function(anim) {
+                // Принудительное обновление для Safari
+                shadowPathRef.current.style.webkitTransform = 'translateZ(0)'
             }
         });
     }, [status]);
 
     return (
-        // status === "Running" || status === "Crashed" ?
         <div className={'relative w-full h-full'}>
             <div className={styles.graph__game}>
-                {/*<GameBg/>*/}
+                <GameBg/>
                 <div className={styles.count}>
-                    {/*<h1 className={clsx(styles.multiplier, daysOne.className)}*/}
-                    {/*    style={{color: status === "Crashed" && '#ff0000'}}>{multiplier.toFixed(2)}x</h1>*/}
+                    <h1 className={clsx(styles.multiplier, daysOne.className)}
+                        style={{color: status === "Crashed" && '#ff0000'}}>{multiplier.toFixed(2)}x</h1>
                     <h2 className={styles.multiplier__label}>в раунде</h2>
                 </div>
                 <Rows/>
@@ -122,7 +142,7 @@ const Game = () => {
                         </defs>
                         <g>
                             <path
-                                ref={pathRef}
+                                ref={linePathRef}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
                                 className={clsx(
@@ -132,43 +152,44 @@ const Game = () => {
                                             styles.line__crashed
                                 )}
                             />
-                            {/*<path*/}
-                            {/*    fill="url(#grad)"*/}
-                            {/*    className={clsx(*/}
-                            {/*        styles.graph,*/}
-                            {/*        status === 'Pending' ?*/}
-                            {/*            styles.shadow__pending :*/}
-                            {/*            status === 'Running' ?*/}
-                            {/*                styles.shadow__running :*/}
-                            {/*                styles.shadow__crashed*/}
-                            {/*    )}*/}
-                            {/*/>*/}
+                            <path
+                                fill="url(#grad)"
+                                ref={shadowPathRef}
+                                className={clsx(
+                                    styles.graph,
+                                    status === 'Pending' ?
+                                        styles.shadow__pending :
+                                        status === 'Running' ?
+                                            styles.shadow__running :
+                                            styles.shadow__crashed
+                                )}
+                            />
                         </g>
                     </svg>
                 </div>
-                {/*<div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>*/}
-                {/*    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"*/}
-                {/*         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">*/}
-                {/*        <defs>*/}
-                {/*            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"*/}
-                {/*                     height="1.000000">*/}
-                {/*                <use xlinkHref="#image183_199_0"*/}
-                {/*                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>*/}
-                {/*            </pattern>*/}
-                {/*            <image id="image183_199_0" width="512.000000" height="293.000000"*/}
-                {/*                   xlinkHref={link}/>*/}
-                {/*        </defs>*/}
-                {/*        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"*/}
-                {/*              fill="url(#pattern_183_1990)"*/}
-                {/*              fillOpacity="1.000000"*/}
-                {/*              transform={`translate(${(length * 6.2) - 70 - screenWidth}, ${((280 - (length * 2.4)) - 20)}) rotate(-25.9718 0.000000 15.631226)`}/>*/}
-                {/*    </svg>*/}
-                {/*</div>*/}
+                <div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>
+                    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"
+                         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"
+                                     height="1.000000">
+                                <use xlinkHref="#image183_199_0"
+                                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>
+                            </pattern>
+                            <image id="image183_199_0" width="512.000000" height="293.000000"
+                                   xlinkHref={link}/>
+                        </defs>
+                        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
+                              fill="url(#pattern_183_1990)"
+                              fillOpacity="1.000000"
+                              />
+                    </svg>
+                </div>
             </div>
             {
                 status === 'Pending' &&
                 <div className={styles.timer}>
-                    {/*<h1 className={clsx(daysOne.className, styles.timer__label)}>{(socketEvent.time_before_start).toFixed(1)}s</h1>*/}
+                    <h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start).toFixed(1)}s</h1>
                 </div>
             }
         </div>
