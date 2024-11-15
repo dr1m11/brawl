@@ -76,14 +76,19 @@ const Game = () => {
             Running: "M 0 266.39 Q 372 266.39 620 40",
             Crashed: "M 0 266.39 Q 800 266.39 1200 -300"
         };
-
+    
+        // Добавляем префиксы для Safari
         anime({
             targets: pathRef.current,
-            d: pathData[status] || pathData.Crashed, // Установите путь в зависимости от статуса
+            d: pathData[status] || pathData.Crashed,
             easing: 'linear',
             duration: 500,
             begin: () => {
                 pathRef.current.setAttribute('d', pathData[status]);
+            },
+            update: function(anim) {
+                // Принудительное обновление для Safari
+                pathRef.current.style.webkitTransform = 'translateZ(0)';
             }
         });
     }, [status]);
