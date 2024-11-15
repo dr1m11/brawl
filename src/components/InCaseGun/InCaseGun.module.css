@@ -7,10 +7,6 @@
     mx-auto
 }
 
-.root:hover > .price {
-    opacity: 1
-}
-
 .wrapper {
     @apply
     relative
