@@ -73,12 +73,14 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
                                 d={`M 0 266.39 Q ${((length * 6.2) * 0.6) - screenWidth} 266.39 ${(length * 6.2) - screenWidth} ${(280 - (length * 2.4))}`}
                                 fill="transparent"
                                 stroke="url(#grad_stroke)"
+                                className={styles.graph}
                             />
                             <path
                                 d={`M 0 266.39 Q ${((length * 6.2) * 0.6) - screenWidth} 266.39 ${(length * 6.2) - screenWidth} ${(
                                     280 - (length * 2.4)
                                 )} L ${(length * 6.2) - screenWidth} 266.39 Z`}
                                 fill="url(#grad)"
+                                className={styles.graph}
                             />
                         </g>
                     </svg>
