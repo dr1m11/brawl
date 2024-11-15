@@ -74,6 +74,30 @@
     transition: d 2s linear;
 }
 
+.line__pending {
+    d: path("M 0 266.39 Q 0 266.39 0 280")
+}
+
+.line__running {
+    d: path("M 0 266.39 Q 372 266.39 620 40")
+}
+
+.line__crashed {
+    d: path("M 0 266.39 Q 800 266.39 1200 -300")
+}
+
+.shadow__pending {
+    d: path("M 0 266.39 Q 0 266.39 0 280 L 0 266.39 Z")
+}
+
+.shadow__running {
+    d: path("M 0 266.39 Q 372 266.39 620 40 L 620 266.39 Z")
+}
+
+.shadow__crashed {
+    d: path("M 0 266.39 Q 800 266.39 1200 -300 L 1200 266.39 Z")
+}
+
 .path__two {
     animation: secondaryCrash 3s linear forwards;
 }
