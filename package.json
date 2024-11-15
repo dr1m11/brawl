@@ -16,6 +16,7 @@
     "@tanstack/react-query-next-experimental": "^5.59.15",
     "@types/next-auth": "^3.15.0",
     "@types/react-slick": "^0.23.13",
+    "animejs": "^3.2.2",
     "axios": "^1.7.2",
     "bezier-easing": "^2.1.0",
     "chart.js": "^4.4.3",
