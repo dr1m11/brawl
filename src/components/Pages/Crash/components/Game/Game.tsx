@@ -106,7 +106,7 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
             </div>
             :
             <div className={styles.timer}>
-                <h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start).toFixed(1)}s</h1>
+                <h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start ?? 0).toFixed(1)}s</h1>
             </div>
     )
         ;
