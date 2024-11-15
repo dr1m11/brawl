@@ -155,10 +155,10 @@ const Kostil = () => {
             <div className={styles.game}>
             <div className={styles.graph}>
                     <Game
-                        length={socketEvent.length}
+                        // length={socketEvent.length}
                         status={socketEvent.status}
-                        time_before_start={socketEvent.time_before_start}
-                        multiplier={socketEvent.multiplier}
+                        // time_before_start={socketEvent.time_before_start}
+                        // multiplier={socketEvent.multiplier}
                     />
                     <History
                         history={history}

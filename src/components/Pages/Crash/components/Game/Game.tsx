@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import localFont from "next/font/local";
 import useResize from "@/hooks/useResize";
-import {useEffect, useMemo, useRef, useState} from "react";
+import {memo, useEffect, useMemo, useRef, useState} from "react";
 import GameBg from "@/components/Pages/Crash/components/GameBg/GameBg";
 import anime from 'animejs/lib/anime.es.js';
 
@@ -23,12 +23,9 @@ const link = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAElCAYAAACS8Vri
 
 interface IGameProps {
     status: 'Pending' | 'Crashed' | 'Running'
-    multiplier: number
-    time_before_start: number
-    length: number
 }
 
-const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
+const Game = ({status}: IGameProps) => {
     const size = useResize()
 
     const screenWidth = useMemo(() => {
@@ -73,8 +70,8 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
         <div className={styles.graph__game}>
             {status !== 'Pending' && <GameBg/>}
             <div className={styles.count}>
-                <h1 className={clsx(styles.multiplier, daysOne.className)}
-                    style={{color: status === "Crashed" && '#ff0000'}}>{(multiplier ?? 0).toFixed(2)}x</h1>
+                {/*<h1 className={clsx(styles.multiplier, daysOne.className)}*/}
+                {/*    style={{color: status === "Crashed" && '#ff0000'}}>{(multiplier ?? 0).toFixed(2)}x</h1>*/}
                 <h2 className={styles.multiplier__label}>в раунде</h2>
             </div>
             <Rows/>
@@ -132,7 +129,7 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
             {
                 status === 'Pending' &&
                 <div className={styles.timer}>
-                    <h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start ?? 0).toFixed(1)}s</h1>
+                    {/*<h1 className={clsx(daysOne.className, styles.timer__label)}>{(time_before_start ?? 0).toFixed(1)}s</h1>*/}
                 </div>
             }
         </div>
@@ -140,4 +137,4 @@ const Game = ({status, length, multiplier, time_before_start}: IGameProps) => {
         ;
 };
 
-export default Game;
+export default memo(Game);
