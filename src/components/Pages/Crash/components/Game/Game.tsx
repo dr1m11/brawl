@@ -120,10 +120,10 @@ const Game = ({status}: IGameProps) => {
                         <image id="image183_199_0" width="512.000000" height="293.000000"
                                xlinkHref={link}/>
                     </defs>
-                    <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
-                          fill="url(#pattern_183_1990)"
-                          fillOpacity="1.000000"
-                          transform={`translate(${(length * 6.2) - 70 - screenWidth}, ${((280 - (length * 2.4)) - 20)}) rotate(-25.9718 0.000000 15.631226)`}/>
+                    {/*<rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"*/}
+                    {/*      fill="url(#pattern_183_1990)"*/}
+                    {/*      fillOpacity="1.000000"*/}
+                    {/*      transform={`translate(${(length * 6.2) - 70 - screenWidth}, ${((280 - (length * 2.4)) - 20)}) rotate(-25.9718 0.000000 15.631226)`}/>*/}
                 </svg>
             </div>
             {
