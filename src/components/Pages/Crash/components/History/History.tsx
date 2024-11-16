@@ -38,29 +38,25 @@ const History = () => {
 
     const history = useAppSelector(state => state.crash.history)
 
-    const {lastMessage, sendMessage, readyState} = useWebsocket(`${SOCKET_API_URL}/crash`)
+    const {lastMessage, sendMessage, readyState} = useWebsocket(`${SOCKET_API_URL}/crash`, {
+        share: true
+    })
 
     const queryClient = useQueryClient()
 
     const dispatch = useAppDispatch()
 
-    const user = useAppSelector(state => state.user.id)
-
     const {
         socketEvent,
         isAutoBet,
-        isAutoWithdraw,
-        isBetSet,
-        usersBets,
-        bet
     } = useAppSelector(state => state.crash)
 
     useEffect(() => {
         if (!lastMessage) return
         const data = JSON.parse(lastMessage.data)
-        if (data.bets === null || data.bets) {
+        if (data?.bets === null || data?.bets) {
             dispatch(setUsersBets(data.bets))
-        } else {
+        } else if ((data?.new_game_start_time) || (data?.status && !data?.new_game_start_time)) {
             const mainData: CrashInterface = data
             dispatch(setSocketEvent(mainData))
         }

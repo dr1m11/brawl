@@ -20,35 +20,6 @@ const Game = () => {
 
     const status = useAppSelector(state => state.crash.socketEvent.status)
 
-    // const sendBet = () => {
-    //     if (lastMessage && readyState === ReadyState.OPEN) {
-    //         sendMessage(JSON.stringify({
-    //             "game_id": socketEvent.game_id,
-    //             "player_id": user,
-    //             "amount": bet
-    //         }))
-    //         dispatch(setIsBetSet(true))
-    //         queryClient.invalidateQueries({
-    //             queryKey: ['user']
-    //         })
-    //     } else {
-    //         console.error('WebSocket соединение не открыто');
-    //     }
-    // };
-    //
-    // const withdrawBet = () => {
-    //     if (lastMessage && readyState === ReadyState.OPEN) {
-    //         sendMessage(JSON.stringify({
-    //             "game_id": socketEvent.game_id,
-    //             "player_id": user,
-    //             "multiplier": socketEvent.multiplier
-    //         }))
-    //         dispatch(setIsBetSet(false))
-    //     } else {
-    //         console.error('WebSocket соединение не открыто');
-    //     }
-    // };
-
     const screenWidth = useMemo(() => {
         if (size < 1060 && size > 990) {
             return 1060 - size

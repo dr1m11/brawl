@@ -5,6 +5,10 @@ import PlayersList from "../PlayersList/PlayersList";
 import History from "../History/History";
 import {useAppDispatch} from "@/lib/hooks";
 import {setIsModalOpen} from "@/lib/crashSlice/crashSlice";
+import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
+import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
+import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
+import {Players} from "@/components/Pages/Crash/components/Players/Players";
 
 const Kostil = () => {
     const dispatch = useAppDispatch()
@@ -23,22 +27,20 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <PlayersList />
-                    {/*<h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>*/}
+                    <Players />
                 </div>
             </div>
             <div className={styles.bottom_menu}>
                 <div className={styles.bet}>
-                    {/*<BetCounter bet={bet} setBet={setBet}/>*/}
-                    {/*<BetTips/>*/}
-                    {/*<BetButton onClick={!isBetSet ? sendBet : withdrawBet}/>*/}
+                    <BetCounter />
+                    <BetTips/>
+                    <BetButton />
                 </div>
                 <div className={styles.playersVisible}>
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {/*<PlayersList bets={userBets}/>*/}
-                    {/*<h5 className={styles.bets__count}>Всего {usersBets ? usersBets.length : 0} ставок</h5>*/}
+                    <Players />
                 </div>
             </div>
         </>
