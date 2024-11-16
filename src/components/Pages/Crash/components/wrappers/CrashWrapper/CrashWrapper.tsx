@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import styles from './CrashWrapper.module.css'
 import Image from "next/image";
-import BG from "../../../../../../../public/Crash/BG.png";
+import BG from "@/../public/Crash/BG.png";
 import {ReactNode} from "react";
 import {Manrope} from "next/font/google";
-import InfoModal from "@/components/Pages/Crash/modals/info/infoModal";
+import InfoModal from "../../../modals/info/infoModal";
 
 
 const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['300', '400', '500']})
