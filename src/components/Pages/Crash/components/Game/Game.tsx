@@ -55,7 +55,7 @@ const Game = ({status}: IGameProps) => {
             targets: pathRef.current,
             d: pathData[status] || pathData.Crashed,
             easing: 'linear',
-            duration: 500,
+            duration: 2000,
             begin: () => {
                 pathRef.current.setAttribute('d', pathData[status]);
             },
