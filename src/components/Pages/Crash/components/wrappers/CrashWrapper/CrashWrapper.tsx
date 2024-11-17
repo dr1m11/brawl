@@ -50,7 +50,8 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
             dispatch(setSocketEvent({
                 ...socketEvent,
                 new_game_start_time: mainData.new_game_start_time,
-                status: 'Pending'
+                status: 'Pending',
+                game_id: mainData.game_id
             }))
         } else if (data?.bets === null) {
             dispatch(setUsersBets([]))
