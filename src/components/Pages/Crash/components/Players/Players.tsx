@@ -2,8 +2,9 @@
 import PlayersList from "@/components/Pages/Crash/components/PlayersList/PlayersList";
 import styles from '../Kostil/Kostil.module.css'
 import {useAppSelector} from "@/lib/hooks";
+import {memo} from "react";
 
-export const Players = () => {
+const Players = () => {
 
     const usersBets = useAppSelector(state => state.crash.usersBets)
 
@@ -14,3 +15,5 @@ export const Players = () => {
         </>
     )
 }
+
+export default memo(Players);

@@ -7,6 +7,10 @@ import {useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import useResize from "@/hooks/useResize";
 
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const Spinner = () => {
 
     const [start, setStart] = useState(false)
@@ -16,10 +20,6 @@ const Spinner = () => {
     const dispatch = useAppDispatch()
 
     const size = useResize()
-
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
 
     const getRotationBySize = () => {
         if (size >= 1060) {

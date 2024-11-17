@@ -1,22 +1,21 @@
-'use client'
 import styles from './Kostil.module.css'
 import Game from "../Game/Game";
-import PlayersList from "../PlayersList/PlayersList";
+// import PlayersList from "../PlayersList/PlayersList";
 import History from "../History/History";
-import {useAppDispatch} from "@/lib/hooks";
-import {setIsModalOpen} from "@/lib/crashSlice/crashSlice";
+// import {useAppDispatch} from "@/lib/hooks";
+// import {setIsModalOpen} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
-import {Players} from "@/components/Pages/Crash/components/Players/Players";
+import Players from "@/components/Pages/Crash/components/Players/Players";
 
 const Kostil = () => {
-    const dispatch = useAppDispatch()
+    // const dispatch = useAppDispatch()
 
     return (
         <>
             <div className={styles.info}>
-                <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>
+                {/*<button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>*/}
             </div>
             <div className={styles.game}>
             <div className={styles.graph}>

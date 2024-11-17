@@ -30,8 +30,8 @@ interface CrashGameInterface {
     multiplier: number
     time_before_start: number
     length: number
-    rotate: number
     game_id: number
+    new_game_start_time?: Date
 }
 
 const initialState: CrashInterface ={
@@ -42,7 +42,6 @@ const initialState: CrashInterface ={
         multiplier: 2,
         status: "Pending",
         length: 0,
-        rotate: 0,
         game_id: 0
     },
     isBetSet: false,
