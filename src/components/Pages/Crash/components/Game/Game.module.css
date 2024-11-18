@@ -70,9 +70,9 @@
     height: 100%;
 }
 
-.graph {
-    transition: d 2s linear;
-}
+/*.graph {*/
+/*    transition: d 2s linear;*/
+/*}*/
 
 .graph__game svg {
     -webkit-transform: translateZ(0);
@@ -86,5 +86,6 @@
 .graph {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
+    transform-origin: center;
+    transform-box: fill-box;
 }
-

@@ -16,12 +16,13 @@ interface PlayerProps {
     multiplier?: number
     winning?: number
     amount?: number
+    photo?: number
 }
 
-const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname, amount, nickname, multiplier, winning}: PlayerProps) => {
+const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname, amount, nickname, multiplier, winning, photo}: PlayerProps) => {
     return (
         <div className={clsx(styles.root, manrope.className)}>
-            <Image src={Avatar} alt={'Avatar'} width={28} height={29} className={styles.avatar} style={{display: hideAvatar && 'none'}}/>
+            <Image src={`https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`} alt={'Avatar'} width={28} height={29} className={styles.avatar} style={{display: hideAvatar && 'none'}}/>
             <h4 className={styles.nickname} style={{display: hideNickname && 'none'}}>{nickname}</h4>
             <h4 className={styles.bet} style={{display: hideBet && 'none'}}>{amount.toFixed(0)} ₽</h4>
             <h4 className={styles.multiplier} style={{display: hideMultiplier && 'none'}}>{multiplier}x</h4>
