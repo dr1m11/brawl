@@ -32,25 +32,31 @@ const Game = () => {
     const shadowPathRef = useRef(null);
     const charecterPathRef = useRef(null);
 
+    const pathData = {
+        Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280`,
+        Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40`,
+        Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300`
+    };
+
+    const shadowPathData = {
+        Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280 L ${0 - screenWidth} 266.39 Z`,
+        Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40 L ${620 - screenWidth} 266.39 Z`,
+        Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300 L ${1200 - screenWidth} 266.39 Z`
+    };
+
+    const charecterPathData = {
+        Pending: `translate(${-70 - screenWidth}, 260) rotate(-25.9718 0.000000 15.631226)`,
+        Running: `translate(${550 - screenWidth}, 20) rotate(-25.9718 0.000000 15.631226)`,
+        Crashed: `translate(${1113 - screenWidth}, -256) rotate(-25.9718 0.000000 15.631226)`
+    };
+
     useEffect(() => {
-        const pathData = {
-            Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280`,
-            Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40`,
-            Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300`
-        };
+        pathRef.current.setAttribute('d', pathData[status]);
+        shadowPathRef.current.setAttribute('d', shadowPathData[status]);
+        charecterPathRef.current.setAttribute('transform', charecterPathData[status])
+    }, [screenWidth]);
 
-        const shadowPathData = {
-            Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280 L ${0 - screenWidth} 266.39 Z`,
-            Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40 L ${620 - screenWidth} 266.39 Z`,
-            Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300 L ${1200 - screenWidth} 266.39 Z`
-        };
-
-        const charecterPathData = {
-            Pending: `translate(${-70 - screenWidth}, 260) rotate(-25.9718 0.000000 15.631226)`,
-            Running: `translate(${550 - screenWidth}, 20) rotate(-25.9718 0.000000 15.631226)`,
-            Crashed: `translate(${1113 - screenWidth}, -256) rotate(-25.9718 0.000000 15.631226)`
-        };
-
+    useEffect(() => {
         // Добавляем префиксы для Safari
         anime({
             targets: pathRef.current,
@@ -68,7 +74,7 @@ const Game = () => {
 
         anime({
             targets: shadowPathRef.current,
-            d: shadowPathData[status] || shadowPathData.Crashed,
+            d: shadowPathData[status] || shadowPathData.Pending,
             easing: 'linear',
             duration: 2000,
             begin: () => {
@@ -86,12 +92,8 @@ const Game = () => {
             easing: 'linear',
             duration: 2000,
             begin: () => {
-                shadowPathRef.current.setAttribute('transform', charecterPathData[status]);
+                charecterPathRef.current.setAttribute('transform', charecterPathData[status]);
             },
-            // update: function(anim) {
-            //     // Принудительное обновление для Safari
-            //     shadowPathRef.current.style.webkitTransform = 'translateZ(0)'
-            // }
         });
     }, [status]);
 
@@ -147,7 +149,8 @@ const Game = () => {
                         <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
                               fill="url(#pattern_183_1990)"
                               fillOpacity="1.000000"
-                              ref={charecterPathRef}/>
+                              ref={charecterPathRef}
+                        />
                     </svg>
                 </div>
             </div>
