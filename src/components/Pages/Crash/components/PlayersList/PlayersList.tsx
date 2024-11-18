@@ -13,17 +13,29 @@ const PlayersList = () => {
     const bets = useAppSelector(state => state.crash.usersBets)
 
     useEffect(() => {
-        axios.get(`${API_URL}/crash/init-bets-for-new-client`)
-            .then(data => dispatch(setUsersBets(data.data.bets)))
-    }, []);
+        const fetchInitialBets = async () => {
+            try {
+                const { data } = await axios.get(`${API_URL}/crash/init-bets-for-new-client`)
+                dispatch(setUsersBets(data.bets))
+            } catch (error) {
+                console.error('Failed to fetch initial bets:', error)
+            }
+        }
+        fetchInitialBets()
+    }, [dispatch]);
+
     return (
         <div className={styles.players__list}>
-            {
-                !!bets &&
-                bets.map(({winning, player_nickname, amount, user_multiplier, player_photo}, index) => (
-                    <Player key={index} nickname={player_nickname} amount={amount} winning={winning} multiplier={user_multiplier} photo={player_photo}/>
-                ))
-            }
+            {bets?.map(({winning, player_nickname, amount, user_multiplier, player_photo}, index) => (
+                <Player 
+                    key={`${player_nickname}-${index}`}
+                    nickname={player_nickname} 
+                    amount={amount} 
+                    winning={winning} 
+                    multiplier={user_multiplier} 
+                    photo={player_photo}
+                />
+            ))}
         </div>
     );
 };
