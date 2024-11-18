@@ -43,9 +43,9 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
 
     useEffect(() => {
         if (!lastMessage) return
-        
+
         const data = JSON.parse(lastMessage.data)
-        
+
         switch (true) {
             case !!data?.player_id:
                 dispatch(setUsersBets([...usersBets, data]))
@@ -71,15 +71,17 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
             dispatch(setIsBetSet(false))
             dispatch(setUsersBets([]))
         }
-        
+
         const updateGameData = async () => {
             await Promise.all([
-                queryClient.invalidateQueries(['user']),
+                queryClient.invalidateQueries({
+                    queryKey: ['user']
+                }),
                 axiosClassic.get('/all-crash-records')
                     .then(data => dispatch(setHistory(data.data)))
             ])
         }
-        
+
         updateGameData()
     }, [socketEvent.status]);
 
