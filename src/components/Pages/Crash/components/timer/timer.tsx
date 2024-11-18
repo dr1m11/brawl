@@ -2,50 +2,60 @@
 import styles from "@/components/Pages/Crash/components/Game/Game.module.css";
 import clsx from "clsx";
 import localFont from "next/font/local";
-import {memo, useEffect, useRef, useState} from "react";
+import {memo, useEffect, useRef} from "react";
 import {useAppSelector} from "@/lib/hooks";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 const CrashTimer = () => {
-    const [timer, setTimer] = useState<number>(0);
-    const timerRef = useRef<NodeJS.Timeout>();
+    const timerRef = useRef<HTMLHeadingElement>(null);
+    const animationFrameRef = useRef<number>();
+    const endTimeRef = useRef<number | null>(null);
     
-    const endTime = useAppSelector(state => state.crash.socketEvent.new_game_start_time,
+    const endTime = useAppSelector(
+        state => state.crash.socketEvent.new_game_start_time,
         (prev, next) => prev === next
     );
 
     useEffect(() => {
-        if (!endTime) return;
+        if (!endTime || !timerRef.current) return;
 
-        const endTimeMs = new Date(endTime).getTime();
-        
+        endTimeRef.current = new Date(endTime).getTime();
+
         const updateTimer = () => {
+            if (!endTimeRef.current || !timerRef.current) return;
+
             const now = Date.now();
-            const timeLeft = (endTimeMs - now) / 1000;
-            
+            const timeLeft = (endTimeRef.current - now) / 1000;
+
             if (timeLeft <= 0) {
-                clearInterval(timerRef.current);
+                if (timerRef.current) {
+                    timerRef.current.textContent = '0.0s';
+                }
                 return;
             }
-            
-            setTimer(Number(timeLeft.toFixed(1)));
+
+            timerRef.current.textContent = `${timeLeft.toFixed(1)}s`;
+            animationFrameRef.current = requestAnimationFrame(updateTimer);
         };
 
-        // Обновляем каждые 100мс вместо использования while
-        timerRef.current = setInterval(updateTimer, 100);
-        updateTimer(); // Первоначальное обновление
+        updateTimer();
 
         return () => {
-            if (timerRef.current) {
-                clearInterval(timerRef.current);
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
             }
         };
     }, [endTime]);
 
     return (
         <div className={styles.timer}>
-            <h1 className={clsx(daysOne.className, styles.timer__label)}>{timer}s</h1>
+            <h1 
+                ref={timerRef}
+                className={clsx(daysOne.className, styles.timer__label)}
+            >
+                0.0s
+            </h1>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import clsx from "clsx";
 import styles from './CrashWrapper.module.css'
 import Image from "next/image";
 import BG from "@/../public/Crash/BG.png";
-import {ReactNode, useEffect} from "react";
+import {ReactNode, useEffect, memo} from "react";
 import {Manrope} from "next/font/google";
 import InfoModal from "../../../modals/info/infoModal";
 import useWebsocket from "react-use-websocket";
@@ -24,11 +24,13 @@ interface CrashInterface {
     new_game_start_time?: Date
 }
 
-const CrashWrapper = ({children}: { children: ReactNode }) => {
+const CrashWrapper = memo(({children}: { children: ReactNode }) => {
 
     const {lastMessage} = useWebsocket(`${SOCKET_API_URL}/crash`, {
         share: true,
         shouldReconnect: () => true,
+        reconnectInterval: 3000,
+        reconnectAttempts: 10,
     })
 
     const queryClient = useQueryClient()
@@ -39,56 +41,79 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
         socketEvent,
         isAutoBet,
         usersBets
-    } = useAppSelector(state => state.crash)
+    } = useAppSelector(
+        state => ({
+            socketEvent: state.crash.socketEvent,
+            isAutoBet: state.crash.isAutoBet,
+            usersBets: state.crash.usersBets
+        }),
+        (prev, next) => {
+            return prev.socketEvent === next.socketEvent &&
+                   prev.isAutoBet === next.isAutoBet &&
+                   prev.usersBets === next.usersBets;
+        }
+    )
 
     useEffect(() => {
-        if (!lastMessage) return
+        if (!lastMessage?.data) return;
 
-        const data = JSON.parse(lastMessage.data)
-
-        switch (true) {
-            case !!data?.player_id:
-                dispatch(setUsersBets([...usersBets, data]))
-                break;
-            case !!data?.new_game_start_time:
+        try {
+            const data = JSON.parse(lastMessage.data);
+            
+            if (data?.player_id) {
+                dispatch(setUsersBets([...usersBets, data]));
+            } else if (data?.new_game_start_time) {
                 dispatch(setSocketEvent({
                     ...socketEvent,
                     new_game_start_time: data.new_game_start_time,
                     status: 'Pending',
                     game_id: data.game_id
-                }))
-                break;
-            case data?.bets === null:
-                dispatch(setUsersBets([]))
-                break;
-            default:
-                dispatch(setSocketEvent(data))
+                }));
+            } else if (data?.bets === null) {
+                dispatch(setUsersBets([]));
+            } else {
+                dispatch(setSocketEvent(data));
+            }
+        } catch (error) {
+            console.error('Error parsing socket message:', error);
         }
-    }, [lastMessage, dispatch]);
+    }, [lastMessage]);
 
     useEffect(() => {
-        if (socketEvent.status === "Pending" && !isAutoBet) {
-            dispatch(setIsBetSet(false))
-            dispatch(setUsersBets([]))
-        }
+        if (socketEvent.status !== "Pending" || isAutoBet) return;
+
+        dispatch(setIsBetSet(false));
+        dispatch(setUsersBets([]));
 
         const updateGameData = async () => {
-            await Promise.all([
-                queryClient.invalidateQueries({
-                    queryKey: ['user']
-                }),
-                axiosClassic.get('/all-crash-records')
-                    .then(data => dispatch(setHistory(data.data)))
-            ])
-        }
+            try {
+                const [, crashRecords] = await Promise.all([
+                    queryClient.invalidateQueries({
+                        queryKey: ['user']
+                    }),
+                    axiosClassic.get('/all-crash-records')
+                ]);
+                dispatch(setHistory(crashRecords.data));
+            } catch (error) {
+                console.error('Error updating game data:', error);
+            }
+        };
 
-        updateGameData()
+        updateGameData();
     }, [socketEvent.status]);
 
     return (
         <>
             <div className={clsx(styles.root, manrope.className)}>
-                <Image src={BG} alt={'Background'} width={1435} height={876} className={styles.bg} quality={100}/>
+                <Image 
+                    src={BG} 
+                    alt={'Background'} 
+                    width={1435} 
+                    height={876} 
+                    className={styles.bg} 
+                    quality={100}
+                    priority
+                />
                 <div className={styles.shadow__left}/>
                 <div className={styles.shadow__right}/>
                 <div className={styles.wrapper}>
@@ -98,6 +123,8 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
             <InfoModal/>
         </>
     );
-};
+});
+
+CrashWrapper.displayName = 'CrashWrapper';
 
 export default CrashWrapper;
