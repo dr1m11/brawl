@@ -9,8 +9,9 @@ const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 const CrashTimer = () => {
     const timerRef = useRef<HTMLHeadingElement>(null);
-    const animationFrameRef = useRef<number>();
-    const endTimeRef = useRef<number | null>(null);
+    const rafRef = useRef<number>();
+    const startTimeRef = useRef<number>(0);
+    const durationRef = useRef<number>(0);
     
     const endTime = useAppSelector(
         state => state.crash.socketEvent.new_game_start_time,
@@ -20,30 +21,34 @@ const CrashTimer = () => {
     useEffect(() => {
         if (!endTime || !timerRef.current) return;
 
-        endTimeRef.current = new Date(endTime).getTime();
+        startTimeRef.current = performance.now();
+        const endTimeMs = new Date(endTime).getTime();
+        durationRef.current = endTimeMs - Date.now();
 
-        const updateTimer = () => {
-            if (!endTimeRef.current || !timerRef.current) return;
+        const updateTimer = (currentTime: number) => {
+            if (!timerRef.current) return;
 
-            const now = Date.now();
-            const timeLeft = (endTimeRef.current - now) / 1000;
+            const elapsed = currentTime - startTimeRef.current;
+            const timeLeft = Math.max(0, (durationRef.current - elapsed) / 1000);
 
             if (timeLeft <= 0) {
-                if (timerRef.current) {
-                    timerRef.current.textContent = '0.0s';
-                }
+                timerRef.current.textContent = '0.0s';
                 return;
             }
 
-            timerRef.current.textContent = `${timeLeft.toFixed(1)}s`;
-            animationFrameRef.current = requestAnimationFrame(updateTimer);
+            const formattedTime = timeLeft.toFixed(1);
+            if (timerRef.current.textContent !== `${formattedTime}s`) {
+                timerRef.current.textContent = `${formattedTime}s`;
+            }
+
+            rafRef.current = requestAnimationFrame(updateTimer);
         };
 
-        updateTimer();
+        rafRef.current = requestAnimationFrame(updateTimer);
 
         return () => {
-            if (animationFrameRef.current) {
-                cancelAnimationFrame(animationFrameRef.current);
+            if (rafRef.current) {
+                cancelAnimationFrame(rafRef.current);
             }
         };
     }, [endTime]);
@@ -53,6 +58,10 @@ const CrashTimer = () => {
             <h1 
                 ref={timerRef}
                 className={clsx(daysOne.className, styles.timer__label)}
+                style={{
+                    transform: 'translateZ(0)',
+                    willChange: 'content'
+                }}
             >
                 0.0s
             </h1>
