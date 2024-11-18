@@ -27,7 +27,8 @@ interface CrashInterface {
 const CrashWrapper = ({children}: { children: ReactNode }) => {
 
     const {lastMessage} = useWebsocket(`${SOCKET_API_URL}/crash`, {
-        share: true
+        share: true,
+        shouldReconnect: () => true,
     })
 
     const queryClient = useQueryClient()
@@ -42,33 +43,44 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
 
     useEffect(() => {
         if (!lastMessage) return
+        
         const data = JSON.parse(lastMessage.data)
-        if (data?.player_id) {
-            dispatch(setUsersBets([...usersBets, data]))
-        } else if ((data?.new_game_start_time)) {
-            const mainData: CrashInterface = data
-            dispatch(setSocketEvent({
-                ...socketEvent,
-                new_game_start_time: mainData.new_game_start_time,
-                status: 'Pending',
-                game_id: mainData.game_id
-            }))
-        } else if (data?.bets === null) {
-            dispatch(setUsersBets([]))
-        } else {
-            dispatch(setSocketEvent(data))
+        
+        switch (true) {
+            case !!data?.player_id:
+                dispatch(setUsersBets([...usersBets, data]))
+                break;
+            case !!data?.new_game_start_time:
+                dispatch(setSocketEvent({
+                    ...socketEvent,
+                    new_game_start_time: data.new_game_start_time,
+                    status: 'Pending',
+                    game_id: data.game_id
+                }))
+                break;
+            case data?.bets === null:
+                dispatch(setUsersBets([]))
+                break;
+            default:
+                dispatch(setSocketEvent(data))
         }
-    }, [lastMessage]);
+    }, [lastMessage, dispatch]);
 
     useEffect(() => {
-        queryClient.invalidateQueries({
-            queryKey: ['user']
-        })
-        axiosClassic.get('/all-crash-records').then(data => dispatch(setHistory(data.data)))
-        if ((socketEvent.status === "Pending") && (!isAutoBet)) {
+        if (socketEvent.status === "Pending" && !isAutoBet) {
             dispatch(setIsBetSet(false))
             dispatch(setUsersBets([]))
         }
+        
+        const updateGameData = async () => {
+            await Promise.all([
+                queryClient.invalidateQueries(['user']),
+                axiosClassic.get('/all-crash-records')
+                    .then(data => dispatch(setHistory(data.data)))
+            ])
+        }
+        
+        updateGameData()
     }, [socketEvent.status]);
 
     return (

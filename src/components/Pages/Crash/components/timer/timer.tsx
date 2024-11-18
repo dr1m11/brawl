@@ -2,46 +2,52 @@
 import styles from "@/components/Pages/Crash/components/Game/Game.module.css";
 import clsx from "clsx";
 import localFont from "next/font/local";
-import {memo, useEffect, useState} from "react";
-import {sleep} from "@/components/Pages/Case/components/Spinner/Spinner";
+import {memo, useEffect, useRef, useState} from "react";
 import {useAppSelector} from "@/lib/hooks";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 const CrashTimer = () => {
     const [timer, setTimer] = useState<number>(0);
-
-    const endTime = useAppSelector(state => state.crash.socketEvent.new_game_start_time)
+    const timerRef = useRef<NodeJS.Timeout>();
+    
+    const endTime = useAppSelector(state => state.crash.socketEvent.new_game_start_time,
+        (prev, next) => prev === next
+    );
 
     useEffect(() => {
-        let mounted = true;
+        if (!endTime) return;
+
+        const endTimeMs = new Date(endTime).getTime();
         
-        const runTimer = async () => {
-            if (!endTime) return;
+        const updateTimer = () => {
+            const now = Date.now();
+            const timeLeft = (endTimeMs - now) / 1000;
             
-            const endTimeMs = new Date(endTime).getTime();
-            
-            while (mounted) {
-                const now = Date.now();
-                const timeLeft = (endTimeMs - now) / 1000;
-                
-                if (timeLeft <= 0) break;
-                
-                setTimer(Number(timeLeft.toFixed(1)));
-                await sleep(100);
+            if (timeLeft <= 0) {
+                clearInterval(timerRef.current);
+                return;
             }
-        }
-        runTimer();
+            
+            setTimer(Number(timeLeft.toFixed(1)));
+        };
+
+        // Обновляем каждые 100мс вместо использования while
+        timerRef.current = setInterval(updateTimer, 100);
+        updateTimer(); // Первоначальное обновление
+
         return () => {
-            mounted = false;
-        }
+            if (timerRef.current) {
+                clearInterval(timerRef.current);
+            }
+        };
     }, [endTime]);
 
     return (
         <div className={styles.timer}>
             <h1 className={clsx(daysOne.className, styles.timer__label)}>{timer}s</h1>
         </div>
-    )
-}
+    );
+};
 
-export default memo(CrashTimer)
+export default memo(CrashTimer);
