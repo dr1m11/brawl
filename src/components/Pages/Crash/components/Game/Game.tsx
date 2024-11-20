@@ -13,7 +13,7 @@ const Game = () => {
 
     const size = useResize()
 
-    const status = useAppSelector(state => state.crash.socketEvent.status)
+    const {status, new_game_start_time} = useAppSelector(state => state.crash.socketEvent)
 
     const screenWidth = useMemo(() => {
         if (size < 1060 && size > 990) {
@@ -154,7 +154,7 @@ const Game = () => {
                     </svg>
                 </div>
             </div>
-            {status === 'Pending' && <CrashTimer />}
+            {status === 'Pending' && <CrashTimer endTime={new_game_start_time}/>}
         </div>
     );
 };
