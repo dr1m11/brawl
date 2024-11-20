@@ -71,6 +71,10 @@ const CrashWrapper = memo(({children}: { children: ReactNode }) => {
                 }));
             } else if (data?.bets === null) {
                 dispatch(setUsersBets([]));
+            } else if (data?.index) {
+                const bets = [...usersBets]
+                bets[data?.index] = data
+                dispatch(setUsersBets(bets))
             } else {
                 dispatch(setSocketEvent(data));
             }

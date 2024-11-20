@@ -1,14 +1,8 @@
-'use client'
 import PlayersList from "@/components/Pages/Crash/components/PlayersList/PlayersList";
 import styles from '../Kostil/Kostil.module.css'
-import {useAppSelector} from "@/lib/hooks";
 import {memo} from "react";
 
-const Players = () => {
-    const betsCount = useAppSelector(state => state.crash.usersBets?.length ?? 0,
-        (prev, next) => prev === next
-    );
-
+const Players = ({betsCount}: {betsCount: number}) => {
     return (
         <>
             <PlayersList />

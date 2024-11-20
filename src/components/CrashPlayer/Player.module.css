@@ -1,22 +1,27 @@
 .root {
+    grid-template-columns: 28px calc(35% - 20px) 15% 15% 25%;
     @apply
     w-full
     max-w-full
     h-full
     max-h-[51px]
     p-2.5
-    flex
-    justify-between
+    grid
     items-center
     text-[13px]
     bg-473889
     rounded-lg
+    gap-2
 }
 
 .nickname {
     @apply
     text-main
     font-medium
+    max-w-full
+    overflow-hidden
+    text-ellipsis
+    whitespace-nowrap
 }
 
 .bet {
@@ -43,4 +48,7 @@
     @apply
     text-2431440
     font-medium
+    w-full
+    flex
+    justify-center
 }

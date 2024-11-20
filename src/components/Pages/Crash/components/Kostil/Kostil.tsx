@@ -1,21 +1,25 @@
+'use client'
 import styles from './Kostil.module.css'
 import Game from "../Game/Game";
-// import PlayersList from "../PlayersList/PlayersList";
 import History from "../History/History";
-// import {useAppDispatch} from "@/lib/hooks";
-// import {setIsModalOpen} from "@/lib/crashSlice/crashSlice";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {setIsModalOpen} from "@/lib/crashSlice/crashSlice";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
 import Players from "@/components/Pages/Crash/components/Players/Players";
 
 const Kostil = () => {
-    // const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch()
+
+    const betsCount = useAppSelector(state => state.crash.usersBets?.length ?? 0,
+        (prev, next) => prev === next
+    );
 
     return (
         <>
             <div className={styles.info}>
-                {/*<button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>*/}
+                <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>
             </div>
             <div className={styles.game}>
             <div className={styles.graph}>
@@ -26,7 +30,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <Players />
+                    <Players betsCount={betsCount}/>
                 </div>
             </div>
             <div className={styles.bottom_menu}>
@@ -39,7 +43,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <Players />
+                    <Players betsCount={betsCount}/>
                 </div>
             </div>
         </>

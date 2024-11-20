@@ -24,6 +24,7 @@ export interface PlayerInterface {
     winning: number
     user_multiplier: number
     player_photo: number
+    index?: number
 }
 
 interface CrashGameInterface {

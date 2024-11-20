@@ -17,6 +17,6 @@ export const saveTokenStorage = (token: string) => {
 }
 
 export const removeFromStorage = () => {
-	Cookies.remove('token', {domain: '.dododrop.ru'})
-	// Cookies.remove(EnumTokens.TOKEN)
+	// Cookies.remove('token', {domain: '.dododrop.ru'})
+	Cookies.remove(EnumTokens.TOKEN)
 }
