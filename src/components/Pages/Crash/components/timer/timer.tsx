@@ -2,7 +2,7 @@
 import styles from "@/components/Pages/Crash/components/Game/Game.module.css";
 import clsx from "clsx";
 import localFont from "next/font/local";
-import {memo, useEffect, useRef} from "react";
+import {memo, useEffect, useRef, useMemo} from "react";
 import {useAppSelector} from "@/lib/hooks";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
@@ -13,7 +13,9 @@ const CrashTimer = () => {
     const startTimeRef = useRef<number>(0);
     const durationRef = useRef<number>(0);
 
-    const endTime = useAppSelector(state => state.crashTimer.timer)
+    const endTime = useAppSelector(state => state.crashTimer.timer, 
+        (prev, next) => prev === next
+    );
 
     useEffect(() => {
         if (!endTime || !timerRef.current) return;

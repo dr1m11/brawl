@@ -8,12 +8,8 @@ import {memo, useMemo} from 'react';
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 export const CrashMultiplier = memo(function CrashMultiplier(){
-    const {multiplier, status} = useAppSelector(state => {
-        return {
-            multiplier: state.crashMultiplier.multiplier,
-            status: state.crashStatus.status,
-        }
-    })
+    const multiplier = useAppSelector(state => state.crashMultiplier.multiplier)
+    const status = useAppSelector(state => state.crashStatus.status)
 
     const formattedMultiplier = useMemo(() => {
         return multiplier?.toFixed(2);
