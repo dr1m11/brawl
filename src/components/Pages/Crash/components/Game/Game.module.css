@@ -43,10 +43,10 @@
 }
 
 .timer {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    isolation: isolate;
     @apply
     w-full
     h-full
@@ -65,7 +65,7 @@
 
 .timer__label {
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
     @apply
     text-main
     text-[40px]
