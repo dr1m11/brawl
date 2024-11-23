@@ -3,6 +3,7 @@ import Avatar from '@/../public/Crash/Avatar.svg'
 import Image from "next/image";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
+import {memo} from "react";
 
 const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin', 'cyrillic']})
 
@@ -31,4 +32,4 @@ const Player = ({hideAvatar, hideMultiplier, hideWon, hideBet, hideNickname, amo
     );
 };
 
-export default Player;
+export default memo(Player);

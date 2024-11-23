@@ -9,8 +9,8 @@ export const getAccessToken = () => {
 
 export const saveTokenStorage = (token: string) => {
 	Cookies.set(EnumTokens.TOKEN, token, {
-		domain: '.dododrop.ru',
-		// domain: 'localhost',
+		// domain: '.dododrop.ru',
+		domain: 'localhost',
 		sameSite: 'strict',
 		expires: 12 / 24
 	})

@@ -19,33 +19,33 @@ const BetButton = () => {
         return usersBets && usersBets.find(item => item.player_id === id)
     }, [usersBets])
 
-    const {sendMessage} = useWebsocket(`${SOCKET_API_URL}/crash`, {
-        share: true
-    })
-
-    const dispatch = useAppDispatch()
-
-    const queryClient = useQueryClient()
+    // const {sendMessage} = useWebsocket(`${SOCKET_API_URL}/crash`, {
+    //     share: true
+    // })
+    //
+    // const dispatch = useAppDispatch()
+    //
+    // const queryClient = useQueryClient()
 
     const sendBet = () => {
-        sendMessage(JSON.stringify({
-            "game_id": socketEvent.game_id,
-            "player_id": id,
-            "amount": bet
-        }))
-        dispatch(setIsBetSet(true))
-        queryClient.invalidateQueries({
-            queryKey: ['user']
-        })
+        // sendMessage(JSON.stringify({
+        //     "game_id": socketEvent.game_id,
+        //     "player_id": id,
+        //     "amount": bet
+        // }))
+        // dispatch(setIsBetSet(true))
+        // queryClient.invalidateQueries({
+        //     queryKey: ['user']
+        // })
     };
 
     const withdrawBet = () => {
-        sendMessage(JSON.stringify({
-            "game_id": socketEvent.game_id,
-            "player_id": id,
-            "multiplier": socketEvent.multiplier
-        }))
-        dispatch(setIsBetSet(false))
+        // sendMessage(JSON.stringify({
+        //     "game_id": socketEvent.game_id,
+        //     "player_id": id,
+        //     "multiplier": socketEvent.multiplier
+        // }))
+        // dispatch(setIsBetSet(false))
     };
 
     return (

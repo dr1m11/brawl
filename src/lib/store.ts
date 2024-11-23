@@ -6,6 +6,11 @@ import {wheelSlice} from "@/lib/wheelSlice/wheelSlice";
 import {userSlice} from "@/lib/userSlice/userSlice";
 import {paymentSlice} from "@/lib/paymentSlice/payment.slice";
 import {withdrawSlice} from "@/lib/withdrawSlice/withdraw.slice";
+import {crashGameIdSlice} from "@/lib/crashSlice/crashGameIdSlice";
+import {crashMultiplierSlice} from "@/lib/crashSlice/crashMultiplierSlice";
+import {crashStatusSlice} from "@/lib/crashSlice/crashStatusSlice";
+import {crashTimerSlice} from "@/lib/crashSlice/crashTimerSlice";
+import {crashUsersBetsSlice} from "@/lib/crashSlice/crashUserBets";
 
 
 const rootReducer = combineSlices(
@@ -16,6 +21,11 @@ const rootReducer = combineSlices(
     userSlice,
     paymentSlice,
     withdrawSlice,
+    crashGameIdSlice,
+    crashMultiplierSlice,
+    crashStatusSlice,
+    crashTimerSlice,
+    crashUsersBetsSlice,
 )
 
 export const makeStore = () => {
@@ -24,8 +34,6 @@ export const makeStore = () => {
     })
 }
 
-// Infer the type of makeStore
 export type AppStore = ReturnType<typeof makeStore>
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<AppStore['getState']>
 export type AppDispatch = AppStore['dispatch']

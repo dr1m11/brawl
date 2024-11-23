@@ -3,19 +3,20 @@ import styles from "@/components/Pages/Crash/components/Game/Game.module.css";
 import clsx from "clsx";
 import {useAppSelector} from "@/lib/hooks";
 import localFont from "next/font/local";
-import { useMemo } from 'react';
+import {memo, useMemo} from 'react';
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-export const CrashMultiplier = () => {
-    const {status, multiplier} = useAppSelector(state => state.crash.socketEvent, 
-        (prev, next) => {
-            return prev.status === next.status && prev.multiplier === next.multiplier;
+export const CrashMultiplier = memo(function CrashMultiplier(){
+    const {multiplier, status} = useAppSelector(state => {
+        return {
+            multiplier: state.crashMultiplier.multiplier,
+            status: state.crashStatus.status,
         }
-    );
+    })
 
     const formattedMultiplier = useMemo(() => {
-        return multiplier.toFixed(2);
+        return multiplier?.toFixed(2);
     }, [multiplier]);
 
     return (
@@ -27,4 +28,4 @@ export const CrashMultiplier = () => {
             <h2 className={styles.multiplier__label}>в раунде</h2>
         </div>
     )
-}
+}, () => true)
