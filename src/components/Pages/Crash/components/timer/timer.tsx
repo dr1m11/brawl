@@ -24,9 +24,19 @@ const CrashTimer = () => {
         const endTimeMs = new Date(endTime).getTime();
         durationRef.current = endTimeMs - Date.now();
 
+        let lastUpdateTime = 0;
+        const minUpdateInterval = 16; // Минимальный интервал обновления (~60fps)
+
         const updateTimer = (currentTime: number) => {
             if (!timerRef.current) return;
 
+            // Ограничиваем частоту обновлений
+            if (currentTime - lastUpdateTime < minUpdateInterval) {
+                rafRef.current = requestAnimationFrame(updateTimer);
+                return;
+            }
+
+            lastUpdateTime = currentTime;
             const elapsed = currentTime - startTimeRef.current;
             const timeLeft = Math.max(0, (durationRef.current - elapsed) / 1000);
 
@@ -53,13 +63,14 @@ const CrashTimer = () => {
     }, [endTime]);
 
     return (
-        <div className={styles.timer}>
+        <div className={styles.timer} style={{ contain: 'content' }}>
             <h1 
                 ref={timerRef}
                 className={clsx(daysOne.className, styles.timer__label)}
                 style={{
                     transform: 'translateZ(0)',
-                    willChange: 'content'
+                    willChange: 'content',
+                    contain: 'content'
                 }}
             >
                 0.0s

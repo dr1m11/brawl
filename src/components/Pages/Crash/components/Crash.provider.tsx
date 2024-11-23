@@ -62,10 +62,10 @@ export const CrashProvider = ({children}: PropsWithChildren) => {
             }
 
             if (users_bets && (!crashUsersBets || JSON.stringify(users_bets) !== JSON.stringify(crashUsersBets))) {
-                requestAnimationFrame(() => {
-                    setCrashUsersBets(users_bets)
-                    dispatch(setUsersBets(users_bets))
-                })
+                setTimeout(() => {
+                    setCrashUsersBets(users_bets);
+                    dispatch(setUsersBets(users_bets));
+                }, 0);
             }
         }
     })
