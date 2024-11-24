@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "DodoDrop",
     description: "Brawl stars roulette",
     verification: {
-        yandex: '165730094b3146dc'
+        yandex: 'ef6387bcac7282a9'
     }
 };
 
