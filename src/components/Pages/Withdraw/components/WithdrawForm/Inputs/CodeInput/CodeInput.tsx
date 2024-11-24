@@ -1,7 +1,7 @@
 'use client'
 import styles from '../Inputs.module.css'
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {setCode, setEmailValue, setIsValidEmail} from "@/lib/withdrawSlice/withdraw.slice";
+import {setCode} from "@/lib/withdrawSlice/withdraw.slice";
 
 interface CodeInputProps {
     placeholder: string,

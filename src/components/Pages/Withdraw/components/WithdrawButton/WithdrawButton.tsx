@@ -1,11 +1,9 @@
 'use client'
 import OrangeButton from "@/components/ui/OrangeButton/OrangeButton";
-import axios from "axios";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
-import {useRouter} from "next/navigation";
 import {handleSendLoginCode, validateLoginCode, withdrawService} from "@/services/withdraw/withdraw.service";
 import {reset, setError, setField, setIsEmailSend} from "@/lib/withdrawSlice/withdraw.slice";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useQueryClient} from "@tanstack/react-query";
 
 
@@ -21,7 +19,7 @@ const WithdrawButton = () => {
         return () => {
             dispatch(reset())
         }
-    }, []);
+    }, [dispatch]);
 
     console.log(position)
     return (

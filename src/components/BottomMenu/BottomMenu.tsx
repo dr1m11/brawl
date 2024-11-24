@@ -6,7 +6,7 @@ import Image from "next/image";
 import CaseMobile from '@/../public/BottomMenu/CaseMobile.svg'
 import WheelMobile from '@/../public/BottomMenu/WheelMobile.svg'
 import {Manrope} from "next/font/google";
-import {FaChartLine, FaMoneyBill1Wave} from "react-icons/fa6";
+import {FaChartLine} from "react-icons/fa6";
 import {GiTwoCoins} from "react-icons/gi";
 import {useAppSelector} from "@/lib/hooks";
 import {RxAvatar} from "react-icons/rx";

@@ -10,7 +10,7 @@ import WheelItem from "@/components/ui/WheelItem/WheelItem";
 import useResize from "@/hooks/useResize";
 import useSound from "use-sound";
 
-let arr = [
+const arr = [
     {
         color: OrangeItem,
         multiply: 100,
@@ -134,8 +134,12 @@ let arr = [
     },
 ]
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 function getRandomObjectByMultiply(array, multiplyValue) {
     // Фильтруем массив, чтобы найти все объекты с указанным значением multiply
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const filteredArray = array.filter(item => item.multiply === multiplyValue);
 
     // Если таких объектов нет, возвращаем null
@@ -167,7 +171,7 @@ const Game = ({cell, pending}: GameInterface) => {
         } else {
             play()
         }
-    }, [pending, cell]);
+    }, [pending, cell, rotate, play]);
 
     useEffect(() => {
         if (!!cell) {
@@ -186,7 +190,11 @@ const Game = ({cell, pending}: GameInterface) => {
                 ))
             }
             <div className={styles.circle} style={{
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 left: (size <= 757) && (-(757 - size)),
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 right: (size <= 757) && (-(757 - size))
             }}
             />

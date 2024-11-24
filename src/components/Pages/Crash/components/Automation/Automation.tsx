@@ -1,6 +1,5 @@
 'use client'
 import styles from './Automation.module.css'
-import {useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setIsAutoBet, setIsAutoWithdraw} from "@/lib/crashSlice/crashSlice";
 

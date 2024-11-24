@@ -1,6 +1,5 @@
 import styles from './RouletteClosed.module.css'
 import Image from "next/image";
-import Gun from "../../../../../../public/CasePage/Gun.svg";
 import RouletteClosedBottom from "@/components/Pages/Case/components/RouletteClosedBottom/RouletteClosedBottom";
 
 const RouletteClosed = ({photo_link}: {photo_link: string}) => {

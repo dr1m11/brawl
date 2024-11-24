@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import useResize from "@/hooks/useResize";
 
-export function sleep(ms) {
+export function sleep(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -19,7 +19,7 @@ const Spinner = () => {
 
     const dispatch = useAppDispatch()
 
-    const size = useResize()
+    const size = useResize() ?? 0
 
     const getRotationBySize = () => {
         if (size >= 1060) {
@@ -63,14 +63,14 @@ const Spinner = () => {
                 transform: (start && isOpened) ?
                     isFinished ? `translateX(${getRotationBySize()}px)` : `translateX(${getSecondRotationBySize()}px)`
                     : 'translateX(0px)',
-                transitionDuration: fast ? '2.5s' : isFinished && '.6s',
+                transitionDuration: fast ? '2.5s' : isFinished ? '.6s' : undefined,
             }}
             onTransitionEnd={() => dispatch(setIsFinished(true))}
         >
             {
                 !!roulette.length &&
                 roulette.map((item, index) => (
-                    <RouletteItem key={index} photo_link={item.photo_link} color={item.color}/>
+                    <RouletteItem key={index} photo_link={item.photo_link} color={item.color ?? ''}/>
                 ))
             }
         </div>

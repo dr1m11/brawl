@@ -17,7 +17,7 @@ const Online = () => {
         <div className={styles.header__right__content}>
             <div className={'flex'}>
                 <Image src={OnlineImg} alt={"Online"} width={17.5} height={20}/>
-                {!!online.isSuccess && <h6 className={styles.header__right__count}>{online.data.data}</h6>}
+                {online.isSuccess && <h6 className={styles.header__right__count}>{online.data.data}</h6>}
             </div>
             <span className={styles.header__right__heading}>в онлайне</span>
         </div>

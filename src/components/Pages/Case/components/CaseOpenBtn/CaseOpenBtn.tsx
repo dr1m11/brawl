@@ -22,7 +22,8 @@ const CaseOpenBtn = () => {
 
     const dispatch = useAppDispatch()
 
-    const fillArray = (win) => {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    const fillArray = (win: any) => {
         const arr = []
         for (let i = 0; i < 52; i++) {
             if (i !== 48) {
@@ -50,8 +51,8 @@ const CaseOpenBtn = () => {
     return (
         !!id ?
             <button onClick={openCase} className={styles.root}
-                    disabled={(!((balance - caseData.price) >= 0)) || isOpenDisabled}
-                    style={{justifyContent: isLoading && 'center'}}>
+                    disabled={(!(((balance ?? 0) - caseData.price) >= 0)) || isOpenDisabled}
+                    style={{justifyContent: isLoading ? 'center' : undefined}}>
                 {
                     isLoading ?
                         <TailSpin

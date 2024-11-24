@@ -1,13 +1,9 @@
 'use client'
 import styles from "./BetButton.module.css";
 import localFont from "next/font/local";
-import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import { useAppSelector} from "@/lib/hooks";
 import {useMemo} from "react";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
-import useWebsocket from "react-use-websocket";
-import {SOCKET_API_URL} from "@/constants";
-import {useQueryClient} from "@tanstack/react-query";
-import {setIsBetSet} from "@/lib/crashSlice/crashSlice";
 
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
@@ -17,7 +13,7 @@ const BetButton = () => {
     const {id, balance} = useAppSelector(state => state.user)
     const isUserBet = useMemo(() => {
         return usersBets && usersBets.find(item => item.player_id === id)
-    }, [usersBets])
+    }, [id, usersBets])
 
     // const {sendMessage} = useWebsocket(`${SOCKET_API_URL}/crash`, {
     //     share: true
@@ -52,10 +48,10 @@ const BetButton = () => {
         <button
             className={!isBetSet ? styles.bet__btn : styles.withdraw}
             onClick={!isBetSet ? sendBet : withdrawBet}
-            disabled={(!(socketEvent.status === "Pending") && !isBetSet) || !(+balance) || (+balance < +bet)}
+            disabled={(!(socketEvent.status === "Pending") && !isBetSet) || !(+(balance ?? 0)) || (+(balance ?? 0) < +bet)}
             style={{
-                background: (isUserBet && !isBetSet) && "green",
-                borderColor: (isUserBet && !isBetSet) && "green"
+                background: (isUserBet && !isBetSet) ? "green" : undefined,
+                borderColor: (isUserBet && !isBetSet) ? "green" : undefined
             }}
         >
             <h5 className={daysOne.className}>{!isBetSet ? "СТАВКА" : "ВЫВОД"}</h5>

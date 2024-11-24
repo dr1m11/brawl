@@ -2,12 +2,13 @@
 import styles from "./Game.module.css";
 import Rows from "../Rows/Rows";
 import {memo, useEffect, useMemo, useRef} from "react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 import anime from 'animejs/lib/anime.es.js';
 import useResize from "@/hooks/useResize";
 import {useAppSelector} from "@/lib/hooks";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
 import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
-import { link } from './gameLink'
+import {link} from './gameLink'
 
 const Game = () => {
 
@@ -16,14 +17,16 @@ const Game = () => {
     const size = useResize()
 
     const screenWidth = useMemo(() => {
-        if (size < 1060 && size > 990) {
-            return 1060 - size
-        } else if (size < 990 && size > 900) {
-            return 70
-        } else if (size < 900 && size > 785) {
-            return -140 + 900 - size
-        } else if (size < 785) {
-            return -140 + 870 - size
+        if (size) {
+            if (size < 1060 && size > 990) {
+                return 1060 - size
+            } else if (size < 990 && size > 900) {
+                return 70
+            } else if (size < 900 && size > 785) {
+                return -140 + 900 - size
+            } else if (size < 785) {
+                return -140 + 870 - size
+            }
         }
         return 0
     }, [size])
@@ -32,29 +35,41 @@ const Game = () => {
     const shadowPathRef = useRef(null);
     const charecterPathRef = useRef(null);
 
-    const pathData = {
-        Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280`,
-        Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40`,
-        Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300`
-    };
+    const pathData = useMemo(() => {
+        return {
+            Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280`,
+            Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40`,
+            Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300`
+        };
+    }, [screenWidth])
 
-    const shadowPathData = {
-        Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280 L ${0 - screenWidth} 266.39 Z`,
-        Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40 L ${620 - screenWidth} 266.39 Z`,
-        Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300 L ${1200 - screenWidth} 266.39 Z`
-    };
+    const shadowPathData = useMemo(() => {
+        return {
+            Pending: `M 0 266.39 Q ${0 - screenWidth} 266.39 ${0 - screenWidth} 280 L ${0 - screenWidth} 266.39 Z`,
+            Running: `M 0 266.39 Q ${372 - screenWidth} 266.39 ${620 - screenWidth} 40 L ${620 - screenWidth} 266.39 Z`,
+            Crashed: `M 0 266.39 Q ${800 - screenWidth} 266.39 ${1200 - screenWidth} -300 L ${1200 - screenWidth} 266.39 Z`
+        };
+    }, [screenWidth])
 
-    const charecterPathData = {
-        Pending: `translate(${-70 - screenWidth}, 260) rotate(-25.9718 0.000000 15.631226)`,
-        Running: `translate(${550 - screenWidth}, 20) rotate(-25.9718 0.000000 15.631226)`,
-        Crashed: `translate(${1113 - screenWidth}, -256) rotate(-25.9718 0.000000 15.631226)`
-    };
+    const charecterPathData = useMemo(() => {
+        return {
+            Pending: `translate(${-70 - screenWidth}, 260) rotate(-25.9718 0.000000 15.631226)`,
+            Running: `translate(${550 - screenWidth}, 20) rotate(-25.9718 0.000000 15.631226)`,
+            Crashed: `translate(${1113 - screenWidth}, -256) rotate(-25.9718 0.000000 15.631226)`
+        }
+    }, [screenWidth])
 
-    useEffect(() => {
-        pathRef.current.setAttribute('d', pathData[status]);
-        shadowPathRef.current.setAttribute('d', shadowPathData[status]);
-        charecterPathRef.current.setAttribute('transform', charecterPathData[status])
-    }, [screenWidth]);
+        useEffect(() => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            pathRef.current.setAttribute('d', pathData[status]);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            shadowPathRef.current.setAttribute('d', shadowPathData[status]);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            charecterPathRef.current.setAttribute('transform', charecterPathData[status])
+        }, [charecterPathData, pathData, screenWidth, shadowPathData, status]);
 
     useEffect(() => {
         // Добавляем префиксы для Safari
@@ -64,10 +79,14 @@ const Game = () => {
             easing: 'linear',
             duration: 2000,
             begin: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 pathRef.current.setAttribute('d', pathData[status]);
             },
-            update: function(anim) {
+            update: function () {
                 // Принудительное обновление для Safari
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 pathRef.current.style.webkitTransform = 'translateZ(0)';
             }
         });
@@ -78,10 +97,14 @@ const Game = () => {
             easing: 'linear',
             duration: 2000,
             begin: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 shadowPathRef.current.setAttribute('d', shadowPathData[status]);
             },
-            update: function(anim) {
+            update: function () {
                 // Принудительное обновление для Safari
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 shadowPathRef.current.style.webkitTransform = 'translateZ(0)'
             }
         });
@@ -92,16 +115,18 @@ const Game = () => {
             easing: 'linear',
             duration: 2000,
             begin: () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 charecterPathRef.current.setAttribute('transform', charecterPathData[status]);
             },
         });
-    }, [status]);
+    }, [charecterPathData, pathData, shadowPathData, status]);
 
     return (
         <div className={'relative w-full h-full'}>
             <div className={styles.graph__game}>
                 {/*<GameBg/>*/}
-                <CrashMultiplier />
+                <CrashMultiplier/>
                 <Rows/>
                 <div className={'absolute left-0 right-0 bottom-0 top-0'}>
                     <svg className={styles.graphic__svg}>
@@ -154,7 +179,7 @@ const Game = () => {
                     </svg>
                 </div>
             </div>
-            {status === 'Pending' && <CrashTimer />}
+            {status === 'Pending' && <CrashTimer/>}
         </div>
     );
 };

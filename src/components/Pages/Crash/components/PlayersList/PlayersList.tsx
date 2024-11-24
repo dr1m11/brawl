@@ -3,6 +3,7 @@ import {memo} from "react";
 import Player from "@/components/CrashPlayer/Player";
 
 interface IProps {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     bets: any[]
 }
 

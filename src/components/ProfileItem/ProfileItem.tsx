@@ -1,8 +1,6 @@
 'use client'
 import styles from './ProfileItem.module.css';
 import Image from "next/image";
-import Gun from "../../../public/CasePage/Gun.svg";
-import {useAppSelector} from "@/lib/hooks";
 import {itemService} from "@/services/item/item.service";
 import {useQueryClient} from "@tanstack/react-query";
 import {useState} from "react";
@@ -37,12 +35,12 @@ const ProfileItem = ({title, price, id, userId, color, photo_link, sold}: Profil
     }
 
     return (
-        <div className={styles.root} style={{opacity: sold && 0.5}}>
+        <div className={styles.root} style={{opacity: sold ? 0.5 : undefined}}>
             <h1 className={styles.title}>{title}</h1>
             {photo_link && <Image src={photo_link} alt={'Gun'} width={110} height={70} className={styles.gun}/>}
             <div className={styles.shadow} style={{background: color}}/>
             <div className={styles.info}>
-                <button className={styles.sell} onClick={sellItem} disabled={sold} style={{opacity: sold && 0}}>{
+                <button className={styles.sell} onClick={sellItem} disabled={sold} style={{opacity: sold ? 0 : undefined}}>{
                     isLoading ?
                         <TailSpin
                             visible={true}

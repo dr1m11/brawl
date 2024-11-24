@@ -2,7 +2,6 @@ import styles from './InCaseGun.module.css'
 import Image from "next/image";
 import clsx from "clsx";
 import {Manrope} from "next/font/google";
-import Gun from "../../../public/CasePage/Gun.svg";
 import {IGun} from "@/services/case/case.types";
 
 

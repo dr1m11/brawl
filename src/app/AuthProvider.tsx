@@ -2,7 +2,7 @@
 import {ReactNode, useEffect} from "react";
 import {userService} from "@/services/user/user.service";
 import {useAppDispatch} from "@/lib/hooks";
-import {setBalance, setUser} from "@/lib/userSlice/userSlice";
+import {setUser} from "@/lib/userSlice/userSlice";
 import {getAccessToken} from "@/services/auth/auth.helper";
 import {useQuery} from "@tanstack/react-query";
 
@@ -22,7 +22,7 @@ const AuthProvider = ({children}: {children: ReactNode}) => {
         } else if (isSuccess) {
             dispatch(setUser(data))
         }
-    }, [isLoading, data])
+    }, [isLoading, data, isSuccess, dispatch])
 
     return children
 };

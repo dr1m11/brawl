@@ -11,6 +11,8 @@ const ProfileItems = () => {
         <div className={styles.items}>
             {!!items &&
                 items.map(({name, price, user_item_id, photo_link, color, sold}: IGun, index) => (
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-expect-error
                     <ProfileItem key={index} title={name} price={price} id={user_item_id} userId={id} color={color} photo_link={photo_link} sold={sold}/>
                 ))
             }

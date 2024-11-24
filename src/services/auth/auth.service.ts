@@ -1,10 +1,9 @@
-import {removeFromStorage, saveTokenStorage} from './auth.helper'
+import {saveTokenStorage} from './auth.helper'
 import {IAuthResponse, ISignInData, ISignUpData} from "@/services/auth/auth.types";
 import {axiosClassic} from "@/api/axios";
 
 export enum EnumTokens {
 	'TOKEN' = 'token',
-	'REFRESH_TOKEN' = 'refreshToken',
 }
 
 export const authService = {

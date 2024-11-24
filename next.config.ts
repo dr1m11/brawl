@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
     images: {
         remotePatterns: [
             {
@@ -10,7 +12,7 @@ const nextConfig = {
             }
         ],
     },
-    webpack(config, options) {
+    webpack(config) {
         config.module.rules.push({
             test: /\.(mp3)$/,
             use: {

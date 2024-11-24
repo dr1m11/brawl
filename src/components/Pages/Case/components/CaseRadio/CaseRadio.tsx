@@ -2,7 +2,6 @@
 import styles from './CaseRadio.module.css';
 import clsx from "clsx";
 import {Manrope} from "next/font/google";
-import {useState} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setFast} from "@/lib/caseSlice/caseSlice";
 
@@ -21,7 +20,7 @@ const CaseRadio = () => {
         <div className={clsx(manrope.className, styles.root)}>
             <span className={styles.label}>Быстро</span>
             <div className={styles.uncheck} onClick={() => dispatch(setFast(!fast))}>
-                <div className={styles.check} style={{opacity: fast && '1'}}/>
+                <div className={styles.check} style={{opacity: fast ? '1' : undefined}}/>
             </div>
         </div>
     );

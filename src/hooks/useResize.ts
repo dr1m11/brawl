@@ -13,7 +13,11 @@ export default function useResize() {
         function handleResize() {
             // Set window width/height to state
             setWindowSize({
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 width: window.innerWidth,
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 height: window.innerHeight,
             });
         }

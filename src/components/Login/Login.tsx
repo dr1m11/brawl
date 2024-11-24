@@ -25,7 +25,7 @@ const Login = () => {
             localStorage.setItem('userId', data.user.id)
             location.reload()
         },
-        onError(error) {
+        onError() {
             console.log(form.setError('email', {type: 'server', message: 'Неверно введен email или пароль'}))
         },
     })
@@ -42,6 +42,7 @@ const Login = () => {
         }
     })
 
+    
     return (
         <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
             <div className={styles.form__info}>
@@ -51,7 +52,9 @@ const Login = () => {
                 <Controller render={({field}) => (
                     <input {...field} placeholder={"Пароль"} type={"password"} className={styles.input}/>
                 )} name={'password'} control={form.control} disabled={isPending}/>
-                {errorAdapter(form.formState.errors)&& Object.entries(form.formState.touchedFields).length && <div className={styles.error}><BiError className={styles.error__icon}/><span className={styles.error__message}>{errorAdapter(form.formState.errors)[0]}</span></div>}
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/*@ts-expect-error*/}
+                {errorAdapter(form.formState.errors)&& Object.entries(form.formState.touchedFields).length && <div className={styles.error}><BiError className={styles.error__icon}/><span className={styles.error__message}>{errorAdapter(form?.formState?.errors)[0]}</span></div>}
                 {/*<button className={styles.reset__password}>Забыли пароль?</button>*/}
             </div>
             <div className={styles.divider}/>

@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 const pragatiNarrow = Pragati_Narrow({subsets: ['latin'], weight: '400'})
 
 export const Card = () => {
-    const [_, copy] = useCopyToClipboard()
+    const [, copy] = useCopyToClipboard()
 
     const card = useGetCard()
 

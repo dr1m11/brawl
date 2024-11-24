@@ -11,12 +11,12 @@ const Players = () => {
 
     return (
         <>
-            <PlayersList bets={bets}/>
+            <PlayersList bets={bets ?? []}/>
             <h5 className={styles.bets__count}>Всего {betsCount} ставок</h5>
         </>
     );
 };
 
-export default memo(Players, (prevProps, nextProps) => {
+export default memo(Players, () => {
     return true; // компонент будет обновляться только при реальном изменении bets
 });

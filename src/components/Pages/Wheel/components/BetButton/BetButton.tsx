@@ -4,7 +4,6 @@ import Image from "next/image";
 import Arrow from '@/../public/Wheel/Arrow.svg'
 import ArrowMobile from '@/../public/Wheel/ArrowMobile.svg'
 import {useAppSelector} from "@/lib/hooks";
-import {useEffect} from "react";
 
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
@@ -28,7 +27,7 @@ const BetButton = ({time, onClick}: BetButtonProps) => {
                 </div>
             </div>
             <button className={styles.bet__btn} onClick={onClick}
-                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+balance < +bet) || !(+bet) || !userCell}
+                    disabled={isBetSet || (socketEvent.status !== "Pending") || (+(balance ?? 0) < +bet) || !(+bet) || !userCell}
             >
                 <h5 className={daysOne.className}>
                     {(isBetSet|| (socketEvent.status !== "Pending")) ?

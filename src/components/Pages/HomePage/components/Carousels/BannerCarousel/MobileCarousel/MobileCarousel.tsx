@@ -1,7 +1,5 @@
 'use client'
-
-
-import {Swiper, SwiperSlide, useSwiper} from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -23,7 +21,7 @@ import Charecters3 from '../../../../../../../../public/Home/Charecters3.png'
 import Charecters4 from '../../../../../../../../public/Home/Charecters4.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
-import {Autoplay, EffectFade, Pagination, Scrollbar} from "swiper/modules";
+import {Autoplay, EffectFade, Pagination} from "swiper/modules";
 import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {useRouter} from "next/navigation";

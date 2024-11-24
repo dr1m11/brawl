@@ -82,7 +82,7 @@ export const CrashProvider = ({children}: PropsWithChildren) => {
             }
         }
         fetchInitialBets()
-    }, []);
+    }, [dispatch]);
 
     return children
 }

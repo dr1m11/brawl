@@ -1,7 +1,5 @@
 'use client'
 import styles from './CaseSection.module.css'
-import {useQuery} from "@tanstack/react-query";
-import {caseService} from "@/services/case/case.service";
 import {CaseSectionProps} from "@/components/Pages/HomePage/components/types";
 import Case from "@/components/Pages/HomePage/components/Case/Case";
 

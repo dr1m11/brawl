@@ -19,6 +19,7 @@ const ItemsList = () => {
 
     const params = useParams()
     const router = useRouter()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         caseService.getItems(params.cases)
@@ -29,10 +30,9 @@ const ItemsList = () => {
             .catch(() => {
                 router.push('/')
             })
-    }, []);
+    }, [dispatch, params.cases, router]);
 
     const {items} = useAppSelector(state => state.case)
-    const dispatch = useAppDispatch()
 
     useEffect(() => {
         return () => {
@@ -49,7 +49,7 @@ const ItemsList = () => {
                 id: 0
             },))
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={styles.content}>

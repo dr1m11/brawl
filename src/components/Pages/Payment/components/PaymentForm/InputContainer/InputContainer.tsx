@@ -11,7 +11,7 @@ interface InputContainerProps {
 const InputContainer = ({label, placeholder, type, note}: InputContainerProps) => {
 
     return (
-        <div className={styles.input__container} style={{maxHeight: !!note && '74px'}}>
+        <div className={styles.input__container} style={{maxHeight: !!note ? '74px' : undefined}}>
             <label className={styles.input__label}>{label}</label>
             <FormInput placeholder={placeholder} type={type}/>
             {!!note && <span className={styles.note}>{note}</span>}

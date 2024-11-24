@@ -1,7 +1,7 @@
 {
-  "name": "brawl",
+  "name": "brawl-v2",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,13 +24,13 @@
     "cubic-bezier": "^0.1.2",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
-    "next": "14.1.4",
+    "next": "15.0.3",
     "next-auth": "^5.0.0-beta.19",
     "notistack": "^3.0.1",
-    "react": "^18",
+    "react": "19.0.0-rc-66855b96-20241106",
     "react-chartjs-2": "^5.2.0",
     "react-content-loader": "^7.0.2",
-    "react-dom": "^18",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.51.5",
     "react-hot-toast": "^2.4.1",
@@ -51,6 +51,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.12",
     "@types/d": "^1.0.4",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
@@ -58,10 +59,10 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4",
+    "eslint-config-next": "15.0.3",
     "file-loader": "^6.2.0",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }

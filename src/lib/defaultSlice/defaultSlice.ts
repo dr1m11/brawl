@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IUser} from "@/utils/types";
 
 interface initialInterface {
     isAuthOpen: boolean
@@ -26,5 +25,4 @@ export const defaultSlice = createSlice({
 })
 
 export const {changeLogin} = defaultSlice.actions
-export const {selectLogin, selectCase} = defaultSlice.selectors
 

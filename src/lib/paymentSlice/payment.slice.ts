@@ -1,11 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IUser} from "@/utils/types";
 
 interface initialInterface {
     selectedMethod: {
         id: number
         title: string
-    }
+    } | null
     value: string | number
     promo: string
     isCheckModalOpen: boolean
@@ -45,7 +44,6 @@ export const paymentSlice = createSlice({
 export const {
     setSelectedMethod,
     setValue,
-    reset,
     setPromo,
     setIsCheckModalOpen,
 } = paymentSlice.actions

@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 interface ICrashTimer{
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     timer: any
 }
 

@@ -15,8 +15,8 @@ const MultiplyButton = ({multiplier, borderColor}: MultiplyButtonProps) => {
             className={styles.multiplier}
             style={{
                 borderColor: borderColor,
-                backgroundColor: (userCell === multiplier) && borderColor,
-                color: ((borderColor === '#D0D3D7') && (userCell === multiplier)) && "#000"
+                backgroundColor: (userCell === multiplier) ? borderColor : undefined,
+                color: ((borderColor === '#D0D3D7') && (userCell === multiplier)) ? "#000" : undefined
             }}
             onClick={() => dispatch(setUserCell(multiplier))}>
             <span className={styles.multiplier__label}>X{multiplier}</span>

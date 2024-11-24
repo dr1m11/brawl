@@ -8,7 +8,7 @@ import {
 } from "@/components/Pages/HomePage/components/Carousels/BannerCarousel/MobileCarousel/MobileCarousel";
 
 const Carousels = () => {
-    const size = useResize()
+    const size = useResize() ?? 0
     return (
         <div className={styles.carousels}>
             <div className={styles.banner__carousel}>

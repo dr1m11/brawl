@@ -17,6 +17,8 @@ const initialState: initialStateInterface = {
     balance: null,
     id: '',
     email: '',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     best_item: null,
     photo: '',
     is_active: false,

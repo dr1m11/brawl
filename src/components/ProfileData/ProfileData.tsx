@@ -2,11 +2,8 @@
 import styles from './ProfileData.module.css'
 import localFont from "next/font/local";
 import clsx from "clsx";
-import Wallet from '@/../public/Profile/Wallet.svg'
 import Image from "next/image";
 import { useAppSelector} from "@/lib/hooks";
-import Link from "next/link";
-import {PiHandWithdraw} from "react-icons/pi";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});

@@ -70,10 +70,11 @@ const GameBg = () => {
             {
                 arr.map((item, index) => {
                     return (
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                             src={'https://lucky-jet.gamedev-atech.cc/assets/media/86e9cddf78b8061081ecdae04d9d15e9.svg'}
                             key={index}
-                        />
+                         alt={'clouds'}/>
                     )
                 })
             }

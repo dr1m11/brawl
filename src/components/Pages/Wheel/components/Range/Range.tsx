@@ -11,6 +11,8 @@ const Range = () => {
 
     return (
         <div className={styles.range__container}>
+            {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+            {/*@ts-expect-error*/}
             <input type={'range'} min={"0"} max={balance} step={+balance / 1000} value={bet} onChange={event => dispatch(setBet(event.target.value))}
                    className={styles.range}/>
         </div>

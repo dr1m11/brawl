@@ -35,6 +35,8 @@ export const InfoModal = () => {
                         <li>Помните, чем больше множитель ячейки, тем меньшн вероятность ее выпадения</li>
                     </ul>
                 </div>
+                {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+                {/*@ts-expect-error*/}
                 <GreenButton onClick={handleClose} style={{width: '100%'}} sameColor>ВПЕРЕД!</GreenButton>
             </div>
         </div>

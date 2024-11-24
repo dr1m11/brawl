@@ -5,7 +5,7 @@ import Diamond from '@/../public/Footer/Diamond.svg'
 import Star from '@/../public/Footer/BigStar.svg'
 import localFont from "next/font/local";
 import clsx from "clsx";
-import {ReactNode, useState} from "react";
+import {useState} from "react";
 import AccountBtn from "@/components/AccountBtn/AccountBtn";
 import Login from "@/components/Login/Login";
 import Register from "@/components/Register/Register";
@@ -15,11 +15,6 @@ import {changeLogin} from "@/lib/defaultSlice/defaultSlice";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
-
-interface AuthWrapperProps {
-    children: ReactNode
-    type: 'login' | 'register'
-}
 
 const AuthWrapper = () => {
 

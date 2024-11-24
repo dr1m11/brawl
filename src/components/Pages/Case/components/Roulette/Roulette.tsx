@@ -6,8 +6,8 @@ import {useAppSelector} from "@/lib/hooks";
 import RouletteOpened from "@/components/Pages/Case/components/RouletteOpened/RouletteOpened";
 import RouletteClosed from "@/components/Pages/Case/components/RouletteClosed/RouletteClosed";
 
-export function randomInteger(min, max) {
-    let rand = min + Math.random() * (max + 1 - min);
+export function randomInteger(min: number, max: number) {
+    const rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
 }
 
@@ -23,7 +23,7 @@ const Roulette = () => {
                     ?
                     <RouletteOpened />
                     :
-                    <RouletteClosed photo_link={caseData?.photo_link}/>
+                    <RouletteClosed photo_link={caseData?.photo_link ?? ''}/>
             }
         </div>
     )

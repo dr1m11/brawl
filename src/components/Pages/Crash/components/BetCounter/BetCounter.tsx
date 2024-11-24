@@ -15,8 +15,8 @@ const BetCounter = () => {
     return (
         <div className={styles.range}>
             <Range
-                step={balance / 1000}
-                max={balance}
+                step={(balance ?? 0) / 1000}
+                max={(balance ?? 0)}
                 value={bet}
                 min={0}
                 onChange={(e) => dispatch(setBet(+(e.target.value.replace(/[^\d]/g,''))))}

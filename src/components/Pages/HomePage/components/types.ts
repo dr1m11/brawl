@@ -6,6 +6,7 @@ export interface CaseSectionProps {
 }
 
 export interface CaseProps {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     image: any
     title: string
     desc?: string

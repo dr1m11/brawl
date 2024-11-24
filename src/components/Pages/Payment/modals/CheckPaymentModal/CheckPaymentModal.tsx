@@ -39,6 +39,8 @@ export const CheckPaymentModal = () => {
         })
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -95,6 +97,8 @@ export const CheckPaymentModal = () => {
                     <input
                         type={'file'}
                         className={styles.input}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-expect-error
                         onChange={(e) => setFile(e.target.files[0])}
                         accept="image/*, .heic"
                     />

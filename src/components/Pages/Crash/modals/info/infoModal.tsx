@@ -22,6 +22,7 @@ const InfoModal = () => {
 
     if (!isOpen) return
 
+
     return (
         <div className={clsx(styles.root, manrope.className)} onClick={handleClose}>
             <div className={styles.wrapper} onClick={event => event.stopPropagation()}>
@@ -35,6 +36,8 @@ const InfoModal = () => {
                         <li>Выведите монеты до того, как улетит Эль Примо с помощью кнопки «Вывод»</li>
                     </ul>
                 </div>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/*@ts-expect-error*/}
                 <GreenButton onClick={handleClose} style={{width: '100%'}} sameColor>ВПЕРЕД!</GreenButton>
             </div>
         </div>

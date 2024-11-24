@@ -31,23 +31,33 @@ function Carousel() {
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current = new WebSocket(`${SOCKET_API_URL}/drops`);
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
             setItems(data)
         };
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current.onclose = () => {
             console.log('WebSocket закрыто');
         };
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current.onerror = (error) => {
             console.error('Ошибка WebSocket:', error);
         };
 
         return () => {
             if (ws.current) {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 ws.current.close();
             }
         };

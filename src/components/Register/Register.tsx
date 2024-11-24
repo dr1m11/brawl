@@ -76,10 +76,12 @@ const Register = ({toLogin}: RegisterInterface) => {
                 {errorAdapter(form.formState.errors) &&
                     Object.entries(form.formState.touchedFields).length &&
                     <div className={styles.error}><BiError className={styles.error__icon}/>
+                         {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+                         {/*@ts-expect-error*/}
                         <span className={styles.error__message}>{errorAdapter(form.formState.errors)[0]}</span>
                     </div>}
                 {
-                    !!success &&
+                    success &&
                     <div className={styles.success}>
                         <p>Аккаунт зарегистрирован</p>
                     </div>

@@ -1,4 +1,4 @@
-import {combineReducers, combineSlices, configureStore} from '@reduxjs/toolkit'
+import {combineSlices, configureStore} from '@reduxjs/toolkit'
 import {defaultSlice} from "@/lib/defaultSlice/defaultSlice";
 import {caseSlice} from "@/lib/caseSlice/caseSlice";
 import {crashSlice} from "@/lib/crashSlice/crashSlice";

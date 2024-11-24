@@ -1,6 +1,5 @@
 'use client'
 import styles from './SelectedMethod.module.css'
-import {useAppSelector} from "@/lib/hooks";
 import {useGetCard} from "@/hooks/Card/useGetCard";
 
 const SelectedMethod = () => {

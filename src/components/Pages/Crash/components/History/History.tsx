@@ -8,7 +8,7 @@ import {useAppSelector} from "@/lib/hooks";
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 const History = () => {
-    function getColorByMultiplier(mult) {
+    function getColorByMultiplier(mult: number) {
         if (mult >= 10) {
             return '#e0b700'
         } else if (mult >= 5) {

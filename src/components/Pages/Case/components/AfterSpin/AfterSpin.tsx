@@ -29,7 +29,7 @@ const AfterSpin = () => {
         if (isFinished) {
             playHover()
         }
-    }, [isFinished]);
+    }, [isFinished, playHover]);
 
     if (!isFinished)
         return null

@@ -8,10 +8,9 @@ import Multipliers from "@/components/Pages/Wheel/components/Multipliers/Multipl
 import History from "@/components/Pages/Wheel/components/History/History";
 import Info from "@/components/Pages/Wheel/components/Info/Info";
 import localFont from "next/font/local";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef} from "react";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {
-    setBet,
     setHistory,
     setIsBetSet,
     setIsModalOpen,
@@ -38,7 +37,7 @@ const Kostil = () => {
         dispatch(setUser(localStorage.getItem('userId')))
         axios.get(`${API_URL}/roulette/init-bets-for-new-client`)
             .then(data => dispatch(setUserBets(data.data)))
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (socketEvent.status === "Pending") {
@@ -47,12 +46,16 @@ const Kostil = () => {
         axiosClassic.get('/all-roulette-records').then(data => {
             dispatch(setHistory(data.data))
         })
-    }, [socketEvent.status]);
+    }, [dispatch, socketEvent.status]);
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current = new WebSocket(`${SOCKET_API_URL}/roulette`);
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
             if (data.main_amount === 0 || data.main_amount) {
@@ -62,23 +65,33 @@ const Kostil = () => {
             }
         };
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current.onclose = () => {
             console.log('WebSocket закрыто');
         };
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         ws.current.onerror = (error) => {
             console.error('Ошибка WebSocket:', error);
         };
 
         return () => {
             if (ws.current) {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 ws.current.close();
             }
         };
-    }, []);
+    }, [dispatch]);
 
     const sendBet = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             ws.current.send(JSON.stringify({
                 "game_id": socketEvent.game_id,
                 "player_id": user,

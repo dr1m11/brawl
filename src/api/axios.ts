@@ -1,8 +1,8 @@
-import axios, { CreateAxiosDefaults } from 'axios'
 
 import {API_URL, SC_API_URL} from '@/constants'
-import {AuthHeaders, errorCatch, getContentType, getSCHeaders} from './api.helper'
+import {AuthHeaders, getContentType, getSCHeaders} from './api.helper'
 import {removeFromStorage} from "@/services/auth/auth.helper";
+import axios, {CreateAxiosDefaults} from "axios";
 
 const axiosOptions: CreateAxiosDefaults = {
 	baseURL: API_URL,

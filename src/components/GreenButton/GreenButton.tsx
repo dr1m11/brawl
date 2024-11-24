@@ -10,6 +10,7 @@ const daysOne = Days_One({subsets: ["latin"], weight: ["400"]});
 interface GreenButtonProps {
     children: ReactNode
     link?: string
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     className?: any
     onClick?: (event?: MouseEvent<HTMLButtonElement>) => void
     style?: CSSProperties
@@ -23,12 +24,12 @@ const GreenButton = ({children, style, className, onClick, disabled, sameColor}:
     return (
         <button className={clsx(styles.button, daysOne, className)} onClick={onClick} style={{
             ...style,
-            background: disabled && 'rgba(84, 73, 140, 1)',
-            cursor: disabled && 'not-allowed',
+            background: disabled ? 'rgba(84, 73, 140, 1)' : undefined,
+            cursor: disabled ? 'not-allowed' : undefined,
         }}
                 disabled={disabled}
         >
-            <div className={styles.div} style={{background: (disabled || sameColor) && 'transparent'}}>
+            <div className={styles.div} style={{background: (disabled || sameColor) ? 'transparent' : undefined}}>
                 {children}
             </div>
         </button>

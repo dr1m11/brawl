@@ -63,7 +63,7 @@ export const BannerCarousel = () => {
                     <SwiperSlide className={'overflow-visible'}>
                         {
                             ({isActive}) => (
-                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                <div className={styles.banner__root} style={{transform: !isActive ? 'scale(75%)' : undefined}}>
                                     <Image
                                         src={BannerBG}
                                         quality={100}
@@ -98,7 +98,7 @@ export const BannerCarousel = () => {
                     <SwiperSlide className={'overflow-visible'}>
                         {
                             ({isActive}) => (
-                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                <div className={styles.banner__root} style={{transform: !isActive ? 'scale(75%)' : undefined}}>
                                     <Image
                                         src={BannerBG2}
                                         quality={100}
@@ -149,7 +149,7 @@ export const BannerCarousel = () => {
                     <SwiperSlide className={'overflow-visible'}>
                         {
                             ({isActive}) => (
-                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                <div className={styles.banner__root} style={{transform: !isActive ? 'scale(75%)' : undefined}}>
                                     <Image
                                         src={BannerBG3}
                                         quality={100}
@@ -180,7 +180,7 @@ export const BannerCarousel = () => {
                     <SwiperSlide className={'overflow-visible'}>
                         {
                             ({isActive}) => (
-                                <div className={styles.banner__root} style={{transform: !isActive && 'scale(75%)'}}>
+                                <div className={styles.banner__root} style={{transform: !isActive ? 'scale(75%)' : undefined}}>
                                     <Image
                                         src={BannerBG4}
                                         quality={100}

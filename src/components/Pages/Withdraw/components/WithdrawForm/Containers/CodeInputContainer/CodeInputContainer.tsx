@@ -1,5 +1,4 @@
 import styles from '../Containers.module.css'
-import FormInput from "@/components/Pages/Payment/components/PaymentForm/FormInput/FormInput";
 import CodeInput from "@/components/Pages/Withdraw/components/WithdrawForm/Inputs/CodeInput/CodeInput";
 
 interface CodeInputContainerProps {
