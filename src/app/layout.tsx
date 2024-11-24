@@ -16,6 +16,7 @@ const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 export const metadata: Metadata = {
     title: "DodoDrop",
     description: "Brawl stars roulette",
+    'yandex-verification': '165730094b3146dc',
 };
 
 // favicon

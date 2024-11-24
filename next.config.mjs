@@ -10,11 +10,6 @@ const nextConfig = {
             }
         ],
     },
-    experimental: {
-        optimizeCss: true,
-        scrollRestoration: true,
-        workerThreads: true
-    },
     webpack(config, options) {
         config.module.rules.push({
             test: /\.(mp3)$/,
