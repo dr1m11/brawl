@@ -59,17 +59,17 @@ const Game = () => {
         }
     }, [screenWidth])
 
-        useEffect(() => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            pathRef.current.setAttribute('d', pathData[status]);
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            shadowPathRef.current.setAttribute('d', shadowPathData[status]);
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            charecterPathRef.current.setAttribute('transform', charecterPathData[status])
-        }, [charecterPathData, pathData, screenWidth, shadowPathData, status]);
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        pathRef.current.setAttribute('d', pathData[status]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        shadowPathRef.current.setAttribute('d', shadowPathData[status]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        charecterPathRef.current.setAttribute('transform', charecterPathData[status])
+    }, [status]);
 
     useEffect(() => {
         // Добавляем префиксы для Safari
@@ -120,7 +120,7 @@ const Game = () => {
                 charecterPathRef.current.setAttribute('transform', charecterPathData[status]);
             },
         });
-    }, [charecterPathData, pathData, shadowPathData, status]);
+    }, [status]);
 
     return (
         <div className={'relative w-full h-full'}>
