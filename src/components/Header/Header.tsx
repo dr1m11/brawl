@@ -1,13 +1,12 @@
 import styles from './Header.module.css'
-
-import Image from "next/image";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
-import Link from "next/link";
 import Logo from '@/../public/Footer/Logo.png'
 import MainProfile from "@/components/Header/MainProfile/MainProfile";
 import GamesBar from "@/components/Header/GamesBar/GamesBar";
 import Online from "@/components/Header/Online/Online";
+import Link from 'next/link'
+import Image from 'next/image'
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -22,8 +21,8 @@ const Header = () => {
             </div>
             <GamesBar type={'header'}/>
             <div className={styles.header__right}>
-                <Online />
-                <MainProfile />
+                <Online/>
+                <MainProfile/>
             </div>
         </header>
     );

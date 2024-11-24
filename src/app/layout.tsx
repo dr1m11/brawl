@@ -10,12 +10,16 @@ import AuthWrapper from "@/components/AuthWrapper/AuthWrapper";
 import AuthProvider from "@/app/AuthProvider";
 import {BottomMenu} from "@/components/BottomMenu/BottomMenu";
 import {Toaster} from "react-hot-toast";
+import Head from "next/head";
 
 const daysOne = localFont({src: '../Fonts/DaysOne-Regular.ttf'});
 
 export const metadata: Metadata = {
     title: "DodoDrop",
     description: "Brawl stars roulette",
+    verification: {
+        yandex: '165730094b3146dc'
+    }
 };
 
 // favicon
