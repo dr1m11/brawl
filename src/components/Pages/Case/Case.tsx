@@ -4,7 +4,7 @@ import clsx from "clsx";
 import {Manrope} from "next/font/google";
 import Roulette from "@/components/Pages/Case/components/Roulette/Roulette";
 import ItemsList from "@/components/Pages/Case/components/ItemsList/ItemsList";
-import BG from '@/../public/Home/Main.png'
+import BG from '@/../public/static/Home/Main.png'
 import Image from "next/image";
 
 const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin']})

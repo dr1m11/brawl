@@ -1,14 +1,14 @@
 import styles from './Footer.module.css';
-import Image from "next/image";
-import logo from '@/../public/Footer/Logo.png'
-import BigStar from '@/../public/Footer/BigStar.svg'
-import Valina from '@/../public/Footer/valinu_uberi.svg'
-import Baba from '@/../public/Footer/baba.svg'
-import Diamond from '@/../public/Footer/Diamond.svg'
+import logo from '@/../public/static/Footer/Logo.png'
+import BigStar from '@/../public/static/Footer/BigStar.svg'
+import Valina from '@/../public/static/Footer/valinu_uberi.svg'
+import Baba from '../../../public/static/Footer/baba.svg'
+import Diamond from '../../../public/static/Footer/Diamond.svg'
 import GamesBar from "@/components/Header/GamesBar/GamesBar";
 import Link from "next/link";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
+import Image from 'next/image'
 
 const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin']})
 
@@ -24,15 +24,15 @@ const Footer = () => {
                         </div>
                         <div className={styles.characters}>
                             <Image src={logo} alt={'Logo'} quality={100} width={131} height={93}
-                                   className={styles.logo}/>
+                                   className={styles.logo} loading={'eager'} unoptimized/>
                             <Image src={Diamond} alt={'Diamond'} width={34} height={39}
-                                   className={styles.diamond}/>
+                                   className={styles.diamond} loading={'eager'} unoptimized/>
                             <Image src={Baba} alt={'Character'} width={371} height={331}
-                                   className={styles.baba}/>
+                                   className={styles.baba} loading={'eager'} unoptimized/>
                             <Image src={Valina} alt={'Character'} width={216} height={242}
-                                   className={styles.shooter}/>
+                                   className={styles.shooter} loading={'eager'} unoptimized/>
                             <Image src={BigStar} alt={'BigStar'} width={111} height={116}
-                                   className={styles.bigStar}/>
+                                   className={styles.bigStar} loading={'eager'} unoptimized/>
                         </div>
                     </div>
                         <div className={styles.content__right}>

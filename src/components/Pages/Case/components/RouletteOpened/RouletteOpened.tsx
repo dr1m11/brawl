@@ -1,6 +1,6 @@
 import styles from './RouletteOpened.module.css'
 import Image from "next/image";
-import triangle from "../../../../../../public/CasePage/Triangle.svg";
+import triangle from "../../../../../../public/static/CasePage/Triangle.svg";
 import Spinner from "@/components/Pages/Case/components/Spinner/Spinner";
 import AfterSpin from "@/components/Pages/Case/components/AfterSpin/AfterSpin";
 const RouletteOpened = () => {

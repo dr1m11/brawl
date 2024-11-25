@@ -1,7 +1,7 @@
 'use client'
 import styles from "./Roulette.module.css";
 import Image from "next/image";
-import BG from "@/../public/CasePage/BG.png";
+import BG from "../../../../../../public/static/CasePage/BG.png";
 import {useAppSelector} from "@/lib/hooks";
 import RouletteOpened from "@/components/Pages/Case/components/RouletteOpened/RouletteOpened";
 import RouletteClosed from "@/components/Pages/Case/components/RouletteClosed/RouletteClosed";

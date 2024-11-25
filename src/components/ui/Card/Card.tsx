@@ -4,7 +4,7 @@ import Chip from '@/../public/Payment/chip.png'
 import Image from "next/image";
 import {Pragati_Narrow} from "next/font/google";
 import clsx from "clsx";
-import Logo from '@/../public/Footer/Logo.png'
+import Logo from '@/../public/static/Footer/Logo.png'
 import {MdContentCopy} from "react-icons/md";
 import {useCopyToClipboard} from "usehooks-ts";
 import {useGetCard} from "@/hooks/Card/useGetCard";

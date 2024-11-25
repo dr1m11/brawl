@@ -9,16 +9,16 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/effect-fade';
 
 import styles from './MobileCarousel.module.css'
-import BannerBG from '../../../../../../../../public/Home/Banner.png'
-import BannerBG2 from '../../../../../../../../public/Home/Banner2.png'
-import BannerBG3 from '../../../../../../../../public/Home/Banner3.png'
-import BannerBG4 from '../../../../../../../../public/Home/Banner4.png'
-import Charecters from '../../../../../../../../public/Home/Charecters.png'
-import Charecters21 from '../../../../../../../../public/Home/Charecters2_1.png'
-import Charecters22 from '../../../../../../../../public/Home/Charecters2_2.png'
-import Charecters23 from '../../../../../../../../public/Home/Charecters2_3.png'
-import Charecters3 from '../../../../../../../../public/Home/Charecters3.png'
-import Charecters4 from '../../../../../../../../public/Home/Charecters4.png'
+import BannerBG from '../../../../../../../../public/static/Home/Banner.png'
+import BannerBG2 from '../../../../../../../../public/static/Home/Banner2.png'
+import BannerBG3 from '../../../../../../../../public/static/Home/Banner3.png'
+import BannerBG4 from '../../../../../../../../public/static/Home/Banner4.png'
+import Charecters from '../../../../../../../../public/static/Home/Charecters.png'
+import Charecters21 from '../../../../../../../../public/static/Home/Charecters2_1.png'
+import Charecters22 from '../../../../../../../../public/static/Home/Charecters2_2.png'
+import Charecters23 from '../../../../../../../../public/static/Home/Charecters2_3.png'
+import Charecters3 from '../../../../../../../../public/static/Home/Charecters3.png'
+import Charecters4 from '../../../../../../../../public/static/Home/Charecters4.png'
 import Image from "next/image";
 import GreenButton from "@/components/GreenButton/GreenButton";
 import {Autoplay, EffectFade, Pagination} from "swiper/modules";

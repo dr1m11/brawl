@@ -1,7 +1,7 @@
 'use client'
 import styles from './Online.module.css'
 import Image from "next/image";
-import OnlineImg from '@/../public/Header/Online.svg'
+import OnlineImg from '@/../public/static/Header/Online.svg'
 import {useQuery} from "@tanstack/react-query";
 import {axiosClassic} from "@/api/axios";
 

@@ -3,7 +3,7 @@ import styles from './AfterSpin.module.css'
 import clsx from "clsx";
 import {setFast, setIsFinished, setIsOpened, setWinedItem} from "@/lib/caseSlice/caseSlice";
 import Image from "next/image";
-import Repeat from "../../../../../../public/CasePage/Repeat.svg";
+import Repeat from "../../../../../../public/static/CasePage/Repeat.svg";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {Manrope} from "next/font/google";
 import {itemService} from "@/services/item/item.service";

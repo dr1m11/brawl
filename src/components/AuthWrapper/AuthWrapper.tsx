@@ -1,8 +1,8 @@
 'use client'
 import styles from './AuthWrapper.module.css'
 import Image from "next/image";
-import Diamond from '@/../public/Footer/Diamond.svg'
-import Star from '@/../public/Footer/BigStar.svg'
+import Diamond from '@/../public/static/Footer/Diamond.svg'
+import Star from '@/../public/static/Footer/BigStar.svg'
 import localFont from "next/font/local";
 import clsx from "clsx";
 import {useState} from "react";

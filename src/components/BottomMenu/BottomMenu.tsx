@@ -3,8 +3,8 @@ import styles from './BottomMenu.module.css'
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import CaseMobile from '@/../public/BottomMenu/CaseMobile.svg'
-import WheelMobile from '@/../public/BottomMenu/WheelMobile.svg'
+import CaseMobile from '../../../public/static/BottomMenu/CaseMobile.svg'
+import WheelMobile from '../../../public/static/BottomMenu/WheelMobile.svg'
 import {Manrope} from "next/font/google";
 import {FaChartLine} from "react-icons/fa6";
 import {GiTwoCoins} from "react-icons/gi";

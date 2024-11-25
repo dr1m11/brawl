@@ -1,7 +1,7 @@
 import styles from './HomePage.module.css'
 import Image from "next/image";
-import mainBg from '@/../public/Home/Main.png'
-import footerBg from '@/../public/Home/Footer.png'
+import mainBg from '@/../public/static/Home/Main.png'
+import footerBg from '@/../public/static/Home/Footer.png'
 import Carousels from "@/components/Pages/HomePage/components/Carousels/Carousels";
 import {Cases} from "@/components/Pages/HomePage/components/Cases/Cases";
 
