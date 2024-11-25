@@ -4,7 +4,7 @@ import History from "../History/History";
 import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
-// import Players from "@/components/Pages/Crash/components/Players/Players";
+import Players from "@/components/Pages/Crash/components/Players/Players";
 
 const Kostil = () => {
     // const dispatch = useAppDispatch()
@@ -27,7 +27,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {/*<Players />*/}
+                    <Players />
                 </div>
             </div>
             <div className={styles.bottom_menu}>
@@ -40,7 +40,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {/*<Players />*/}
+                    <Players />
                 </div>
             </div>
         </>
