@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from './CrashWrapper.module.css'
-import Image from "next/image";
-import BG from "@/../public/static/Crash/BG.png";
+// import Image from "next/image";
+// import BG from "@/../public/static/Crash/BG.png";
 import {ReactNode} from "react";
 import {Manrope} from "next/font/google";
 import InfoModal from "../../../modals/info/infoModal";
