@@ -10,10 +10,17 @@ interface IProps {
 const PlayersList = ({bets}: IProps) => {
 
     return (
-        <div className={styles.players__list}>
+        <div 
+            className={styles.players__list}
+            style={{
+                transform: 'translate3d(0,0,0)',
+                willChange: 'transform',
+                contain: 'content'
+            }}
+        >
             {bets?.map(({winning, player_nickname, amount, user_multiplier, player_photo}, index) => (
                 <Player
-                    key={`${player_nickname}-${index}`}
+                    key={`${player_nickname}-${index}-${amount}`}
                     nickname={player_nickname}
                     amount={amount}
                     winning={winning}
@@ -25,4 +32,6 @@ const PlayersList = ({bets}: IProps) => {
     );
 };
 
-export default memo(PlayersList);
+export default memo(PlayersList, (prevProps, nextProps) => {
+    return JSON.stringify(prevProps.bets) === JSON.stringify(nextProps.bets);
+});

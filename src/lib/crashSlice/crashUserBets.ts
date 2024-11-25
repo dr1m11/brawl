@@ -7,6 +7,7 @@ export type TUsersBets = {
     player_photo: number
     user_multiplier: number
     winning: number
+    amount: number
 }
 
 interface ICrashUsersBets {
