@@ -16,7 +16,7 @@ interface ICrashSocket {
     game_id: number
     multiplier: number
     status: 'Pending' | 'Running' | 'Crashed'
-    timer: number
+    timer: string
     users_bets: TUsersBets[] | null
 }
 
