@@ -17,11 +17,11 @@ interface ICrashSocket {
     multiplier: number
     status: 'Pending' | 'Running' | 'Crashed'
     timer: number
-    users_bets: TUsersBets | null
+    users_bets: TUsersBets[] | null
 }
 
 const Players = () => {
-    const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[] | null>([])
+    const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[]>([])
 
     const dispatch = useAppDispatch()
 
@@ -41,8 +41,10 @@ const Players = () => {
             dispatch(setGameId(game_id))
             dispatch(setMultiplier(multiplier))
             dispatch(setTimer(timer ?? ''))
-            setCrashUsersBets(crashUsersBets && users_bets ? [...crashUsersBets, users_bets] : null);
+            setCrashUsersBets(users_bets ?? []);
         }
+
+        console.log('on mount')
 
         return () => {
             socket.close()
