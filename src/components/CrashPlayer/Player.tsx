@@ -23,7 +23,6 @@ const Player = ({
                     nickname,
                     multiplier,
                     winning,
-                    photo,
                 }: PlayerProps) => {
     // Форматирование денежных значений
     const formattedAmount = useMemo(() =>
@@ -38,13 +37,13 @@ const Player = ({
 
     return (
         <div className={clsx(styles.root)}>
-            <Image
-                src={`https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`}
-                alt={'Avatar'}
-                width={170}
-                height={170}
-                className={styles.avatar}
-            />
+            {/*<Image*/}
+            {/*    src={`https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`}*/}
+            {/*    alt={'Avatar'}*/}
+            {/*    width={170}*/}
+            {/*    height={170}*/}
+            {/*    className={styles.avatar}*/}
+            {/*/>*/}
 
 
             <h4 className={styles.nickname}>
