@@ -1,5 +1,4 @@
 'use client'
-import {useAppSelector} from "@/lib/hooks";
 import styles from '../Game/Game.module.css'
 import {FC, memo} from "react";
 import clsx from "clsx";
