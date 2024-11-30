@@ -41,13 +41,12 @@ const Player = ({ hideMultiplier, hideWon, hideBet, hideNickname, amount, nickna
     return (
         <div className={clsx(styles.root)}>
             {!hideAvatar && (
-                <Image
+                <img
                     src={avatarSrc}
                     alt={nickname || 'Avatar'}
                     width={28}
                     height={29}
                     className={styles.avatar}
-                    priority={false}
                 />
             )}
 

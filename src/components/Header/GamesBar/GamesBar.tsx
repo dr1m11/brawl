@@ -4,7 +4,6 @@ import holodilnik from '@/../public/static/Header/holodilnik.svg'
 import baran from '@/../public/static/Header/baran.svg'
 import elPrimo from '@/../public/static/Header/elPrimo.svg'
 import clsx from "clsx";
-import Image from "next/image";
 import {Manrope} from "next/font/google";
 
 const manrope = Manrope({subsets: ["latin"], weight: ["500"]});
