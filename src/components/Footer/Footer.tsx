@@ -8,7 +8,6 @@ import GamesBar from "@/components/Header/GamesBar/GamesBar";
 import Link from "next/link";
 import {Manrope} from "next/font/google";
 import clsx from "clsx";
-import Image from 'next/image'
 
 const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin']})
 
@@ -23,16 +22,16 @@ const Footer = () => {
                             <div className={styles.elipse}/>
                         </div>
                         <div className={styles.characters}>
-                            <Image src={logo} alt={'Logo'} quality={100} width={131} height={93}
-                                   className={styles.logo} loading={'eager'} unoptimized/>
-                            <Image src={Diamond} alt={'Diamond'} width={34} height={39}
-                                   className={styles.diamond} loading={'eager'} unoptimized/>
-                            <Image src={Baba} alt={'Character'} width={371} height={331}
-                                   className={styles.baba} loading={'eager'} unoptimized/>
-                            <Image src={Valina} alt={'Character'} width={216} height={242}
-                                   className={styles.shooter} loading={'eager'} unoptimized/>
-                            <Image src={BigStar} alt={'BigStar'} width={111} height={116}
-                                   className={styles.bigStar} loading={'eager'} unoptimized/>
+                            <img src={logo.src} alt={'Logo'} width={131} height={93}
+                                   className={styles.logo} loading={'eager'} />
+                            <img src={Diamond.src} alt={'Diamond'} width={34} height={39}
+                                   className={styles.diamond} loading={'eager'} />
+                            <img src={Baba.src} alt={'Character'} width={371} height={331}
+                                   className={styles.baba} loading={'eager'} />
+                            <img src={Valina.src} alt={'Character'} width={216} height={242}
+                                   className={styles.shooter} loading={'eager'} />
+                            <img src={BigStar.src} alt={'BigStar'} width={111} height={116}
+                                   className={styles.bigStar} loading={'eager'} />
                         </div>
                     </div>
                         <div className={styles.content__right}>

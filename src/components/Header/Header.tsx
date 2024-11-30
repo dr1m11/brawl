@@ -5,7 +5,7 @@ import MainProfile from "@/components/Header/MainProfile/MainProfile";
 import GamesBar from "@/components/Header/GamesBar/GamesBar";
 import Online from "@/components/Header/Online/Online";
 import Link from 'next/link'
-import Image from 'next/image'
+import Logo from '@/../public/static/Footer/Logo.png'
 
 const manrope = Manrope({subsets: ["latin"], weight: ["600"]});
 
@@ -14,7 +14,7 @@ const Header = () => {
         <header className={clsx(styles.header, manrope.className)}>
             <div className={styles.header__left}>
                 <Link href={'/'} className={styles.header__logo}>
-                    <Image src={'/static/Footer/Logo.png'} alt={'Logo'} width={95} height={68} className={styles.logo__img} quality={100}/>
+                    <img src={Logo.src} alt={'Logo'} width={95} height={68} className={styles.logo__img}/>
                 </Link>
                 <h4 className={styles.header__left__label}>выбирай и побеждай</h4>
             </div>

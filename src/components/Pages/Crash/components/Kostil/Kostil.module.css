@@ -128,6 +128,24 @@
     hidden
 }
 
+.graph__game {
+    @apply
+    w-full
+    max-h-[270px]
+    h-full
+    relative
+    overflow-hidden
+}
+
+.graph__game svg {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
 @media screen and (max-width: 900px) {
     .players {
         display: none;

@@ -8,18 +8,22 @@ import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounte
 import Players from "@/components/Pages/Crash/components/Players/Players";
 import {memo, useCallback, useLayoutEffect, useState} from "react";
 import {useWebSocket} from "@/app/crash/CrashProvider";
-import {setStatus} from "@/lib/crashSlice/crashStatusSlice";
 import {setGameId} from "@/lib/crashSlice/crashGameIdSlice";
 import {setMultiplier} from "@/lib/crashSlice/crashMultiplierSlice";
 import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
 import {useAppDispatch} from "@/lib/hooks";
 import {API_URL} from "@/constants";
 import axios from "axios";
+import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
+import Rows from "@/components/Pages/Crash/components/Rows/Rows";
+import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
+
+type TStatus = 'Pending' | 'Running' | 'Crashed'
 
 interface ICrashSocket {
     game_id: number
     multiplier: number
-    status: 'Pending' | 'Running' | 'Crashed'
+    status: TStatus
     timer: string
     users_bets: TUsersBets[]
 }
@@ -27,11 +31,9 @@ interface ICrashSocket {
 const Kostil = () => {
     // const dispatch = useAppDispatch()
     //
-    // const betsCount = useAppSelector(state => state.crash.usersBets?.length ?? 0,
-    //     (prev, next) => prev === next
-    // );
     const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[]>([])
     const [crashTimer, setCrashTimer] = useState<string>('')
+    const [status, setStatus] = useState<TStatus>('Pending')
     const dispatch = useAppDispatch()
 
     const {socket} = useWebSocket()
@@ -46,7 +48,7 @@ const Kostil = () => {
             users_bets
         } = data
 
-        dispatch(setStatus(status))
+        setStatus(status)
         dispatch(setGameId(game_id))
         dispatch(setMultiplier(multiplier))
         setCrashTimer(timer ?? '')
@@ -79,7 +81,15 @@ const Kostil = () => {
             </div>
             <div className={styles.game}>
                 <div className={styles.graph}>
-                    <Game timer={crashTimer}/>
+                    <div className={'relative w-full h-full'}>
+                        <div className={styles.graph__game}>
+                            {/*<GameBg/>*/}
+                            <CrashMultiplier/>
+                            <Rows/>
+                            <Game status={status}/>
+                        </div>
+                        {status === 'Pending' && <CrashTimer timer={crashTimer}/>}
+                    </div>
                     <History/>
                 </div>
                 <div className={styles.players}>

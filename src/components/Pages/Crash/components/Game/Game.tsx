@@ -1,21 +1,15 @@
 'use client'
 import styles from "./Game.module.css";
-import Rows from "../Rows/Rows";
 import {FC, memo, useEffect, useMemo, useRef} from "react";
 import anime from 'animejs/lib/anime.es.js';
-import {useAppSelector} from "@/lib/hooks";
-import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
-import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
 import { link } from './gameLink'
 import useResize from "@/hooks/useResize";
 
 interface IProps {
-    timer: string
+    status: 'Pending' | 'Running' | 'Crashed'
 }
 
-const Game: FC<IProps> = ({timer}) => {
-
-    const status = useAppSelector(state => state.crashStatus.status)
+const Game: FC<IProps> = ({status}) => {
 
     const size = useResize() ?? 0
 
@@ -118,64 +112,60 @@ const Game: FC<IProps> = ({timer}) => {
     }, [status]);
 
     return (
-        <div className={'relative w-full h-full'}>
-            <div className={styles.graph__game}>
-                {/*<GameBg/>*/}
-                <CrashMultiplier />
-                <Rows/>
-                <div className={'absolute left-0 right-0 bottom-0 top-0'}>
-                    <svg className={styles.graphic__svg}>
-                        <defs>
-                            <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
-                                <stop
-                                    stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'}
-                                    stopOpacity=".33"
-                                />
-                                <stop offset="1.87" stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'}
-                                      stopOpacity="0"/>
-                            </linearGradient>
-                            <linearGradient id="grad_stroke" x1="0" x2="1" y1="0" y2="1">
-                                <stop offset=".687" stopColor={status !== 'Crashed' ? "#622BFC" : '#ff0000'}/>
-                                <stop offset="0.1" stopColor="#5c24fc" stopOpacity="0"/>
-                            </linearGradient>
-                        </defs>
-                        <g>
-                            <path
-                                ref={pathRef}
-                                fill="transparent"
-                                stroke="url(#grad_stroke)"
-                                className={styles.graph}
+        <>
+            <div className={'absolute left-0 right-0 bottom-0 top-0'}>
+                <svg className={styles.graphic__svg}>
+                    <defs>
+                        <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+                            <stop
+                                stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'}
+                                stopOpacity=".33"
                             />
-                            <path
-                                fill="url(#grad)"
-                                className={styles.graph}
-                                ref={shadowPathRef}
-                            />
-                        </g>
-                    </svg>
-                </div>
-                <div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>
-                    <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"
-                         xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
-                        <defs>
-                            <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox" width="1.000000"
-                                     height="1.000000">
-                                <use xlinkHref="#image183_199_0"
-                                     transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>
-                            </pattern>
-                            <image id="image183_199_0" width="512.000000" height="293.000000"
-                                   xlinkHref={link}/>
-                        </defs>
-                        <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
-                              fill="url(#pattern_183_1990)"
-                              fillOpacity="1.000000"
-                              ref={charecterPathRef}
+                            <stop offset="1.87" stopColor={status !== 'Crashed' ? "#9d7aff" : '#ff0000'}
+                                  stopOpacity="0"/>
+                        </linearGradient>
+                        <linearGradient id="grad_stroke" x1="0" x2="1" y1="0" y2="1">
+                            <stop offset=".687"
+                                  stopColor={status !== 'Crashed' ? "#622BFC" : '#ff0000'}/>
+                            <stop offset="0.1" stopColor="#5c24fc" stopOpacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    <g>
+                        <path
+                            ref={pathRef}
+                            fill="transparent"
+                            stroke="url(#grad_stroke)"
+                            className={styles.graph}
                         />
-                    </svg>
-                </div>
+                        <path
+                            fill="url(#grad)"
+                            className={styles.graph}
+                            ref={shadowPathRef}
+                        />
+                    </g>
+                </svg>
             </div>
-            {status === 'Pending' && <CrashTimer timer={timer}/>}
-        </div>
+            <div className={'absolute left-0 right-0 bottom-0 top-0 z-10'}>
+                <svg style={{width: "100%", height: '100%', zIndex: '100'}} fill="none"
+                     xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <pattern id="pattern_183_1990" patternContentUnits="objectBoundingBox"
+                                 width="1.000000"
+                                 height="1.000000">
+                            <use xlinkHref="#image183_199_0"
+                                 transform="matrix(0.001953,0,0,0.003449,0,-0.005298)"/>
+                        </pattern>
+                        <image id="image183_199_0" width="512.000000" height="293.000000"
+                               xlinkHref={link}/>
+                    </defs>
+                    <rect id="sticker 1" y="18.631226" width="83.000000" height="47.000000"
+                          fill="url(#pattern_183_1990)"
+                          fillOpacity="1.000000"
+                          ref={charecterPathRef}
+                    />
+                </svg>
+            </div>
+        </>
     );
 };
 

@@ -34,4 +34,4 @@ const CrashTimer: FC<IProps> = ({timer}) => {
     );
 };
 
-export default memo(CrashTimer);
+export default memo(CrashTimer, (prevProps, nextProps) => (prevProps == nextProps));
