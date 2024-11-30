@@ -1,8 +1,11 @@
 import Crash from "@/components/Pages/Crash/Crash";
+import {WebSocketProvider} from "@/app/crash/socketProvider";
 
 const CrashPage = () => {
     return (
-        <Crash/>
+        <WebSocketProvider>
+            <Crash/>
+        </WebSocketProvider>
     );
 };
 
