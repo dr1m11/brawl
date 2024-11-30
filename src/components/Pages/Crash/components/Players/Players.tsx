@@ -1,7 +1,7 @@
 'use client'
 import PlayersList from "@/components/Pages/Crash/components/PlayersList/PlayersList";
 import styles from '../Kostil/Kostil.module.css'
-import {memo, useLayoutEffect, useState} from "react";
+import {memo, useCallback, useLayoutEffect, useState} from "react";
 import {useAppDispatch} from "@/lib/hooks";
 import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
 import {API_URL, SOCKET_API_URL} from "@/constants";
@@ -17,41 +17,34 @@ interface ICrashSocket {
     multiplier: number
     status: 'Pending' | 'Running' | 'Crashed'
     timer: string
-    users_bets: TUsersBets[] | null
+    users_bets: TUsersBets[]
 }
 
 const Players = () => {
     const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[]>([])
-
     const dispatch = useAppDispatch()
+
+    const handleSocketMessage = useCallback((event: MessageEvent) => {
+        const data: ICrashSocket = JSON.parse(event.data)
+        const {
+            game_id,
+            multiplier,
+            status,
+            timer,
+            users_bets
+        } = data
+
+        dispatch(setStatus(status))
+        dispatch(setGameId(game_id))
+        dispatch(setMultiplier(multiplier))
+        dispatch(setTimer(timer ?? ''))
+        setCrashUsersBets(users_bets ?? []);
+    }, [])
 
     useLayoutEffect(() => {
         const socket = new WebSocket(`${SOCKET_API_URL}/crash`)
 
-        socket.onmessage = (event) => {
-            const data: ICrashSocket = JSON.parse(event?.data)
-            const {
-                game_id,
-                multiplier,
-                status,
-                timer,
-                users_bets
-            } = data
-            dispatch(setStatus(status))
-            dispatch(setGameId(game_id))
-            dispatch(setMultiplier(multiplier))
-            dispatch(setTimer(timer ?? ''))
-            setCrashUsersBets(users_bets ?? []);
-        }
-
-        console.log('on mount')
-
-        return () => {
-            socket.close()
-        }
-    }, []);
-
-    useLayoutEffect(() => {
+        // Fetch initial bets
         const fetchInitialBets = async () => {
             try {
                 const {data} = await axios.get(`${API_URL}/crash/init-bets-for-new-client`)
@@ -60,13 +53,24 @@ const Players = () => {
                 console.error('Failed to fetch initial bets:', error)
             }
         }
-        fetchInitialBets()
+
+        socket.onopen = () => {
+            fetchInitialBets()
+        }
+
+        socket.onmessage = handleSocketMessage
+
+        return () => {
+            socket.close()
+        }
     }, []);
 
     return (
         <>
-            <PlayersList bets={crashUsersBets ?? []}/>
-            <h5 className={styles.bets__count}>Всего {crashUsersBets?.length} ставок</h5>
+            <PlayersList bets={crashUsersBets}/>
+            <h5 className={styles.bets__count}>
+                Всего {crashUsersBets.length} ставок
+            </h5>
         </>
     );
 };
