@@ -1,7 +1,7 @@
 'use client'
 import styles from "./Game.module.css";
 import Rows from "../Rows/Rows";
-import {memo, useEffect, useMemo, useRef} from "react";
+import {FC, memo, useEffect, useMemo, useRef} from "react";
 import anime from 'animejs/lib/anime.es.js';
 import {useAppSelector} from "@/lib/hooks";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
@@ -9,7 +9,11 @@ import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/mu
 import { link } from './gameLink'
 import useResize from "@/hooks/useResize";
 
-const Game = () => {
+interface IProps {
+    timer: string
+}
+
+const Game: FC<IProps> = ({timer}) => {
 
     const status = useAppSelector(state => state.crashStatus.status)
 
@@ -170,9 +174,9 @@ const Game = () => {
                     </svg>
                 </div>
             </div>
-            {status === 'Pending' && <CrashTimer />}
+            {status === 'Pending' && <CrashTimer timer={timer}/>}
         </div>
     );
 };
 
-export default memo(Game, () => true);
+export default memo(Game);

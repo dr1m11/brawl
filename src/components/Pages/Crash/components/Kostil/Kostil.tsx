@@ -6,8 +6,23 @@ import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
 import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
 import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
 import Players from "@/components/Pages/Crash/components/Players/Players";
-import {memo} from "react";
-import useResize from "@/hooks/useResize";
+import {memo, useCallback, useLayoutEffect, useState} from "react";
+import {useWebSocket} from "@/app/crash/CrashProvider";
+import {setStatus} from "@/lib/crashSlice/crashStatusSlice";
+import {setGameId} from "@/lib/crashSlice/crashGameIdSlice";
+import {setMultiplier} from "@/lib/crashSlice/crashMultiplierSlice";
+import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
+import {useAppDispatch} from "@/lib/hooks";
+import {API_URL} from "@/constants";
+import axios from "axios";
+
+interface ICrashSocket {
+    game_id: number
+    multiplier: number
+    status: 'Pending' | 'Running' | 'Crashed'
+    timer: string
+    users_bets: TUsersBets[]
+}
 
 const Kostil = () => {
     // const dispatch = useAppDispatch()
@@ -15,8 +30,47 @@ const Kostil = () => {
     // const betsCount = useAppSelector(state => state.crash.usersBets?.length ?? 0,
     //     (prev, next) => prev === next
     // );
+    const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[]>([])
+    const [crashTimer, setCrashTimer] = useState<string>('')
+    const dispatch = useAppDispatch()
 
-    const width = useResize() ?? 0
+    const {socket} = useWebSocket()
+
+    const handleSocketMessage = useCallback((event: MessageEvent) => {
+        const data: ICrashSocket = JSON.parse(event.data)
+        const {
+            game_id,
+            multiplier,
+            status,
+            timer,
+            users_bets
+        } = data
+
+        dispatch(setStatus(status))
+        dispatch(setGameId(game_id))
+        dispatch(setMultiplier(multiplier))
+        setCrashTimer(timer ?? '')
+        setCrashUsersBets(users_bets ?? []);
+    }, [])
+
+    useLayoutEffect(() => {
+        const fetchInitialBets = async () => {
+            try {
+                const {data} = await axios.get(`${API_URL}/crash/init-bets-for-new-client`)
+                setCrashUsersBets(data?.bets)
+            } catch (error) {
+                console.error('Failed to fetch initial bets:', error)
+            }
+        }
+
+        if (socket) {
+            socket.onopen = () => {
+                fetchInitialBets()
+            }
+
+            socket.onmessage = handleSocketMessage
+        }
+    }, [socket]);
 
     return (
         <>
@@ -24,28 +78,28 @@ const Kostil = () => {
                 {/*<button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>*/}
             </div>
             <div className={styles.game}>
-            <div className={styles.graph}>
-                    <Game />
-                    <History />
+                <div className={styles.graph}>
+                    <Game timer={crashTimer}/>
+                    <History/>
                 </div>
                 <div className={styles.players}>
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {width > 900 && <Players />}
+                    <Players crashUsersBets={crashUsersBets}/>
                 </div>
             </div>
             <div className={styles.bottom_menu}>
                 <div className={styles.bet}>
-                    <BetCounter />
+                    <BetCounter/>
                     <BetTips/>
-                    <BetButton />
+                    <BetButton/>
                 </div>
                 <div className={styles.playersVisible}>
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {width <= 900 && <Players/>}
+                    <Players crashUsersBets={crashUsersBets}/>
                 </div>
             </div>
         </>

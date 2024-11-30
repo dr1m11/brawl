@@ -1,16 +1,17 @@
 'use client'
-import dynamic from 'next/dynamic'
 import {useAppSelector} from "@/lib/hooks";
 import styles from '../Game/Game.module.css'
-import {memo} from "react";
+import {FC, memo} from "react";
+import clsx from "clsx";
+import localFont from "next/font/local";
 
-const TimerContent = dynamic(() => import('./TimerContent'), {
-    ssr: false
-});
+const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-const CrashTimer = () => {
-    const endTime = useAppSelector(state => state.crashTimer.timer);
+interface IProps {
+    timer: string
+}
 
+const CrashTimer: FC<IProps> = ({timer}) => {
     return (
         <div
             className={styles.timer}
@@ -19,7 +20,17 @@ const CrashTimer = () => {
                 transform: 'translate3d(0,0,0)'
             }}
         >
-            <TimerContent endTime={endTime} />
+            <h1
+                className={clsx(daysOne.className, styles.timer__label)}
+                style={{
+                    transform: 'translate3d(0,0,0)',
+                    backfaceVisibility: 'hidden',
+                    perspective: 1000,
+                    contain: 'content'
+                }}
+            >
+                {timer}
+            </h1>
         </div>
     );
 };
