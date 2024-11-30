@@ -1,4 +1,3 @@
-'use client'
 import styles from './Footer.module.css';
 import logo from '@/../public/static/Footer/Logo.png'
 import BigStar from '@/../public/static/Footer/BigStar.png'
