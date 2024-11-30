@@ -1,5 +1,5 @@
 'use client'
-import {memo} from "react";
+import {memo, useEffect} from "react";
 import clsx from "clsx";
 import localFont from "next/font/local";
 import styles from '../Game/Game.module.css'
