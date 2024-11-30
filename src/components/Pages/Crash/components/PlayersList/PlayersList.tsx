@@ -35,6 +35,8 @@ const PlayersList = ({ bets }: IProps) => {
         );
     });
 
+    console.log('sdkhfg')
+
     return (
         <div
             className={styles.players__list}
