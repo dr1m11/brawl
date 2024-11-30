@@ -4,12 +4,13 @@ import styles from '../Kostil/Kostil.module.css'
 import {memo, useLayoutEffect, useState} from "react";
 import {useAppDispatch} from "@/lib/hooks";
 import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
-import {API_URL, SOCKET_API_URL} from "@/constants";
+import {API_URL} from "@/constants";
 import {setStatus} from "@/lib/crashSlice/crashStatusSlice";
 import {setGameId} from "@/lib/crashSlice/crashGameIdSlice";
 import {setMultiplier} from "@/lib/crashSlice/crashMultiplierSlice";
 import {setTimer} from "@/lib/crashSlice/crashTimerSlice";
 import axios from "axios";
+import {useWebSocket} from "@/app/crash/socketProvider";
 
 
 interface ICrashSocket {
@@ -25,31 +26,27 @@ const Players = () => {
 
     const dispatch = useAppDispatch()
 
+    const { socket } = useWebSocket();
+
     useLayoutEffect(() => {
-        const socket = new WebSocket(`${SOCKET_API_URL}/crash`)
-
-        socket.onmessage = (event) => {
-            const data: ICrashSocket = JSON.parse(event?.data)
-            const {
-                game_id,
-                multiplier,
-                status,
-                timer,
-                users_bets
-            } = data
-            dispatch(setStatus(status))
-            dispatch(setGameId(game_id))
-            dispatch(setMultiplier(multiplier))
-            dispatch(setTimer(timer ?? ''))
-            setCrashUsersBets(users_bets ?? []);
+        if (socket) {
+            socket.onmessage = (event) => {
+                const data: ICrashSocket = JSON.parse(event?.data)
+                const {
+                    game_id,
+                    multiplier,
+                    status,
+                    timer,
+                    users_bets
+                } = data
+                dispatch(setStatus(status))
+                dispatch(setGameId(game_id))
+                dispatch(setMultiplier(multiplier))
+                dispatch(setTimer(timer ?? ''))
+                setCrashUsersBets(users_bets ?? []);
+            }
         }
-
-        console.log('on mount')
-
-        return () => {
-            socket.close()
-        }
-    }, []);
+    }, [socket]);
 
     useLayoutEffect(() => {
         const fetchInitialBets = async () => {
