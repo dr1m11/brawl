@@ -69,4 +69,6 @@ const Player = ({
     );
 };
 
-export default memo(Player);
+export default memo(Player, (prevProps, nextProps) => {
+    return JSON.stringify(prevProps) == JSON.stringify(nextProps);
+});

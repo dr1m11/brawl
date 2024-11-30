@@ -117,6 +117,48 @@
     gap-2
 }
 
+.players__list {
+    @apply
+    h-full
+    max-h-[267px]
+    w-full
+    overflow-y-auto
+    space-y-1
+    mt-1.5
+}
+
+.players__list::-webkit-scrollbar {
+    @apply
+    w-[3px]
+}
+
+.players__list::-webkit-scrollbar-track {
+    @apply
+    bg-494088
+    rounded
+}
+
+.players__list::-webkit-scrollbar-thumb {
+    @apply
+    bg-9580160
+    rounded
+}
+
+@media screen and (max-width: 900px){
+    .players__list {
+        @apply
+        max-h-[230px]
+    }
+}
+
+@media screen and (max-width: 630px){
+    .players__list {
+        @apply
+        max-h-[300px]
+    }
+}
+
+
 .playersVisible {
     @apply
     h-full
