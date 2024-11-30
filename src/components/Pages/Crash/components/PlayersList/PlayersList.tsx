@@ -17,10 +17,6 @@ interface IProps {
 const PlayersList = ({ bets }: IProps) => {
     // Используйте useMemo с мемоизацией по длине и хешу массива
     const playerList = useMemo(() => {
-        const betsHash = bets.map(bet =>
-            `${bet.player_nickname}-${bet.amount}-${bet.winning}-${bet.user_multiplier}`
-        ).join('|');
-
         return bets.map(({ winning, player_nickname, amount, user_multiplier, player_photo }, index) => (
             <Player
                 key={`${player_nickname}-${index}`}
