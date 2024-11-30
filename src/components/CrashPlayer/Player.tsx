@@ -18,7 +18,13 @@ interface PlayerProps {
     photo?: number
 }
 
-const Player = ({ hideMultiplier, hideWon, hideBet, hideNickname, amount, nickname, multiplier, winning, photo, hideAvatar}: PlayerProps) => {
+const Player = ({
+                    amount,
+                    nickname,
+                    multiplier,
+                    winning,
+                    photo,
+                }: PlayerProps) => {
     // Форматирование денежных значений
     const formattedAmount = useMemo(() =>
             amount?.toFixed(0),
@@ -32,39 +38,33 @@ const Player = ({ hideMultiplier, hideWon, hideBet, hideNickname, amount, nickna
 
     return (
         <div className={clsx(styles.root)}>
-            {!hideAvatar && (
-                <Image
-                    src={`https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`}
-                    alt={nickname || 'Avatar'}
-                    width={170}
-                    height={170}
-                    className={styles.avatar}
-                />
-            )}
+            <Image
+                src={`https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`}
+                alt={'Avatar'}
+                width={170}
+                height={170}
+                className={styles.avatar}
+            />
 
-            {!hideNickname && (
-                <h4 className={styles.nickname}>
-                    {nickname}
-                </h4>
-            )}
 
-            {!hideBet && (
-                <h4 className={styles.bet}>
-                    {formattedAmount} ₽
-                </h4>
-            )}
+            <h4 className={styles.nickname}>
+                {nickname}
+            </h4>
 
-            {!hideMultiplier && (
-                <h4 className={styles.multiplier}>
-                    {multiplier}x
-                </h4>
-            )}
 
-            {!hideWon && (
-                <h4 className={styles.won}>
-                    {formattedWinning} ₽
-                </h4>
-            )}
+            <h4 className={styles.bet}>
+                {formattedAmount} ₽
+            </h4>
+
+
+            <h4 className={styles.multiplier}>
+                {multiplier}x
+            </h4>
+
+
+            <h4 className={styles.won}>
+                {formattedWinning} ₽
+            </h4>
         </div>
     );
 };
