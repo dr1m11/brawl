@@ -31,26 +31,43 @@ const Kostil = () => {
     const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[]>([])
     const [crashTimer, setCrashTimer] = useState<string>('')
     const [status, setStatus] = useState<TStatus>('Pending')
-    const dispatch = useAppDispatch()
-
-    const {socket} = useWebSocket()
+    const dispatch = useAppDispatch();
+    const { socket } = useWebSocket();
 
     const handleSocketMessage = useCallback((event: MessageEvent) => {
-        const data: ICrashSocket = JSON.parse(event.data)
+        const data: ICrashSocket = JSON.parse(event.data);
         const {
             game_id,
             multiplier,
             status,
             timer,
             users_bets
-        } = data
+        } = data;
 
-        setStatus(status)
-        dispatch(setGameId(game_id))
-        dispatch(setMultiplier(multiplier))
-        setCrashTimer(timer ?? '')
-        setCrashUsersBets(users_bets ?? []);
-    }, [])
+        // Используйте функцию обновления с prev state
+        setStatus(() => status);
+        dispatch(setGameId(game_id));
+        dispatch(setMultiplier(multiplier));
+
+        // Обновляйте только если есть изменения
+        setCrashTimer(prevTimer => timer ?? prevTimer);
+        setCrashUsersBets(prevBets => {
+            // Проверка на наличие новых ставок
+            if (!users_bets.length) {
+                return []
+            }
+
+            const newBets = users_bets?.filter(
+                newBet => !prevBets.some(
+                    prevBet => prevBet.player_nickname === newBet.player_nickname
+                )
+            ) || [];
+
+            return newBets.length > 0
+                ? [...prevBets, ...newBets]
+                : prevBets;
+        });
+    }, [dispatch]);
 
     useLayoutEffect(() => {
         const fetchInitialBets = async () => {
