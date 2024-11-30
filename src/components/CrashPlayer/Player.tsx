@@ -1,7 +1,6 @@
 import styles from './Player.module.css'
 import clsx from "clsx";
 import {memo, useMemo} from "react";
-import Image from 'next/image'
 
 // const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin', 'cyrillic']})
 
