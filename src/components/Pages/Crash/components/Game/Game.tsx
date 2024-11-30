@@ -7,12 +7,13 @@ import {useAppSelector} from "@/lib/hooks";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
 import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
 import { link } from './gameLink'
+import useResize from "@/hooks/useResize";
 
 const Game = () => {
 
     const status = useAppSelector(state => state.crashStatus.status)
 
-    const size = 1080
+    const size = useResize() ?? 0
 
     const screenWidth = useMemo(() => {
         if (size < 1060 && size > 990) {

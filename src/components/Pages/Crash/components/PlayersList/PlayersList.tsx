@@ -20,7 +20,7 @@ const PlayersList = ({bets}: IProps) => {
         >
             {bets?.map(({winning, player_nickname, amount, user_multiplier, player_photo}, index) => (
                 <Player
-                    key={`${player_nickname}-${index}-${amount}`}
+                    key={index}
                     nickname={player_nickname}
                     amount={amount}
                     winning={winning}
