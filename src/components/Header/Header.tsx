@@ -1,3 +1,4 @@
+'use client'
 import styles from './Header.module.css'
 import {Manrope} from "next/font/google";
 import clsx from "clsx";

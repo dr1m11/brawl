@@ -17,6 +17,8 @@ import axios from "axios";
 import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
+import BetMenu from "@/components/Pages/Crash/components/betMenu/betMenu";
+import BottomMenu from "@/components/Pages/Crash/components/bottomMenu/bottomMenu";
 
 type TStatus = 'Pending' | 'Running' | 'Crashed'
 
@@ -76,9 +78,9 @@ const Kostil = () => {
 
     return (
         <>
-            <div className={styles.info}>
-                {/*<button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>*/}
-            </div>
+            {/*<div className={styles.info}>*/}
+            {/*    /!*<button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>*!/*/}
+            {/*</div>*/}
             <div className={styles.game}>
                 <div className={styles.graph}>
                     <div className={'relative w-full h-full'}>
@@ -99,19 +101,7 @@ const Kostil = () => {
                     <Players crashUsersBets={crashUsersBets}/>
                 </div>
             </div>
-            <div className={styles.bottom_menu}>
-                <div className={styles.bet}>
-                    <BetCounter/>
-                    <BetTips/>
-                    <BetButton/>
-                </div>
-                <div className={styles.playersVisible}>
-                    <div className={styles.choose__filter}>
-                        <h5 className={styles.players__title}>Ставки</h5>
-                    </div>
-                    <Players crashUsersBets={crashUsersBets}/>
-                </div>
-            </div>
+            {/*<BottomMenu crashUsersBets={crashUsersBets}/>*/}
         </>
     );
 };
