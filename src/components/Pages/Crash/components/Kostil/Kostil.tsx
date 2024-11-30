@@ -2,9 +2,6 @@
 import styles from './Kostil.module.css'
 import Game from "../Game/Game";
 import History from "../History/History";
-import BetButton from "@/components/Pages/Crash/components/BetButton/BetButton";
-import BetTips from "@/components/Pages/Crash/components/BetTips/BetTips";
-import BetCounter from "@/components/Pages/Crash/components/BetCounter/BetCounter";
 import Players from "@/components/Pages/Crash/components/Players/Players";
 import {memo, useCallback, useLayoutEffect, useState} from "react";
 import {useWebSocket} from "@/app/crash/CrashProvider";
@@ -17,8 +14,6 @@ import axios from "axios";
 import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
-import BetMenu from "@/components/Pages/Crash/components/betMenu/betMenu";
-import BottomMenu from "@/components/Pages/Crash/components/bottomMenu/bottomMenu";
 
 type TStatus = 'Pending' | 'Running' | 'Crashed'
 
