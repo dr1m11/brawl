@@ -45,7 +45,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {width <= 900 && <Players/>}
+                    {/*{width <= 900 && <Players/>}*/}
                 </div>
             </div>
         </>
