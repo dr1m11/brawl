@@ -1,6 +1,7 @@
 import styles from './Player.module.css'
 import clsx from "clsx";
 import {memo, useMemo} from "react";
+import Image from "next/image";
 
 // const manrope = Manrope({weight: ['400', '500', '600'], subsets: ['latin', 'cyrillic']})
 
@@ -18,14 +19,6 @@ interface PlayerProps {
 }
 
 const Player = ({ hideMultiplier, hideWon, hideBet, hideNickname, amount, nickname, multiplier, winning, photo, hideAvatar}: PlayerProps) => {
-    // Мемоизация аватара
-    const avatarSrc = useMemo(() =>
-            photo
-                ? `https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`
-                : '/default-avatar.png',
-        [photo]
-    );
-
     // Форматирование денежных значений
     const formattedAmount = useMemo(() =>
             amount?.toFixed(0),
@@ -40,11 +33,11 @@ const Player = ({ hideMultiplier, hideWon, hideBet, hideNickname, amount, nickna
     return (
         <div className={clsx(styles.root)}>
             {!hideAvatar && (
-                <img
-                    src={avatarSrc}
+                <Image
+                    src={`https://raw.githubusercontent.com/tomikartemik/brawler_avatars/main/image_${photo}.jpg`}
                     alt={nickname || 'Avatar'}
-                    width={28}
-                    height={29}
+                    width={170}
+                    height={170}
                     className={styles.avatar}
                 />
             )}
