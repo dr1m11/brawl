@@ -1,5 +1,7 @@
-import styles from './PlayersList.module.css'
-import {memo, useMemo} from "react";
+import { memo } from "react";
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
+import styles from './PlayersList.module.css';
 import Player from "@/components/CrashPlayer/Player";
 
 interface Bet {
@@ -15,30 +17,44 @@ interface IProps {
 }
 
 const PlayersList = ({ bets }: IProps) => {
-    // Используйте useMemo с мемоизацией по длине и хешу массива
-    const playerList = useMemo(() => {
-        return bets.map(({ winning, player_nickname, amount, user_multiplier, player_photo }, index) => (
-            <Player
-                key={`${player_nickname}-${index}`}
-                nickname={player_nickname}
-                amount={amount}
-                winning={winning}
-                multiplier={user_multiplier}
-                photo={player_photo}
-            />
-        ));
-    }, [bets]);
+    // Компонент строки списка
+    // eslint-disable-next-line react/display-name
+    const PlayerRow = memo(({ index, style }: { index: number, style: React.CSSProperties }) => {
+        const bet = bets[index];
+        return (
+            <div style={style}>
+                <Player
+                    key={`${bet.player_nickname}-${index}`}
+                    nickname={bet.player_nickname}
+                    amount={bet.amount}
+                    winning={bet.winning}
+                    multiplier={bet.user_multiplier}
+                    photo={bet.player_photo}
+                />
+            </div>
+        );
+    });
 
     return (
         <div
             className={styles.players__list}
             style={{
-                transform: 'translate3d(0,0,0)',
-                willChange: 'transform',
-                contain: 'layout'  // Более эффективный, чем 'content'
+                height: '100%',
+                width: '100%'
             }}
         >
-            {playerList}
+            <AutoSizer>
+                {({ height, width }) => (
+                    <List
+                        height={height}
+                        itemCount={bets.length}
+                        itemSize={60} // Высота элемента, подставьте реальную высоту вашего элемента
+                        width={width}
+                    >
+                        {PlayerRow}
+                    </List>
+                )}
+            </AutoSizer>
         </div>
     );
 };

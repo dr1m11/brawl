@@ -2,6 +2,7 @@
 import styles from './Kostil.module.css'
 import Game from "../Game/Game";
 import History from "../History/History";
+import Players from "@/components/Pages/Crash/components/Players/Players";
 import {memo, useCallback, useLayoutEffect, useState} from "react";
 import {useWebSocket} from "@/app/crash/CrashProvider";
 import {setGameId} from "@/lib/crashSlice/crashGameIdSlice";
@@ -13,7 +14,6 @@ import axios from "axios";
 import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
-import Player from "@/components/CrashPlayer/Player";
 
 type TStatus = 'Pending' | 'Running' | 'Crashed'
 
@@ -110,31 +110,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    {/*<Players crashUsersBets={crashUsersBets}/>*/}
-                    <div
-                        className={styles.players__list}
-                        style={{
-                            transform: 'translate3d(0,0,0)',
-                            willChange: 'transform',
-                            contain: 'layout'  // Более эффективный, чем 'content'
-                        }}
-                    >
-                        {
-                            crashUsersBets.map(({ winning, player_nickname, amount, user_multiplier, player_photo }, index) => (
-                                <Player
-                                    key={`${player_nickname}-${index}`}
-                                    nickname={player_nickname}
-                                    amount={amount}
-                                    winning={winning}
-                                    multiplier={user_multiplier}
-                                    photo={player_photo}
-                                />
-                            ))
-                        }
-                    </div>
-                    <h5 className={styles.bets__count}>
-                        Всего {crashUsersBets.length} ставок
-                    </h5>
+                    <Players crashUsersBets={crashUsersBets}/>
                 </div>
             </div>
             {/*<BottomMenu crashUsersBets={crashUsersBets}/>*/}
