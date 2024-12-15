@@ -1,6 +1,6 @@
 'use client'
 import styles from "./Game.module.css";
-import {FC, memo, useEffect, useMemo, useRef} from "react";
+import {FC, useEffect, useMemo, useRef} from "react";
 import anime from 'animejs/lib/anime.es.js';
 import { link } from './gameLink'
 import useResize from "@/hooks/useResize";
@@ -169,4 +169,4 @@ const Game: FC<IProps> = ({status}) => {
     );
 };
 
-export default memo(Game);
+export default Game;

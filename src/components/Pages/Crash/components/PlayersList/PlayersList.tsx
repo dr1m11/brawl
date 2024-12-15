@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import styles from './PlayersList.module.css';
@@ -19,7 +18,7 @@ interface IProps {
 const PlayersList = ({ bets }: IProps) => {
     // Компонент строки списка
     // eslint-disable-next-line react/display-name
-    const PlayerRow = memo(({ index, style }: { index: number, style: React.CSSProperties }) => {
+    const PlayerRow = ({ index, style }: { index: number, style: React.CSSProperties }) => {
         const bet = bets[index];
         return (
             <div style={style}>
@@ -33,7 +32,7 @@ const PlayersList = ({ bets }: IProps) => {
                 />
             </div>
         );
-    });
+    }
 
     console.log('sdkhfg')
 
@@ -61,18 +60,4 @@ const PlayersList = ({ bets }: IProps) => {
     );
 };
 
-export default memo(PlayersList, (prevProps, nextProps) => {
-    // Быстрая проверка длины
-    if (prevProps.bets.length !== nextProps.bets.length) return false;
-
-    // Использование хеша для быстрого сравнения
-    const prevHash = prevProps.bets.map(bet =>
-        `${bet.player_nickname}-${bet.amount}-${bet.winning}-${bet.user_multiplier}`
-    ).join('|');
-
-    const nextHash = nextProps.bets.map(bet =>
-        `${bet.player_nickname}-${bet.amount}-${bet.winning}-${bet.user_multiplier}`
-    ).join('|');
-
-    return prevHash === nextHash;
-});
+export default PlayersList

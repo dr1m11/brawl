@@ -1,6 +1,6 @@
 'use client'
 import styles from '../Game/Game.module.css'
-import {FC, memo} from "react";
+import {FC} from "react";
 import clsx from "clsx";
 import localFont from "next/font/local";
 
@@ -34,4 +34,4 @@ const CrashTimer: FC<IProps> = ({timer}) => {
     );
 };
 
-export default memo(CrashTimer, (prevProps, nextProps) => (prevProps == nextProps));
+export default CrashTimer

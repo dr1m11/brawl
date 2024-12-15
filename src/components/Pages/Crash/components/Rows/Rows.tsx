@@ -1,5 +1,5 @@
 import styles from './Rows.module.css'
-import {memo} from "react";
+
 const Rows = () => {
     return (
         <div className={styles.rows}>
@@ -12,4 +12,4 @@ const Rows = () => {
     );
 };
 
-export default memo(Rows, () => true);
+export default Rows

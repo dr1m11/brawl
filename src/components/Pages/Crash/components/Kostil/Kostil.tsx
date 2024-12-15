@@ -3,7 +3,7 @@ import styles from './Kostil.module.css'
 import Game from "../Game/Game";
 import History from "../History/History";
 import Players from "@/components/Pages/Crash/components/Players/Players";
-import {memo, useCallback, useLayoutEffect, useState} from "react";
+import {useCallback, useLayoutEffect, useState} from "react";
 import {useWebSocket} from "@/app/crash/CrashProvider";
 import {setGameId} from "@/lib/crashSlice/crashGameIdSlice";
 import {setMultiplier} from "@/lib/crashSlice/crashMultiplierSlice";
@@ -118,5 +118,5 @@ const Kostil = () => {
     );
 };
 
-export default memo(Kostil);
+export default Kostil;
 

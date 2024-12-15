@@ -1,7 +1,7 @@
 'use client'
 import PlayersList from "@/components/Pages/Crash/components/PlayersList/PlayersList";
 import styles from '../Kostil/Kostil.module.css'
-import {FC, memo} from "react";
+import {FC} from "react";
 import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
 
 interface IProps{
@@ -23,7 +23,4 @@ const Players: FC<IProps> = ({crashUsersBets}) => {
     );
 };
 
-export default memo(Players, (prevProps, nextProps) => {
-    return prevProps.crashUsersBets.length === nextProps.crashUsersBets.length &&
-        prevProps.crashUsersBets[0]?.player_nickname === nextProps.crashUsersBets[0]?.player_nickname
-});
+export default Players
