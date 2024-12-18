@@ -1,7 +1,6 @@
 'use client'
 import styles from "@/components/Pages/Crash/components/Game/Game.module.css";
 import clsx from "clsx";
-import {useAppSelector} from "@/lib/hooks";
 import localFont from "next/font/local";
 import {FC, useMemo} from 'react';
 

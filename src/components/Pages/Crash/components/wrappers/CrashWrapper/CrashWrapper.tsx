@@ -4,6 +4,7 @@ import BG from "@/assets/static/Crash/BG.png";
 import {ReactNode} from "react";
 import {Manrope} from "next/font/google";
 import InfoModal from "../../../modals/info/infoModal";
+import Image from "next/image";
 
 const manrope = Manrope({subsets: ['latin', 'cyrillic'], weight: ['300', '400', '500']})
 
@@ -12,8 +13,8 @@ const CrashWrapper = ({children}: { children: ReactNode }) => {
     return (
         <>
             <div className={clsx(styles.root, manrope.className)}>
-                <img
-                    src={BG.src}
+                <Image
+                    src={BG}
                     alt={'Background'}
                     width={1435}
                     height={876}
