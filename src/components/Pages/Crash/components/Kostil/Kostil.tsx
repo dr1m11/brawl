@@ -3,21 +3,21 @@ import styles from './Kostil.module.css'
 import Game from "../Game/Game";
 import History from "../History/History";
 import Players from "@/components/Pages/Crash/components/Players/Players";
-import {useCallback, useLayoutEffect, useState} from "react";
-import {useWebSocket} from "@/app/crash/CrashProvider";
-import {setGameId} from "@/lib/crashSlice/crashGameIdSlice";
-import {setMultiplier} from "@/lib/crashSlice/crashMultiplierSlice";
+import {useEffect, useRef} from "react";
 import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
-import {useAppDispatch} from "@/lib/hooks";
-import {API_URL} from "@/constants";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {API_URL, SOCKET_API_URL} from "@/constants";
 import axios from "axios";
 import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/multiplier";
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
+import {axiosClassic} from "@/api/axios";
+import {setHistory, setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
+import {useQueryClient} from "@tanstack/react-query";
 
 type TStatus = 'Pending' | 'Running' | 'Crashed'
 
-interface ICrashSocket {
+interface CrashInterface {
     game_id: number
     multiplier: number
     status: TStatus
@@ -25,68 +25,97 @@ interface ICrashSocket {
     users_bets: TUsersBets[]
 }
 
+
 const Kostil = () => {
-    // const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch()
+
+    const ws = useRef<WebSocket>(null)
+
+    const {
+        socketEvent,
+        // user,
+        // bet,
+        usersBets
+    } = useAppSelector(state => state.crash)
+
+    useEffect(() => {
+        dispatch(setUser(localStorage.getItem('userId')))
+        axios.get(`${API_URL}/crash/init-bets-for-new-client`)
+            .then(data => dispatch(setUsersBets(data.data.bets)))
+    }, []);
+
+    const queryClient = useQueryClient()
+
+    useEffect(() => {
+        queryClient.invalidateQueries({
+            queryKey: ['user']
+        })
+        axiosClassic.get('/all-crash-records').then(data => dispatch(setHistory(data.data)))
+        if (socketEvent.status === "Pending") {
+            dispatch(setIsBetSet(false))
+        }
+    }, [socketEvent.status]);
+
+    useEffect(() => {
+        // Создание WebSocket соединения при монтировании компонента
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
+
+        ws.current.onopen = () => {
+            console.log('WebSocket открыто');
+        };
+
+        ws.current.onmessage = (event) => {
+            const data: CrashInterface = JSON.parse(event.data)
+            dispatch(setSocketEvent(data))
+        };
+
+        ws.current.onclose = () => {
+            console.log('WebSocket закрыто');
+        };
+
+        ws.current.onerror = (error) => {
+            console.error('Ошибка WebSocket:', error);
+        };
+
+        return () => {
+            if (ws.current) {
+                if ('close' in ws.current) {
+                    ws.current.close();
+                }
+            }
+        };
+    }, []);
+
+    // const sendBet = () => {
+    //     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+    //         ws.current.send(JSON.stringify({
+    //             "game_id": socketEvent.game_id,
+    //             "player_id": user,
+    //             "amount": bet
+    //         }))
+    //         dispatch(setIsBetSet(true))
+    //         queryClient.invalidateQueries({
+    //             queryKey: ['user']
+    //         })
+    //     } else {
+    //         console.error('WebSocket соединение не открыто');
+    //     }
+    // };
     //
-    const [crashUsersBets, setCrashUsersBets] = useState<TUsersBets[]>([])
-    const [crashTimer, setCrashTimer] = useState<string>('')
-    const [status, setStatus] = useState<TStatus>('Pending')
-    const dispatch = useAppDispatch();
-    const { socket } = useWebSocket();
-
-    const handleSocketMessage = useCallback((event: MessageEvent) => {
-        const data: ICrashSocket = JSON.parse(event.data);
-        const {
-            game_id,
-            multiplier,
-            status,
-            timer,
-            users_bets
-        } = data;
-
-        // Используйте функцию обновления с prev state
-        setStatus(() => status);
-        dispatch(setGameId(game_id));
-        dispatch(setMultiplier(multiplier));
-
-        // Обновляйте только если есть изменения
-        setCrashTimer(prevTimer => timer ?? prevTimer);
-        setCrashUsersBets(prevBets => {
-            // Проверка на наличие новых ставок
-            if (!users_bets.length) {
-                return []
-            }
-
-            const newBets = users_bets?.filter(
-                newBet => !prevBets.some(
-                    prevBet => prevBet.player_nickname === newBet.player_nickname
-                )
-            ) || [];
-
-            return newBets.length > 0
-                ? [...prevBets, ...newBets]
-                : prevBets;
-        });
-    }, [dispatch]);
-
-    useLayoutEffect(() => {
-        const fetchInitialBets = async () => {
-            try {
-                const {data} = await axios.get(`${API_URL}/crash/init-bets-for-new-client`)
-                setCrashUsersBets(data?.bets)
-            } catch (error) {
-                console.error('Failed to fetch initial bets:', error)
-            }
-        }
-
-        if (socket) {
-            socket.onopen = () => {
-                fetchInitialBets()
-            }
-
-            socket.onmessage = handleSocketMessage
-        }
-    }, [socket]);
+    // const withdrawBet = () => {
+    //     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+    //         ws.current.send(JSON.stringify({
+    //             "game_id": socketEvent.game_id,
+    //             "player_id": user,
+    //             "multiplier": socketEvent.multiplier
+    //         }))
+    //         dispatch(setIsBetSet(false))
+    //     } else {
+    //         console.error('WebSocket соединение не открыто');
+    //     }
+    // };
 
     return (
         <>
@@ -98,11 +127,11 @@ const Kostil = () => {
                     <div className={'relative w-full h-full'}>
                         <div className={styles.graph__game}>
                             {/*<GameBg/>*/}
-                            <CrashMultiplier/>
+                            <CrashMultiplier multiplier={socketEvent.multiplier} status={socketEvent.status}/>
                             <Rows/>
-                            <Game status={status}/>
+                            <Game status={socketEvent.status}/>
                         </div>
-                        {status === 'Pending' && <CrashTimer timer={crashTimer}/>}
+                        {socketEvent.status === 'Pending' && <CrashTimer timer={socketEvent.timer}/>}
                     </div>
                     <History/>
                 </div>
@@ -110,7 +139,7 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <Players crashUsersBets={crashUsersBets}/>
+                    <Players crashUsersBets={usersBets}/>
                 </div>
             </div>
             {/*<BottomMenu crashUsersBets={crashUsersBets}/>*/}

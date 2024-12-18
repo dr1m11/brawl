@@ -24,27 +24,26 @@ export interface PlayerInterface {
     winning: number
     user_multiplier: number
     player_photo: number
-    index?: number
+    index: number
 }
 
 interface CrashGameInterface {
     status: "Running" | "Crashed" | "Pending"
     multiplier: number
-    time_before_start: number
-    length: number
+    timer: number
     game_id: number
-    new_game_start_time?: Date
+    users_bets: PlayerInterface[]
 }
 
 const initialState: CrashInterface ={
     bet: 0,
     user: '',
     socketEvent: {
-        time_before_start: 5,
+        timer: 5,
         multiplier: 2,
         status: "Pending",
-        length: 0,
-        game_id: 0
+        game_id: 0,
+        users_bets: []
     },
     isBetSet: false,
     usersBets: [],

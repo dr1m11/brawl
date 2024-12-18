@@ -7,7 +7,7 @@ import localFont from "next/font/local";
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 interface IProps {
-    timer: string
+    timer: number
 }
 
 const CrashTimer: FC<IProps> = ({timer}) => {
@@ -28,7 +28,7 @@ const CrashTimer: FC<IProps> = ({timer}) => {
                     contain: 'content'
                 }}
             >
-                {timer}
+                {timer.toFixed(1)}
             </h1>
         </div>
     );

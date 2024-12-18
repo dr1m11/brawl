@@ -3,9 +3,9 @@ import {WebSocketProvider} from "@/app/crash/CrashProvider";
 
 const CrashPage = () => {
     return (
-        <WebSocketProvider>
+        // <WebSocketProvider>
             <Crash/>
-        </WebSocketProvider>
+        // </WebSocketProvider>
     );
 };
 

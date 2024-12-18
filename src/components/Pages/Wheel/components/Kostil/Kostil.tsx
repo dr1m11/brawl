@@ -107,7 +107,6 @@ const Kostil = () => {
 
     return (
         <>
-
             <div className={styles.game}>
                 <div className={styles.game__label}>
                     <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?

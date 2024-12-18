@@ -3,13 +3,16 @@ import styles from "@/components/Pages/Crash/components/Game/Game.module.css";
 import clsx from "clsx";
 import {useAppSelector} from "@/lib/hooks";
 import localFont from "next/font/local";
-import {useMemo} from 'react';
+import {FC, useMemo} from 'react';
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-export const CrashMultiplier = () => {
-    const multiplier = useAppSelector(state => state.crashMultiplier.multiplier)
-    const status = useAppSelector(state => state.crashStatus.status)
+interface IProps {
+    multiplier: number
+    status: 'Pending' | 'Running' | 'Crashed'
+}
+
+export const CrashMultiplier: FC<IProps> = ({multiplier, status}) => {
 
     const formattedMultiplier = useMemo(() => {
         return multiplier?.toFixed(2);
