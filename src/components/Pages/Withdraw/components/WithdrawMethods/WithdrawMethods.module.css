@@ -10,7 +10,7 @@
 .payment__methods {
     @apply
     grid
-    grid-cols-4
+    grid-cols-1
     w-full
     h-full
     max-h-[80px]
@@ -25,4 +25,18 @@
     gap-x-2
     max-h-[170px]
     mt-2
+    relative
+}
+
+.alert {
+    @apply
+    absolute
+    left-0
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    w-fit
+    h-fit
+    text-main
 }

@@ -9,11 +9,27 @@
     flex
     relative
     mb-28
+    gap-4
 }
 
-/*@media screen and (max-width: 690px){*/
-/*    .content {*/
-/*        @apply*/
-/*        h-[450px]*/
-/*    }*/
-/*}*/
+@media screen and (max-width: 782px){
+    .content {
+        @apply
+        h-[750px]
+        flex-col
+    }
+}
+
+@media screen and (max-width: 487px){
+    .content {
+        @apply
+        h-[770px]
+    }
+}
+
+@media screen and (max-width: 417px){
+    .content {
+        @apply
+        h-[790px]
+    }
+}

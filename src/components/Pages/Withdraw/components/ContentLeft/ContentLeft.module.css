@@ -46,3 +46,41 @@
     text-white-OP60
     text-[13px]
 }
+
+@media screen and (max-width: 788px){
+    .content__bottom {
+        bottom: -60px
+    }
+}
+
+@media screen and (max-width: 782px){
+    .content__bottom {
+        @apply
+        hidden
+    }
+
+    .annotation {
+        @apply
+        max-w-full
+        text-justify
+    }
+
+    .content__left {
+        @apply
+        max-h-[340px]
+    }
+}
+
+@media screen and (max-width: 487px){
+    .content__left {
+        @apply
+        max-h-[360px]
+    }
+}
+
+@media screen and (max-width: 410px){
+    .content__left {
+        @apply
+        max-h-[380px]
+    }
+}
