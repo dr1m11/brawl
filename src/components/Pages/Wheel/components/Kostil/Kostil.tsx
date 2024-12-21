@@ -37,7 +37,7 @@ const Kostil = () => {
         dispatch(setUser(localStorage.getItem('userId')))
         axios.get(`${API_URL}/roulette/init-bets-for-new-client`)
             .then(data => dispatch(setUserBets(data.data)))
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         if (socketEvent.status === "Pending") {
@@ -46,7 +46,7 @@ const Kostil = () => {
         axiosClassic.get('/all-roulette-records').then(data => {
             dispatch(setHistory(data.data))
         })
-    }, [dispatch, socketEvent.status]);
+    }, [socketEvent.status]);
 
     useEffect(() => {
         // Создание WebSocket соединения при монтировании компонента
@@ -84,7 +84,7 @@ const Kostil = () => {
                 ws.current.close();
             }
         };
-    }, [dispatch]);
+    }, []);
 
     const sendBet = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

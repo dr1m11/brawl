@@ -28,6 +28,7 @@ interface UserBetsInterface {
 export interface BetInterface {
     amount: number
     player_nickname: string
+    image: number
 }
 
 interface WheelGameInterface {

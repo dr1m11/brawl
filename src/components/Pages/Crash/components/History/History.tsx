@@ -3,6 +3,7 @@ import styles from './History.module.css'
 import localFont from "next/font/local";
 import clsx from "clsx";
 import {useAppSelector} from "@/lib/hooks";
+import {memo} from "react";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
@@ -41,4 +42,4 @@ const History = () => {
     );
 };
 
-export default History;
+export default memo(History);

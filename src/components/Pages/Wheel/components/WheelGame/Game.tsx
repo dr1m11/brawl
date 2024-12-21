@@ -171,7 +171,7 @@ const Game = ({cell, pending}: GameInterface) => {
         } else {
             play()
         }
-    }, [pending, cell, rotate, play]);
+    }, [pending]);
 
     useEffect(() => {
         if (!!cell) {

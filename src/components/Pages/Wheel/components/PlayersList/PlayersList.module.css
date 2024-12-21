@@ -2,7 +2,7 @@
     @apply
     space-y-1
     overflow-y-auto
-    max-h-full
+    max-h-[370px]
 }
 
 .players::-webkit-scrollbar {

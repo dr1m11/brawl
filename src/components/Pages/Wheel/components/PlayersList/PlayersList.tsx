@@ -7,7 +7,7 @@ const PlayersList = ({users}: {users: BetInterface[]}) => {
             {
                 users &&
                 users.map((value, index) => (
-                    <Player key={index} hideMultiplier hideWon nickname={value.player_nickname} amount={value.amount}/>
+                    <Player key={index} nickname={value.player_nickname} amount={value.amount} photo={value.image} variant={'wheel'}/>
                 ))
             }
         </div>

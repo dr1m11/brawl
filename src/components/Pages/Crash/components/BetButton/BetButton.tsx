@@ -2,52 +2,37 @@
 import styles from "./BetButton.module.css";
 import localFont from "next/font/local";
 import { useAppSelector} from "@/lib/hooks";
-import {useMemo} from "react";
+import {FC, useMemo} from "react";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
-
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
-const BetButton = () => {
+interface IProps {
+    sendBet: (gameId: number, user: string, bet: number) => void
+    withdrawBet: (gameId: number, user: string, multiplier: number) => void
+}
+
+const BetButton: FC<IProps> = ({sendBet, withdrawBet}) => {
     const {bet, isBetSet, socketEvent, usersBets} = useAppSelector(state => state.crash)
     const {id, balance} = useAppSelector(state => state.user)
     const isUserBet = useMemo(() => {
         return usersBets && usersBets.find(item => item.player_id === id)
     }, [id, usersBets])
 
-    // const {sendMessage} = useWebsocket(`${SOCKET_API_URL}/crash`, {
-    //     share: true
-    // })
-    //
-    // const dispatch = useAppDispatch()
-    //
-    // const queryClient = useQueryClient()
+    const onSend = () => {
+        sendBet(socketEvent.game_id, id, bet)
+        console.log(socketEvent.game_id)
+    }
 
-    const sendBet = () => {
-        // sendMessage(JSON.stringify({
-        //     "game_id": socketEvent.game_id,
-        //     "player_id": id,
-        //     "amount": bet
-        // }))
-        // dispatch(setIsBetSet(true))
-        // queryClient.invalidateQueries({
-        //     queryKey: ['user']
-        // })
-    };
+    const onWithdraw = () => {
+        withdrawBet(socketEvent.game_id, id, socketEvent.multiplier)
+    }
 
-    const withdrawBet = () => {
-        // sendMessage(JSON.stringify({
-        //     "game_id": socketEvent.game_id,
-        //     "player_id": id,
-        //     "multiplier": socketEvent.multiplier
-        // }))
-        // dispatch(setIsBetSet(false))
-    };
 
     return (
         <button
             className={!isBetSet ? styles.bet__btn : styles.withdraw}
-            onClick={!isBetSet ? sendBet : withdrawBet}
+            onClick={!isBetSet ? onSend : onWithdraw}
             disabled={(!(socketEvent.status === "Pending") && !isBetSet) || !(+(balance ?? 0)) || (+(balance ?? 0) < +bet)}
             style={{
                 background: (isUserBet && !isBetSet) ? "green" : undefined,

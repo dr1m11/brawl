@@ -3,7 +3,7 @@ import styles from './Kostil.module.css'
 import Game from "../Game/Game";
 import History from "../History/History";
 import Players from "@/components/Pages/Crash/components/Players/Players";
-import {useEffect, useRef} from "react";
+import {useCallback, useEffect, useRef} from "react";
 import {TUsersBets} from "@/lib/crashSlice/crashUserBets";
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {API_URL, SOCKET_API_URL} from "@/constants";
@@ -12,8 +12,16 @@ import {CrashMultiplier} from "@/components/Pages/Crash/components/multiplier/mu
 import Rows from "@/components/Pages/Crash/components/Rows/Rows";
 import CrashTimer from "@/components/Pages/Crash/components/timer/timer";
 import {axiosClassic} from "@/api/axios";
-import {setHistory, setIsBetSet, setSocketEvent, setUser, setUsersBets} from "@/lib/crashSlice/crashSlice";
+import {
+    setHistory,
+    setIsBetSet,
+    setIsModalOpen,
+    setSocketEvent,
+    setUser,
+    setUsersBets
+} from "@/lib/crashSlice/crashSlice";
 import {useQueryClient} from "@tanstack/react-query";
+import BottomMenu from "@/components/Pages/Crash/components/bottomMenu/bottomMenu";
 
 type TStatus = 'Pending' | 'Running' | 'Crashed'
 
@@ -33,9 +41,7 @@ const Kostil = () => {
 
     const {
         socketEvent,
-        // user,
-        // bet,
-        usersBets
+        usersBets,
     } = useAppSelector(state => state.crash)
 
     useEffect(() => {
@@ -57,7 +63,6 @@ const Kostil = () => {
     }, [socketEvent.status]);
 
     useEffect(() => {
-        // Создание WebSocket соединения при монтировании компонента
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
@@ -88,40 +93,40 @@ const Kostil = () => {
         };
     }, []);
 
-    // const sendBet = () => {
-    //     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
-    //         ws.current.send(JSON.stringify({
-    //             "game_id": socketEvent.game_id,
-    //             "player_id": user,
-    //             "amount": bet
-    //         }))
-    //         dispatch(setIsBetSet(true))
-    //         queryClient.invalidateQueries({
-    //             queryKey: ['user']
-    //         })
-    //     } else {
-    //         console.error('WebSocket соединение не открыто');
-    //     }
-    // };
-    //
-    // const withdrawBet = () => {
-    //     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
-    //         ws.current.send(JSON.stringify({
-    //             "game_id": socketEvent.game_id,
-    //             "player_id": user,
-    //             "multiplier": socketEvent.multiplier
-    //         }))
-    //         dispatch(setIsBetSet(false))
-    //     } else {
-    //         console.error('WebSocket соединение не открыто');
-    //     }
-    // };
+    const sendBet = useCallback((gameId: number, user: string, bet: number) => {
+        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            ws.current.send(JSON.stringify({
+                "game_id": gameId,
+                "player_id": user,
+                "amount": bet
+            }))
+            dispatch(setIsBetSet(true))
+            queryClient.invalidateQueries({
+                queryKey: ['user']
+            })
+        } else {
+            console.error('WebSocket соединение не открыто');
+        }
+    }, [dispatch, queryClient, socketEvent.game_id]);
+
+    const withdrawBet = useCallback((gameId: number, user: string, multiplier: number) => {
+        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            ws.current.send(JSON.stringify({
+                "game_id": gameId,
+                "player_id": user,
+                "multiplier": multiplier
+            }))
+            dispatch(setIsBetSet(false))
+        } else {
+            console.error('WebSocket соединение не открыто');
+        }
+    }, [dispatch])
 
     return (
         <>
-            {/*<div className={styles.info}>*/}
-            {/*    /!*<button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>*!/*/}
-            {/*</div>*/}
+            <div className={styles.info}>
+                <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?</button>
+            </div>
             <div className={styles.game}>
                 <div className={styles.graph}>
                     <div className={'relative w-full h-full'}>
@@ -142,7 +147,7 @@ const Kostil = () => {
                     <Players crashUsersBets={usersBets}/>
                 </div>
             </div>
-            {/*<BottomMenu crashUsersBets={crashUsersBets}/>*/}
+            <BottomMenu crashUsersBets={usersBets} sendBet={sendBet} withdrawBet={withdrawBet}/>
         </>
     );
 };
