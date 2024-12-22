@@ -41,7 +41,6 @@ const Kostil = () => {
 
     const {
         socketEvent,
-        usersBets,
     } = useAppSelector(state => state.crash)
 
     useEffect(() => {
@@ -144,10 +143,10 @@ const Kostil = () => {
                     <div className={styles.choose__filter}>
                         <h5 className={styles.players__title}>Ставки</h5>
                     </div>
-                    <Players crashUsersBets={usersBets}/>
+                    <Players crashUsersBets={socketEvent.users_bets}/>
                 </div>
             </div>
-            <BottomMenu crashUsersBets={usersBets} sendBet={sendBet} withdrawBet={withdrawBet}/>
+            <BottomMenu crashUsersBets={socketEvent.users_bets} sendBet={sendBet} withdrawBet={withdrawBet}/>
         </>
     );
 };

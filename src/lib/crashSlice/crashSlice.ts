@@ -73,7 +73,7 @@ export const crashSlice = createSlice({
             state.isBetSet = payload
         },
         setUsersBets: (state, {payload}) => {
-            state.usersBets = payload
+            state.socketEvent.users_bets = payload
         },
         setIsAutoBet: (state, {payload}) => {
             state.isAutoBet = payload
