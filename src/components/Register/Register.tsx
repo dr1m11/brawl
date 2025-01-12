@@ -1,7 +1,7 @@
 'use client'
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import * as z from "zod";
-import { RegisterSchema} from "@/schemas";
+import {RegisterSchema} from "@/schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import styles from "./Register.module.css";
 import clsx from "clsx";
@@ -12,6 +12,7 @@ import {authService} from "@/services/auth/auth.service";
 import {useState} from "react";
 import {errorAdapter} from "@/utils/errorAdapter";
 import {BiError} from "react-icons/bi";
+import {FaRegEye, FaRegEyeSlash} from "react-icons/fa6";
 
 const daysOne = localFont({src: '../../Fonts/DaysOne-Regular.ttf'});
 
@@ -22,9 +23,10 @@ interface RegisterInterface {
 const Register = ({toLogin}: RegisterInterface) => {
     const [success, setSuccess] = useState<boolean>(false)
     const [time, setTime] = useState(3)
+    const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(true)
 
 
-    const { mutate: mutateRegister, isPending } = useMutation({
+    const {mutate: mutateRegister, isPending} = useMutation({
         mutationKey: ['signUp'],
         mutationFn: (data: ISignUpData) => authService.signUp(data),
         onSuccess() {
@@ -65,19 +67,34 @@ const Register = ({toLogin}: RegisterInterface) => {
         <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
             <div className={styles.form__info}>
                 <Controller render={({field}) => (
-                    <input {...field} placeholder={"Имя пользователя"} className={styles.input}/>
+                    <input {...field} maxLength={20} placeholder={"Имя пользователя"} className={styles.input}/>
                 )} name={'username'} control={form.control} disabled={isPending}/>
                 <Controller render={({field}) => (
                     <input {...field} placeholder={"E-mail"} type={"email"} className={styles.input}/>
                 )} name={'email'} control={form.control} disabled={isPending}/>
                 <Controller render={({field}) => (
-                    <input {...field} placeholder={"Пароль"} type={"password"} className={styles.input}/>
+                    <div className={clsx(styles.input, 'flex items-center gap-2')}>
+                        <input {...field} style={{padding: 0}} placeholder={"Пароль"}
+                               type={isPasswordHidden ? 'password' : 'text'} className={styles.input}
+                               maxLength={20}/>
+                        {
+                            field.value ?
+                                isPasswordHidden ?
+                                    <FaRegEye style={{cursor: 'pointer'}} onClick={() => setIsPasswordHidden(false)}/>
+                                    :
+                                    <FaRegEyeSlash style={{cursor: 'pointer'}}
+                                                   onClick={() => setIsPasswordHidden(true)}/>
+                                :
+                                ''
+
+                        }
+                    </div>
                 )} name={'password'} control={form.control} disabled={isPending}/>
                 {errorAdapter(form.formState.errors) &&
                     Object.entries(form.formState.touchedFields).length &&
                     <div className={styles.error}><BiError className={styles.error__icon}/>
-                         {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
-                         {/*@ts-expect-error*/}
+                        {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+                        {/*@ts-expect-error*/}
                         <span className={styles.error__message}>{errorAdapter(form.formState.errors)[0]}</span>
                     </div>}
                 {

@@ -12,14 +12,17 @@ const BetCounter = () => {
 
     const bet = useAppSelector(state => state.crash.bet)
 
+
     return (
         <div className={styles.range}>
             <Range
-                step={(balance ?? 0) / 1000}
-                max={(balance ?? 0)}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
+                step={+balance / 1000}
+                max={balance || 0}
                 value={bet}
-                min={0}
-                onChange={(e) => dispatch(setBet(+(e.target.value.replace(/[^\d]/g,''))))}
+                min={'0'}
+                onChange={(event) => dispatch(setBet(event.target.value))}
             />
         </div>
     );

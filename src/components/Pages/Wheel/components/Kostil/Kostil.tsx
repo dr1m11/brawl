@@ -22,16 +22,19 @@ import axios from "axios";
 import {API_URL, SOCKET_API_URL} from "@/constants";
 import {axiosClassic} from "@/api/axios";
 import PriceIcon from "@/components/PriceIcon/PriceIcon";
+import {useQueryClient} from "@tanstack/react-query";
 
 const daysOne = localFont({src: '../../../../../Fonts/DaysOne-Regular.ttf'});
 
 const Kostil = () => {
 
-    const ws = useRef(null)
+    const ws = useRef<WebSocket>(null)
 
     const {user, bet, socketEvent, userCell} = useAppSelector(state => state.wheel)
     const main_amount = useAppSelector(state => state.wheel.userBets.main_amount)
     const dispatch = useAppDispatch()
+
+    const queryClient = useQueryClient()
 
     useEffect(() => {
         dispatch(setUser(localStorage.getItem('userId')))
@@ -42,6 +45,9 @@ const Kostil = () => {
     useEffect(() => {
         if (socketEvent.status === "Pending") {
             dispatch(setIsBetSet(false))
+            queryClient.invalidateQueries({
+                queryKey: ['user']
+            })
         }
         axiosClassic.get('/all-roulette-records').then(data => {
             dispatch(setHistory(data.data))
@@ -49,49 +55,92 @@ const Kostil = () => {
     }, [socketEvent.status]);
 
     useEffect(() => {
-        // Создание WebSocket соединения при монтировании компонента
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        ws.current = new WebSocket(`${SOCKET_API_URL}/roulette`);
+        let reconnectAttempts = 0;
+        const MAX_RECONNECT_ATTEMPTS = 5;
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        ws.current.onmessage = (event) => {
-            const data = JSON.parse(event.data)
-            if (data.main_amount === 0 || data.main_amount) {
-                dispatch(setUserBets(data))
-            } else {
-                dispatch(setSocketEvent(data))
+        const connectWebSocket = () => {
+            // Закрываем предыдущее соединение
+            if (ws.current) {
+                ws.current.close();
             }
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            ws.current = new WebSocket(`${SOCKET_API_URL}/roulette`);
+
+            ws.current.onopen = () => {
+                console.log('WebSocket Roulette открыто');
+                reconnectAttempts = 0; // Сбрасываем счетчик при успешном подключении
+            };
+
+            ws.current.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.main_amount === 0 || data.main_amount) {
+                        dispatch(setUserBets(data));
+                    } else {
+                        dispatch(setSocketEvent(data));
+                    }
+                } catch (error) {
+                    console.error('Ошибка парсинга данных:', error);
+                }
+            };
+
+            ws.current.onclose = (event) => {
+                console.log('WebSocket Roulette закрыто', {
+                    code: event.code,
+                    reason: event.reason,
+                    wasClean: event.wasClean
+                });
+
+                // Экспоненциальный backoff для реконнекта
+                if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                    const timeout = Math.pow(2, reconnectAttempts) * 1000;
+
+                    setTimeout(() => {
+                        reconnectAttempts++;
+                        connectWebSocket();
+                    }, timeout);
+                } else {
+                    console.error('Превышено максимальное количество попыток переподключения для Roulette');
+                }
+            };
+
+            ws.current.onerror = (error) => {
+                console.error('Ошибка WebSocket Roulette:', error);
+            };
         };
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        ws.current.onclose = () => {
-            console.log('WebSocket закрыто');
+        // Добавляем механизм проверки живости соединения
+        let pingInterval: NodeJS.Timeout;
+
+        const startPingInterval = () => {
+            pingInterval = setInterval(() => {
+                if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+                    // Отправка ping-сообщения, если это требуется вашим бэкендом
+                    // ws.current.send(JSON.stringify({ type: 'ping' }));
+                }
+            }, 30000); // Ping каждые 30 секунд
         };
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        ws.current.onerror = (error) => {
-            console.error('Ошибка WebSocket:', error);
-        };
+        connectWebSocket();
+        startPingInterval();
 
         return () => {
+            // Очищаем интервал
+            if (pingInterval) {
+                clearInterval(pingInterval);
+            }
+
+            // Закрываем соединение
             if (ws.current) {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-expect-error
                 ws.current.close();
             }
         };
     }, []);
 
     const sendBet = () => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         if (ws.current && ws.current.readyState === WebSocket.OPEN) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
             ws.current.send(JSON.stringify({
                 "game_id": socketEvent.game_id,
                 "player_id": user,
@@ -99,6 +148,9 @@ const Kostil = () => {
                 "cell": userCell
             }))
             dispatch(setIsBetSet(true))
+            queryClient.invalidateQueries({
+                queryKey: ['user']
+            })
         } else {
             console.error('WebSocket соединение не открыто');
         }
@@ -108,9 +160,9 @@ const Kostil = () => {
     return (
         <>
             <div className={styles.game}>
+                <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?
+                </button>
                 <div className={styles.game__label}>
-                    <button className={styles.infoBtn} onClick={() => dispatch(setIsModalOpen(true))}>Как играть?
-                    </button>
                     <h1 className={clsx(styles.heading, daysOne.className)}>{main_amount} <PriceIcon width={30}
                                                                                                      height={30}/></h1>
                     <span className={styles.heading__label}>в этом раунде</span>

@@ -90,12 +90,12 @@
 @media screen and (max-width: 480px){
     .root {
         @apply
-        h-[2430px]
+        h-[2330px]
     }
 
     .wrapper {
         @apply
-        max-h-[2230px]
+        max-h-[2130px]
     }
 }
 

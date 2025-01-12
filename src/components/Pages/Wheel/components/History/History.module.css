@@ -30,7 +30,7 @@
 @media screen and (max-width: 545px){
     .history {
         @apply
-        mt-[150px]
+        mt-[180px]
     }
 
     .history:last-child {

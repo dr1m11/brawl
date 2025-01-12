@@ -62,32 +62,63 @@ const Kostil = () => {
     }, [socketEvent.status]);
 
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
+        let reconnectAttempts = 0;
+        const MAX_RECONNECT_ATTEMPTS = 5;
 
-        ws.current.onopen = () => {
-            console.log('WebSocket открыто');
+        const connectWebSocket = () => {
+            // Закрываем предыдущее соединение
+            if (ws.current) {
+                ws.current.close();
+            }
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            ws.current = new WebSocket(`${SOCKET_API_URL}/crash`);
+
+            ws.current.onopen = () => {
+                console.log('WebSocket открыто');
+                reconnectAttempts = 0; // Сбрасываем счетчик при успешном подключении
+            };
+
+            ws.current.onmessage = (event) => {
+                try {
+                    const data: CrashInterface = JSON.parse(event.data);
+                    dispatch(setSocketEvent(data));
+                } catch (error) {
+                    console.error('Ошибка парсинга:', error);
+                }
+            };
+
+            ws.current.onclose = (event) => {
+                console.log('WebSocket закрыто', {
+                    code: event.code,
+                    reason: event.reason,
+                    wasClean: event.wasClean
+                });
+
+                // Экспоненциальныйbackoff для реконнекта
+                if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                    const timeout = Math.pow(2, reconnectAttempts) * 1000;
+
+                    setTimeout(() => {
+                        reconnectAttempts++;
+                        connectWebSocket();
+                    }, timeout);
+                } else {
+                    console.error('Превышено максимальное количество попыток переподключения');
+                }
+            };
+
+            ws.current.onerror = (error) => {
+                console.error('Ошибка WebSocket:', error);
+            };
         };
 
-        ws.current.onmessage = (event) => {
-            const data: CrashInterface = JSON.parse(event.data)
-            dispatch(setSocketEvent(data))
-        };
-
-        ws.current.onclose = () => {
-            console.log('WebSocket закрыто');
-        };
-
-        ws.current.onerror = (error) => {
-            console.error('Ошибка WebSocket:', error);
-        };
+        connectWebSocket();
 
         return () => {
             if (ws.current) {
-                if ('close' in ws.current) {
-                    ws.current.close();
-                }
+                ws.current.close();
             }
         };
     }, []);

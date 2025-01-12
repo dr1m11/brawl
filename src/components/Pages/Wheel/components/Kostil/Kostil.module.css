@@ -10,6 +10,8 @@
     absolute
     left-0
     h-[40px]
+    mt-8
+    ml-12
 }
 
 .game {
@@ -86,6 +88,14 @@
     }
 }
 
+@media screen and (max-width: 645px) {
+    .infoBtn {
+        @apply
+        -mt-20
+        ml-0
+    }
+}
+
 @media screen and (max-width: 545px) {
     .game__menu {
         @apply
@@ -113,6 +123,11 @@
         left-0
         -bottom-[1400px]
     }
+
+    .infoBtn {
+        @apply
+        mt-0
+    }
 }
 
 @media screen and (max-width: 545px) {
@@ -120,5 +135,15 @@
         @apply
         -bottom-[2000px]
         h-[2200px]
+    }
+
+    .game {
+        @apply
+        -mt-20
+    }
+
+    .game__label {
+        @apply
+        mt-20
     }
 }

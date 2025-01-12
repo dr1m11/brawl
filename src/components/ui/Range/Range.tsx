@@ -6,7 +6,7 @@ interface IRangeProps {
     step: number
     max: number
     value: number
-    min: number
+    min: number | string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
