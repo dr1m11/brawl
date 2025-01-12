@@ -15,7 +15,7 @@ const Players: FC<IProps> = ({crashUsersBets}) => {
 
     return (
         <>
-            <PlayersList bets={crashUsersBets}/>
+            <PlayersList bets={crashUsersBets ?? []}/>
             <h5 className={styles.bets__count}>
                 Всего {crashUsersBets?.length} ставок
             </h5>
