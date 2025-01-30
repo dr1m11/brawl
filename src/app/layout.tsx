@@ -39,7 +39,7 @@ export default function RootLayout({
                     <main>
                         {children}
                         <AuthWrapper/>
-                        <Toaster />
+                        <Toaster/>
                     </main>
                     <Footer/>
                     <BottomMenu/>
