@@ -36,7 +36,8 @@
 .withdraw {
     /*background: linear-gradient(180.00deg, rgb(238, 130, 46) 75%,rgb(255, 184, 0) 96.429%);*/
     @apply
-    w-[230px]
+    w-full
+    max-w-[300px]
     h-full
     border-[10px]
     rounded-xl
@@ -51,6 +52,8 @@
     flex
     justify-around
     items-center
+    disabled:opacity-70
+    disabled:cursor-not-allowed
 }
 
 .bet__btn__label {

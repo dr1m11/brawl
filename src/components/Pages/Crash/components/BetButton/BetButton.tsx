@@ -21,19 +21,22 @@ const BetButton: FC<IProps> = ({sendBet, withdrawBet}) => {
 
     const onSend = () => {
         sendBet(socketEvent.game_id, id, bet)
-        console.log(socketEvent.game_id)
     }
 
     const onWithdraw = () => {
         withdrawBet(socketEvent.game_id, id, socketEvent.multiplier)
     }
 
+    const isButtonDisabled = (!(socketEvent.status === "Pending") && !isBetSet)
+        || !(+(balance ?? 0))
+        || (+(balance ?? 0) < +bet)
+        || (isBetSet && socketEvent.status === 'Pending')
 
     return (
         <button
             className={!isBetSet ? styles.bet__btn : styles.withdraw}
             onClick={!isBetSet ? onSend : onWithdraw}
-            disabled={(!(socketEvent.status === "Pending") && !isBetSet) || !(+(balance ?? 0)) || (+(balance ?? 0) < +bet)}
+            disabled={isButtonDisabled}
             style={{
                 background: (isUserBet && !isBetSet) ? "green" : undefined,
                 borderColor: (isUserBet && !isBetSet) ? "green" : undefined

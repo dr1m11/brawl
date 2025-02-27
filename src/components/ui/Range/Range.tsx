@@ -8,9 +8,10 @@ interface IRangeProps {
     value: number
     min: number | string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    disabled?: boolean;
 }
 
-const Range = ({step, min, value, max, onChange}: IRangeProps) => {
+const Range = ({step, min, value, max, onChange, disabled}: IRangeProps) => {
     return (
         <div className={styles.range__container}>
             <input
@@ -21,6 +22,7 @@ const Range = ({step, min, value, max, onChange}: IRangeProps) => {
                 value={value}
                 onChange={onChange}
                 className={styles.range}
+                disabled={disabled}
             />
         </div>
     );
