@@ -86,3 +86,12 @@
         blur-[150px]
     }
 }
+
+@media screen and (max-width: 420px){
+    .shadow__left, .shadow__right {
+        @apply
+        w-[150px]
+        h-[150px]
+        blur-[50px]
+    }
+}
