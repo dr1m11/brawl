@@ -16,7 +16,7 @@
     w-full
     max-w-[400px]
     h-full
-    max-h-[400px]
+    max-h-[420px]
     bg-brawl-purple-header
     rounded-2xl
     px-8
@@ -43,7 +43,7 @@
 
 .list {
     @apply
-    list-disc
+    list-decimal
     text-main
     flex
     flex-col

@@ -22,19 +22,17 @@ const InfoModal = () => {
 
     if (!isOpen) return
 
-
     return (
         <div className={clsx(styles.root, manrope.className)} onClick={handleClose}>
             <div className={styles.wrapper} onClick={event => event.stopPropagation()}>
                 <div className={styles.content}>
                     <h2 className={styles.heading}>Как играть?</h2>
-                    <ul className={styles.list}>
-                        <li>Ваша задача в этой игре - успеть вывести деньги до того, как Эль Примо улетит</li>
-                        <li>С помощью ползунка или же кнопок-подсказок выставьте количество монет, что хотите
-                            поставить
-                        </li>
-                        <li>Выведите монеты до того, как улетит Эль Примо с помощью кнопки «Вывод»</li>
-                    </ul>
+                    <ol className={styles.list}>
+                        <li>Укажи количество монет, которое хочешь поставить.</li>
+                        <li>Сделай ставку перед стартом.</li>
+                        <li>Наблюдай, как Эль Примо летит вверх, а коэффициент увеличивается!</li>
+                        <li>Забери выигрыш в любой момент – чем выше, тем больше!</li>
+                    </ol>
                 </div>
                 {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                 {/*@ts-expect-error*/}
