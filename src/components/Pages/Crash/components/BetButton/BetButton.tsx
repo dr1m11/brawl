@@ -44,7 +44,11 @@ const BetButton: FC<IProps> = ({sendBet, withdrawBet}) => {
         >
             <h5 className={daysOne.className}>{!isBetSet ? "СТАВКА" : "ВЫВОД"}</h5>
             <span
-                className={styles.bet__btn__label}>{(isBetSet && socketEvent.status === "Running") ? (bet * socketEvent.multiplier).toFixed(0) : bet}
+                className={styles.bet__btn__label}>
+                {(isBetSet && socketEvent.status === "Running") ?
+                    (bet * socketEvent.multiplier).toFixed(0)
+                    : bet.toFixed(0)
+                }
                 <PriceIcon/></span>
         </button>
     );

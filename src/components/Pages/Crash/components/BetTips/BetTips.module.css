@@ -29,6 +29,12 @@
     transition
 }
 
+.disabled {
+    @apply
+    opacity-50
+    cursor-not-allowed
+}
+
 .tip__sums:hover {
     @apply
     bg-8766187
