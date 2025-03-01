@@ -28,8 +28,8 @@ const BetButton: FC<IProps> = ({sendBet, withdrawBet}) => {
     }
 
     const isButtonDisabled = (!(socketEvent.status === "Pending") && !isBetSet)
-        || !(+(balance ?? 0))
-        || (+(balance ?? 0) < +bet)
+        || (!(+(balance ?? 0)) && !isBetSet)
+        || ((+(balance ?? 0) < +bet) && !isBetSet)
         || (isBetSet && socketEvent.status === 'Pending')
 
     return (

@@ -96,7 +96,6 @@ const Kostil = () => {
                     wasClean: event.wasClean
                 });
 
-                // Экспоненциальныйbackoff для реконнекта
                 if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
                     const timeout = Math.pow(2, reconnectAttempts) * 1000;
 
